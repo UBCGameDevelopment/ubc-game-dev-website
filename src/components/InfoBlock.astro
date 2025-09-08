@@ -1,0 +1,63 @@
+---
+/**
+ * InfoBlock – reusable two-column block with optional image and alternating layout.
+ *
+ * Props:
+ *  - title:        string                    (required)
+ *  - headingClass: string Tailwind classes   (e.g., "text-green-400")
+ *  - imageSrc:     string path in /public    (e.g., "/images/mission.jpg")
+ *  - imageAlt:     string                    (accessibility)
+ *  - reverse:      boolean                   (image on left when true on lg+)
+ */
+interface Props {
+    title: string;
+    headingClass?: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    reverse?: boolean;
+}
+
+const {
+    title,
+    headingClass = "text-gray-200", // fallback if none provided
+    imageSrc = "/images/placeholder-1.jpg",
+    imageAlt = "",
+    reverse = false,
+} = Astro.props as Props;
+---
+
+<section class="py-12 sm:py-16">
+    <div class="mx-auto max-w-6xl px-6">
+        <div
+            class={`grid items-center gap-10 lg:grid-cols-2 ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}
+        >
+            <!-- IMAGE -->
+            <div class="relative">
+                <!-- soft brand glow -->
+                <div
+                    class="absolute -inset-6 -z-10 rounded-2xl bg-gradient-to-br from-purple-400/20 to-green-500/20 blur-2xl"
+                >
+                </div>
+                <img
+                    src={imageSrc}
+                    alt={imageAlt}
+                    class="aspect-[4/3] w-full rounded-2xl object-cover ring-1 ring-white/10"
+                    loading="lazy"
+                />
+            </div>
+
+            <!-- COPY -->
+            <div class="text-gray-200">
+                <h2
+                    class={`text-5xl sm:text-6xl font-extrabold ${headingClass}`}
+                >
+                    {title}
+                </h2>
+                <div class="mt-5 text-lg leading-8">
+                    <slot />
+                    <!-- consumer supplies paragraphs -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
