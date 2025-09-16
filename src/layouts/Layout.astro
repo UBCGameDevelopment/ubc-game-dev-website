@@ -1,6 +1,5 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -13,11 +12,8 @@ import Footer from '../components/Footer.astro';
 		<title>UBC Game Dev</title>
 	</head>
 	<body class="flex flex-col min-h-screen">
-		<Header />
-		<main class="flex-1">
-			<slot />
-		</main>
-		<Footer />
+		<slot />
+		
 	</body>
 </html>
 
