@@ -40,10 +40,8 @@
   html { color-scheme: dark; }
   body {
     @apply min-h-screen antialiased;
-    background: linear-gradient(to bottom,
-      var(--color-black, #000),
-      var(--color-brand-700, #402dad)
-    );
+    background: linear-gradient(to bottom, #000, #402dad) no-repeat fixed;
+    background-size: cover;
     color: var(--text);
   }
 
