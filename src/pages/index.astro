@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import InfoBlock from "../components/InfoBlock.astro";
 import StatsCircles from "../components/StatsCircles.astro";
 import FeaturesRow from "../components/FeaturesRow.astro";
+import SubscribeSection from "../components/SubscribeSection.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
 import neon from "../assets/astro.svg"; // swap to your real image when ready
 import eventImg from "../assets/background.svg"; // placeholder
@@ -67,6 +69,41 @@ import gamesImg from "../assets/astro.svg"; // placeholder
                     href: "/games",
                     cta: "Learn More",
                 },
+            ]}
+        />
+
+        <!-- Subscribe CTA / Form -->
+        <SubscribeSection
+            action="#"
+            method="POST"
+            title="SUBSCRIBE"
+            subtitle="Sign up for our newsletter to receive info about meetings, workshops, events and more!"
+        />
+
+        <!-- Footer / Socials -->
+        <SiteFooter
+            socials={[
+                {
+                    label: "Discord",
+                    href: "https://discord.gg/your-invite",
+                    external: true,
+                },
+                {
+                    label: "Instagram",
+                    href: "https://instagram.com/ubcgamedev",
+                    external: true,
+                },
+                {
+                    label: "GitHub",
+                    href: "https://github.com/ubcgamedev",
+                    external: true,
+                },
+                {
+                    label: "Twitch",
+                    href: "https://twitch.tv/ubcgamedev",
+                    external: true,
+                },
+                { label: "Website", href: "/", external: false },
             ]}
         />
     </main>
