@@ -1,11 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import InfoBlock from "../components/InfoBlock.astro";
+import StatsCircles from "../components/StatsCircles.astro";
 import neon from "../assets/astro.svg"; // swap to your real image when ready
 ---
 
 <Layout>
   <main>
+
+    <!-- Hero Section -->
     <InfoBlock
       title="WE CREATE GAMES"
       imageSrc={neon.src}
@@ -17,5 +20,17 @@ import neon from "../assets/astro.svg"; // swap to your real image when ready
       <p>We also host a Year End Showcase where industry judges check out the games and hand out awards.</p>
       <p>Want to join? Keep an eye on our Discord for signup forms after our Launch Party.</p>
     </InfoBlock>
+
+    <!-- StatCircles -->
+    <StatsCircles
+    items={[
+      { value: "200+", labelTop: "Members" },
+      { value: "5+",   labelTop: "Events", labelBottom: "Per Year" },
+      { value: "10+",  labelTop: "Sponsors" },
+    ]}
+    />
+  
+
+
   </main>
 </Layout>

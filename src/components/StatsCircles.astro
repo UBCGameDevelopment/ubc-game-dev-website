@@ -1,0 +1,30 @@
+---
+export interface StatItem { value: string; labelTop?: string; labelBottom?: string; }
+export interface Props { items: StatItem[]; }
+
+const { items } = Astro.props;
+---
+
+<section class="container-page my-12 md:my-16">
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    {items.map((s) => (
+      <div
+        class="relative mx-auto aspect-square w-56 sm:w-52 md:w-60
+               rounded-full bg-white/[0.04] backdrop-blur-xl
+               ring-1 ring-white/10 border border-white/10
+               shadow-[0_30px_80px_-30px_rgba(0,0,0,0.8)]
+               flex items-center justify-center text-center"
+      >
+        <div class="space-y-1">
+          <div class="text-4xl font-extrabold tracking-tight">{s.value}</div>
+          <div class="text-2xl uppercase tracking-widest opacity-90">{s.labelTop}</div>
+          <div class="text-2xl uppercase tracking-widest opacity-90">{s.labelBottom}</div>
+        </div>
+
+        <!-- soft highlight -->
+        <span class="pointer-events-none absolute -top-1 -left-1 h-20 w-20 rounded-full
+                     bg-white/10 blur-2xl"></span>
+      </div>
+    ))}
+  </div>
+</section>
