@@ -1,0 +1,59 @@
+---
+// src/components/InfoBlock.astro
+export interface Props {
+  title: string;
+  imageSrc: string;
+  imageAlt?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  reverse?: boolean; // put image on the right when true
+}
+
+const {
+  title,
+  imageSrc,
+  imageAlt = "",
+  ctaHref,
+  ctaLabel,
+  reverse = false,
+} = Astro.props;
+---
+
+<section class="container-page my-10 md:my-14">
+  <div
+    class="rounded-3xl border border-white/20 bg-white/5 backdrop-blur-2xl shadow-2xl shadow-black/40
+           ring-1 ring-white/10 overflow-hidden"
+  >
+    <div class={`grid md:grid-cols-2 items-center ${reverse ? 'md:[&>*:first-child]:order-2' : ''}`}>
+      <!-- Image -->
+      <div class="p-5 md:p-7">
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          loading="lazy"
+          class="w-full h-full max-h-[420px] object-cover rounded-2xl shadow-lg"
+        />
+      </div>
+
+      <!-- Copy -->
+      <div class="p-6 md:p-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide mb-4">{title}</h2>
+
+        <div class="space-y-4 text-[0.98rem] leading-relaxed text-gray-50/90">
+          <slot />
+        </div>
+
+        {ctaHref && ctaLabel && (
+          <div class="mt-6">
+            <a
+              href={ctaHref}
+              class="btn btn-outline rounded-full px-5 py-2"
+            >
+              {ctaLabel}
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
