@@ -1,7 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import InfoBlock from "../components/InfoBlock.astro";
+import neon from "../assets/astro.svg"; // swap to your real image when ready
 ---
 
 <Layout>
+  <main>
+    <InfoBlock
+      title="WE CREATE GAMES"
+      imageSrc={neon.src}
+      imageAlt="Stylized neon sci-fi landscape"
+      ctaHref="https://discord.gg/your-invite" 
+      ctaLabel="Join our Discord"
+    >
+      <p>We bring together artists, programmers, writers and musicians to make games! No previous experience required — join a team and start building alongside other budding developers.</p>
+      <p>We also host a Year End Showcase where industry judges check out the games and hand out awards.</p>
+      <p>Want to join? Keep an eye on our Discord for signup forms after our Launch Party.</p>
+    </InfoBlock>
+  </main>
 </Layout>
