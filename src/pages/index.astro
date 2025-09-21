@@ -2,35 +2,72 @@
 import Layout from "../layouts/Layout.astro";
 import InfoBlock from "../components/InfoBlock.astro";
 import StatsCircles from "../components/StatsCircles.astro";
+import FeaturesRow from "../components/FeaturesRow.astro";
+
 import neon from "../assets/astro.svg"; // swap to your real image when ready
+import eventImg from "../assets/background.svg"; // placeholder
+import gamesImg from "../assets/astro.svg"; // placeholder
 ---
 
 <Layout>
-  <main>
+    <main>
+        <!-- Hero Section -->
+        <InfoBlock
+            title="WE CREATE GAMES"
+            imageSrc={neon.src}
+            imageAlt="Stylized neon sci-fi landscape"
+            ctaHref="https://discord.gg/your-invite"
+            ctaLabel="Join our Discord"
+        >
+            <p>
+                We bring together artists, programmers, writers and musicians to
+                make games! No previous experience required — join a team and
+                start building alongside other budding developers.
+            </p>
+            <p>
+                We also host a Year End Showcase where industry judges check out
+                the games and hand out awards.
+            </p>
+            <p>
+                Want to join? Keep an eye on our Discord for signup forms after
+                our Launch Party.
+            </p>
+        </InfoBlock>
 
-    <!-- Hero Section -->
-    <InfoBlock
-      title="WE CREATE GAMES"
-      imageSrc={neon.src}
-      imageAlt="Stylized neon sci-fi landscape"
-      ctaHref="https://discord.gg/your-invite" 
-      ctaLabel="Join our Discord"
-    >
-      <p>We bring together artists, programmers, writers and musicians to make games! No previous experience required — join a team and start building alongside other budding developers.</p>
-      <p>We also host a Year End Showcase where industry judges check out the games and hand out awards.</p>
-      <p>Want to join? Keep an eye on our Discord for signup forms after our Launch Party.</p>
-    </InfoBlock>
+        <!-- StatCircles -->
+        <StatsCircles
+            items={[
+                { value: "200+", labelTop: "Members" },
+                { value: "5+", labelTop: "Events", labelBottom: "Per Year" },
+                { value: "10+", labelTop: "Sponsors" },
+            ]}
+        />
 
-    <!-- StatCircles -->
-    <StatsCircles
-    items={[
-      { value: "200+", labelTop: "Members" },
-      { value: "5+",   labelTop: "Events", labelBottom: "Per Year" },
-      { value: "10+",  labelTop: "Sponsors" },
-    ]}
-    />
-  
-
-
-  </main>
+        <!-- Events + Our Games cards -->
+        <FeaturesRow
+            cards={[
+                {
+                    title: "Events",
+                    desc: [
+                        "Want to get involved?",
+                        "Come join us at the club events we’ll be hosting this year.",
+                    ],
+                    imageSrc: eventImg.src,
+                    imageAlt: "Club event photo",
+                    href: "/events",
+                    cta: "Learn More",
+                },
+                {
+                    title: "Our Games",
+                    desc: [
+                        "Here’s a collection of the games created by our members over the years.",
+                    ],
+                    imageSrc: gamesImg.src,
+                    imageAlt: "Game showcase banner",
+                    href: "/games",
+                    cta: "Learn More",
+                },
+            ]}
+        />
+    </main>
 </Layout>
