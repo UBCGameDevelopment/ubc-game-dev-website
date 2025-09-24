@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
 ---
 
 <!doctype html>
@@ -15,6 +16,31 @@ import Navbar from '../components/Navbar.astro';
 	<body class="flex flex-col min-h-screen">
 		<Navbar />
 		<slot />
+        <Footer
+            socials={[
+                {
+                    label: "Discord",
+                    href: "https://discord.gg/your-invite",
+                    external: true,
+                },
+                {
+                    label: "Instagram",
+                    href: "https://instagram.com/ubcgamedev",
+                    external: true,
+                },
+                {
+                    label: "GitHub",
+                    href: "https://github.com/ubcgamedev",
+                    external: true,
+                },
+                {
+                    label: "Twitch",
+                    href: "https://twitch.tv/ubcgamedev",
+                    external: true,
+                },
+                { label: "Website", href: "/", external: false },
+            ]}
+        />
 	</body>
 </html>
 
