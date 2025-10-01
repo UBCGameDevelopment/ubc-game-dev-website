@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/home/Hero.astro";
 import InfoBlock from "../components/home/InfoBlock.astro";
 import StatsCircles from "../components/home/StatsCircles.astro";
 import FeaturesRow from "../components/common/FeaturesRow.astro";
 import SubscribeSection from "../components/home/SubscribeSection.astro";
-import SiteFooter from "../components/layout/Footer.astro";
 
 import neon from "../assets/astro.svg"; // swap to your real image when ready
 import eventImg from "../assets/background.svg"; // placeholder
@@ -14,6 +14,8 @@ import gamesImg from "../assets/astro.svg"; // placeholder
 <Layout>
     <main>
         <!-- Hero Section -->
+        <Hero />
+
         <InfoBlock
             title="WE CREATE GAMES"
             imageSrc={neon.src}
