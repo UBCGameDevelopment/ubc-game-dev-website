@@ -41,7 +41,7 @@
   body {
     @apply min-h-screen antialiased;
     min-height: 100%;
-    background: linear-gradient(to bottom, #000 0%, #402dad 100%) no-repeat fixed;
+    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat fixed;
     background-size: cover;
     color: var(--text);
   }
@@ -60,7 +60,9 @@
 
 /* --- Reusable components (optional) --- */
 @layer components {
-  .container-page { @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl; }
+  .container-page { 
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl; 
+  }
 
   .card {
     @apply shadow-lg p-5 rounded-2xl;

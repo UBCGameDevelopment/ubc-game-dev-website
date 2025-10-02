@@ -1,27 +1,39 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
 ---
 
 <Layout>
-    <section class="flex flex-col flex-1 items-center bg-gray-700 w-full">
-            <!-- Current Execs -->
-        <div class="flex flex-col justify-center items-center">
-            <h1 class="p-10 font-bold text-white text-3xl">Our Team (2025/26)</h1>
+  <section class="flex flex-col flex-1 items-center bg-gray-700 w-full">
+    <!-- Current Execs -->
+    <div class="flex flex-col justify-center items-center">
+      <h1 class="p-10 font-bold text-white text-3xl">Our Team (2025/26)</h1>
 
-            <!-- Executives -->
-            <h2 class="font-semibold text-white text-2xl">Executives</h2>
-            <div class="gap-5 grid grid-cols-3">
-                <!-- President -->
-                <div class="col-span-3">
-                    <div class="flex flex-col justify-center items-center p-2">
-                        <img src={`https://ui-avatars.com/api/?name=Xavier%20Lam`} alt="Xavier Lam" />
-                        <h2 class="font-bold text-white">Xavier Lam</h2>
-                        <h3 class="font-medium text-gray-300">President</h3>
-                        <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                            <!-- LinkedIn icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                                <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+      <!-- Executives -->
+      <h2 class="font-semibold text-white text-2xl">Executives</h2>
+      <div class="gap-5 grid grid-cols-3">
+        <!-- President -->
+        <div class="col-span-3">
+          <div class="flex flex-col justify-center items-center p-2">
+            <img
+              src={`https://ui-avatars.com/api/?name=Xavier%20Lam`}
+              alt="Xavier Lam"
+            />
+            <h2 class="font-bold text-white">Xavier Lam</h2>
+            <h3 class="font-medium text-gray-300">President</h3>
+            <a
+              href="https://www.linkedin.com/in/xavier-lam/"
+              target="_blank"
+              class="text-gray-300 hover:text-white"
+            >
+              <!-- LinkedIn icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-current m-2 w-6 h-6"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
                                             23.226.792 24 1.771 24h20.451C23.2 24 24 
                                             23.226 24 22.271V1.729C24 .774 23.2 0 
                                             22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
@@ -31,396 +43,603 @@ import "../styles/global.css";
                                             2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
                                             0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
                                             1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                            4.183 5.352v6.354z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Treasurer -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=John%20Doe`} alt="John Doe" />
-                    <h2 class="font-bold text-white">John Doe</h2>
-                    <h3 class="font-medium text-gray-300">Treasurer</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- VP Project Teams -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Jane%20Smith`} alt="Jane Smith" />
-                    <h2 class="font-bold text-white">Jane Smith</h2>
-                    <h3 class="font-medium text-gray-300">VP Project Teams</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- VP External -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Alice%20Johnson`} alt="Alice Johnson" />
-                    <h2 class="font-bold text-white">Alice Johnson</h2>
-                    <h3 class="font-medium text-gray-300">VP External</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Directors -->
-            <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Directors</h2>
-            <div class="gap-5 grid grid-cols-2">
-                <!-- Community Director    -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Bob%20Brown`} alt="Bob Brown" />
-                    <h2 class="font-bold text-white">Bob Brown</h2>
-                    <h3 class="font-medium text-gray-300">Community Director</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Conference Director   -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Charlie%20Davis`} alt="Charlie Davis" />
-                    <h2 class="font-bold text-white">Charlie Davis</h2>
-                    <h3 class="font-medium text-gray-300">Conference Director</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Marketing Director    -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Emily%20Evans`} alt="Emily Evans" />
-                    <h2 class="font-bold text-white">Emily Evans</h2>
-                    <h3 class="font-medium text-gray-300">Marketing Director</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Social Media Director -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=David%20Garcia`} alt="David Garcia" />
-                    <h2 class="font-bold text-white">David Garcia</h2>
-                    <h3 class="font-medium text-gray-300">Social Media Director</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Development & Design -->
-            <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Development & Design</h2>
-            <div class="gap-5 grid grid-cols-2">
-                <!-- Website Managers 2x -->
-                    <!-- Manager 1 -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Michael%20Wilson`} alt="Michael Wilson" />
-                    <h2 class="font-bold text-white">Michael Wilson</h2>
-                    <h3 class="font-medium text-gray-300">Website Manager</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                    <!-- Manager 2 -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Lebron%20James`} alt="Lebron James" />
-                    <h2 class="font-bold text-white">Lebron James</h2>
-                    <h3 class="font-medium text-gray-300">Website Manager</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <!-- Graphic Designers 2x -->
-                    <!-- Designer 1 -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Sarah%20Lee`} alt="Sarah Lee" />
-                    <h2 class="font-bold text-white">Sarah Lee</h2>
-                    <h3 class="font-medium text-gray-300">Graphic Designer</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-
-                    <!-- Designer 2 -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=Chaewon%20Kim`} alt="Chaewon Kim" />
-                    <h2 class="font-bold text-white">Chaewon Kim</h2>
-                    <h3 class="font-medium text-gray-300">Graphic Designer</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Advisory -->
-            <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Advisory-at-large</h2>
-            <div class="gap-5 grid grid-cols-1">
-                <!-- Advisory Member 1 -->
-                <div class="flex flex-col justify-center items-center p-2">
-                    <img src={`https://ui-avatars.com/api/?name=John%20Doe`} alt="John Doe" />
-                    <h2 class="font-bold text-white">John Doe</h2>
-                    <h3 class="font-medium text-gray-300">Advisory Member</h3>
-                    <a href="https://www.linkedin.com/in/xavier-lam/" target="_blank" class="text-gray-300 hover:text-white">
-                        <!-- LinkedIn icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current m-2 w-6 h-6" viewBox="0 0 24 24">
-                            <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
-                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
-                                        23.226 24 22.271V1.729C24 .774 23.2 0 
-                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
-                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
-                                        3.379 5.318 3.379c1.118 0 2.027.909 
-                                        2.027 2.027s-.909 2.027-2.027 
-                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
-                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
-                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
-                                        4.183 5.352v6.354z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+                                            4.183 5.352v6.354z"
+                >
+                </path>
+              </svg>
+            </a>
+          </div>
         </div>
 
-
-            <!-- Past Execs -->
-        <div class="flex flex-col justify-center items-center">
-            <h1 class="p-10 font-bold text-white text-3xl">Past Executives</h1>
-            <!-- 2024/25 -->
-            <details class="group bg-white/60 dark:bg-gray-900/40 backdrop-blur mx-auto border border-gray-200 dark:border-white/10 rounded-lg w-full max-w-xl">
-                <summary class="flex justify-between items-center px-4 py-3 cursor-pointer select-none">
-                    <span class="font-semibold text-gray-900 dark:text-white">Year 2024/25</span>
-                    <!-- chevron -->
-                    <svg class="size-5 text-gray-500 group-open:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 
-                        1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z" clip-rule="evenodd"/>
-                    </svg>
-                </summary>
-                
-                <!-- List of Execs -->
-                <ul role="list" class="divide-y divide-gray-100 dark:divide-white/5">
-                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src={'https://ui-avatars.com/api/?name=Xavier%20Lam'} alt="Xavier Lam" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Xavier Lam</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">xavier.lam@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">President</p>
-                        </div>
-                    </li>
-                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">Treasurer</p>
-                        </div>
-                    </li>
-                                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">VP Internals</p>
-                        </div>
-                    </li>
-                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">VP Project Teams</p>
-                        </div>
-                    </li>
-                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">Community Director</p>
-                        </div>
-                    </li>
-                    <li class="flex justify-between gap-x-6 px-4 py-5">
-                        <div class="flex gap-x-4 min-w-0">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12" />
-                            <div class="flex-auto min-w-0">
-                                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
-                                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
-                            </div>
-                        </div>
-                        <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
-                            <p class="text-gray-900 dark:text-white text-sm/6">Conference Director</p>
-                        </div>
-                    </li>
-                </ul>
-            </details>
+        <!-- Treasurer -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=John%20Doe`}
+            alt="John Doe"
+          />
+          <h2 class="font-bold text-white">John Doe</h2>
+          <h3 class="font-medium text-gray-300">Treasurer</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
         </div>
-    </section>
 
+        <!-- VP Project Teams -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Jane%20Smith`}
+            alt="Jane Smith"
+          />
+          <h2 class="font-bold text-white">Jane Smith</h2>
+          <h3 class="font-medium text-gray-300">VP Project Teams</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- VP External -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Alice%20Johnson`}
+            alt="Alice Johnson"
+          />
+          <h2 class="font-bold text-white">Alice Johnson</h2>
+          <h3 class="font-medium text-gray-300">VP External</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Directors -->
+      <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Directors</h2>
+      <div class="gap-5 grid grid-cols-2">
+        <!-- Community Director    -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Bob%20Brown`}
+            alt="Bob Brown"
+          />
+          <h2 class="font-bold text-white">Bob Brown</h2>
+          <h3 class="font-medium text-gray-300">Community Director</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Conference Director   -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Charlie%20Davis`}
+            alt="Charlie Davis"
+          />
+          <h2 class="font-bold text-white">Charlie Davis</h2>
+          <h3 class="font-medium text-gray-300">Conference Director</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Marketing Director    -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Emily%20Evans`}
+            alt="Emily Evans"
+          />
+          <h2 class="font-bold text-white">Emily Evans</h2>
+          <h3 class="font-medium text-gray-300">Marketing Director</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Social Media Director -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=David%20Garcia`}
+            alt="David Garcia"
+          />
+          <h2 class="font-bold text-white">David Garcia</h2>
+          <h3 class="font-medium text-gray-300">Social Media Director</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Development & Design -->
+      <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Development & Design</h2>
+      <div class="gap-5 grid grid-cols-2">
+        <!-- Website Managers 2x -->
+        <!-- Manager 1 -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Michael%20Wilson`}
+            alt="Michael Wilson"
+          />
+          <h2 class="font-bold text-white">Michael Wilson</h2>
+          <h3 class="font-medium text-gray-300">Website Manager</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Manager 2 -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Lebron%20James`}
+            alt="Lebron James"
+          />
+          <h2 class="font-bold text-white">Lebron James</h2>
+          <h3 class="font-medium text-gray-300">Website Manager</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Graphic Designers 2x -->
+        <!-- Designer 1 -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Sarah%20Lee`}
+            alt="Sarah Lee"
+          />
+          <h2 class="font-bold text-white">Sarah Lee</h2>
+          <h3 class="font-medium text-gray-300">Graphic Designer</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Designer 2 -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=Chaewon%20Kim`}
+            alt="Chaewon Kim"
+          />
+          <h2 class="font-bold text-white">Chaewon Kim</h2>
+          <h3 class="font-medium text-gray-300">Graphic Designer</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Advisory -->
+      <h2 class="mt-10 mb-5 font-semibold text-white text-2xl">Advisory-at-large</h2>
+      <div class="gap-5 grid grid-cols-1">
+        <!-- Advisory Member 1 -->
+        <div class="flex flex-col justify-center items-center p-2">
+          <img
+            src={`https://ui-avatars.com/api/?name=John%20Doe`}
+            alt="John Doe"
+          />
+          <h2 class="font-bold text-white">John Doe</h2>
+          <h3 class="font-medium text-gray-300">Advisory Member</h3>
+          <a
+            href="https://www.linkedin.com/in/xavier-lam/"
+            target="_blank"
+            class="text-gray-300 hover:text-white"
+          >
+            <!-- LinkedIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="fill-current m-2 w-6 h-6"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 
+                                        23.226.792 24 1.771 24h20.451C23.2 24 24 
+                                        23.226 24 22.271V1.729C24 .774 23.2 0 
+                                        22.225 0zM7.059 20.452H3.577V9h3.482v11.452zM5.318 
+                                        7.433c-1.118 0-2.027-.909-2.027-2.027S4.2 
+                                        3.379 5.318 3.379c1.118 0 2.027.909 
+                                        2.027 2.027s-.909 2.027-2.027 
+                                        2.027zM20.452 20.452h-3.482v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 
+                                        0-2.137 1.445-2.137 2.939v5.667h-3.482V9h3.347v1.561h.047c.466-.884 
+                                        1.606-1.815 3.303-1.815 3.534 0 4.183 2.326 
+                                        4.183 5.352v6.354z"
+              >
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Execs -->
+    <div class="flex flex-col justify-center items-center">
+      <h1 class="p-10 font-bold text-white text-3xl">Past Executives</h1>
+      <!-- 2024/25 -->
+      <details
+        class="group bg-white/60 dark:bg-gray-900/40 backdrop-blur mx-auto border border-gray-200 dark:border-white/10 rounded-lg w-full max-w-xl"
+      >
+        <summary class="flex justify-between items-center px-4 py-3 cursor-pointer select-none">
+          <span class="font-semibold text-gray-900 dark:text-white">Year 2024/25</span>
+          <!-- chevron -->
+          <svg
+            class="size-5 text-gray-500 group-open:rotate-180 transition-transform"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 
+                        1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+              clip-rule="evenodd"
+            >
+            </path>
+          </svg>
+        </summary>
+
+        <!-- List of Execs -->
+        <ul
+          role="list"
+          class="divide-y divide-gray-100 dark:divide-white/5"
+        >
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src={"https://ui-avatars.com/api/?name=Xavier%20Lam"}
+                alt="Xavier Lam"
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Xavier Lam</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">xavier.lam@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">President</p>
+            </div>
+          </li>
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">Treasurer</p>
+            </div>
+          </li>
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">VP Internals</p>
+            </div>
+          </li>
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">VP Project Teams</p>
+            </div>
+          </li>
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">Community Director</p>
+            </div>
+          </li>
+          <li class="flex justify-between gap-x-6 px-4 py-5">
+            <div class="flex gap-x-4 min-w-0">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt=""
+                class="flex-none bg-gray-50 dark:bg-gray-800 rounded-full dark:outline dark:outline-white/10 dark:-outline-offset-1 size-12"
+              />
+              <div class="flex-auto min-w-0">
+                <p class="font-semibold text-gray-900 dark:text-white text-sm/6">Leslie Alexander</p>
+                <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs/5 truncate">leslie.alexander@example.com</p>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:flex-col sm:items-end shrink-0">
+              <p class="text-gray-900 dark:text-white text-sm/6">Conference Director</p>
+            </div>
+          </li>
+        </ul>
+      </details>
+    </div>
+  </section>
 </Layout>

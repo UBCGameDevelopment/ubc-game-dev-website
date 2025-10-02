@@ -2,19 +2,36 @@
 import FeatureCard from "./FeaturesCard.astro";
 
 export interface Card {
-  title: string; desc: string[]; imageSrc?: string; imageAlt?: string; href?: string; cta?: string;
+  title: string;
+  desc: string[];
+  imageSrc?: string;
+  imageAlt?: string;
+  href?: string;
+  cta?: string;
 }
-export interface Props { cards: Card[]; }
+export interface Props {
+  cards: Card[];
+}
 
 const { cards } = Astro.props;
 ---
 
-<section class="my-12 md:my-16 container-page">
-  <div class="gap-8 grid md:grid-cols-2">
-    {cards.map((c) => (
-      <FeatureCard title={c.title} imageSrc={c.imageSrc} imageAlt={c.imageAlt} href={c.href} cta={c.cta}>
-        {c.desc.map((p) => <p>{p}</p>)}
-      </FeatureCard>
-    ))}
+<section class="mx-auto my-12 max-w-4xl px-4 sm:px-6 md:my-16 lg:px-8">
+  <div class="grid gap-20 md:grid-cols-2">
+    {
+      cards.map((c) => (
+        <FeatureCard
+          title={c.title}
+          imageSrc={c.imageSrc}
+          imageAlt={c.imageAlt}
+          href={c.href}
+          cta={c.cta}
+        >
+          {c.desc.map((p) => (
+            <p>{p}</p>
+          ))}
+        </FeatureCard>
+      ))
+    }
   </div>
 </section>

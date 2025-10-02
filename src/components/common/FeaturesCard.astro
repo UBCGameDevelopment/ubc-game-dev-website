@@ -1,7 +1,7 @@
 ---
 export interface Props {
   title: string;
-  children?: any;     // description goes in slot
+  children?: any; // description goes in slot
   imageSrc?: string;
   imageAlt?: string;
   href?: string;
@@ -12,28 +12,36 @@ const { title, imageSrc, imageAlt = "", href, cta = "Learn More" } = Astro.props
 ---
 
 <article
-  class="flex flex-col gap-5 bg-white/5 shadow-2xl shadow-black/50 backdrop-blur-3xl p-6 md:p-8 border border-white/30 rounded-3xl"
+  class="flex h-full flex-col gap-5 rounded-3xl border border-white/30 bg-white/5 p-6 shadow-2xl shadow-black/50 backdrop-blur-3xl md:min-h-96 md:p-8"
 >
-  <h3 class="font-extrabold text-2xl tracking-wide">{title}</h3>
+  <!-- Title -->
+  <h5 class="my-4 text-5xl font-extrabold tracking-wide">{title}</h5>
 
-  <div class="text-[0.98rem] text-gray-50/85 leading-relaxed">
+  <div class="text-lg leading-relaxed text-gray-50/85">
     <slot />
   </div>
 
-  {imageSrc && (
-    <img
-      src={imageSrc}
-      alt={imageAlt}
-      loading="lazy"
-      class="border border-white/10 rounded-xl max-h-36 object-cover"
-    />
-  )}
+  {
+    imageSrc && (
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        loading="lazy"
+        class="max-h-60 rounded-xl border border-white/10 object-cover"
+      />
+    )
+  }
 
-  {href && (
-    <div class="mt-2">
-      <a href={href} class="px-5 py-2 rounded-full btn-outline btn">
-        {cta}
-      </a>
-    </div>
-  )}
+  {
+    href && (
+      <div class="mt-2">
+        <a
+          href={href}
+          class="btn-outline btn rounded-full px-5 py-2"
+        >
+          {cta}
+        </a>
+      </div>
+    )
+  }
 </article>
