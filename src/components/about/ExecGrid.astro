@@ -1,0 +1,44 @@
+---
+// src/components/about/ExecGrid.astro
+import ExecCard from "./ExecCard.astro";
+
+export interface Exec {
+  name: string;
+  role: string;
+  linkedin: string;
+  image: ImageMetadata;
+}
+export interface Props { execs: Exec[] }
+
+const { execs } = Astro.props;
+
+// Find a single President; keep the rest in original order
+const presidentIndex = execs.findIndex(e => e.role === "President");
+const president = presidentIndex >= 0 ? execs[presidentIndex] : null;
+const rest = execs.filter((_, i) => i !== presidentIndex);
+---
+
+<section class="container-page my-12 md:my-16">
+  <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide text-center">Our Executive Team</h2>
+  <p class="mt-2 text-center text-gray-50/80 max-w-2xl mx-auto">
+    Meet the folks who keep UBC Game Dev running—events, workshops, and community!
+  </p>
+
+  <!-- President row -->
+  {president && (
+    <div class="mt-10 flex justify-center">
+      <div class="w-[180px] md:w-[200px]"> 
+        <ExecCard {...president} />
+      </div>
+    </div>
+  )}
+
+  <!-- Rest of execs -->
+  <div class="mt-10 flex flex-wrap justify-center gap-x-10 gap-y-12">
+    {rest.map((e) => (
+      <div class="w-[180px] md:w-[200px]"> 
+        <ExecCard {...e} />
+      </div>
+    ))}
+  </div>
+</section>
