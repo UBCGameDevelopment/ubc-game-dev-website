@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import InfoBlock from "../components/home/InfoBlock.astro";
 import { partners } from "../data/partners";
+import { partnerLogos } from "../data/partnerLogos";
+import PartnerSlider from "../components/partners/PartnerSlider.astro";
+
 ---
 
 <Layout>
@@ -12,6 +15,9 @@ import { partners } from "../data/partners";
         We’re proud to collaborate with studios, community spaces, and companies that support students in game development.
       </p>
     </section>
+
+    <PartnerSlider logos={partnerLogos} height={200} maxWidth={220} speed="normal" gap={80} />
+
 
     {partners.map((p, i) => (
       <InfoBlock
