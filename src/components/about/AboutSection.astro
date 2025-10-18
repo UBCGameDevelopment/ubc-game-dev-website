@@ -1,0 +1,83 @@
+---
+/** Static “About” content with three parts:
+ *  - Our Mission
+ *  - How It Works (two subcards)
+ *  - Join Us (CTA text + links)
+ *
+ */
+---
+
+<section class="container-page my-10 md:my-14">
+    <div
+      class="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-xl
+             shadow-2xl shadow-black/40 ring-1 ring-white/10 p-6 md:p-10 text-center"
+    >
+      <!-- Our Mission -->
+      <header class="max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-wide">
+            About UBC Game Dev
+        </h1>
+        <p class="mt-4 text-gray-50/85">
+          We are a student-run video game development club aiming to give students a hands-on
+          approach in making video games and provide the tools needed to learn more about the industry.
+        </p>
+        <p class="mt-3 text-gray-50/85">
+          At UBC Game Development, we host a variety of workshops, invite industry guest-speakers, and hold
+          regular meetings to help educate our members. We aim to give them the tools and knowledge to succeed
+          in the art of video game development.
+        </p>
+      </header>
+  
+      <!-- How It Works -->
+      <div class="mt-10">
+        <h3 class="text-xl md:text-2xl font-extrabold tracking-wide">HOW IT WORKS</h3>
+  
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <!-- Project Teams -->
+          <article
+            class="rounded-2xl border border-white/10 bg-white/[0.05] p-5 md:p-6
+                   ring-1 ring-white/10"
+          >
+            <h4 class="text-lg font-bold">Project Teams</h4>
+            <p class="mt-2 text-gray-50/85">
+              Project Teams are led by experienced members and are balanced with a variety of skills to
+              successfully design and develop an original game.
+            </p>
+          </article>
+  
+          <!-- Learning Community -->
+          <article
+            class="rounded-2xl border border-white/10 bg-white/[0.05] p-5 md:p-6
+                   ring-1 ring-white/10"
+          >
+            <h4 class="text-lg font-bold">Learning Community</h4>
+            <p class="mt-2 text-gray-50/85">
+              The Learning Community is designed to foster a safe environment for aspiring developers to
+              improve their skills, experiment, and make connections. Many members later join Project Teams
+              once they feel confident in their skill development.
+            </p>
+          </article>
+        </div>
+      </div>
+  
+      <!-- Join Us -->
+      <div class="mt-10">
+        <h3 class="text-xl md:text-2xl font-extrabold tracking-wide">Join Us</h3>
+        <p class="mt-3 text-gray-50/85">
+          Interested in partnering or joining? Subscribe to our newsletter below and feel free to
+          <a href="/contact" class="underline decoration-white/40 hover:decoration-[var(--brand)]">
+            contact us
+          </a>
+          if you have any questions!
+        </p>
+        <!-- Optional CTAs; comment out if you only want text -->
+        <!--
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href="#subscribe" class="btn btn-outline rounded-full px-5 py-2">Subscribe</a>
+          <a href="/contact" class="btn btn-outline rounded-full px-5 py-2">Contact Us</a>
+        </div>
+        -->
+      </div>
+    </div>
+  </section>
+  

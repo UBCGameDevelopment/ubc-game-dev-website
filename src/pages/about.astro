@@ -1,16 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro"; 
+import Layout from "../layouts/Layout.astro";
+import ExecGrid from "../components/about/ExecGrid.astro";
+import AboutSection from "../components/about/AboutSection.astro";
+import { execs } from "../data/execs";
 ---
 
-<!-- TODO: STYLING DOES NOT WORK / TRANSLATE OVER FROM LAYOUT -->
 <Layout>
   <main>
-    <section class="container-page my-10 md:my-14">
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-wide">About UBC Game Dev</h1>
-      <p class="mt-4 text-gray-50/85 max-w-3xl">
-        We’re a student community for artists, programmers, writers, and musicians who love making games.
-        No experience required—learn together, build together, and showcase your work at our year-end event.
-      </p>
-    </section>
+
+
+    <AboutSection />
+
+
+    <ExecGrid execs={execs} />
   </main>
 </Layout>
