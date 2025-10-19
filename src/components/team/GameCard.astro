@@ -1,8 +1,6 @@
 ---
 import type { Game } from '../../data/games';
-
 export interface Props extends Game {}
-
 const { name, description, media, teamMembers, award } = Astro.props;
 
 // Generate unique ID for this card's media controls
@@ -64,6 +62,8 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
         <div class="flex flex-col gap-4">
           <!-- Media Container -->
           <div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10 aspect-video flex-1">
+
+            <!-- Youtube -->
             {media.type === 'video' && media.videoUrl ? (
               <!-- YouTube Video Embed - Privacy Enhanced Mode -->
               <iframe
@@ -76,7 +76,7 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
                 allowfullscreen
               ></iframe>
             ) : media.type === 'images' && media.images && media.images.length > 0 ? (
-              <!-- Image Slideshow -->
+                //   Image Slideshow alternative
               <div class="relative w-full h-full">
                 <div class="slideshow-container w-full h-full" id={`${cardId}-slideshow`}>
                   {media.images.map((image, index) => (
@@ -105,7 +105,7 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
                 )}
               </div>
             ) : (
-              <!-- Placeholder -->
+                //  Placeholder
               <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10">
                 <div class="text-center">
                   <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -19,6 +19,7 @@ export type Exec = {
   role: string;
   linkedin: string;
   github?: string;
+  portfolio?: string;
   image: ImageMetadata;
 };
 
@@ -57,6 +58,7 @@ export const execs: Exec[] = [
     name: "Chloe Cheng",
     role: "VP External",
     linkedin: "https://www.linkedin.com/in/chloecheng6772/",
+    portfolio: "https://chloeecheng.cargo.site/",
     image: chloe,
   },
   {
