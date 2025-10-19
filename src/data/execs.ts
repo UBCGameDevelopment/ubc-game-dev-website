@@ -7,7 +7,7 @@ import justin from "../assets/exec_photos/justin.webp";
 import kyle from "../assets/exec_photos/kyle.webp";
 import lucas from "../assets/exec_photos/lucas.webp";
 import mathew from "../assets/exec_photos/mathew.webp";
-import noah from "../assets/exec_photos/noah.webp";
+import noah from "../assets/exec_photos/noah.webp"; // Noah is never used?
 import sarah from "../assets/exec_photos/sarah.webp";
 import vanshika from "../assets/exec_photos/vanshika.webp";
 import victor from "../assets/exec_photos/victor.webp";

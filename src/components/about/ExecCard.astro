@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   name: string;
   role: string;
@@ -11,11 +13,13 @@ const { name, role, linkedin, image } = Astro.props;
 
 <div class="flex flex-col items-center text-center">
   <!-- Photo -->
-  <img
-    src={image.src}
+  <Image
+    src={image}
     alt={`${name} headshot`}
-    width="128"
-    height="128"
+    width={512}
+    height={512}
+    quality={99}
+    format="webp"
     class="h-28 w-28 md:h-32 md:w-32 rounded-full object-cover ring-1 ring-white/15 shadow-lg"
     loading="lazy"
   />
