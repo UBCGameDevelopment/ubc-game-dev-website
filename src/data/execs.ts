@@ -76,6 +76,7 @@ export const execs: Exec[] = [
     name: "Justin Galimpin",
     role: "Web Developer / Web Manager",
     linkedin: "https://www.linkedin.com/in/justin-galimpin/",
+    github: "https://github.com/JustinGalimpin",
     image: justin,
   },
   {

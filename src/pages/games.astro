@@ -24,35 +24,46 @@ import { games } from "../data/games";
             </p>
         </section>
 
-        <!-- Games Grid -->
+        <!-- Timeline + Games -->
         <section class="my-12 md:my-16">
-            <div class="grid gap-8 md:gap-12">
-                {games.map((game) => <GameCard {...game} />)}
-            </div>
-
-            {
-                games.length === 0 && (
-                    <div class="py-16 text-center">
-                        <svg
-                            class="mx-auto mb-4 h-24 w-24 text-white/10"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                            />
-                        </svg>
-                        <p class="mb-2 text-xl text-gray-50/60">No games yet</p>
-                        <p class="text-sm text-gray-50/40">Check back soon for our latest projects!</p>
+            <div class="items-start gap-8 md:grid md:grid-cols-[minmax(150px,190px)_minmax(0,1fr)] lg:gap-14">
+                <aside class="order-2 md:sticky md:top-24 md:order-1">
+                    <div
+                        class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-xl ring-1 shadow-black/30 ring-white/10 backdrop-blur-xl">
+                        <h2 class="mb-3 text-base font-semibold tracking-wide text-gray-200">Club Timeline</h2>
+                        <Timeline />
                     </div>
-                )
-            }
-        </section>
+                </aside>
 
-        <!-- Timeline Section -->
-        <Timeline />
-    </main>
-</Layout>
+                <div class="order-1 md:order-2">
+                    {
+                        games.length > 0 ? (
+                            <div class="space-y-8 md:space-y-12">
+                                {games.map((game) => (
+                                    <GameCard {...game} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div class="py-16 text-center">
+                                <svg
+                                    class="mx-auto mb-4 h-24 w-24 text-white/10"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                                    />
+                                </svg>
+                                <p class="mb-2 text-xl text-gray-50/60">No games yet</p>
+                                <p class="text-sm text-gray-50/40">Check back soon for our latest projects!</p>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </section>
+    </main></Layout
+>
