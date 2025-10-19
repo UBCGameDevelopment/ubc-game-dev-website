@@ -24,8 +24,13 @@ import Footer from "../components/layout/Footer.astro";
     <title>UBC Game Development</title>
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Navbar -->
     <Navbar />
+
+    <!-- Body/main content -->
     <slot />
+
+    <!-- Footer -->
     <Footer
       socials={[
         {

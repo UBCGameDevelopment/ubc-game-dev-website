@@ -96,4 +96,73 @@
   /* form focus ring using your brand */
   .focus-ring { @apply focus:outline-none focus:ring-2; box-shadow: 0 0 0 0 var(--ring); }
   .focus-ring:focus { --tw-ring-color: var(--ring); }
+
+    .timeline {
+    --pop: 1.55;     /* scale for hovered item */
+    --near: 1.15;    /* scale for neighbors */
+  }
+  .timeline li {
+    list-style: none;
+    position: relative;
+    color: rgb(148 163 184 / 0.8);        /* slate-400/80 */
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    transform-origin: left center;
+    transition: transform .18s ease, color .18s ease, opacity .18s ease;
+  }
+  .timeline li > button {
+    all: unset;
+    display: block;
+    cursor: pointer;
+    padding: .1rem .25rem;
+    border-radius: .5rem;
+    outline-offset: 4px;                  /* keyboard focus */
+  }
+  .timeline li > button:focus-visible {
+    outline: 2px solid rgb(99 102 241);   /* indigo-500 */
+  }
+
+  /* Hovered item pops */
+  .timeline li:hover {
+    transform: translateX(.25rem) scale(var(--pop));
+    color: white;
+  }
+
+  /* Immediate neighbors also grow a bit (requires :has(), widely supported) */
+  .timeline li:hover + li,
+  .timeline li:has(+ li:hover) {
+    transform: translateX(.125rem) scale(var(--near));
+    color: rgb(203 213 225);              /* slate-300 */
+  }
+
+  /* Dim the rest when any item is hovered */
+  .timeline:has(li:hover) li { opacity: .55; }
+  .timeline:has(li:hover) li:hover,
+  .timeline:has(li:hover) li:hover + li,
+  .timeline:has(li:hover) li:has(+ li:hover) {
+    opacity: 1;
+  }
+
+  /* Bubble label on hover (like the alphabet tooltip) */
+  .timeline li::after {
+    content: attr(data-year);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    translate: 0 -50%;
+    margin-left: .75rem;
+    padding: .35rem .6rem;
+    border-radius: 9999px;
+    font-size: .9rem;
+    color: #e5e7eb;                       /* gray-200 */
+    background: color-mix(in oklab, #0b1020 70%, #111827 30%);
+    border: 1px solid rgb(255 255 255 / .12);
+    box-shadow: 0 12px 32px rgb(0 0 0 / .35);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: scale(.92);
+    transition: opacity .15s ease, transform .15s ease;
+    pointer-events: none;
+  }
+  .timeline li:hover::after { opacity: 1; transform: scale(1); }
 }
