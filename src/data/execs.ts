@@ -18,6 +18,7 @@ export type Exec = {
   name: string;
   role: string;
   linkedin: string;
+  github?: string;
   image: ImageMetadata;
 };
 
@@ -37,62 +38,63 @@ export const execs: Exec[] = [
   {
     name: "Lucas Liu",
     role: "Marketing Director",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/lucas-liu-32b566216/",
     image: lucas,
   },
   {
     name: "Sarah Liang",
     role: "Social Media Director",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/ssarahliang/",
     image: sarah,
   },
   {
     name: "Mathew Drexel",
     role: "Treasurer",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/mathew-drexel-a77167205/",
     image: mathew,
   },
   {
     name: "Chloe Cheng",
     role: "VP External",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/chloecheng6772/",
     image: chloe,
   },
   {
     name: "Kyle Van Winkoop",
-    role: "Executive at Large",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    role: "Executive-at-Large",
+    linkedin: "https://www.linkedin.com/in/kyle-van-winkoop/",
     image: kyle,
   },
   {
     name: "Victor Thai",
     role: "Web Developer / Web Manager",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "www.linkedin.com/in/vvictort20",
+    github: "https://github.com/vvictort",
     image: victor,
   },
   {
     name: "Justin Galimpin",
     role: "Web Developer / Web Manager",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/justin-galimpin/",
     image: justin,
   },
   {
     name: "Vanshika Dixit",
     role: "Conference Director",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/vdixit20/",
     image: vanshika,
   },
   {
     name: "Brittany Tsui",
     role: "Graphic Designer",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/brittanytsui/",
     image: brittany,
   },
   {
     name: "Noah Cho",
     role: "3D Graphic Designer",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
-    image: xavier,
+    linkedin: "https://www.linkedin.com/in/noah-cho-184302230/",
+    image: noah,
   },
   {
     name: "Pedro Novais",
