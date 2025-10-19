@@ -1,8 +1,58 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/team/Timeline.astro";
+import GameCard from "../components/team/GameCard.astro";
+import { games } from "../data/games";
 ---
 
 <Layout>
-    <Timeline />
+    <main class="container-page">
+        <!-- Page Header -->
+        <section class="my-12 text-center md:my-16">
+            <div
+                class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5">
+                <span class="text-brand-400 text-sm font-semibold">Our Projects</span>
+            </div>
+
+            <h1
+                class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent md:text-6xl">
+                Game Showcase
+            </h1>
+            <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-50/80">
+                Explore the amazing games created by our talented teams. Each project represents countless hours of
+                creativity, collaboration, and passion for game development.
+            </p>
+        </section>
+
+        <!-- Games Grid -->
+        <section class="my-12 md:my-16">
+            <div class="grid gap-8 md:gap-12">
+                {games.map((game) => <GameCard {...game} />)}
+            </div>
+
+            {
+                games.length === 0 && (
+                    <div class="py-16 text-center">
+                        <svg
+                            class="mx-auto mb-4 h-24 w-24 text-white/10"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                        </svg>
+                        <p class="mb-2 text-xl text-gray-50/60">No games yet</p>
+                        <p class="text-sm text-gray-50/40">Check back soon for our latest projects!</p>
+                    </div>
+                )
+            }
+        </section>
+
+        <!-- Timeline Section -->
+        <Timeline />
+    </main>
 </Layout>
