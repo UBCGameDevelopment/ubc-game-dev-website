@@ -97,125 +97,63 @@
   .focus-ring { @apply focus:outline-none focus:ring-2; box-shadow: 0 0 0 0 var(--ring); }
   .focus-ring:focus { --tw-ring-color: var(--ring); }
 
-    .timeline-root {
-      width: 100%;
-    }
+  /* Timeline with fish-eye effect (React component) */
+  .timeline-react ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .timeline-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.15rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+  .timeline-react li {
+    position: relative;
+    transform-origin: left center;
+  }
 
-    .timeline-item {
-      position: relative;
-    }
+  .timeline-btn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    cursor: pointer;
+    padding: 0.3rem 0;
+    outline-offset: 4px;
+  }
 
-    .timeline-button {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      width: 100%;
-      border: none;
-      padding: 0.35rem 0;
-      cursor: pointer;
-      background: transparent;
-      outline: none;
-      color: rgba(203, 213, 225, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 600;
-    }
+  .timeline-btn:focus-visible {
+    outline: 2px solid rgba(157, 124, 255, 0.6);
+    border-radius: 0.5rem;
+  }
 
-    .timeline-button:focus-visible {
-      outline: 2px solid rgba(148, 163, 184, 0.8);
-      outline-offset: 4px;
-      border-radius: 0.6rem;
-    }
+  .timeline-bar {
+    display: block;
+    width: 85px;
+    height: 3px;
+    border-radius: 9999px;
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    transform-origin: center;
+  }
 
+  .timeline-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244, 247, 255, 0.95);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
     .timeline-bar {
-      position: relative;
-      flex-shrink: 0;
-      width: 96px;
-      height: 4px;
-      border-radius: 9999px;
-      background: rgba(148, 163, 184, 0.22);
-      overflow: hidden;
-      transform: scaleY(1);
-      transform-origin: center;
-      transition: transform 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+      width: 68px;
     }
-
-    .timeline-bar-fill {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(157, 124, 255, 0.58), rgba(91, 205, 132, 0.58));
-      opacity: 0.55;
-      transform: scaleX(0.92);
-      transform-origin: center;
-      transition: transform 0.24s ease, opacity 0.24s ease, box-shadow 0.24s ease;
-    }
-
+    
     .timeline-label {
-      font-size: 0.7rem;
-      color: rgba(226, 232, 240, 0.75);
-      transition: opacity 0.16s ease, transform 0.16s ease, color 0.16s ease;
-      opacity: 0;
-      transform: translateX(-0.35rem);
-      pointer-events: none;
-      white-space: nowrap;
+      font-size: 0.65rem;
     }
-
-    .timeline-button[aria-selected="true"] .timeline-bar {
-      transform: scaleX(1.02) scaleY(1.65);
-      background: rgba(157, 124, 255, 0.32);
-      box-shadow: 0 10px 22px rgba(91, 205, 132, 0.18);
-    }
-
-    .timeline-button[aria-selected="true"] .timeline-bar-fill {
-      opacity: 0.85;
-      transform: scaleX(0.98);
-      box-shadow: 0 6px 18px rgba(91, 205, 132, 0.22);
-    }
-
-    .timeline-button:hover .timeline-bar,
-    .timeline-button:focus-visible .timeline-bar {
-      transform: scaleX(1.12) scaleY(2.35);
-      background: rgba(157, 124, 255, 0.42);
-      box-shadow: 0 12px 28px rgba(91, 205, 132, 0.28);
-    }
-
-    .timeline-button:hover .timeline-bar-fill,
-    .timeline-button:focus-visible .timeline-bar-fill {
-      opacity: 1;
-      transform: scaleX(1.02);
-      box-shadow: 0 10px 26px rgba(91, 205, 132, 0.32);
-    }
-
-    .timeline-button:hover .timeline-label,
-    .timeline-button:focus-visible .timeline-label,
-    .timeline-button[aria-selected="true"] .timeline-label {
-      opacity: 1;
-      transform: translateX(0);
-      color: rgba(244, 247, 255, 0.94);
-    }
-
-    @media (max-width: 768px) {
-      .timeline-list {
-        gap: 0.9rem;
-      }
-
-      .timeline-button {
-        gap: 0.6rem;
-        font-size: 0.65rem;
-      }
-
-      .timeline-bar {
-        width: 76px;
-      }
-    }
+  }
 }

@@ -1,83 +1,12 @@
 ---
+import TimelineReact from "./Timeline.tsx";
+
 const years = ["2024/2025", "2023/2024", "2022/2023", "2021/2022", "2020/2021", "2019/2020", "2018/2019", "Legacy"];
 const initialYear = years[0];
 ---
 
-<div
-    class="timeline-root"
-    data-timeline>
-    <ol
-        class="timeline-list"
-        role="list">
-        {
-            years.map((year) => (
-                <li class="timeline-item">
-                    <button
-                        type="button"
-                        class="timeline-button"
-                        data-year-button
-                        data-year={year}
-                        aria-selected={year === initialYear}>
-                        <span
-                            class="timeline-bar"
-                            aria-hidden="true">
-                            <span class="timeline-bar-fill" />
-                        </span>
-                        <span class="timeline-label">{year}</span>
-                    </button>
-                </li>
-            ))
-        }
-    </ol>
-</div>
-
-<script>
-    /** @type {HTMLScriptElement | null} */
-    const scriptEl = document.currentScript;
-    /** @type {HTMLElement | null} */
-    const root = scriptEl?.previousElementSibling?.closest?.("[data-timeline]") ?? null;
-    if (!root) return;
-
-    const buttons = /** @type {HTMLButtonElement[]} */ (
-        Array.from(root.querySelectorAll("[data-year-button]")).filter((btn) => btn instanceof HTMLButtonElement)
-    );
-
-    /** @type {HTMLButtonElement | null} */
-    let active = buttons.find((btn) => btn.getAttribute("aria-selected") === "true") ?? buttons[0] ?? null;
-
-    active?.setAttribute("aria-selected", "true");
-
-    buttons.forEach((btn, index) => {
-        const activate = () => {
-            if (active === btn) return;
-            active?.setAttribute("aria-selected", "false");
-            active = btn;
-            active?.setAttribute("aria-selected", "true");
-        };
-
-        btn.addEventListener("click", activate);
-        btn.addEventListener("keydown", (event) => {
-            const keyboardEvent = /** @type {KeyboardEvent} */ (event);
-            if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") {
-                keyboardEvent.preventDefault();
-                activate();
-                return;
-            }
-
-            if (keyboardEvent.key === "ArrowUp" || keyboardEvent.key === "ArrowDown") {
-                keyboardEvent.preventDefault();
-                const dir = keyboardEvent.key === "ArrowUp" ? -1 : 1;
-                const nextIndex = index + dir;
-                const next = buttons[nextIndex];
-                if (next instanceof HTMLButtonElement) {
-                    next.focus();
-                    if (active !== next) {
-                        active?.setAttribute("aria-selected", "false");
-                        active = next;
-                        active.setAttribute("aria-selected", "true");
-                    }
-                }
-            }
-        });
-    });
-</script>
+<TimelineReact
+    years={years}
+    initialYear={initialYear}
+    client:load
+/>
