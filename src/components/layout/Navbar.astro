@@ -1,10 +1,15 @@
 ---
-import logo from '../../assets/logo.png';
+import logo from "../../assets/logo.png";
 ---
 
-<header class="flex justify-center items-center gap-x-16 bg-white/5 backdrop-blur-3xl mx-auto mt-8 p-4 border border-white/30 rounded-4xl w-full max-w-6xl">
+<header
+    class="mx-auto mt-8 flex w-full max-w-6xl items-center justify-center gap-x-16 rounded-4xl border border-white/30 bg-white/5 p-4 backdrop-blur-3xl">
     <!-- Logo -->
-    <img src={logo.src} alt="UBC Game Dev Logo" class="w-10 h-10"/>
+    <img
+        src={logo.src}
+        alt="UBC Game Dev Logo"
+        class="h-10 w-10"
+    />
 
     <!-- Nav links -->
     <nav class="flex items-center gap-x-16 font-semibold">
@@ -14,7 +19,10 @@ import logo from '../../assets/logo.png';
         <a href="/games">Games Gallery</a>
         <a href="/team">Our Team</a>
         <a href="/about">About</a>
-        <a href="/contact" class="hover:bg-[#BEA9FF] px-4 py-2 border border-[#E4E4E4] hover:border-[#BEA9FF] rounded-4xl text-white hover:text-black transition-colors duration-1000 ease-in-out">
-            Contact Us</a>
+        <a
+            href="/contact"
+            class="rounded-4xl border border-[#E4E4E4] px-4 py-2 text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black">
+            Contact Us
+        </a>
     </nav>
 </header>
