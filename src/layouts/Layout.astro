@@ -23,7 +23,7 @@ import Footer from "../components/layout/Footer.astro";
     />
     <title>UBC Game Development</title>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex min-h-screen flex-col">
     <!-- Navbar -->
     <Navbar />
 
@@ -31,31 +31,7 @@ import Footer from "../components/layout/Footer.astro";
     <slot />
 
     <!-- Footer -->
-    <Footer
-      socials={[
-        {
-          label: "Discord",
-          href: "https://discord.gg/your-invite",
-          external: true,
-        },
-        {
-          label: "Instagram",
-          href: "https://instagram.com/ubcgamedev",
-          external: true,
-        },
-        {
-          label: "GitHub",
-          href: "https://github.com/ubcgamedev",
-          external: true,
-        },
-        {
-          label: "Twitch",
-          href: "https://twitch.tv/ubcgamedev",
-          external: true,
-        },
-        { label: "Website", href: "/", external: false },
-      ]}
-    />
+    <Footer />
   </body>
 </html>
 
