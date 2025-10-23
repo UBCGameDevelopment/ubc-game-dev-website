@@ -4,7 +4,7 @@ import type { Event } from "../../data/events";
 
 export interface Props extends Event {}
 
-const { title, date, description, location, image } = Astro.props;
+const { title, date, description, location, mapLink, image } = Astro.props;
 ---
 
 <article class="group relative">
@@ -84,7 +84,18 @@ const { title, date, description, location, image } = Astro.props;
                                 clip-rule="evenodd">
                             </path>
                         </svg>
-                        <span class="font-medium text-gray-200">{location}</span>
+                        {
+                            mapLink ? (
+                                <a
+                                    class="font-medium text-gray-200 hover:underline"
+                                    href={mapLink}
+                                    target="_blank">
+                                    {location}
+                                </a>
+                            ) : (
+                                <span class="font-medium text-gray-200">{location}</span>
+                            )
+                        }
                     </div>
                 </div>
             </div>

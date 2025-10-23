@@ -1,34 +1,5 @@
 @import "tailwindcss";
 
-/* Lenis smooth scroll setup */
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-html {
-  scroll-padding-top: 2rem;
-}
-
-* {
-  scroll-margin-top: 2rem;
-}
-
 /* --- Theme tokens from your palette --- */
 @theme {
   /* neutrals */
@@ -185,4 +156,33 @@ html {
       font-size: 0.65rem;
     }
   }
+}
+
+/* --- Smooth Scroll --- */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+html {
+  scroll-padding-top: 2rem;
+}
+
+* {
+  scroll-margin-top: 2rem;
 }

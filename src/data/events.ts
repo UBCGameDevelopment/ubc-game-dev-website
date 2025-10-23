@@ -9,6 +9,7 @@ export type Event = {
   date: string;
   description: string;
   location: string;
+  mapLink?: string;
   image: ImageMetadata;
 };
 
@@ -18,6 +19,7 @@ export const events: Event[] = [
     date: "Friday, Sept. 26, 2025: 6-9pm",
     description: "Our launch party is the perfect chance to learn more about what exactly the club does. At our launch party, you will hear about how you can join a team, what our events look like and what ways the club can help support you! Its your chance to become a member.",
     location: "BUCH A104",
+    mapLink: "https://maps.app.goo.gl/yyXBtJi8rwkoMd487",
     image: placeholderImage,
   },
   {
