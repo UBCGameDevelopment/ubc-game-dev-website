@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/games/Timeline.astro";
 import GameCard from "../components/games/GameCard.astro";
+import GameGrid from "../components/games/GameGrid.tsx";
 import { games } from "../data/games";
 ---
 
@@ -36,11 +37,20 @@ import { games } from "../data/games";
                 </aside>
 
                 <div class="order-1 md:order-2">
+                    <!-- React component to manage filtering state -->
+                    <GameGrid client:load />
+
+                    <!-- Game cards with fallback -->
                     {
                         games.length > 0 ? (
-                            <div class="space-y-8 md:space-y-12">
+                            <div class="game-cards-container space-y-8 md:space-y-12">
                                 {games.map((game) => (
-                                    <GameCard {...game} />
+                                    <div
+                                        class="game-card-wrapper"
+                                        data-game-card
+                                        data-year={game.year}>
+                                        <GameCard {...game} />
+                                    </div>
                                 ))}
                             </div>
                         ) : (
@@ -65,5 +75,40 @@ import { games } from "../data/games";
                 </div>
             </div>
         </section>
-    </main></Layout
->
+    </main>
+</Layout>
+
+<style>
+    .game-card-wrapper {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .game-card-wrapper.game-card-hidden {
+        opacity: 0;
+        height: 0;
+        margin: 0 !important;
+        overflow: hidden;
+        pointer-events: none;
+        transition:
+            opacity 0.3s ease,
+            height 0.3s ease,
+            margin 0.3s ease;
+    }
+
+    .game-card-wrapper.game-card-visible {
+        animation: slideUpFadeIn 0.6s ease forwards;
+        animation-delay: var(--stagger-delay, 0s);
+    }
+
+    @keyframes slideUpFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

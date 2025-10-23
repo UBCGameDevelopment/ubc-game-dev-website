@@ -1,8 +1,10 @@
 ---
 import TimelineReact from "./Timeline.tsx";
+import { getGameYears } from "../../data/games";
 
-const years = ["2024/2025", "2023/2024", "2022/2023", "2021/2022", "2020/2021", "2019/2020", "2018/2019", "Legacy"];
-const initialYear = years[0];
+const gameYears = getGameYears();
+const years = ["All Years", ...gameYears];
+const initialYear = "All Years";
 ---
 
 <TimelineReact

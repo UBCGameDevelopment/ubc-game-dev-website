@@ -1,25 +1,24 @@
 import { useState } from "react";
 
 interface TimelineProps {
-    years?: string[];
-    initialYear?: string;
+    years: string[];
+    initialYear: string;
 }
 
-export default function Timeline({
-    years = [
-        "2024/2025",
-        "2023/2024",
-        "2022/2023",
-        "2021/2022",
-        "2020/2021",
-        "2019/2020",
-        "2018/2019",
-        "Legacy",
-    ],
-    initialYear,
-}: TimelineProps) {
-    const [activeYear, setActiveYear] = useState(initialYear ?? years[0]);
+export default function Timeline({ years, initialYear }: TimelineProps) {
+    const [activeYear, setActiveYear] = useState(initialYear);
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+    const handleYearClick = (year: string) => {
+        setActiveYear(year);
+
+        // Dispatch custom event for the games page to listen to
+        const event = new CustomEvent("timeline-year-change", {
+            detail: { year },
+            bubbles: true,
+        });
+        window.dispatchEvent(event);
+    };
 
     return (
         <nav className="timeline-react" aria-label="Year timeline">
@@ -57,7 +56,7 @@ export default function Timeline({
                         >
                             <button
                                 type="button"
-                                onClick={() => setActiveYear(year)}
+                                onClick={() => handleYearClick(year)}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                                 onFocus={() => setHoveredIndex(index)}
