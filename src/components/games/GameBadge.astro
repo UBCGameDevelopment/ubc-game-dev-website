@@ -1,0 +1,11 @@
+---
+export interface Props {
+    label?: string;
+}
+
+const { label = "Game" } = Astro.props;
+---
+
+<div class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1">
+    <span class="text-brand-400 text-xs font-semibold tracking-wide uppercase">{label}</span>
+</div>

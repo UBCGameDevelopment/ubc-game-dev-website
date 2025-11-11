@@ -1,287 +1,61 @@
 ---
-import type { Game } from '../../data/games';
+import type { Game } from "../../data/games";
+import GameBadge from "./GameBadge.astro";
+import GameTitle from "./GameTitle.astro";
+import GameMedia from "./GameMedia.astro";
+import AwardBadge from "./AwardBadge.astro";
+import TeamMembers from "./TeamMembers.astro";
+
 export interface Props extends Game {}
 const { name, description, media, gameLink, teamMembers, award } = Astro.props;
 
 // Generate unique ID for this card's media controls
-const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
+const cardId = `game-${name.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
 <article class="group relative">
   <!-- Gradient glow effect -->
-  <div class="absolute -inset-0.5 bg-gradient-to-r from-brand-700 via-brand-500 to-accent-500 rounded-3xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-  
+  <div
+    class="from-brand-700 via-brand-500 to-accent-500 absolute -inset-0.5 rounded-3xl bg-gradient-to-r opacity-20 blur transition-opacity duration-500 group-hover:opacity-30">
+  </div>
+
   <!-- Main card container -->
-  <div class="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl shadow-2xl shadow-black/40 ring-1 ring-white/10 overflow-hidden">
+  <div
+    class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] shadow-2xl ring-1 shadow-black/40 ring-white/10 backdrop-blur-xl">
     <!-- Decorative background elements -->
-    <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-72 h-72 bg-accent-500/5 rounded-full blur-3xl"></div>
-    
+    <div class="bg-brand-500/5 absolute top-0 right-0 h-64 w-64 rounded-full blur-3xl"></div>
+    <div class="bg-accent-500/5 absolute bottom-0 left-0 h-72 w-72 rounded-full blur-3xl"></div>
+
     <div class="relative z-10 p-6 md:p-8">
       <!-- Top Section: Grid Layout -->
-      <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="grid items-center gap-8 md:grid-cols-2">
         <!-- Left Section: Game Info -->
         <div class="flex flex-col">
-          <!-- Game Name & Description -->
           <div class="flex-1">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/20 border border-brand-500/30 mb-4">
-              <span class="text-xs font-semibold text-brand-400 uppercase tracking-wide">Game</span>
-            </div>
-            
-            <div class="mb-4">
-              {gameLink ? (
-                <a 
-                  href={gameLink} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="game-title-link inline-block group/title"
-                >
-                  <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent transition-all duration-300 group-hover/title:scale-105">
-                    {name}
-                    <svg class="inline-block w-5 h-5 md:w-6 md:h-6 ml-2 text-brand-400 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 group-hover/title:text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </h3>
-                </a>
-              ) : (
-                <h3 class="text-2xl md:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-                  {name}
-                </h3>
-              )}
-            </div>
-            
-            <p class="text-gray-50/80 leading-relaxed text-sm md:text-base">
+            <GameBadge />
+            <GameTitle
+              name={name}
+              gameLink={gameLink}
+            />
+
+            <p class="text-sm leading-relaxed text-gray-50/80 md:text-base">
               {description}
             </p>
           </div>
-          
-          <!-- Winner Category (Bottom Left) -->
-          {award && (
-            <div class="mt-6">
-              <div class="relative inline-block">
-                <div class="absolute -inset-1 bg-gradient-to-r from-accent-500 to-accent-600 rounded-xl blur opacity-40"></div>
-                <div class="relative rounded-xl border border-accent-500/50 bg-gradient-to-br from-accent-500/20 to-accent-600/10 px-4 py-3 backdrop-blur-sm">
-                  <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-accent-500" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    <div>
-                      <div class="text-xs text-accent-300 font-medium uppercase tracking-wide">Award Winner</div>
-                      <div class="text-sm font-bold text-white">{award}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-        
-        <!-- Right Section: Media Preview -->
-        <div class="flex flex-col gap-4 h-fit">
-          <!-- Media Container -->
-          <div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10">
 
-            <!-- Youtube -->
-            {media.type === 'video' && media.videoUrl ? (
-              <!-- YouTube Video Embed - Privacy Enhanced Mode -->
-              <iframe
-                src={media.videoUrl}
-                class="w-full h-full border-0"
-                title={`${name} gameplay video`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                loading="lazy"
-                allowfullscreen
-              ></iframe>
-            ) : media.type === 'images' && media.images && media.images.length > 0 ? (
-                //   Image Slideshow alternative
-              <div class="relative w-full h-full">
-                <div class="slideshow-container w-full h-full" id={`${cardId}-slideshow`}>
-                  {media.images.map((image, index) => (
-                    <div class={`slide ${index === 0 ? 'active' : ''}`} style="display: none;">
-                      <img
-                        src={image.src}
-                        alt={`${name} screenshot ${index + 1}`}
-                        class="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Slide controls */}
-                {media.images.length > 1 && (
-                  <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-2">
-                    {media.images.map((_, index) => (
-                      <button
-                        class="dot w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 transition-all"
-                        data-slide={index}
-                        data-slideshow={`${cardId}-slideshow`}
-                        aria-label={`Go to slide ${index + 1}`}
-                      ></button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ) : media.type === 'image' && media.image ? (
-              // Single Image Display
-              <img
-                src={media.image.src}
-                alt={`${name} screenshot`}
-                class="w-full h-auto object-contain"
-              />
-            ) : (
-              //  Placeholder
-              <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10">
-                <div class="text-center">
-                  <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                  </svg>
-                  <p class="text-sm text-white/40">No media available</p>
-                </div>
-              </div>
-            )}
-          </div>
-          
-          <!-- Team Members (Bottom Right) -->
-          <div class="rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-4 ring-1 ring-white/10">
-            <div class="flex items-center gap-2 mb-2">
-              <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <h4 class="text-xs font-semibold text-brand-400 uppercase tracking-wide">Team Members</h4>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              {teamMembers && teamMembers.map((member) => (
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-white/10 text-gray-200 ring-1 ring-white/20">
-                  {member}
-                </span>
-              ))}
-            </div>
-          </div>
+          {award && <AwardBadge award={award} />}
+        </div>
+
+        <!-- Right Section: Media & Team -->
+        <div class="flex h-fit flex-col gap-4">
+          <GameMedia
+            media={media}
+            name={name}
+            cardId={cardId}
+          />
+          {teamMembers && teamMembers.length > 0 && <TeamMembers members={teamMembers} />}
         </div>
       </div>
     </div>
   </div>
 </article>
-
-<script>
-  // Slideshow functionality
-  function initSlideshows() {
-    const slideshows = document.querySelectorAll('.slideshow-container');
-    
-    slideshows.forEach(slideshow => {
-      const slides = slideshow.querySelectorAll('.slide');
-      const dots = document.querySelectorAll(`[data-slideshow="${slideshow.id}"]`);
-      let currentSlide = 0;
-      let intervalId: number | null = null;
-      
-      function showSlide(n: number) {
-        slides.forEach(slide => (slide as HTMLElement).style.display = 'none');
-        dots.forEach(dot => dot.classList.remove('!bg-white'));
-        
-        if (n >= slides.length) currentSlide = 0;
-        if (n < 0) currentSlide = slides.length - 1;
-        
-        const currentSlideElement = slides[currentSlide] as HTMLElement;
-        if (currentSlideElement) {
-          currentSlideElement.style.display = 'block';
-        }
-        
-        const currentDot = dots[currentSlide];
-        if (currentDot) {
-          currentDot.classList.add('!bg-white');
-        }
-      }
-      
-      // Initialize first slide
-      showSlide(currentSlide);
-      
-      // Dot click handlers
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          currentSlide = index;
-          showSlide(currentSlide);
-          
-          // Reset interval when manually changing slides
-          if (intervalId !== null) {
-            clearInterval(intervalId);
-            startAutoAdvance();
-          }
-        });
-      });
-      
-      // Auto-advance slides every 5 seconds
-      function startAutoAdvance() {
-        if (slides.length > 1) {
-          intervalId = window.setInterval(() => {
-            currentSlide++;
-            showSlide(currentSlide);
-          }, 5000);
-        }
-      }
-      
-      startAutoAdvance();
-    });
-  }
-  
-  // Initialize on page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSlideshows);
-  } else {
-    // DOM already loaded
-    initSlideshows();
-  }
-  
-  // Re-initialize after Astro page transitions (if using View Transitions)
-  document.addEventListener('astro:page-load', initSlideshows);
-</script>
-
-<style>
-  .slide {
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .dot {
-    cursor: pointer;
-  }
-  
-  .dot:hover {
-    transform: scale(1.2);
-  }
-
-  /* Game title link animations */
-  .game-title-link {
-    cursor: pointer;
-    transform-origin: left center;
-  }
-
-  .game-title-link:active {
-    animation: titleClick 0.3s ease;
-  }
-
-  @keyframes titleClick {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.97);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  /* Add a subtle glow effect on hover */
-  .game-title-link:hover h3 {
-    filter: drop-shadow(0 0 8px rgba(157, 124, 255, 0.4));
-  }
-</style>

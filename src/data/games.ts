@@ -187,7 +187,7 @@ export const games: Game[] = [
         name: "Mnemosyne",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/2QSXg75v2Ck?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/2QSXg75v2Ck?si=syKR9RjCmjZFNxSJ"
         },
         teamMembers: ["Willam", "Johnson", "Leo", "Frank", "Emma", "Vitor", "Tyler", "Allen", "Maahi"],
         year: "2021/2022"
@@ -196,7 +196,7 @@ export const games: Game[] = [
         name: "Lice Communism",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/WO5afc9r0sA?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/WO5afc9r0sA?si=JuZuHamW-KyJ-8hK"
         },
         teamMembers: ["Eric", "Jenny", "Kelcy", "Matias", "Diego", "Yew", "Harper", "Youssef", "Peter", "Jonathan"],
         year: "2021/2022"
@@ -205,7 +205,7 @@ export const games: Game[] = [
         name: "Spellrise",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/XrRvySn8tSc?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/XrRvySn8tSc?si=hm27tvlB7S-L80Ap"
         },
         teamMembers: ["Arta. Reuben", "Stephane", "Adam", "Shiyan"],
         year: "2021/2022"
@@ -214,7 +214,7 @@ export const games: Game[] = [
         name: "Viewpoint",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/efJZ0UF7cag?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/efJZ0UF7cag?si=e5wbm1VvUP8h42jq"
         },
         teamMembers: ["Diego", "Adrienne", "Denton", "Mohan", "Miranda", "Maximus", "Raymond", "Jay", "Shuang", "Camilo", "Vito"],
         year: "2021/2022"
@@ -223,7 +223,7 @@ export const games: Game[] = [
         name: "Dathora",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/HSTv4tnKHO8?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/HSTv4tnKHO8?si=xGhCS0_DKz2yzNaU"
         },
         teamMembers: ["Kevin", "Howard", "Sarina", "Nuo", "Nasif", "Preston", "Devon"],
         year: "2021/2022"
@@ -232,7 +232,7 @@ export const games: Game[] = [
         name: "Sidetracked!",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/0rrs4dvRcrQ?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "hhttps://www.youtube.com/embed/0rrs4dvRcrQ?si=7UyabiWNh7e_frSg"
         },
         teamMembers: ["Ramy", "Nyan", "Vihara", "Brett", "Casey", "Lakshya", "Phanndateevint", "Allen"],
         year: "2021/2022"
@@ -241,7 +241,7 @@ export const games: Game[] = [
         name: "MediQuest",
         media: {
             type: "video",
-            videoUrl: "https://youtu.be/dTYLhyExTbw?list=PLLB5YyhuKgmUsIkTxmASVe9Y1Xj-bcIV-"
+            videoUrl: "https://www.youtube.com/embed/dTYLhyExTbw?si=L4ozB2OJh2jreYTC"
         },
         teamMembers: ["Payam", "Apoorv", "Ariel", "William", "Syndio", "Kenny", "Thomas", "Aung", "Methasit"],
         year: "2021/2022"
