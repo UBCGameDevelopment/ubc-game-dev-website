@@ -19,7 +19,7 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
     
     <div class="relative z-10 p-6 md:p-8">
       <!-- Top Section: Grid Layout -->
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
         <!-- Left Section: Game Info -->
         <div class="flex flex-col">
           <!-- Game Name & Description -->
@@ -59,9 +59,9 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
         </div>
         
         <!-- Right Section: Media Preview -->
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4 h-fit">
           <!-- Media Container -->
-          <div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10 aspect-video flex-1">
+          <div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10">
 
             <!-- Youtube -->
             {media.type === 'video' && media.videoUrl ? (
@@ -104,8 +104,15 @@ const cardId = `game-${name.toLowerCase().replace(/\s+/g, '-')}`;
                   </div>
                 )}
               </div>
+            ) : media.type === 'image' && media.image ? (
+              // Single Image Display
+              <img
+                src={media.image.src}
+                alt={`${name} screenshot`}
+                class="w-full h-auto object-contain"
+              />
             ) : (
-                //  Placeholder
+              //  Placeholder
               <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10">
                 <div class="text-center">
                   <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
