@@ -36,7 +36,6 @@ import joesLittleHelpers from "../assets/2018-2019/joes-little-helpers.png";
 import electricCrescendo from "../assets/2018-2019/electric-crescendo.png";
 import edensGarden from "../assets/2018-2019/edens-garden.png";
 
-// src/data/games.ts
 export type GameMedia = {
   type: 'video' | 'images' | 'image';
   videoUrl?: string; // YouTube embed URL (use youtube-nocookie.com for privacy-enhanced mode)
@@ -66,7 +65,6 @@ export function getGameYears(): string[] {
   });
 }
 
-// Example games data
 // Note that the youtube video must allows embeddings for it to work
 export const games: Game[] = [
     {
