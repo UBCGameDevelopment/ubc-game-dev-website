@@ -36,6 +36,10 @@ import joesLittleHelpers from "../assets/2018-2019/joes-little-helpers.png";
 import electricCrescendo from "../assets/2018-2019/electric-crescendo.png";
 import edensGarden from "../assets/2018-2019/edens-garden.png";
 
+// Legacy
+import swordship from "../assets/legacy/swordship.webp";
+import traderSmith from "../assets/legacy/trader-smith.webp";
+
 export type GameMedia = {
   type: 'video' | 'images' | 'image';
   videoUrl?: string; // YouTube embed URL (use youtube-nocookie.com for privacy-enhanced mode)
@@ -76,6 +80,7 @@ export const games: Game[] = [
             image: sleepyChef
         },
         teamMembers: ["Anya Higano", "Luke Joe", "Alex Melanson", "Emily Zhang", "Reza Rahnama", "Bryn Shaffer", "Reza Rahnama", "Kyle van Winkoop"],
+        award: "Best Graphics",
         year: "2022/2023"
     },
     {
@@ -111,6 +116,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1VHvA0-8irwn7OhprcMdQFt8lPWjeIvNm",
         teamMembers: ["Floria Gu (Artist, team lead)", "Jon Nah (Programmer)", "Ethan Anderson (Writer)", "Chun Yan Luo (3D Artist)"],
+        award: "Best Concept",
         year: "2022/2023"
     },
     {
@@ -122,6 +128,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1-QKCn9uaW0Qw3XTlIvYXsc262laaOtdN",
         teamMembers: ["Chantal Hemmann", "Linda Chu", "Kyle Brent", "Joshua Riefman", "Rumbidzai Chinamo", "Joyce Park", "troopsushi"],
+        award: "Best Gameplay",
         year: "2022/2023"
     },
     {
@@ -134,6 +141,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1z7lErBxrF1ICisJlNnMt60Wd0tMZZX8s",
         teamMembers: ["Bailey Brantigham", "Allen Chiang", "Emma Greville", "Xue Huang", "Kaitlyn Russell", "Alexandria Vido", "Dean Yang", "William Zhou"],
+        award: "Game of the Year",
         year: "2022/2023"
     },
     {
@@ -158,6 +166,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1VNFLoxq7u5UtEV0QYybHxBZzngGdwTlX",
         teamMembers: ["Collin Eng (team lead)", "Darryl Tanzil", "Emma Nash", "Elsa Wei", "Erick Jovan Muljadi", "Harry Kim", "Tyler Hasman", "Matt Plyukhin", "Michelle Wang", "Zoe Khan"],
+        award: "Audience Choice + Best Audio",
         year: "2022/2023"
     },
     {
@@ -247,6 +256,7 @@ export const games: Game[] = [
             image: dathora
         },
         teamMembers: ["Keegan", "Kevin", "Yuya", "Eugene", "Valery", "Zoe", "Tanmay", "Khammy", "Sophie", "Richard", "Sebastian"],
+        award: "Best Audio",
         year: "2020/2021"
     },
     {
@@ -257,7 +267,7 @@ export const games: Game[] = [
             image: mythos
         },
         teamMembers: ["David Boguslavksy (Project Lead, Artist, Animator)", "Daisy Wan (Artist)", "Vivian Sam (Artist)", "Danny Deng (Artist)", "Amy Lee (Artist)", "Advik Ayya (Programmer)", "Jin Kim (Programmer)", "TJ Wu (Programmer)", "Tyler Mann (Programmer)", "Ethan Wescoatt (Storywriter)", "Meaghan Marina (Storywriter)", "Daniel Steiner (Musician & SFX)"],
-        award: "Best Graphics",
+        award: "Platinum Award (2020-2021) + Best Graphics (2019-2020)",
         year: "2020/2021"
     },
     {
@@ -280,6 +290,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1r6IfwmpbeF3q1Vndk0i1fGaks87-wKmE",
         teamMembers: ["Payam", "Aaditya", "Minchan", "Daniel", "Stephanie", "Jenny", "Apoorv", "Shreyans", "Rodrigo", "Alexander"],
+        award: "Game of the Year + Best Gameplay",
         year: "2020/2021"
     },
     {
@@ -303,6 +314,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1RPth1fYsEXc6qVflTqEzBF6DR4ap4DSH",
         teamMembers: ["Meaghan", "Ryan", "Vincent", "Pedro", "Amy", "Danny", "Michelle", "Sean", "Kevin", "Joshua", "Moses", "Sarah"],
+        award: "Best Graphics",
         year: "2020/2021"
     },
     {
@@ -315,6 +327,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1xfuL2QHYvmM3c6x0N50FOCcnUQd9V90v",
         teamMembers: ["Eric", "John", "Isaac", "Sophia", "Aviral", "Floria", "Bronwyn", "Santiago", "Cecilia", "Andreas", "Dugan", "Frank"],
+        award: "Best Concept",
         year: "2020/2021"
     },
     {
@@ -327,6 +340,7 @@ export const games: Game[] = [
         },
         gameLink: "https://drive.google.com/drive/folders/1BJHy_KCxH9ZLuWsZ2z7LEErbV5kcJpx8",
         teamMembers: ["Walter - Team Lead", "Nafis", "Mohan", "Christopher", "Miranda", "Kevin", "Adrienne", "Chiara", "Jay Park", "Raymond"],
+        award: "Audience Choice + Best Audio",
         year: "2020/2021"
     },
 
@@ -453,14 +467,14 @@ export const games: Game[] = [
         year: "2018/2019"
     },
     {
-        name: "Electric Crescendo (by EC Team)",
-        description: "Turn-based RPG where our small Robo-protagonist must defend his home and creator from the Robo-revolutionaries searching to topple human governance with the power of music! Use the instruments from your defeated enemies to increase the power of your one-man band!",
-        media: {
-            type: "image",
-            image: electricCrescendo
-        },
-        teamMembers: ["Diego Icaza (Project Lead)", "Mandy Wong", "David Thomas", "Hima Kattumuri", "Sheldon Chen"],
-        year: "2018/2019"
+      name: "Electric Crescendo (by EC Team)",
+      description: "Turn-based RPG where our small Robo-protagonist must defend his home and creator from the Robo-revolutionaries searching to topple human governance with the power of music! Use the instruments from your defeated enemies to increase the power of your one-man band!",
+      media: {
+          type: "image",
+          image: electricCrescendo
+      },
+      teamMembers: ["Diego Icaza (Project Lead)", "Mandy Wong", "David Thomas", "Hima Kattumuri", "Sheldon Chen"],
+      year: "2018/2019"
     },
     {
         name: "Eden's Garden",
@@ -472,5 +486,27 @@ export const games: Game[] = [
         teamMembers: [ "Levi (Angela) Lu (Project Team Lead)", "Blaze Zhang", "Erin McGinn", "Ferado Smyth", "Joaquin Qiu", "Jonathan Alexander", "Magan Chang", "Natasha Miner", "William Beltran", "Eurielle Marmol (Voice Actor)", "Katherine Guo (Voice Actor)", "Ryan Evan Alfonso (Voice Actor)", "Alyssa Meneses (Voice Actor)", "Conor Meadows (Voice Actor)", "India Coates (Voice Actor)", "Nicolas Olney (Voice Actor)"],
         award: "Game of the Year",
         year: "2018/2019"
+    },
+
+    // Legacy
+    {
+      name: "Swordship",
+      description: "Swordship is a 2D physics based fighting game where you fly spaceships that wield giant weapons. Strike your opponents with swords, skewer them with spears or blast them from afar with cannons in this action packed brawler!",
+      media: {
+        type: "image",
+        image: swordship
+      },
+      teamMembers: ["Team Swordship"],
+      year: "Legacy"
+    },
+    {
+      name: "Trader Smith's Spaceship Emporium",
+      description: "Play as the enigmatic Trader Smith, as he becomes embroiled in conflict with a dangerous faction of ruthless intergalactic pirates. Build up your armada of ships, each one heavily customizable with engines, weapons, hulls, and diverse array of equip-able items! Collect blueprints to build your own parts and ships, or purchase them from the numerous merchants of varying reputability! Interact with a variety of quirky and intriguing NPCs, and recruit them in your fight! Journey towards the centre of a galaxy under siege! AND MUCH MORE (PROBABLY). Disclaimer: This game is very much in progress, so expect significant changes in design, art, and content as development progresses.",
+      media: {
+        type: "image",
+        image: traderSmith
+      },
+      teamMembers: ["Kevin Jayamanna (Team Lead/Designer/Programmer)", "Jenne Hui (Programmer/UI)", "Alice Zhu (Programmer/Artist)", "Jennifer Ahn (Programmer/Artist)", "Ziwen Ran (Writer/Artist)"],
+      year: "Legacy"
     }
 ] as const;
