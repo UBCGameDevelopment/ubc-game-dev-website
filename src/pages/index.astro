@@ -6,8 +6,9 @@ import StatsCircles from "../components/home/StatsCircles.astro";
 import FeaturesRow from "../components/common/FeaturesRow.astro";
 import SubscribeSection from "../components/home/SubscribeSection.astro";
 
-import neon from "../assets/president_headshot.webp"; // swap to your real image when ready
-import eventImg from "../assets/background.svg"; // placeholder
+import infoImage from "../assets/info.jpg";
+import eventImg from "../assets/events.jpg";
+import ourGamesImg from "../assets/ourGames.jpg";
 ---
 
 <Layout>
@@ -17,7 +18,7 @@ import eventImg from "../assets/background.svg"; // placeholder
 
     <InfoBlock
       title="WE CREATE GAMES"
-      imageSrc={neon.src}
+      imageSrc={infoImage.src}
       imageAlt="Stylized neon sci-fi landscape"
       ctaHref="https://discord.gg/RXMxvEcj7B"
       ctaLabel="Join our Discord">
@@ -52,7 +53,7 @@ import eventImg from "../assets/background.svg"; // placeholder
         {
           title: "Our Games",
           desc: ["Here's a collection of the games created by our members over the years."],
-          imageSrc: eventImg.src,
+          imageSrc: ourGamesImg.src,
           imageAlt: "Game showcase banner",
           href: "/games",
           cta: "Learn More",
