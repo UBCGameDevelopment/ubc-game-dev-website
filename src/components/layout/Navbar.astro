@@ -1,28 +1,20 @@
 ---
 import logo from "../../assets/logo.png";
+import NavbarReact from "./NavbarReact";
+
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/events", label: "Events" },
+    { href: "/partners", label: "Partners" },
+    { href: "/games", label: "Games Gallery" },
+    { href: "/team", label: "Our Team" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact Us" },
+];
 ---
 
-<header
-    class="mx-auto mt-8 flex w-full max-w-6xl items-center justify-center gap-x-16 rounded-4xl border border-white/30 bg-white/5 p-4 backdrop-blur-3xl">
-    <!-- Logo -->
-    <img
-        src={logo.src}
-        alt="UBC Game Dev Logo"
-        class="h-10 w-10"
-    />
-
-    <!-- Nav links -->
-    <nav class="flex items-center gap-x-16 font-semibold">
-        <a href="/">Home</a>
-        <a href="/events">Events</a>
-        <a href="/partners">Partners</a>
-        <a href="/games">Games Gallery</a>
-        <a href="/team">Our Team</a>
-        <a href="/about">About</a>
-        <a
-            href="/contact"
-            class="rounded-4xl border border-[#E4E4E4] px-4 py-2 text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black">
-            Contact Us
-        </a>
-    </nav>
-</header>
+<NavbarReact
+    client:load
+    logo={logo.src}
+    links={navLinks}
+/>

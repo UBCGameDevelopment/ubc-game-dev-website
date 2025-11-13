@@ -33,7 +33,7 @@ export const execs: Exec[] = [
   {
     name: "Bethany Guo",
     role: "Community Director",
-    linkedin: "https://www.linkedin.com/in/placeholder/",
+    linkedin: "https://www.linkedin.com/in/bethany-guo-39b9a5337/",
     image: bethany,
   },
   {
