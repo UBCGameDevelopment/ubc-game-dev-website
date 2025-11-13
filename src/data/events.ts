@@ -2,7 +2,7 @@
 import type { ImageMetadata } from "astro";
 
 // Images
-import placeholderImage from "../assets/logo.png";
+import placeholderImage from "../assets/hero/hero-graphics-1.png";
 import launchPartyImage from "../assets/timeline/launch_party.jpg";
 import unityImage from "../assets/timeline/unity.png";
 
