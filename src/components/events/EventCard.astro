@@ -1,104 +1,94 @@
 ---
 import { Image } from "astro:assets";
 import type { Event } from "../../data/events";
+import BaseCard from "../common/Card/BaseCard.astro";
+import Badge from "../common/Badge/Badge.astro";
 
 export interface Props extends Event {}
 
 const { title, date, description, location, mapLink, image } = Astro.props;
 ---
 
-<article class="group relative">
-    <!-- Gradient glow effect -->
-    <div
-        class="from-brand-700 via-brand-500 to-accent-500 absolute -inset-0.5 rounded-3xl bg-gradient-to-r opacity-20 blur transition-opacity duration-500 group-hover:opacity-30">
-    </div>
+<BaseCard>
+    <div class="p-4 md:p-6">
+        <!-- Grid Layout: Image Left, Content Right -->
+        <div class="grid gap-4 md:grid-cols-2 md:gap-6">
+            <!-- Left Section: Event Image -->
+            <div class="flex flex-col justify-center">
+                <div
+                    class="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10">
+                    <Image
+                        src={image}
+                        alt={title}
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
 
-    <!-- Main card container -->
-    <div
-        class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] shadow-2xl ring-1 shadow-black/40 ring-white/10 backdrop-blur-xl">
-        <!-- Decorative background elements -->
-        <div class="bg-brand-500/5 absolute top-0 right-0 h-64 w-64 rounded-full blur-3xl"></div>
-        <div class="bg-accent-500/5 absolute bottom-0 left-0 h-72 w-72 rounded-full blur-3xl"></div>
+            <!-- Right Section: Event Info -->
+            <div class="flex flex-col">
+                <!-- Event Badge -->
+                <Badge
+                    label="Event"
+                    variant="event"
+                    class="mb-2"
+                />
 
-        <div class="relative z-10 p-4 md:p-6">
-            <!-- Grid Layout: Image Left, Content Right -->
-            <div class="grid gap-4 md:grid-cols-2 md:gap-6">
-                <!-- Left Section: Event Image -->
-                <div class="flex flex-col justify-center">
-                    <div
-                        class="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10">
-                        <Image
-                            src={image}
-                            alt={title}
-                            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            loading="lazy"
-                        />
-                    </div>
+                <!-- Event Title -->
+                <h3
+                    class="mb-2 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-xl font-extrabold tracking-tight text-transparent md:text-2xl">
+                    {title}
+                </h3>
+
+                <!-- Event Date -->
+                <div class="mb-2 flex items-center gap-2 text-sm">
+                    <svg
+                        class="text-accent-400 h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span class="font-semibold text-gray-200">{date}</span>
                 </div>
 
-                <!-- Right Section: Event Info -->
-                <div class="flex flex-col">
-                    <!-- Event Badge -->
-                    <div
-                        class="border-brand-500/30 bg-brand-500/20 mb-2 inline-flex w-fit items-center gap-2 rounded-full border px-2.5 py-0.5">
-                        <span class="text-brand-400 text-xs font-semibold tracking-wide uppercase">Event</span>
-                    </div>
+                <!-- Event Description -->
+                <p class="mb-3 text-sm leading-relaxed text-gray-50/80">
+                    {description}
+                </p>
 
-                    <!-- Event Title -->
-                    <h3
-                        class="mb-2 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-xl font-extrabold tracking-tight text-transparent md:text-2xl">
-                        {title}
-                    </h3>
-
-                    <!-- Event Date -->
-                    <div class="mb-2 flex items-center gap-2 text-sm">
-                        <svg
-                            class="text-accent-400 h-4 w-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                        <span class="font-semibold text-gray-200">{date}</span>
-                    </div>
-
-                    <!-- Event Description -->
-                    <p class="mb-3 text-sm leading-relaxed text-gray-50/80">
-                        {description}
-                    </p>
-
-                    <!-- Event Location -->
-                    <div class="mt-auto flex items-center gap-2 text-sm">
-                        <svg
-                            class="text-accent-400 h-4 w-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20">
-                            <path
-                                fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd">
-                            </path>
-                        </svg>
-                        {
-                            mapLink ? (
-                                <a
-                                    class="font-medium text-gray-200 hover:underline"
-                                    href={mapLink}
-                                    target="_blank">
-                                    {location}
-                                </a>
-                            ) : (
-                                <span class="font-medium text-gray-200">{location}</span>
-                            )
-                        }
-                    </div>
+                <!-- Event Location -->
+                <div class="mt-auto flex items-center gap-2 text-sm">
+                    <svg
+                        class="text-accent-400 h-4 w-4"
+                        fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            fill-rule="evenodd"
+                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                            clip-rule="evenodd">
+                        </path>
+                    </svg>
+                    {
+                        mapLink ? (
+                            <a
+                                class="font-medium text-gray-200 hover:underline"
+                                href={mapLink}
+                                target="_blank">
+                                {location}
+                            </a>
+                        ) : (
+                            <span class="font-medium text-gray-200">{location}</span>
+                        )
+                    }
                 </div>
             </div>
         </div>
     </div>
-</article>
+</BaseCard>
