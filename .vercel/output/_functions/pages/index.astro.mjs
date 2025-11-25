@@ -1,9 +1,10 @@
-import { c as createComponent, m as maybeRenderHead, d as addAttribute, r as renderTemplate, b as createAstro, f as renderSlot, a as renderComponent } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
+import { c as createComponent, m as maybeRenderHead, d as addAttribute, r as renderTemplate, b as createAstro, f as renderSlot, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
 import 'clsx';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';
-import { $ as $$InfoBlock } from '../chunks/InfoBlock_C9Xx2797.mjs';
-import { $ as $$SubscribeSection } from '../chunks/SubscribeSection_DnQzJVMl.mjs';
+import { $ as $$InfoBlock } from '../chunks/InfoBlock_CrtWHYaj.mjs';
+import { $ as $$SubscribeSection } from '../chunks/SubscribeSection_BbuXR2Lr.mjs';
 export { renderers } from '../renderers.mjs';
 
 const heroGraphic_0 = new Proxy({"src":"/_astro/hero-graphics-0.Xjq1XnsJ.png","width":1682,"height":946,"format":"png"}, {

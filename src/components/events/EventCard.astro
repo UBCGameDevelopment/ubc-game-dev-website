@@ -3,6 +3,9 @@ import { Image } from "astro:assets";
 import type { Event } from "../../types";
 import BaseCard from "../common/Card/BaseCard.astro";
 import Badge from "../common/Badge/Badge.astro";
+import CalendarIcon from "../common/Icons/CalendarIcon.astro";
+import LocationIcon from "../common/Icons/LocationIcon.astro";
+import GradientHeading from "../common/Typography/GradientHeading.astro";
 
 export interface Props extends Event {}
 
@@ -36,25 +39,15 @@ const { title, date, description, location, mapLink, image } = Astro.props;
                 />
 
                 <!-- Event Title -->
-                <h3
-                    class="mb-2 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-xl font-extrabold tracking-tight text-transparent md:text-2xl">
+                <GradientHeading
+                    as="h3"
+                    class="mb-2 text-xl md:text-2xl">
                     {title}
-                </h3>
+                </GradientHeading>
 
                 <!-- Event Date -->
                 <div class="mb-2 flex items-center gap-2 text-sm">
-                    <svg
-                        class="text-accent-400 h-4 w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
-                    </svg>
+                    <CalendarIcon />
                     <span class="font-semibold text-gray-200">{date}</span>
                 </div>
 
@@ -65,16 +58,7 @@ const { title, date, description, location, mapLink, image } = Astro.props;
 
                 <!-- Event Location -->
                 <div class="mt-auto flex items-center gap-2 text-sm">
-                    <svg
-                        class="text-accent-400 h-4 w-4"
-                        fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            fill-rule="evenodd"
-                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                            clip-rule="evenodd">
-                        </path>
-                    </svg>
+                    <LocationIcon />
                     {
                         mapLink ? (
                             <a

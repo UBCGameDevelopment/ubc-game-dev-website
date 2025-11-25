@@ -1,5 +1,6 @@
-import { c as createComponent, m as maybeRenderHead, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
+import { c as createComponent, m as maybeRenderHead, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
 import 'clsx';
 export { renderers } from '../renderers.mjs';
 

@@ -1,0 +1,38 @@
+---
+import type { Game } from '../../../types';
+import VideoEmbed from './VideoEmbed.astro';
+import ImageSlideshow from './ImageSlideshow.astro';
+
+export interface Props {
+  media: Game['media'];
+  name: string;
+  cardId: string;
+}
+
+const { media, name, cardId } = Astro.props;
+---
+
+<div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10">
+  {media.type === 'video' && media.videoUrl ? (
+    <VideoEmbed videoUrl={media.videoUrl} name={name} />
+  ) : media.type === 'images' && media.images && media.images.length > 0 ? (
+    <ImageSlideshow images={media.images} name={name} slideshowId={`${cardId}-slideshow`} />
+  ) : media.type === 'image' && media.image ? (
+    <!-- Single Image -->
+    <img
+      src={media.image.src}
+      alt={`${name} screenshot`}
+      class="w-full h-auto object-contain"
+    />
+  ) : (
+    <!-- Placeholder -->
+    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10">
+      <div class="text-center">
+        <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <p class="text-sm text-white/40">No media available</p>
+      </div>
+    </div>
+  )}
+</div>

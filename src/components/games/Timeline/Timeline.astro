@@ -1,8 +1,9 @@
 ---
 import TimelineReact from "./Timeline";
-import { getGameYears } from "../../data/games";
+import { games } from "../../../data/games";
+import { getGameYears } from "../../../data/utils/gameHelpers";
 
-const gameYears = getGameYears();
+const gameYears = getGameYears(games);
 const years = ["All Years", ...gameYears];
 const initialYear = "All Years";
 ---

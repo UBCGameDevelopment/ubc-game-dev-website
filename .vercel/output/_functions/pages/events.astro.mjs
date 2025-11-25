@@ -1,18 +1,36 @@
-import { c as createComponent, b as createAstro, a as renderComponent, r as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
-import { $ as $$Image } from '../chunks/_astro_assets_BRhqTzeE.mjs';
-import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BGD-zkmb.mjs';
+import { c as createComponent, b as createAstro, m as maybeRenderHead, d as addAttribute, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$Image } from '../chunks/_astro_assets_OTmU57NM.mjs';
+import { $ as $$BaseCard, a as $$Badge, b as $$GradientHeading } from '../chunks/GradientHeading_D2u3qu_M.mjs';
+import 'clsx';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useRef, useState, useEffect } from 'react';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';
 export { renderers } from '../renderers.mjs';
+
+const $$Astro$3 = createAstro();
+const $$CalendarIcon = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  Astro2.self = $$CalendarIcon;
+  const { class: className = "h-4 w-4 text-accent-400" } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<svg${addAttribute(className, "class")} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg>`;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/common/Icons/CalendarIcon.astro", void 0);
+
+const $$Astro$2 = createAstro();
+const $$LocationIcon = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  Astro2.self = $$LocationIcon;
+  const { class: className = "h-4 w-4 text-accent-400" } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<svg${addAttribute(className, "class")} fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"> <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path> </svg>`;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/common/Icons/LocationIcon.astro", void 0);
 
 const $$Astro$1 = createAstro();
 const $$EventCard = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$EventCard;
   const { title, date, description, location, mapLink, image } = Astro2.props;
-  return renderTemplate`${renderComponent($$result, "BaseCard", $$BaseCard, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="p-4 md:p-6"> <!-- Grid Layout: Image Left, Content Right --> <div class="grid gap-4 md:grid-cols-2 md:gap-6"> <!-- Left Section: Event Image --> <div class="flex flex-col justify-center"> <div class="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10"> ${renderComponent($$result2, "Image", $$Image, { "src": image, "alt": title, "class": "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105", "loading": "lazy" })} </div> </div> <!-- Right Section: Event Info --> <div class="flex flex-col"> <!-- Event Badge --> ${renderComponent($$result2, "Badge", $$Badge, { "label": "Event", "variant": "event", "class": "mb-2" })} <!-- Event Title --> <h3 class="mb-2 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-xl font-extrabold tracking-tight text-transparent md:text-2xl"> ${title} </h3> <!-- Event Date --> <div class="mb-2 flex items-center gap-2 text-sm"> <svg class="text-accent-400 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path> </svg> <span class="font-semibold text-gray-200">${date}</span> </div> <!-- Event Description --> <p class="mb-3 text-sm leading-relaxed text-gray-50/80"> ${description} </p> <!-- Event Location --> <div class="mt-auto flex items-center gap-2 text-sm"> <svg class="text-accent-400 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"> <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path> </svg> ${mapLink ? renderTemplate`<a class="font-medium text-gray-200 hover:underline"${addAttribute(mapLink, "href")} target="_blank"> ${location} </a>` : renderTemplate`<span class="font-medium text-gray-200">${location}</span>`} </div> </div> </div> </div> ` })}`;
+  return renderTemplate`${renderComponent($$result, "BaseCard", $$BaseCard, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="p-4 md:p-6"> <!-- Grid Layout: Image Left, Content Right --> <div class="grid gap-4 md:grid-cols-2 md:gap-6"> <!-- Left Section: Event Image --> <div class="flex flex-col justify-center"> <div class="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10"> ${renderComponent($$result2, "Image", $$Image, { "src": image, "alt": title, "class": "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105", "loading": "lazy" })} </div> </div> <!-- Right Section: Event Info --> <div class="flex flex-col"> <!-- Event Badge --> ${renderComponent($$result2, "Badge", $$Badge, { "label": "Event", "variant": "event", "class": "mb-2" })} <!-- Event Title --> ${renderComponent($$result2, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "mb-2 text-xl md:text-2xl" }, { "default": ($$result3) => renderTemplate`${title}` })} <!-- Event Date --> <div class="mb-2 flex items-center gap-2 text-sm"> ${renderComponent($$result2, "CalendarIcon", $$CalendarIcon, {})} <span class="font-semibold text-gray-200">${date}</span> </div> <!-- Event Description --> <p class="mb-3 text-sm leading-relaxed text-gray-50/80"> ${description} </p> <!-- Event Location --> <div class="mt-auto flex items-center gap-2 text-sm"> ${renderComponent($$result2, "LocationIcon", $$LocationIcon, {})} ${mapLink ? renderTemplate`<a class="font-medium text-gray-200 hover:underline"${addAttribute(mapLink, "href")} target="_blank"> ${location} </a>` : renderTemplate`<span class="font-medium text-gray-200">${location}</span>`} </div> </div> </div> </div> ` })}`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/events/EventCard.astro", void 0);
 
 const TIMELINE_GAP_TO_NEXT_CIRCLE = 200;

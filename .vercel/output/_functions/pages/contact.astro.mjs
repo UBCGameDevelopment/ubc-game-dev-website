@@ -1,6 +1,7 @@
-import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
-import { $ as $$SubscribeSection } from '../chunks/SubscribeSection_DnQzJVMl.mjs';
+import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_C2S9dwlY.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$SubscribeSection } from '../chunks/SubscribeSection_BbuXR2Lr.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Contact = createComponent(($$result, $$props, $$slots) => {

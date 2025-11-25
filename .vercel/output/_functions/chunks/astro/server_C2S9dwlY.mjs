@@ -1,11 +1,11 @@
-import colors from 'picocolors';
+import colors from 'piccolore';
 import { clsx } from 'clsx';
 import { escape } from 'html-escaper';
 import { decodeBase64, encodeBase64, encodeHexUpperCase, decodeHex } from '@oslojs/encoding';
 import { z } from 'zod';
 import 'cssesc';
 
-const ASTRO_VERSION = "5.15.7";
+const ASTRO_VERSION = "5.16.0";
 const REROUTE_DIRECTIVE_HEADER = "X-Astro-Reroute";
 const REWRITE_DIRECTIVE_HEADER_KEY = "X-Astro-Rewrite";
 const REWRITE_DIRECTIVE_HEADER_VALUE = "yes";
@@ -1547,13 +1547,14 @@ class ServerIslandComponent {
     }
     const key = await this.result.key;
     const propsEncrypted = Object.keys(this.props).length === 0 ? "" : await encryptString(key, JSON.stringify(this.props));
+    const slotsEncrypted = Object.keys(renderedSlots).length === 0 ? "" : await encryptString(key, JSON.stringify(renderedSlots));
     const hostId = await this.getHostId();
     const slash = this.result.base.endsWith("/") ? "" : "/";
     let serverIslandUrl = `${this.result.base}${slash}_server-islands/${componentId}${this.result.trailingSlash === "always" ? "/" : ""}`;
     const potentialSearchParams = createSearchParams(
       componentExport,
       propsEncrypted,
-      safeJsonStringify(renderedSlots)
+      slotsEncrypted
     );
     const useGETRequest = isWithinURLLimit(serverIslandUrl, potentialSearchParams);
     if (useGETRequest) {
@@ -1575,7 +1576,7 @@ let response = await fetch('${serverIslandUrl}', { headers });`
       `let data = {
 	componentExport: ${safeJsonStringify(componentExport)},
 	encryptedProps: ${safeJsonStringify(propsEncrypted)},
-	slots: ${safeJsonStringify(renderedSlots)},
+	encryptedSlots: ${safeJsonStringify(slotsEncrypted)},
 };
 const headers = new Headers({ 'Content-Type': 'application/json', ...${headersJson} });
 let response = await fetch('${serverIslandUrl}', {

@@ -1,10 +1,11 @@
-import { c as createComponent, a as renderComponent, r as renderTemplate, b as createAstro, m as maybeRenderHead, d as addAttribute, e as renderScript } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
+import { c as createComponent, a as renderComponent, r as renderTemplate, b as createAstro, m as maybeRenderHead, d as addAttribute, e as renderScript } from '../chunks/astro/server_C2S9dwlY.mjs';
+import 'piccolore';
+import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BGD-zkmb.mjs';
-import 'clsx';
+import { b as $$GradientHeading, $ as $$BaseCard, a as $$Badge } from '../chunks/GradientHeading_D2u3qu_M.mjs';
 /* empty css                                 */
+import 'clsx';
 export { renderers } from '../renderers.mjs';
 
 function Timeline({ years, initialYear }) {
@@ -503,14 +504,6 @@ const traderSmith = new Proxy({"src":"/_astro/trader-smith.L6Mq2O31.webp","width
 						}
 					});
 
-function getGameYears() {
-  const years = [...new Set(games.map((game) => game.year))];
-  return years.sort((a, b) => {
-    const [aStart] = a.split("/").map(Number);
-    const [bStart] = b.split("/").map(Number);
-    return bStart - aStart;
-  });
-}
 const games = [
   {
     name: "Sleepy Chef",
@@ -957,32 +950,57 @@ const games = [
   }
 ];
 
+function getGameYears(games) {
+  const years = [...new Set(games.map((game) => game.year))];
+  return years.sort((a, b) => {
+    const [aStart] = a.split("/").map(Number);
+    const [bStart] = b.split("/").map(Number);
+    return bStart - aStart;
+  });
+}
+
 const $$Timeline = createComponent(($$result, $$props, $$slots) => {
-  const gameYears = getGameYears();
+  const gameYears = getGameYears(games);
   const years = ["All Years", ...gameYears];
   const initialYear = "All Years";
-  return renderTemplate`${renderComponent($$result, "TimelineReact", Timeline, { "years": years, "initialYear": initialYear, "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/games/Timeline", "client:component-export": "default" })}`;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/Timeline.astro", void 0);
+  return renderTemplate`${renderComponent($$result, "TimelineReact", Timeline, { "years": years, "initialYear": initialYear, "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/games/Timeline/Timeline", "client:component-export": "default" })}`;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/Timeline/Timeline.astro", void 0);
 
-const $$Astro$4 = createAstro();
+const $$Astro$6 = createAstro();
 const $$GameTitle = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$GameTitle;
   const { name, gameLink } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="mb-4" data-astro-cid-ci65od4a> ${gameLink ? renderTemplate`<a${addAttribute(gameLink, "href")} target="_blank" rel="noopener noreferrer" class="game-title-link group/title inline-block" data-astro-cid-ci65od4a> <h3 class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent transition-all duration-300 group-hover/title:scale-105 md:text-3xl" data-astro-cid-ci65od4a> ${name} <svg class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-ci65od4a> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-ci65od4a></path> </svg> </h3> </a>` : renderTemplate`<h3 class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent md:text-3xl" data-astro-cid-ci65od4a> ${name} </h3>`} </div> `;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameTitle.astro", void 0);
+  return renderTemplate`div class="mb-4">
+${gameLink ? renderTemplate`${maybeRenderHead()}<a${addAttribute(gameLink, "href")} target="_blank" rel="noopener noreferrer" class="game-title-link group/title inline-block" data-astro-cid-nx4g2om7> ${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl transition-all duration-300 group-hover/title:scale-105 md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}<svg class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-nx4g2om7> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-nx4g2om7></path> </svg> ` })} </a>` : renderTemplate`${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}` })}`} `;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard/GameTitle.astro", void 0);
+
+const $$Astro$5 = createAstro();
+const $$VideoEmbed = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
+  Astro2.self = $$VideoEmbed;
+  const { videoUrl, name, class: className = "" } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<iframe${addAttribute(videoUrl, "src")}${addAttribute(`w-full h-full border-0 ${className}`, "class")}${addAttribute(`${name} gameplay video`, "title")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen>
+</iframe>`;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia/VideoEmbed.astro", void 0);
+
+const $$Astro$4 = createAstro();
+const $$ImageSlideshow = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  Astro2.self = $$ImageSlideshow;
+  const { images, name, slideshowId, class: className = "" } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div${addAttribute(`relative w-full h-full ${className}`, "class")} data-astro-cid-ja5cylif> <div class="slideshow-container h-full w-full"${addAttribute(slideshowId, "id")} data-astro-cid-ja5cylif> ${images.map((image, index) => renderTemplate`<div${addAttribute(`slide ${index === 0 ? "active" : ""}`, "class")} style="display: none;" data-astro-cid-ja5cylif> <img${addAttribute(image.src, "src")}${addAttribute(`${name} screenshot ${index + 1}`, "alt")} class="h-full w-full object-cover" data-astro-cid-ja5cylif> </div>`)} </div>  ${images.length > 1 && renderTemplate`<div class="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2 rounded-full bg-black/50 px-3 py-2 backdrop-blur-sm" data-astro-cid-ja5cylif> ${images.map((_, index) => renderTemplate`<button class="dot h-2 w-2 rounded-full bg-white/40 transition-all hover:bg-white/80"${addAttribute(index, "data-slide")}${addAttribute(slideshowId, "data-slideshow")}${addAttribute(`Go to slide ${index + 1}`, "aria-label")} data-astro-cid-ja5cylif></button>`)} </div>`} </div> ${renderScript($$result, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia/ImageSlideshow.astro?astro&type=script&index=0&lang.ts")} `;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia/ImageSlideshow.astro", void 0);
 
 const $$Astro$3 = createAstro();
 const $$GameMedia = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$GameMedia;
   const { media, name, cardId } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10" data-astro-cid-fk3o3cft> ${media.type === "video" && media.videoUrl ? renderTemplate`<!-- YouTube Video Embed -->
-    <iframe${addAttribute(media.videoUrl, "src")} class="w-full h-full border-0"${addAttribute(`${name} gameplay video`, "title")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen data-astro-cid-fk3o3cft></iframe>` : media.type === "images" && media.images && media.images.length > 0 ? renderTemplate`<!-- Image Slideshow -->
-    <div class="relative w-full h-full" data-astro-cid-fk3o3cft> <div class="slideshow-container w-full h-full"${addAttribute(`${cardId}-slideshow`, "id")} data-astro-cid-fk3o3cft> ${media.images.map((image, index) => renderTemplate`<div${addAttribute(`slide ${index === 0 ? "active" : ""}`, "class")} style="display: none;" data-astro-cid-fk3o3cft> <img${addAttribute(image.src, "src")}${addAttribute(`${name} screenshot ${index + 1}`, "alt")} class="w-full h-full object-cover" data-astro-cid-fk3o3cft> </div>`)} </div>  ${media.images.length > 1 && renderTemplate`<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-2" data-astro-cid-fk3o3cft> ${media.images.map((_, index) => renderTemplate`<button class="dot w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 transition-all"${addAttribute(index, "data-slide")}${addAttribute(`${cardId}-slideshow`, "data-slideshow")}${addAttribute(`Go to slide ${index + 1}`, "aria-label")} data-astro-cid-fk3o3cft></button>`)} </div>`} </div>` : media.type === "image" && media.image ? renderTemplate`<!-- Single Image -->
-    <img${addAttribute(media.image.src, "src")}${addAttribute(`${name} screenshot`, "alt")} class="w-full h-auto object-contain" data-astro-cid-fk3o3cft>` : renderTemplate`<!-- Placeholder -->
-    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10" data-astro-cid-fk3o3cft> <div class="text-center" data-astro-cid-fk3o3cft> <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-fk3o3cft> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" data-astro-cid-fk3o3cft></path> </svg> <p class="text-sm text-white/40" data-astro-cid-fk3o3cft>No media available</p> </div> </div>`} </div> ${renderScript($$result, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia.astro?astro&type=script&index=0&lang.ts")} `;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia.astro", void 0);
+  return renderTemplate`${maybeRenderHead()}<div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10"> ${media.type === "video" && media.videoUrl ? renderTemplate`${renderComponent($$result, "VideoEmbed", $$VideoEmbed, { "videoUrl": media.videoUrl, "name": name })}` : media.type === "images" && media.images && media.images.length > 0 ? renderTemplate`${renderComponent($$result, "ImageSlideshow", $$ImageSlideshow, { "images": media.images, "name": name, "slideshowId": `${cardId}-slideshow` })}` : media.type === "image" && media.image ? renderTemplate`<!-- Single Image -->
+    <img${addAttribute(media.image.src, "src")}${addAttribute(`${name} screenshot`, "alt")} class="w-full h-auto object-contain">` : renderTemplate`<!-- Placeholder -->
+    <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-500/10 to-accent-500/10"> <div class="text-center"> <svg class="w-16 h-16 mx-auto text-white/20 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path> </svg> <p class="text-sm text-white/40">No media available</p> </div> </div>`} </div>`;
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameMedia/GameMedia.astro", void 0);
 
 const $$Astro$2 = createAstro();
 const $$AwardBadge = createComponent(($$result, $$props, $$slots) => {
@@ -990,7 +1008,7 @@ const $$AwardBadge = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$AwardBadge;
   const { award } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<div class="mt-6"> <div class="relative inline-block"> <div class="from-accent-500 to-accent-600 absolute -inset-1 rounded-xl bg-gradient-to-r opacity-40 blur"></div> <div class="border-accent-500/50 from-accent-500/20 to-accent-600/10 relative rounded-xl border bg-gradient-to-br px-4 py-3 backdrop-blur-sm"> <div class="flex items-center gap-2"> <svg class="text-accent-500 h-5 w-5" fill="currentColor" viewBox="0 0 20 20"> <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path> </svg> <div> <div class="text-accent-300 text-xs font-medium tracking-wide uppercase">Award Winner</div> <div class="text-sm font-bold text-white">${award}</div> </div> </div> </div> </div> </div>`;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/AwardBadge.astro", void 0);
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard/AwardBadge.astro", void 0);
 
 const $$Astro$1 = createAstro();
 const $$TeamMembers = createComponent(($$result, $$props, $$slots) => {
@@ -998,7 +1016,7 @@ const $$TeamMembers = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$TeamMembers;
   const { members } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<div class="rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-4 ring-1 ring-white/10"> <div class="mb-2 flex items-center gap-2"> <svg class="text-brand-400 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path> </svg> <h4 class="text-brand-400 text-xs font-semibold tracking-wide uppercase">Team Members</h4> </div> <div class="flex flex-wrap gap-2"> ${members.map((member) => renderTemplate`<span class="inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-gray-200 ring-1 ring-white/20"> ${member} </span>`)} </div> </div>`;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/TeamMembers.astro", void 0);
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard/TeamMembers.astro", void 0);
 
 const $$Astro = createAstro();
 const $$GameCard = createComponent(($$result, $$props, $$slots) => {
@@ -1007,7 +1025,7 @@ const $$GameCard = createComponent(($$result, $$props, $$slots) => {
   const { name, description, media, gameLink, teamMembers, award } = Astro2.props;
   const cardId = `game-${name.toLowerCase().replace(/\s+/g, "-")}`;
   return renderTemplate`${renderComponent($$result, "BaseCard", $$BaseCard, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="p-6 md:p-8"> <!-- Top Section: Grid Layout --> <div class="grid items-center gap-8 md:grid-cols-2"> <!-- Left Section: Game Info --> <div class="flex flex-col"> <div class="flex-1"> ${renderComponent($$result2, "Badge", $$Badge, { "label": "Game", "variant": "game", "class": "mb-4 px-3 py-1" })} ${renderComponent($$result2, "GameTitle", $$GameTitle, { "name": name, "gameLink": gameLink })} <p class="text-sm leading-relaxed text-gray-50/80 md:text-base"> ${description} </p> </div> ${award && renderTemplate`${renderComponent($$result2, "AwardBadge", $$AwardBadge, { "award": award })}`} </div> <!-- Right Section: Media & Team --> <div class="flex h-fit flex-col gap-4"> ${renderComponent($$result2, "GameMedia", $$GameMedia, { "media": media, "name": name, "cardId": cardId })} ${teamMembers && teamMembers.length > 0 && renderTemplate`${renderComponent($$result2, "TeamMembers", $$TeamMembers, { "members": teamMembers })}`} </div> </div> </div> ` })}`;
-}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard.astro", void 0);
+}, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard/GameCard.astro", void 0);
 
 function GameGrid() {
   const [selectedYear, setSelectedYear] = useState("All Years");

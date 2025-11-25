@@ -1,13 +1,13 @@
-import { q as decryptString, v as createSlotValueFromString, w as isAstroComponentFactory, a as renderComponent, r as renderTemplate, R as ROUTE_TYPE_HEADER, x as REROUTE_DIRECTIVE_HEADER, A as AstroError, y as i18nNoLocaleFoundInPath, z as ResponseSentError, B as ActionNotFoundError, C as MiddlewareNoDataOrNextCalled, D as MiddlewareNotAResponse, G as originPathnameSymbol, H as RewriteWithBodyUsed, J as GetStaticPathsRequired, K as InvalidGetStaticPathsReturn, O as InvalidGetStaticPathsEntry, P as GetStaticPathsExpectedParams, Q as GetStaticPathsInvalidRouteParam, S as PageNumberParamNotFound, T as DEFAULT_404_COMPONENT, V as NoMatchingStaticPathFound, W as PrerenderDynamicEndpointPathCollide, X as ReservedSlotName, Y as renderSlotToString, Z as renderJSX, _ as chunkToString, $ as isRenderInstruction, a0 as ForbiddenRewrite, a1 as SessionStorageInitError, a2 as SessionStorageSaveError, a3 as ASTRO_VERSION, a4 as CspNotEnabled, a5 as LocalsReassigned, a6 as generateCspDigest, a7 as PrerenderClientAddressNotAvailable, a8 as clientAddressSymbol, a9 as ClientAddressNotAvailable, aa as StaticClientAddressNotAvailable, ab as AstroResponseHeadersReassigned, ac as responseSentSymbol$1, ad as renderPage, ae as REWRITE_DIRECTIVE_HEADER_KEY, af as REWRITE_DIRECTIVE_HEADER_VALUE, ag as renderEndpoint, ah as LocalsNotAnObject, ai as REROUTABLE_STATUS_CODES, aj as nodeRequestAbortControllerCleanupSymbol } from './astro/server_BuADJsLa.mjs';
+import { q as decryptString, v as createSlotValueFromString, w as isAstroComponentFactory, a as renderComponent, r as renderTemplate, R as ROUTE_TYPE_HEADER, x as REROUTE_DIRECTIVE_HEADER, A as AstroError, y as i18nNoLocaleFoundInPath, z as ResponseSentError, B as ActionNotFoundError, C as MiddlewareNoDataOrNextCalled, D as MiddlewareNotAResponse, G as originPathnameSymbol, H as RewriteWithBodyUsed, J as GetStaticPathsRequired, K as InvalidGetStaticPathsReturn, O as InvalidGetStaticPathsEntry, P as GetStaticPathsExpectedParams, Q as GetStaticPathsInvalidRouteParam, S as PageNumberParamNotFound, T as DEFAULT_404_COMPONENT, V as NoMatchingStaticPathFound, W as PrerenderDynamicEndpointPathCollide, X as ReservedSlotName, Y as renderSlotToString, Z as renderJSX, _ as chunkToString, $ as isRenderInstruction, a0 as ForbiddenRewrite, a1 as SessionStorageInitError, a2 as SessionStorageSaveError, a3 as ASTRO_VERSION, a4 as CspNotEnabled, a5 as LocalsReassigned, a6 as generateCspDigest, a7 as PrerenderClientAddressNotAvailable, a8 as clientAddressSymbol, a9 as ClientAddressNotAvailable, aa as StaticClientAddressNotAvailable, ab as AstroResponseHeadersReassigned, ac as responseSentSymbol$1, ad as renderPage, ae as REWRITE_DIRECTIVE_HEADER_KEY, af as REWRITE_DIRECTIVE_HEADER_VALUE, ag as renderEndpoint, ah as LocalsNotAnObject, ai as REROUTABLE_STATUS_CODES, aj as nodeRequestAbortControllerCleanupSymbol } from './astro/server_C2S9dwlY.mjs';
+import colors from 'piccolore';
 import 'clsx';
 import { serialize, parse } from 'cookie';
-import { A as ActionError, d as deserializeActionResult, s as serializeActionResult, a as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, c as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_CEotS_WF.mjs';
+import { A as ActionError, d as deserializeActionResult, s as serializeActionResult, a as ACTION_RPC_ROUTE_PATTERN, b as ACTION_QUERY_PARAMS, g as getActionQueryString, D as DEFAULT_404_ROUTE, c as default404Instance, N as NOOP_MIDDLEWARE_FN, e as ensure404Route } from './astro-designed-error-pages_DQCb_wdK.mjs';
 import 'es-module-lexer';
 import buffer from 'node:buffer';
 import crypto$1 from 'node:crypto';
 import { Http2ServerResponse } from 'node:http2';
-import { c as appendForwardSlash, j as joinPaths, f as fileExtension, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, d as trimSlashes, m as matchPattern, e as isInternalPath, g as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './index_CR4ZvYMV.mjs';
-import colors from 'picocolors';
+import { c as appendForwardSlash, j as joinPaths, f as fileExtension, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, d as trimSlashes, m as matchPattern, e as isInternalPath, g as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './index_Bbn-n_hR.mjs';
 import { unflatten as unflatten$1, stringify as stringify$1 } from 'devalue';
 import { createStorage, builtinDrivers } from 'unstorage';
 import '@vercel/routing-utils';
@@ -97,24 +97,26 @@ async function getRequestData(request) {
       if (!params.has("s") || !params.has("e") || !params.has("p")) {
         return badRequest("Missing required query parameters.");
       }
-      const rawSlots = params.get("s");
-      try {
-        return {
-          componentExport: params.get("e"),
-          encryptedProps: params.get("p"),
-          slots: JSON.parse(rawSlots)
-        };
-      } catch {
-        return badRequest("Invalid slots format.");
-      }
+      const encryptedSlots = params.get("s");
+      return {
+        componentExport: params.get("e"),
+        encryptedProps: params.get("p"),
+        encryptedSlots
+      };
     }
     case "POST": {
       try {
         const raw = await request.text();
         const data = JSON.parse(raw);
+        if ("slots" in data && typeof data.slots === "object") {
+          return badRequest("Plaintext slots are not allowed. Slots must be encrypted.");
+        }
         return data;
-      } catch {
-        return badRequest("Request format is invalid.");
+      } catch (e) {
+        if (e instanceof SyntaxError) {
+          return badRequest("Request format is invalid.");
+        }
+        throw e;
       }
     }
     default: {
@@ -145,13 +147,30 @@ function createEndpoint(manifest) {
     }
     const key = await manifest.key;
     const encryptedProps = data.encryptedProps;
-    const propString = encryptedProps === "" ? "{}" : await decryptString(key, encryptedProps);
-    const props = JSON.parse(propString);
+    let props = {};
+    if (encryptedProps !== "") {
+      try {
+        const propString = await decryptString(key, encryptedProps);
+        props = JSON.parse(propString);
+      } catch (_e) {
+        return badRequest("Encrypted props value is invalid.");
+      }
+    }
+    let decryptedSlots = {};
+    const encryptedSlots = data.encryptedSlots;
+    if (encryptedSlots !== "") {
+      try {
+        const slotsString = await decryptString(key, encryptedSlots);
+        decryptedSlots = JSON.parse(slotsString);
+      } catch (_e) {
+        return badRequest("Encrypted slots value is invalid.");
+      }
+    }
     const componentModule = await imp();
     let Component = componentModule[data.componentExport];
     const slots = {};
-    for (const prop in data.slots) {
-      slots[prop] = createSlotValueFromString(data.slots[prop]);
+    for (const prop in decryptedSlots) {
+      slots[prop] = createSlotValueFromString(decryptedSlots[prop]);
     }
     result.response.headers.set("X-Robots-Tag", "noindex");
     if (isAstroComponentFactory(Component)) {
@@ -2345,7 +2364,7 @@ function resolveSessionDriverName(driver) {
 
 const apiContextRoutesSymbol = Symbol.for("context.routes");
 class RenderContext {
-  constructor(pipeline, locals, middleware, actions, pathname, request, routeData, status, clientAddress, cookies = new AstroCookies(request), params = getParams(routeData, pathname), url = new URL(request.url), props = {}, partial = void 0, shouldInjectCspMetaTags = !!pipeline.manifest.csp, session = pipeline.manifest.sessionConfig ? new AstroSession(cookies, pipeline.manifest.sessionConfig, pipeline.runtimeMode) : void 0) {
+  constructor(pipeline, locals, middleware, actions, pathname, request, routeData, status, clientAddress, cookies = new AstroCookies(request), params = getParams(routeData, pathname), url = RenderContext.#createNormalizedUrl(request.url), props = {}, partial = void 0, shouldInjectCspMetaTags = !!pipeline.manifest.csp, session = pipeline.manifest.sessionConfig ? new AstroSession(cookies, pipeline.manifest.sessionConfig, pipeline.runtimeMode) : void 0) {
     this.pipeline = pipeline;
     this.locals = locals;
     this.middleware = middleware;
@@ -2362,6 +2381,14 @@ class RenderContext {
     this.partial = partial;
     this.shouldInjectCspMetaTags = shouldInjectCspMetaTags;
     this.session = session;
+  }
+  static #createNormalizedUrl(requestUrl) {
+    const url = new URL(requestUrl);
+    try {
+      url.pathname = decodeURI(url.pathname);
+    } finally {
+      return url;
+    }
   }
   /**
    * A flag that tells the render content if the rewriting was triggered
@@ -2477,7 +2504,7 @@ class RenderContext {
           );
         }
         this.isRewriting = true;
-        this.url = new URL(this.request.url);
+        this.url = RenderContext.#createNormalizedUrl(this.request.url);
         this.params = getParams(routeData, pathname);
         this.pathname = pathname;
         this.status = 200;
@@ -2590,7 +2617,7 @@ class RenderContext {
         this.routeData.route
       );
     }
-    this.url = new URL(this.request.url);
+    this.url = RenderContext.#createNormalizedUrl(this.request.url);
     const newCookies = new AstroCookies(this.request);
     if (this.cookies) {
       newCookies.merge(this.cookies);

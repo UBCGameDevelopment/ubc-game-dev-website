@@ -42,17 +42,6 @@ import traderSmith from "../assets/legacy/trader-smith.webp";
 
 import type { Game } from '../types';
 
-// Helper function to get unique years from games
-export function getGameYears(): string[] {
-  const years = [...new Set(games.map(game => game.year))];
-  return years.sort((a, b) => {
-    // Sort in descending order (newest first)
-    const [aStart] = a.split('/').map(Number);
-    const [bStart] = b.split('/').map(Number);
-    return bStart - aStart;
-  });
-}
-
 // Note that the youtube video must allows embeddings for it to work
 export const games: Game[] = [
     {
