@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GlowEffect from './navbar/GlowEffect';
 import DecorativeOrbs from './navbar/DecorativeOrbs';
 import DesktopNav from './navbar/DesktopNav';
@@ -12,12 +12,24 @@ interface NavbarProps {
 
 export default function Navbar({ logo, links }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (isOpen) {
+      html.style.overflow = 'hidden';
+    } else {
+      html.style.overflow = '';
+    }
+
+    return () => {
+      html.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <>
-      {/* Navbar Wrapper */}
       <div className="mx-auto mt-8 w-full max-w-6xl px-4 z-[100]">
-        {/* Main Navbar */}
         <nav className="group relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl shadow-2xl shadow-black/40 ring-1 ring-white/10 overflow-visible">
           <GlowEffect />
           <DecorativeOrbs />

@@ -43,3 +43,26 @@ document.addEventListener('click', (e) => {
     duration: SCROLL_DURATION,
   });
 });
+
+// Listen for mobile menu state changes
+// Stop Lenis when menu is open to prevent scroll conflicts
+const observer = new MutationObserver(() => {
+  const html = document.documentElement;
+  const isMenuOpen = html.style.overflow === 'hidden';
+  
+  if (isMenuOpen) {
+    lenis.stop();
+  } else {
+    lenis.start();
+  }
+});
+
+observer.observe(document.documentElement, {
+  attributes: true,
+  attributeFilter: ['style'],
+});
+
+// Also check on page load
+if (document.documentElement.style.overflow === 'hidden') {
+  lenis.stop();
+}
