@@ -10,11 +10,12 @@ const events = EventService.getAll();
 <Layout>
     <!-- Header -->
     <div class="mb-8 flex w-full justify-center px-4">
-        <div class="mt-20 mb-8 flex w-full max-w-6xl flex-row items-center justify-between md:my-16">
-            <p class="text-5xl font-extrabold">Upcoming Events (2025-2026)</p>
+        <div
+            class="mt-20 mb-8 flex w-full max-w-6xl flex-col gap-4 md:my-16 md:flex-row md:items-center md:justify-between">
+            <p class="text-3xl font-extrabold sm:text-4xl md:text-5xl">Upcoming Events (2025-2026)</p>
             <a
                 href="https://discord.gg/RXMxvEcj7B"
-                class="rounded-4xl border border-[#E4E4E4] px-4 py-2 whitespace-nowrap text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black">
+                class="self-start rounded-4xl border border-[#E4E4E4] px-4 py-2 whitespace-nowrap text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black md:self-auto">
                 Join our Discord
             </a>
         </div>
@@ -50,7 +51,7 @@ const events = EventService.getAll();
                             </div>
 
                             {/* Mobile layout - simple vertical stack */}
-                            <div class="md:hidden">
+                            <div class="flex justify-center md:hidden">
                                 <EventCard {...event} />
                             </div>
                         </div>
