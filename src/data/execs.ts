@@ -1,4 +1,5 @@
 // src/data/execs.ts
+import type { Exec } from '../types';
 import xavier from "../assets/exec_photos/xavier.webp";
 import bethany from "../assets/exec_photos/bethany.webp";
 import brittany from "../assets/exec_photos/brittany.webp";
@@ -12,16 +13,6 @@ import sarah from "../assets/exec_photos/sarah.webp";
 import vanshika from "../assets/exec_photos/vanshika.webp";
 import victor from "../assets/exec_photos/victor.webp";
 import placeholder from "../assets/exec_photos/logo.png";
-
-
-export type Exec = {
-  name: string;
-  role: string;
-  linkedin: string;
-  github?: string;
-  portfolio?: string;
-  image: ImageMetadata;
-};
 
 export const execs: Exec[] = [
   {

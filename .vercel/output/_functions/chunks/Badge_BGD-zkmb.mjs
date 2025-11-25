@@ -2,11 +2,11 @@ import { c as createComponent, m as maybeRenderHead, r as renderTemplate, b as c
 import 'clsx';
 
 const $$CardGlow = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`<!-- Gradient glow effect for cards -->${maybeRenderHead()}<div class="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-brand-700 via-brand-500 to-accent-500 opacity-20 blur transition-opacity duration-500 group-hover:opacity-30"></div>`;
+  return renderTemplate`<!-- Gradient glow effect for cards -->${maybeRenderHead()}<div class="from-brand-700 via-brand-500 to-accent-500 absolute -inset-0.5 rounded-3xl bg-gradient-to-r opacity-20 blur transition-opacity duration-500 group-hover:opacity-30"></div>`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/common/Card/CardGlow.astro", void 0);
 
 const $$CardOrbs = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`<!-- Decorative background orbs -->${maybeRenderHead()}<div class="absolute top-0 right-0 h-64 w-64 bg-brand-500/5 rounded-full blur-3xl pointer-events-none"></div> <div class="absolute bottom-0 left-0 h-64 w-64 bg-accent-500/5 rounded-full blur-3xl pointer-events-none"></div>`;
+  return renderTemplate`<!-- Decorative background orbs -->${maybeRenderHead()}<div class="bg-brand-500/5 pointer-events-none absolute top-0 right-0 h-64 w-64 rounded-full blur-3xl"></div> <div class="bg-accent-500/5 pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full blur-3xl"></div>`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/common/Card/CardOrbs.astro", void 0);
 
 const $$Astro$1 = createAstro();

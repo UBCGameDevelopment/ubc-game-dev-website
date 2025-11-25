@@ -1,5 +1,5 @@
 import { c as createComponent, b as createAstro, m as maybeRenderHead, a as renderComponent, d as addAttribute, r as renderTemplate } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CW5VetiR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_BRhqTzeE.mjs';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
@@ -273,11 +273,11 @@ const $$ExecGrid = createComponent(($$result, $$props, $$slots) => {
   const presidentIndex = execs.findIndex((e) => e.role === "President");
   const president = presidentIndex >= 0 ? execs[presidentIndex] : null;
   const rest = execs.filter((_, i) => i !== presidentIndex);
-  return renderTemplate`${maybeRenderHead()}<section class="container-page my-16 md:my-20"> <!-- Section Header --> <div class="text-center max-w-3xl mx-auto mb-12"> <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/30 mb-4"> <span class="text-sm font-semibold text-brand-400">Meet The Team</span> </div> <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+  return renderTemplate`${maybeRenderHead()}<section class="container-page my-16 md:my-20"> <!-- Section Header --> <div class="mx-auto mb-12 max-w-3xl text-center"> <div class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5"> <span class="text-brand-400 text-sm font-semibold">Meet The Team</span> </div> <h2 class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent md:text-5xl">
 Our Executive Team
-</h2> <p class="mt-4 text-lg text-gray-50/80 leading-relaxed">
+</h2> <p class="mt-4 text-lg leading-relaxed text-gray-50/80">
 Meet the folks who keep UBC Game Dev running—events, workshops, and community!
-</p> </div> <!-- President row with special styling --> ${president && renderTemplate`<div class="mt-12 flex justify-center"> <div class="relative group">  <div class="absolute -inset-4 bg-gradient-to-r from-brand-500 to-accent-500 rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div> <div class="relative w-[200px] md:w-[220px]"> ${renderComponent($$result, "ExecCard", $$ExecCard, { ...president })} </div> </div> </div>`} <!-- Rest of execs in a modern grid --> <div class="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-10 max-w-6xl mx-auto"> ${rest.map((e) => renderTemplate`<div class="flex justify-center"> <div class="w-full max-w-[180px] md:max-w-[200px]"> ${renderComponent($$result, "ExecCard", $$ExecCard, { ...e })} </div> </div>`)} </div> </section>`;
+</p> </div> <!-- President row with special styling --> ${president && renderTemplate`<div class="mt-12 flex justify-center"> <div class="group relative">  <div class="from-brand-500 to-accent-500 absolute -inset-4 rounded-full bg-gradient-to-r opacity-20 blur-2xl transition-opacity group-hover:opacity-30"></div> <div class="relative w-[200px] md:w-[220px]"> ${renderComponent($$result, "ExecCard", $$ExecCard, { ...president })} </div> </div> </div>`} <!-- Rest of execs in a modern grid --> <div class="mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-3 md:gap-10 lg:grid-cols-4"> ${rest.map((e) => renderTemplate`<div class="flex justify-center"> <div class="w-full max-w-[180px] md:max-w-[200px]"> ${renderComponent($$result, "ExecCard", $$ExecCard, { ...e })} </div> </div>`)} </div> </section>`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/team/ExecGrid.astro", void 0);
 
 const $$Team = createComponent(($$result, $$props, $$slots) => {

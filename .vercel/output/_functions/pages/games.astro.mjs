@@ -1,8 +1,8 @@
 import { c as createComponent, a as renderComponent, r as renderTemplate, b as createAstro, m as maybeRenderHead, d as addAttribute, e as renderScript } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CW5VetiR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
-import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BDYkpLTX.mjs';
+import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BGD-zkmb.mjs';
 import 'clsx';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';

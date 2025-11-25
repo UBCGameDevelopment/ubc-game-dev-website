@@ -1,5 +1,5 @@
 import { c as createComponent, m as maybeRenderHead, d as addAttribute, r as renderTemplate, b as createAstro, f as renderSlot, a as renderComponent } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CW5VetiR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
 import 'clsx';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';
 import { $ as $$InfoBlock } from '../chunks/InfoBlock_C9Xx2797.mjs';

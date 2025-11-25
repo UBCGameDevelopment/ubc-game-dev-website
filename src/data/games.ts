@@ -40,23 +40,7 @@ import edensGarden from "../assets/2018-2019/edens-garden.png";
 import swordship from "../assets/legacy/swordship.webp";
 import traderSmith from "../assets/legacy/trader-smith.webp";
 
-export type GameMedia = {
-  type: 'video' | 'images' | 'image';
-  videoUrl?: string; // YouTube embed URL (use youtube-nocookie.com for privacy-enhanced mode)
-  images?: ImageMetadata[]; // Array of image slides
-  image?: ImageMetadata; // just one picture
-};
-
-export type Game = {
-  name: string;
-  description?: string; // Game description (optional to accomodate for 2021/2022 games)
-  instructions?: string; // How-to-Play optional
-  media: GameMedia;
-  gameLink?: string; // Link to play/download the game (optional)
-  teamMembers?: string[]; // also optional
-  award?: string; // Winner category (optional)
-  year: string;
-};
+import type { Game } from '../types';
 
 // Helper function to get unique years from games
 export function getGameYears(): string[] {

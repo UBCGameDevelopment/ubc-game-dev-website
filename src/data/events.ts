@@ -1,19 +1,10 @@
 // src/data/events.ts
-import type { ImageMetadata } from "astro";
+import type { Event } from '../types';
 
 // Images
 import placeholderImage from "../assets/hero/hero-graphics-1.png";
 import launchPartyImage from "../assets/timeline/launch_party.jpg";
 import unityImage from "../assets/timeline/unity.png";
-
-export type Event = {
-  title: string;
-  date: string;
-  description: string;
-  location: string;
-  mapLink?: string;
-  image: ImageMetadata;
-};
 
 export const events: Event[] = [
   {

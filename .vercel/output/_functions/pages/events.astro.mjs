@@ -1,7 +1,7 @@
 import { c as createComponent, b as createAstro, a as renderComponent, r as renderTemplate, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CW5VetiR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_BRhqTzeE.mjs';
-import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BDYkpLTX.mjs';
+import { $ as $$BaseCard, a as $$Badge } from '../chunks/Badge_BGD-zkmb.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useRef, useState, useEffect } from 'react';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';

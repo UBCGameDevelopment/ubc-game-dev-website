@@ -1,5 +1,5 @@
 import { c as createComponent, a as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_BuADJsLa.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CW5VetiR.mjs';
+import { $ as $$Layout } from '../chunks/Layout_BEBx5t9F.mjs';
 import { $ as $$SubscribeSection } from '../chunks/SubscribeSection_DnQzJVMl.mjs';
 export { renderers } from '../renderers.mjs';
 
