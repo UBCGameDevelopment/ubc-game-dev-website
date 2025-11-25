@@ -16,7 +16,7 @@ export const events: Event[] = [
     image: launchPartyImage,
   },
   {
-    title: "Alan's Unity Workshop",
+    title: "Unity Workshop (w/ Alan)",
     date: "Wed., Nov. 19, 2025: 6:30-8pm",
     description: "Join us for an intensive game development workshop where you'll learn the basics of Unity. Get the required skills to create your own games with us!",
     location: "BUCH D222",

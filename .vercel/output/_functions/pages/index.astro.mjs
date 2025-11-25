@@ -1,6 +1,6 @@
 import { c as createComponent, m as maybeRenderHead, d as addAttribute, r as renderTemplate, b as createAstro, f as renderSlot, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$Layout } from '../chunks/Layout_-OEfOtAE.mjs';
 import 'clsx';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';
 import { $ as $$InfoBlock } from '../chunks/InfoBlock_CrtWHYaj.mjs';

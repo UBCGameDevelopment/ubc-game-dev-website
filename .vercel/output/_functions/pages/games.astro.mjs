@@ -1,508 +1,14 @@
 import { c as createComponent, a as renderComponent, r as renderTemplate, b as createAstro, m as maybeRenderHead, d as addAttribute, e as renderScript } from '../chunks/astro/server_C2S9dwlY.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$Layout } from '../chunks/Layout_-OEfOtAE.mjs';
 import { jsx, jsxs } from 'react/jsx-runtime';
 import { useState, useEffect } from 'react';
+import { s as sleepyChef, a as antidote30xx, b as apoc101, v as varansSeals, c as shadowOfSpace, d as umbra, e as bouncyGuy, f as cybercision, g as sunshineShores, h as dathora, m as mythos, i as sidetracked, j as mediquest, k as constellationTango, n as spellrise, t as transduction, p as panicTitanic, o as slimySewers, q as starFarm, r as innoculated, w as contaminated, x as forgottenYellow, y as ninjastack, z as nightParade, A as rooutes, B as michelinRun, C as klaymation, D as joesLittleHelpers, E as electricCrescendo, F as edensGarden, G as swordship, H as traderSmith } from '../chunks/logo_RjLqd7JM.mjs';
+import '../chunks/hero-graphics-1_C_QibVuj.mjs';
 import { b as $$GradientHeading, $ as $$BaseCard, a as $$Badge } from '../chunks/GradientHeading_D2u3qu_M.mjs';
 /* empty css                                 */
 import 'clsx';
 export { renderers } from '../renderers.mjs';
-
-function Timeline({ years, initialYear }) {
-  const [activeYear, setActiveYear] = useState(initialYear);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const handleYearClick = (year) => {
-    setActiveYear(year);
-    const event = new CustomEvent("timeline-year-change", {
-      detail: { year },
-      bubbles: true
-    });
-    window.dispatchEvent(event);
-  };
-  return /* @__PURE__ */ jsx("nav", { className: "timeline-react", "aria-label": "Year timeline", children: /* @__PURE__ */ jsx("ul", { role: "list", children: years.map((year, index) => {
-    const isActive = year === activeYear;
-    const isHovered = hoveredIndex === index;
-    let scale = 1;
-    let opacity = 1;
-    if (hoveredIndex !== null) {
-      const distance = Math.abs(index - hoveredIndex);
-      if (distance === 0) {
-        scale = 1.2;
-        opacity = 1;
-      } else if (distance === 1) {
-        scale = 1.1;
-        opacity = 0.8;
-      } else {
-        scale = 1;
-        opacity = 0.4;
-      }
-    }
-    return /* @__PURE__ */ jsx(
-      "li",
-      {
-        style: {
-          transform: `scale(${scale})`,
-          opacity,
-          transition: "all 0.2s ease"
-        },
-        children: /* @__PURE__ */ jsxs(
-          "button",
-          {
-            type: "button",
-            onClick: () => handleYearClick(year),
-            onMouseEnter: () => setHoveredIndex(index),
-            onMouseLeave: () => setHoveredIndex(null),
-            onFocus: () => setHoveredIndex(index),
-            onBlur: () => setHoveredIndex(null),
-            "aria-pressed": isActive,
-            className: "timeline-btn",
-            children: [
-              /* @__PURE__ */ jsx(
-                "span",
-                {
-                  className: "timeline-bar",
-                  style: {
-                    transform: isHovered ? "scaleY(2.8)" : isActive ? "scaleY(1.8)" : "scaleY(1)",
-                    background: isHovered ? "linear-gradient(90deg, rgba(157, 124, 255, 0.85), rgba(91, 205, 132, 0.85))" : isActive ? "linear-gradient(90deg, rgba(157, 124, 255, 0.65), rgba(91, 205, 132, 0.65))" : "rgba(148, 163, 184, 0.25)",
-                    boxShadow: isHovered ? "0 8px 24px rgba(91, 205, 132, 0.35)" : isActive ? "0 6px 18px rgba(91, 205, 132, 0.22)" : "none"
-                  }
-                }
-              ),
-              /* @__PURE__ */ jsx(
-                "span",
-                {
-                  className: "timeline-label",
-                  style: {
-                    opacity: isHovered || isActive ? 1 : 0,
-                    transform: isHovered || isActive ? "translateX(0)" : "translateX(-0.5rem)"
-                  },
-                  children: year
-                }
-              )
-            ]
-          }
-        )
-      },
-      year
-    );
-  }) }) });
-}
-
-const sleepyChef = new Proxy({"src":"/_astro/sleepy-chef.CuPlaRIQ.png","width":1253,"height":718,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/sleepy-chef.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const antidote30xx = new Proxy({"src":"/_astro/antidote-30xx.Dhef0HJA.png","width":958,"height":722,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/antidote-30xx.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const apoc101 = new Proxy({"src":"/_astro/apoc-101.BTVCPT7C.png","width":1278,"height":689,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/apoc-101.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const varansSeals = new Proxy({"src":"/_astro/varans-seals.C7qWpamv.png","width":1251,"height":716,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/varans-seals.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const shadowOfSpace = new Proxy({"src":"/_astro/shadow-of-space.DA5ajGCZ.png","width":961,"height":716,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/shadow-of-space.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const umbra = new Proxy({"src":"/_astro/umbra.Dh70N4mc.png","width":1262,"height":712,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/umbra.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const bouncyGuy = new Proxy({"src":"/_astro/bouncy-guy.dgzgJ5Ke.png","width":959,"height":719,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/bouncy-guy.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const cybercision = new Proxy({"src":"/_astro/cyberscision.BtbIr0ma.png","width":1277,"height":718,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/cyberscision.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const sunshineShores = new Proxy({"src":"/_astro/sunshine-shores.DNJyPoZx.png","width":1271,"height":716,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2022-2023/sunshine-shores.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const dathora = new Proxy({"src":"/_astro/dathora.BdmplG4b.png","width":512,"height":244,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/dathora.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const mythos = new Proxy({"src":"/_astro/mythos.CZv6lV9E.png","width":501,"height":512,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/mythos.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const sidetracked = new Proxy({"src":"/_astro/sidetracked.CrI9KAxf.png","width":512,"height":289,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/sidetracked.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const mediquest = new Proxy({"src":"/_astro/mediquest.CZSEmm8J.png","width":465,"height":512,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/mediquest.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const constellationTango = new Proxy({"src":"/_astro/constellation-tango.CynuFsJh.png","width":512,"height":259,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/constellation-tango.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const spellrise = new Proxy({"src":"/_astro/spellrise.DElWb7UL.png","width":512,"height":278,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/spellrise.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const transduction = new Proxy({"src":"/_astro/transduction.nj5HHo0P.png","width":512,"height":288,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/transduction.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const panicTitanic = new Proxy({"src":"/_astro/panic-titanic.e5ICvj70.png","width":1600,"height":900,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2020-2021/panic-titanic.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const slimySewers = new Proxy({"src":"/_astro/slimy-sewers.h9jOStak.jpg","width":498,"height":280,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/slimy-sewers.jpg";
-							}
-							
-							return target[name];
-						}
-					});
-
-const starFarm = new Proxy({"src":"/_astro/star-farm.KcA9sTX4.png","width":707,"height":280,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/star-farm.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const innoculated = new Proxy({"src":"/_astro/innoculated.CvYE-Ms_.png","width":311,"height":280,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/innoculated.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const contaminated = new Proxy({"src":"/_astro/contaminated.By33Eum8.png","width":1920,"height":1080,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/contaminated.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const forgottenYellow = new Proxy({"src":"/_astro/forgotten-yellow.BMI8Q72H.png","width":1920,"height":1080,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/forgotten-yellow.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const ninjastack = new Proxy({"src":"/_astro/ninjastack.BHjBfF7Y.png","width":1920,"height":1080,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2019-2020/ninjastack.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const nightParade = new Proxy({"src":"/_astro/night-parade.CzKMdcYZ.png","width":1640,"height":881,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/night-parade.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const rooutes = new Proxy({"src":"/_astro/rooutes.BsVbgk8G.png","width":2500,"height":1205,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/rooutes.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const michelinRun = new Proxy({"src":"/_astro/michelin-run.Bx1RRERD.png","width":995,"height":304,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/michelin-run.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const klaymation = new Proxy({"src":"/_astro/klaymation.DLVvUIK8.png","width":2205,"height":1381,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/klaymation.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const joesLittleHelpers = new Proxy({"src":"/_astro/joes-little-helpers.CaXXt9K7.png","width":1912,"height":1074,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/joes-little-helpers.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const electricCrescendo = new Proxy({"src":"/_astro/electric-crescendo.D_Vx34F8.png","width":1080,"height":1080,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/electric-crescendo.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const edensGarden = new Proxy({"src":"/_astro/edens-garden.Ck3O-5rz.png","width":1030,"height":576,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/2018-2019/edens-garden.png";
-							}
-							
-							return target[name];
-						}
-					});
-
-const swordship = new Proxy({"src":"/_astro/swordship.CNJfgdza.webp","width":720,"height":480,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/legacy/swordship.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const traderSmith = new Proxy({"src":"/_astro/trader-smith.L6Mq2O31.webp","width":641,"height":399,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/legacy/trader-smith.webp";
-							}
-							
-							return target[name];
-						}
-					});
 
 const games = [
   {
@@ -675,7 +181,7 @@ const games = [
     name: "Sidetracked!",
     media: {
       type: "video",
-      videoUrl: "hhttps://www.youtube.com/embed/0rrs4dvRcrQ?si=7UyabiWNh7e_frSg"
+      videoUrl: "https://www.youtube.com/embed/0rrs4dvRcrQ?si=7UyabiWNh7e_frSg"
     },
     teamMembers: ["Ramy", "Nyan", "Vihara", "Brett", "Casey", "Lakshya", "Phanndateevint", "Allen"],
     year: "2021/2022"
@@ -950,17 +456,152 @@ const games = [
   }
 ];
 
-function getGameYears(games) {
-  const years = [...new Set(games.map((game) => game.year))];
-  return years.sort((a, b) => {
-    const [aStart] = a.split("/").map(Number);
-    const [bStart] = b.split("/").map(Number);
-    return bStart - aStart;
-  });
+class GameService {
+  /**
+   * Get all games
+   * @returns Array of all games
+   */
+  static getAll() {
+    return games;
+  }
+  /**
+   * Get games by year
+   * @param year - Year string to filter by (e.g., "2022/2023")
+   * @returns Filtered array of games
+   */
+  static getByYear(year) {
+    return games.filter((game) => game.year === year);
+  }
+  /**
+   * Get games by award
+   * @param award - Award string to filter by
+   * @returns Filtered array of games with the specified award
+   */
+  static getByAward(award) {
+    return games.filter((game) => game.award === award);
+  }
+  /**
+   * Get unique years from all games, sorted in descending order (newest first)
+   * @returns Sorted array of unique year strings
+   */
+  static getYears() {
+    const years = [...new Set(games.map((game) => game.year))];
+    return years.sort((a, b) => {
+      const [aStart] = a.split("/").map(Number);
+      const [bStart] = b.split("/").map(Number);
+      return bStart - aStart;
+    });
+  }
+  /**
+   * Get a single game by name
+   * @param name - Game name to search for
+   * @returns Game object or undefined if not found
+   */
+  static getByName(name) {
+    return games.find((game) => game.name === name);
+  }
+  /**
+   * Search games by name or description
+   * @param query - Search query string
+   * @returns Array of games matching the query
+   */
+  static search(query) {
+    const lowerQuery = query.toLowerCase();
+    return games.filter(
+      (game) => game.name.toLowerCase().includes(lowerQuery) || game.description?.toLowerCase().includes(lowerQuery)
+    );
+  }
+  /**
+   * Get total count of games
+   * @returns Total number of games
+   */
+  static getCount() {
+    return games.length;
+  }
+}
+
+function Timeline({ years, initialYear }) {
+  const [activeYear, setActiveYear] = useState(initialYear);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const handleYearClick = (year) => {
+    setActiveYear(year);
+    const event = new CustomEvent("timeline-year-change", {
+      detail: { year },
+      bubbles: true
+    });
+    window.dispatchEvent(event);
+  };
+  return /* @__PURE__ */ jsx("nav", { className: "timeline-react", "aria-label": "Year timeline", children: /* @__PURE__ */ jsx("ul", { role: "list", children: years.map((year, index) => {
+    const isActive = year === activeYear;
+    const isHovered = hoveredIndex === index;
+    let scale = 1;
+    let opacity = 1;
+    if (hoveredIndex !== null) {
+      const distance = Math.abs(index - hoveredIndex);
+      if (distance === 0) {
+        scale = 1.2;
+        opacity = 1;
+      } else if (distance === 1) {
+        scale = 1.1;
+        opacity = 0.8;
+      } else {
+        scale = 1;
+        opacity = 0.4;
+      }
+    }
+    return /* @__PURE__ */ jsx(
+      "li",
+      {
+        style: {
+          transform: `scale(${scale})`,
+          opacity,
+          transition: "all 0.2s ease"
+        },
+        children: /* @__PURE__ */ jsxs(
+          "button",
+          {
+            type: "button",
+            onClick: () => handleYearClick(year),
+            onMouseEnter: () => setHoveredIndex(index),
+            onMouseLeave: () => setHoveredIndex(null),
+            onFocus: () => setHoveredIndex(index),
+            onBlur: () => setHoveredIndex(null),
+            "aria-pressed": isActive,
+            className: "timeline-btn",
+            children: [
+              /* @__PURE__ */ jsx(
+                "span",
+                {
+                  className: "timeline-bar",
+                  style: {
+                    transform: isHovered ? "scaleY(2.8)" : isActive ? "scaleY(1.8)" : "scaleY(1)",
+                    background: isHovered ? "linear-gradient(90deg, rgba(157, 124, 255, 0.85), rgba(91, 205, 132, 0.85))" : isActive ? "linear-gradient(90deg, rgba(157, 124, 255, 0.65), rgba(91, 205, 132, 0.65))" : "rgba(148, 163, 184, 0.25)",
+                    boxShadow: isHovered ? "0 8px 24px rgba(91, 205, 132, 0.35)" : isActive ? "0 6px 18px rgba(91, 205, 132, 0.22)" : "none"
+                  }
+                }
+              ),
+              /* @__PURE__ */ jsx(
+                "span",
+                {
+                  className: "timeline-label",
+                  style: {
+                    opacity: isHovered || isActive ? 1 : 0,
+                    transform: isHovered || isActive ? "translateX(0)" : "translateX(-0.5rem)"
+                  },
+                  children: year
+                }
+              )
+            ]
+          }
+        )
+      },
+      year
+    );
+  }) }) });
 }
 
 const $$Timeline = createComponent(($$result, $$props, $$slots) => {
-  const gameYears = getGameYears(games);
+  const gameYears = GameService.getYears();
   const years = ["All Years", ...gameYears];
   const initialYear = "All Years";
   return renderTemplate`${renderComponent($$result, "TimelineReact", Timeline, { "years": years, "initialYear": initialYear, "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/games/Timeline/Timeline", "client:component-export": "default" })}`;
@@ -971,8 +612,7 @@ const $$GameTitle = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$GameTitle;
   const { name, gameLink } = Astro2.props;
-  return renderTemplate`div class="mb-4">
-${gameLink ? renderTemplate`${maybeRenderHead()}<a${addAttribute(gameLink, "href")} target="_blank" rel="noopener noreferrer" class="game-title-link group/title inline-block" data-astro-cid-nx4g2om7> ${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl transition-all duration-300 group-hover/title:scale-105 md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}<svg class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-nx4g2om7> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-nx4g2om7></path> </svg> ` })} </a>` : renderTemplate`${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}` })}`} `;
+  return renderTemplate`${maybeRenderHead()}<div class="mb-4" data-astro-cid-nx4g2om7> ${gameLink ? renderTemplate`<a${addAttribute(gameLink, "href")} target="_blank" rel="noopener noreferrer" class="game-title-link group/title inline-block" data-astro-cid-nx4g2om7> ${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl transition-all duration-300 group-hover/title:scale-105 md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}<svg class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-nx4g2om7> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" data-astro-cid-nx4g2om7></path> </svg> ` })} </a>` : renderTemplate`${renderComponent($$result, "GradientHeading", $$GradientHeading, { "as": "h3", "class": "text-2xl md:text-3xl", "data-astro-cid-nx4g2om7": true }, { "default": ($$result2) => renderTemplate`${name}` })}`}  </div>`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/games/GameCard/GameTitle.astro", void 0);
 
 const $$Astro$5 = createAstro();
@@ -1069,12 +709,13 @@ function GameGrid() {
 }
 
 const $$Games = createComponent(($$result, $$props, $$slots) => {
+  const games = GameService.getAll();
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "data-astro-cid-gismuqk3": true }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="container-page" data-astro-cid-gismuqk3> <!-- Page Header --> <section class="my-12 text-center md:my-16" data-astro-cid-gismuqk3> <div class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5" data-astro-cid-gismuqk3> <span class="text-brand-400 text-sm font-semibold" data-astro-cid-gismuqk3>Our Projects</span> </div> <h1 class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent md:text-6xl" data-astro-cid-gismuqk3>
 Game Showcase
 </h1> <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-50/80" data-astro-cid-gismuqk3>
 Explore the amazing games created by our talented teams. Each project represents countless hours of
                 creativity, collaboration, and passion for game development.
-</p> </section> <!-- Timeline + Games --> <section class="my-12 md:my-16" data-astro-cid-gismuqk3> <div class="items-start gap-8 md:grid md:grid-cols-[minmax(180px,220px)_minmax(0,1fr)] lg:gap-14" data-astro-cid-gismuqk3> <aside class="order-2 md:sticky md:top-24 md:order-1" data-astro-cid-gismuqk3> <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-xl ring-1 shadow-black/30 ring-white/10 backdrop-blur-xl" data-astro-cid-gismuqk3> <h2 class="mb-3 text-lg font-bold tracking-wide" data-astro-cid-gismuqk3>Club Timeline</h2> ${renderComponent($$result2, "Timeline", $$Timeline, { "data-astro-cid-gismuqk3": true })} </div> </aside> <div class="order-1 md:order-2" data-astro-cid-gismuqk3> <!-- React component to manage filtering state --> ${renderComponent($$result2, "GameGrid", GameGrid, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/games/GameGrid", "client:component-export": "default", "data-astro-cid-gismuqk3": true })} <!-- Game cards with fallback --> ${games.length > 0 ? renderTemplate`<div class="game-cards-container space-y-8 md:space-y-12" data-astro-cid-gismuqk3> ${games.map((game) => renderTemplate`<div class="game-card-wrapper" data-game-card${addAttribute(game.year, "data-year")} data-astro-cid-gismuqk3> ${renderComponent($$result2, "GameCard", $$GameCard, { ...game, "data-astro-cid-gismuqk3": true })} </div>`)} </div>` : renderTemplate`<div class="py-16 text-center" data-astro-cid-gismuqk3> <svg class="mx-auto mb-4 h-24 w-24 text-white/10" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-gismuqk3> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" data-astro-cid-gismuqk3></path> </svg> <p class="mb-2 text-xl text-gray-50/60" data-astro-cid-gismuqk3>No games yet</p> <p class="text-sm text-gray-50/40" data-astro-cid-gismuqk3>Check back soon for our latest projects!</p> </div>`} </div> </div> </section> </main> ` })} `;
+</p> </section> <!-- Timeline + Games --> <section class="my-12 md:my-16" data-astro-cid-gismuqk3> <div class="items-start gap-8 md:grid md:grid-cols-[minmax(180px,220px)_minmax(0,1fr)] lg:gap-14" data-astro-cid-gismuqk3> <aside class="order-2 md:sticky md:top-24 md:order-1" data-astro-cid-gismuqk3> <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-xl ring-1 shadow-black/30 ring-white/10 backdrop-blur-xl" data-astro-cid-gismuqk3> <h2 class="mb-3 text-lg font-bold tracking-wide" data-astro-cid-gismuqk3>Club Timeline</h2> ${renderComponent($$result2, "Timeline", $$Timeline, { "data-astro-cid-gismuqk3": true })} </div> </aside> <div class="order-1 md:order-2" data-astro-cid-gismuqk3> <!-- React component to manage filtering state --> ${renderComponent($$result2, "GameGrid", GameGrid, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/games/GameGrid", "client:component-export": "default", "data-astro-cid-gismuqk3": true })} <!-- Game cards --> <div class="game-cards-container space-y-8 md:space-y-12" data-astro-cid-gismuqk3> ${games.map((game) => renderTemplate`<div class="game-card-wrapper" data-game-card${addAttribute(game.year, "data-year")} data-astro-cid-gismuqk3> ${renderComponent($$result2, "GameCard", $$GameCard, { ...game, "data-astro-cid-gismuqk3": true })} </div>`)} </div> </div> </div> </section> </main> ` })} `;
 }, "/home/vvict/projects/ubc_game/club_site/src/pages/games.astro", void 0);
 
 const $$file = "/home/vvict/projects/ubc_game/club_site/src/pages/games.astro";

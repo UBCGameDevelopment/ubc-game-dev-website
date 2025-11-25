@@ -9,66 +9,67 @@ export interface Props {
 const { name, gameLink } = Astro.props;
 ---
 
-div class="mb-4">
-{
-    gameLink ? (
-        <a
-            href={gameLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="game-title-link group/title inline-block">
+<div class="mb-4">
+    {
+        gameLink ? (
+            <a
+                href={gameLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="game-title-link group/title inline-block">
+                <GradientHeading
+                    as="h3"
+                    class="text-2xl transition-all duration-300 group-hover/title:scale-105 md:text-3xl">
+                    {name}
+                    <svg
+                        class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                    </svg>
+                </GradientHeading>
+            </a>
+        ) : (
             <GradientHeading
                 as="h3"
-                class="text-2xl transition-all duration-300 group-hover/title:scale-105 md:text-3xl">
+                class="text-2xl md:text-3xl">
                 {name}
-                <svg
-                    class="text-brand-400 group-hover/title:text-accent-400 ml-2 inline-block h-5 w-5 transition-all duration-300 group-hover/title:translate-x-1 group-hover/title:-translate-y-1 md:h-6 md:w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                </svg>
             </GradientHeading>
-        </a>
-    ) : (
-        <GradientHeading
-            as="h3"
-            class="text-2xl md:text-3xl">
-            {name}
-        </GradientHeading>
-    )
-}
-
-<style>
-    /* Game title link animations */
-    .game-title-link {
-        cursor: pointer;
-        transform-origin: left center;
+        )
     }
 
-    .game-title-link:active {
-        animation: titleClick 0.3s ease;
-    }
-
-    @keyframes titleClick {
-        0% {
-            transform: scale(1);
+    <style>
+        /* Game title link animations */
+        .game-title-link {
+            cursor: pointer;
+            transform-origin: left center;
         }
-        50% {
-            transform: scale(0.97);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
 
-    /* Add a subtle glow effect on hover */
-    .game-title-link:hover h3 {
-        filter: drop-shadow(0 0 8px rgba(157, 124, 255, 0.4));
-    }
-</style>
+        .game-title-link:active {
+            animation: titleClick 0.3s ease;
+        }
+
+        @keyframes titleClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.97);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Add a subtle glow effect on hover */
+        .game-title-link:hover h3 {
+            filter: drop-shadow(0 0 8px rgba(157, 124, 255, 0.4));
+        }
+    </style>
+</div>

@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Timeline from "../components/games/Timeline/Timeline.astro";
 import GameCard from "../components/games/GameCard/GameCard.astro";
 import GameGrid from "../components/games/GameGrid";
-import { games } from "../data/games";
+import { GameService } from "../services";
+
+const games = GameService.getAll();
 ---
 
 <Layout>
@@ -40,38 +42,19 @@ import { games } from "../data/games";
                     <!-- React component to manage filtering state -->
                     <GameGrid client:load />
 
-                    <!-- Game cards with fallback -->
-                    {
-                        games.length > 0 ? (
-                            <div class="game-cards-container space-y-8 md:space-y-12">
-                                {games.map((game) => (
-                                    <div
-                                        class="game-card-wrapper"
-                                        data-game-card
-                                        data-year={game.year}>
-                                        <GameCard {...game} />
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <div class="py-16 text-center">
-                                <svg
-                                    class="mx-auto mb-4 h-24 w-24 text-white/10"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                    />
-                                </svg>
-                                <p class="mb-2 text-xl text-gray-50/60">No games yet</p>
-                                <p class="text-sm text-gray-50/40">Check back soon for our latest projects!</p>
-                            </div>
-                        )
-                    }
+                    <!-- Game cards -->
+                    <div class="game-cards-container space-y-8 md:space-y-12">
+                        {
+                            games.map((game) => (
+                                <div
+                                    class="game-card-wrapper"
+                                    data-game-card
+                                    data-year={game.year}>
+                                    <GameCard {...game} />
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
         </section>

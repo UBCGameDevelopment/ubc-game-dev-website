@@ -205,7 +205,7 @@ export const games: Game[] = [
         name: "Sidetracked!",
         media: {
             type: "video",
-            videoUrl: "hhttps://www.youtube.com/embed/0rrs4dvRcrQ?si=7UyabiWNh7e_frSg"
+            videoUrl: "https://www.youtube.com/embed/0rrs4dvRcrQ?si=7UyabiWNh7e_frSg"
         },
         teamMembers: ["Ramy", "Nyan", "Vihara", "Brett", "Casey", "Lakshya", "Phanndateevint", "Allen"],
         year: "2021/2022"

@@ -1,11 +1,12 @@
 import { c as createComponent, b as createAstro, m as maybeRenderHead, d as addAttribute, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$Layout } from '../chunks/Layout_-OEfOtAE.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_OTmU57NM.mjs';
 import { $ as $$BaseCard, a as $$Badge, b as $$GradientHeading } from '../chunks/GradientHeading_D2u3qu_M.mjs';
 import 'clsx';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useRef, useState, useEffect } from 'react';
+import { l as launchPartyImage, u as unityImage } from '../chunks/logo_RjLqd7JM.mjs';
 import { h as heroGraphic_1 } from '../chunks/hero-graphics-1_C_QibVuj.mjs';
 export { renderers } from '../renderers.mjs';
 
@@ -80,32 +81,6 @@ const $$EventTimeline = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "EventTimelineReact", EventTimeline, { "index": index, "isLast": isLast, "client:load": true, "client:component-hydration": "load", "client:component-path": "/home/vvict/projects/ubc_game/club_site/src/components/events/EventTimeline", "client:component-export": "default" })}`;
 }, "/home/vvict/projects/ubc_game/club_site/src/components/events/EventTimeline.astro", void 0);
 
-const launchPartyImage = new Proxy({"src":"/_astro/launch_party.CeAot9XN.jpg","width":7728,"height":5152,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/timeline/launch_party.jpg";
-							}
-							
-							return target[name];
-						}
-					});
-
-const unityImage = new Proxy({"src":"/_astro/unity.C54181Zm.png","width":600,"height":600,"format":"png"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/timeline/unity.png";
-							}
-							
-							return target[name];
-						}
-					});
-
 const events = [
   {
     title: "Launch Party: Learn more About Us",
@@ -133,7 +108,77 @@ const events = [
   }
 ];
 
+class EventService {
+  /**
+   * Get all events
+   * @returns Array of all events
+   */
+  static getAll() {
+    return events;
+  }
+  /**
+   * Get upcoming events (events in the future)
+   * Note: Requires events to have proper date format for comparison
+   * @returns Array of upcoming events
+   */
+  static getUpcoming() {
+    const now = /* @__PURE__ */ new Date();
+    return events.filter((event) => {
+      try {
+        const eventDate = new Date(event.date);
+        return eventDate >= now;
+      } catch {
+        return false;
+      }
+    });
+  }
+  /**
+   * Get past events
+   * @returns Array of past events
+   */
+  static getPast() {
+    const now = /* @__PURE__ */ new Date();
+    return events.filter((event) => {
+      try {
+        const eventDate = new Date(event.date);
+        return eventDate < now;
+      } catch {
+        return true;
+      }
+    });
+  }
+  /**
+   * Get events by location
+   * @param location - Location string to filter by
+   * @returns Filtered array of events
+   */
+  static getByLocation(location) {
+    return events.filter(
+      (event) => event.location.toLowerCase().includes(location.toLowerCase())
+    );
+  }
+  /**
+   * Search events by title or description
+   * @param query - Search query string
+   * @returns Array of events matching the query
+   */
+  static search(query) {
+    const lowerQuery = query.toLowerCase();
+    return events.filter(
+      (event) => event.title.toLowerCase().includes(lowerQuery) || event.description.toLowerCase().includes(lowerQuery)
+    );
+  }
+  /**
+   * Get total count of events
+   * @returns Total number of events
+   */
+  static getCount() {
+    return events.length;
+  }
+}
+
 const $$Events = createComponent(($$result, $$props, $$slots) => {
+  const events = EventService.getAll();
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate`  ${maybeRenderHead()}<div class="mb-8 flex w-full justify-center px-4"> <div class="mt-20 mb-8 flex w-full max-w-6xl flex-row items-center justify-between md:my-16"> <p class="text-5xl font-extrabold">Upcoming Events (2025-2026)</p> <a href="https://discord.gg/RXMxvEcj7B" class="rounded-4xl border border-[#E4E4E4] px-4 py-2 whitespace-nowrap text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black">
 Join our Discord
 </a> </div> </div>  <div class="flex w-full justify-center px-4 pb-16"> <div class="w-full max-w-7xl"> ${events.map((event, index) => {

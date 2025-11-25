@@ -1,179 +1,12 @@
 import { c as createComponent, b as createAstro, m as maybeRenderHead, d as addAttribute, r as renderTemplate, a as renderComponent } from '../chunks/astro/server_C2S9dwlY.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_Dlw8eWpN.mjs';
+import { $ as $$Layout } from '../chunks/Layout_-OEfOtAE.mjs';
+import { I as xavier, J as bethany, K as lucas, L as sarah, M as mathew, N as chloe, O as kyle, P as victor, Q as justin, R as vanshika, S as brittany, T as noah, U as placeholder } from '../chunks/logo_RjLqd7JM.mjs';
+import '../chunks/hero-graphics-1_C_QibVuj.mjs';
 import { $ as $$Image } from '../chunks/_astro_assets_OTmU57NM.mjs';
 import 'clsx';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
-
-const xavier = new Proxy({"src":"/_astro/xavier.B6IFOBzX.webp","width":560,"height":560,"format":"webp"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/xavier.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const bethany = new Proxy({"src":"/_astro/bethany.CJqyRpnF.webp","width":1139,"height":1138,"format":"jpg","orientation":1}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/bethany.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const brittany = new Proxy({"src":"/_astro/brittany.BA_QVYgy.webp","width":1111,"height":1199,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/brittany.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const chloe = new Proxy({"src":"/_astro/chloe.DXh5LN6r.webp","width":1363,"height":2048,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/chloe.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const justin = new Proxy({"src":"/_astro/justin.BQyGOihK.webp","width":2048,"height":2048,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/justin.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const kyle = new Proxy({"src":"/_astro/kyle.C5Oh737E.webp","width":360,"height":480,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/kyle.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const lucas = new Proxy({"src":"/_astro/lucas.EVpqinIx.webp","width":800,"height":800,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/lucas.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const mathew = new Proxy({"src":"/_astro/mathew.DcBHy9UV.webp","width":1536,"height":2048,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/mathew.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const noah = new Proxy({"src":"/_astro/noah.C6nLw6No.webp","width":402,"height":487,"format":"png"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/noah.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const sarah = new Proxy({"src":"/_astro/sarah.CFUcyVnF.webp","width":1535,"height":2048,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/sarah.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const vanshika = new Proxy({"src":"/_astro/vanshika.Hohvih2n.webp","width":976,"height":1464,"format":"jpg","orientation":1}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/vanshika.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const victor = new Proxy({"src":"/_astro/victor.DmzlmP4y.webp","width":636,"height":795,"format":"jpg"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/victor.webp";
-							}
-							
-							return target[name];
-						}
-					});
-
-const placeholder = new Proxy({"src":"/_astro/logo.D2yr04wa.png","width":633,"height":709,"format":"png"}, {
-						get(target, name, receiver) {
-							if (name === 'clone') {
-								return structuredClone(target);
-							}
-							if (name === 'fsPath') {
-								return "/home/vvict/projects/ubc_game/club_site/src/assets/exec_photos/logo.png";
-							}
-							
-							return target[name];
-						}
-					});
 
 const execs = [
   {
@@ -259,6 +92,76 @@ const execs = [
   }
 ];
 
+class ExecService {
+  /**
+   * Get all executives
+   * @returns Array of all executives
+   */
+  static getAll() {
+    return execs;
+  }
+  /**
+   * Get executives by role
+   * @param role - Role string to filter by (e.g., "President", "Vice President")
+   * @returns Filtered array of executives
+   */
+  static getByRole(role) {
+    return execs.filter(
+      (exec) => exec.role.toLowerCase().includes(role.toLowerCase())
+    );
+  }
+  /**
+   * Get the president(s)
+   * @returns Array of executives with "President" in their role
+   */
+  static getPresidents() {
+    return execs.filter(
+      (exec) => exec.role.toLowerCase().includes("president") && !exec.role.toLowerCase().includes("vice")
+    );
+  }
+  /**
+   * Get all executives except presidents (for grid display)
+   * @returns Array of non-president executives
+   */
+  static getNonPresidents() {
+    return execs.filter(
+      (exec) => !(exec.role.toLowerCase().includes("president") && !exec.role.toLowerCase().includes("vice"))
+    );
+  }
+  /**
+   * Get executives with GitHub profiles
+   * @returns Array of executives who have GitHub links
+   */
+  static getWithGitHub() {
+    return execs.filter((exec) => exec.github);
+  }
+  /**
+   * Get executives with portfolio links
+   * @returns Array of executives who have portfolio links
+   */
+  static getWithPortfolio() {
+    return execs.filter((exec) => exec.portfolio);
+  }
+  /**
+   * Search executives by name
+   * @param query - Search query string
+   * @returns Array of executives matching the query
+   */
+  static search(query) {
+    const lowerQuery = query.toLowerCase();
+    return execs.filter(
+      (exec) => exec.name.toLowerCase().includes(lowerQuery) || exec.role.toLowerCase().includes(lowerQuery)
+    );
+  }
+  /**
+   * Get total count of executives
+   * @returns Total number of executives
+   */
+  static getCount() {
+    return execs.length;
+  }
+}
+
 const $$Astro$4 = createAstro();
 const $$LinkedInIcon = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
@@ -309,6 +212,7 @@ Meet the folks who keep UBC Game Dev running—events, workshops, and community!
 }, "/home/vvict/projects/ubc_game/club_site/src/components/team/ExecGrid.astro", void 0);
 
 const $$Team = createComponent(($$result, $$props, $$slots) => {
+  const execs = ExecService.getAll();
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> ${renderComponent($$result2, "ExecGrid", $$ExecGrid, { "execs": execs })} </main> ` })}`;
 }, "/home/vvict/projects/ubc_game/club_site/src/pages/team.astro", void 0);
 
@@ -316,10 +220,10 @@ const $$file = "/home/vvict/projects/ubc_game/club_site/src/pages/team.astro";
 const $$url = "/team";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-	__proto__: null,
-	default: $$Team,
-	file: $$file,
-	url: $$url
+  __proto__: null,
+  default: $$Team,
+  file: $$file,
+  url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const page = () => _page;

@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { execs } from "../data/execs";
+import { ExecService } from "../services";
 import ExecGrid from "../components/team/ExecGrid.astro";
+
+const execs = ExecService.getAll();
 import "../styles/global.css";
 ---
 

@@ -2,8 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import EventCard from "../components/events/EventCard.astro";
 import EventTimeline from "../components/events/EventTimeline.astro";
+import { EventService } from "../services";
 
-import { events } from "../data/events";
+const events = EventService.getAll();
 ---
 
 <Layout>
