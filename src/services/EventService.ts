@@ -7,7 +7,6 @@ import { events as staticEvents } from '../data/events';
  * Can be easily extended to fetch from API endpoints instead of static data.
  */
 export class EventService {
-    
   /**
    * Get all events
    * 
