@@ -29,7 +29,9 @@ const events = EventService.getAll();
                 events.map((event, index) => {
                     const isEven = index % 2 === 0;
                     return (
-                        <div class="relative mb-8 last:mb-0 md:mb-12">
+                        <div
+                            class="relative mb-8 last:mb-0 md:mb-12"
+                            data-timeline-row>
                             {/* Desktop layout - alternating sides */}
                             <div class="hidden md:grid md:grid-cols-[1fr_80px_1fr] md:gap-8">
                                 {/* Left side - shows card on even indices */}

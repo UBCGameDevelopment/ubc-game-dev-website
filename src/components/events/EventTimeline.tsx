@@ -5,60 +5,72 @@ interface EventTimelineProps {
   isLast: boolean;
 }
 
-// Constants for timeline measurements
-const TIMELINE_GAP_TO_NEXT_CIRCLE = 200; // Gap between cards plus space to reach center of next circle (in pixels)
-const CONTENT_LOAD_DELAY = 100; // Delay to recalculate after content loads (in milliseconds)
-
 export default function EventTimeline({ index, isLast }: EventTimelineProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const [lineHeight, setLineHeight] = useState(0);
 
   useEffect(() => {
-    if (isLast || !circleRef.current) return;
+    if (isLast) return;
 
     const updateLineHeight = () => {
       const circle = circleRef.current;
-      if (!circle) return;
-
-      // Get the parent container height
-      const container = circle.closest('.timeline-container');
-      if (!container) return;
-
-      const containerHeight = container.clientHeight;
-      const circleRect = circle.getBoundingClientRect();
-      const containerRect = container.getBoundingClientRect();
+      const container = containerRef.current;
       
-      // Calculate distance from center of circle to bottom of container, plus gap to next card
-      const centerOffset = circleRect.top - containerRect.top + (circleRect.height / 2);
-      const heightToNextCard = containerHeight - centerOffset + TIMELINE_GAP_TO_NEXT_CIRCLE;
+      if (!circle || !container) return;
+
+      // Find the next timeline container
+      const currentRow = container.closest('[data-timeline-row]');
+      if (!currentRow) return;
+
+      const nextRow = currentRow.nextElementSibling as HTMLElement;
+      if (!nextRow) return;
+
+      const nextCircle = nextRow.querySelector('[data-timeline-circle]');
+      if (!nextCircle) return;
+
+      // Calculate distance between centers of current and next circle
+      const currentRect = circle.getBoundingClientRect();
+      const nextRect = nextCircle.getBoundingClientRect();
       
-      setLineHeight(heightToNextCard);
+      const currentCenter = currentRect.top + currentRect.height / 2;
+      const nextCenter = nextRect.top + nextRect.height / 2;
+      const distance = nextCenter - currentCenter;
+      
+      setLineHeight(Math.max(0, distance));
     };
 
+    // Initial calculation
     updateLineHeight();
-    window.addEventListener('resize', updateLineHeight);
     
-    // Also update when content loads
-    const timeout = setTimeout(updateLineHeight, CONTENT_LOAD_DELAY);
+    // Update on resize and after short delay for content loading
+    window.addEventListener('resize', updateLineHeight);
+    const timeouts = [100, 300, 500].map(delay => 
+      setTimeout(updateLineHeight, delay)
+    );
 
     return () => {
       window.removeEventListener('resize', updateLineHeight);
-      clearTimeout(timeout);
+      timeouts.forEach(clearTimeout);
     };
   }, [isLast]);
 
   return (
-    <div className="relative flex h-full min-h-full items-center justify-center" ref={circleRef}>
-      {/* Vertical line */}
-      {!isLast && (
+    <div className="relative flex h-full items-center justify-center" ref={containerRef}>
+      {/* Vertical line connecting to next node */}
+      {!isLast && lineHeight > 0 && (
         <div
-          className="absolute left-1/2 top-1/2 w-0.5 -translate-x-1/2 bg-gradient-to-b from-brand-500/50 to-accent-500/30"
+          className="absolute left-1/2 top-1/2 w-0.5 -translate-x-1/2 bg-gradient-to-b from-brand-500/60 to-accent-500/40"
           style={{ height: `${lineHeight}px` }}
         />
       )}
 
       {/* Circle with number */}
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-500 shadow-lg ring-4 ring-black/20">
+      <div 
+        className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-accent-500 shadow-lg ring-4 ring-black/20"
+        ref={circleRef}
+        data-timeline-circle
+      >
         <span className="text-lg font-bold text-white">{index + 1}</span>
       </div>
     </div>
