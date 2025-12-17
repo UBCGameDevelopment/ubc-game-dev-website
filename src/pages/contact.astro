@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SubscribeSection from "../components/home/SubscribeSection.astro";
+import ContactForm from "../components/home/ContactForm";
 ---
 
 <Layout>
@@ -11,13 +11,10 @@ import SubscribeSection from "../components/home/SubscribeSection.astro";
         </div>
     </div>
 
-    <!-- Subscribe CTA / Form -->
-    <div class="">
-        <SubscribeSection
-            action="#"
-            method="POST"
-            title="SUBSCRIBE"
-            subtitle="Sign up for our newsletter to receive info about meetings, workshops, events and more!"
-        />
-    </div>
+    <!-- Contact Form -->
+    <ContactForm
+        client:load
+        title="Contact Us"
+        subtitle="Have a question or want to collaborate? Send us a message and we'll get back to you!"
+    />
 </Layout>
