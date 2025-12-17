@@ -8,7 +8,7 @@
   --color-gray-500: #b0b0b0;
   --color-gray-200: #d6d6d6;
   --color-gray-100: #e4e4e4;
-  --color-gray-50: #f1f1f1;
+  --color-gray-50:  #f1f1f1;
 
   /* brand & accent (from your image) */
   --color-brand-700: #402dad;
@@ -18,99 +18,102 @@
   --color-accent-600: #5bcd84;
   --color-accent-500: #93deae;
   --color-accent-300: #c9eed6;
-  --color-accent-100: #f1f1f1; /* test */
 }
 
 /* Semantic CSS variables (optional but handy) */
 :root {
   --surface: var(--color-gray-950);
-  --surface-2: #151515; /* subtle layer above surface */
-  --text: var(--color-gray-50);
-  --muted: var(--color-gray-500);
-  --border: color-mix(in oklab, var(--surface), white 14%);
-  --ring: var(--color-brand-500);
+  --surface-2: #151515;           /* subtle layer above surface */
+  --text:    var(--color-gray-50);
+  --muted:   var(--color-gray-500);
+  --border:  color-mix(in oklab, var(--surface), white 14%);
+  --ring:    var(--color-brand-500);
 
   /* brand helpers */
-  --brand: var(--color-brand-500);
+  --brand:   var(--color-brand-500);
   --brand-strong: var(--color-brand-700);
-  --accent: var(--color-accent-500);
+  --accent:  var(--color-accent-500);
 }
 
 /* --- Base (site-wide) --- */
 @layer base {
-  html {
-    color-scheme: dark;
-  }
+  html { color-scheme: dark; }
   body {
     @apply min-h-screen antialiased;
     min-height: 100%;
     background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat fixed;
     background-size: cover;
     color: var(--text);
+    position: relative;
+  }
+
+  /* Blurred gradient at bottom of viewport */
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, rgba(64, 45, 173, 0.5), transparent);
+    -webkit-mask-image: linear-gradient(to top, black, transparent);
+    mask-image: linear-gradient(to top, black, transparent);
+    backdrop-filter: blur(28px) saturate(1.2);
+    -webkit-backdrop-filter: blur(28px) saturate(1.2);
+    pointer-events: none;
+    z-index: 50;
   }
 
   a {
     color: white;
     transition: color 0.6s ease-in-out;
   }
-
+  
   a:hover {
     color: var(--brand);
   }
 
-  hr {
-    border-color: var(--border);
-  }
+  hr { border-color: var(--border); }
 }
 
 /* --- Reusable components (optional) --- */
 @layer components {
-  .container-page {
-    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  .container-page { 
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl; 
   }
 
   .card {
-    @apply rounded-2xl p-5 shadow-lg;
+    @apply shadow-lg p-5 rounded-2xl;
     background: color-mix(in oklab, var(--surface), white 4%);
     border: 1px solid var(--border);
   }
 
   .btn {
-    @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-medium transition;
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition;
     border: 1px solid transparent;
   }
   .btn-primary {
     @apply text-white;
     background: var(--brand);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
   }
-  .btn-primary:hover {
-    background: var(--brand-strong);
-  }
+  .btn-primary:hover { background: var(--brand-strong); }
   .btn-outline {
     color: var(--text);
     border-color: var(--border);
     background: transparent;
   }
-  .btn-outline:hover {
-    border-color: var(--ring);
-    color: var(--ring);
-  }
+  .btn-outline:hover { border-color: var(--ring); color: var(--ring); }
 
   .badge {
-    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
+    @apply inline-flex items-center px-2 py-0.5 rounded-full font-semibold text-xs;
     background: var(--accent);
     color: #07210f; /* readable on the green */
   }
 
   /* form focus ring using your brand */
-  .focus-ring {
-    @apply focus:ring-2 focus:outline-none;
-    box-shadow: 0 0 0 0 var(--ring);
-  }
-  .focus-ring:focus {
-    --tw-ring-color: var(--ring);
-  }
+  .focus-ring { @apply focus:outline-none focus:ring-2; box-shadow: 0 0 0 0 var(--ring); }
+  .focus-ring:focus { --tw-ring-color: var(--ring); }
 
   /* Timeline with fish-eye effect (React component) */
   .timeline-react {
@@ -152,10 +155,7 @@
     width: 85px;
     height: 3px;
     border-radius: 9999px;
-    transition:
-      transform 0.22s ease,
-      background 0.22s ease,
-      box-shadow 0.22s ease;
+    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
     transform-origin: center;
   }
 
@@ -165,9 +165,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(244, 247, 255, 0.95);
-    transition:
-      opacity 0.18s ease,
-      transform 0.18s ease;
+    transition: opacity 0.18s ease, transform 0.18s ease;
     white-space: nowrap;
   }
 
@@ -175,7 +173,7 @@
     .timeline-bar {
       width: 68px;
     }
-
+    
     .timeline-label {
       font-size: 0.65rem;
     }
@@ -183,8 +181,7 @@
 }
 
 /* --- Smooth Scroll --- */
-html.lenis,
-html.lenis body {
+html.lenis, html.lenis body {
   height: auto;
 }
 

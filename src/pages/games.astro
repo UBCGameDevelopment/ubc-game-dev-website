@@ -49,7 +49,8 @@ const games = GameService.getAll();
                                 <div
                                     class="game-card-wrapper"
                                     data-game-card
-                                    data-year={game.year}>
+                                    data-year={game.year}
+                                    style="opacity: 0; transform: scale(0.9); filter: blur(8px);">
                                     <GameCard {...game} />
                                 </div>
                             ))
@@ -60,38 +61,3 @@ const games = GameService.getAll();
         </section>
     </main>
 </Layout>
-
-<style>
-    .game-card-wrapper {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .game-card-wrapper.game-card-hidden {
-        opacity: 0;
-        height: 0;
-        margin: 0 !important;
-        overflow: hidden;
-        pointer-events: none;
-        transition:
-            opacity 0.3s ease,
-            height 0.3s ease,
-            margin 0.3s ease;
-    }
-
-    .game-card-wrapper.game-card-visible {
-        animation: slideUpFadeIn 0.6s ease forwards;
-        animation-delay: var(--stagger-delay, 0s);
-    }
-
-    @keyframes slideUpFadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(40px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-</style>
