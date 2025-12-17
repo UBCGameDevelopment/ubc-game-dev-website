@@ -4,7 +4,7 @@ import Hero from "../components/home/Hero.astro";
 import InfoBlock from "../components/home/InfoBlock.astro";
 import StatsCircles from "../components/home/StatsCircles.astro";
 import FeaturesRow from "../components/common/FeaturesRow.astro";
-import SubscribeSection from "../components/home/SubscribeSection.astro";
+import ContactForm from "../components/home/ContactForm";
 import { LINKS } from "../config/links";
 
 import infoImage from "../assets/info.jpg";
@@ -62,12 +62,11 @@ import ourGamesImg from "../assets/ourGames.jpg";
       ]}
     />
 
-    <!-- Subscribe CTA / Form -->
-    <SubscribeSection
-      action="#"
-      method="POST"
-      title="SUBSCRIBE"
-      subtitle="Sign up for our newsletter to receive info about meetings, workshops, events and more!"
+    <!-- Contact Form -->
+    <ContactForm
+      client:load
+      title="Contact Us"
+      subtitle="Have a question or want to collaborate? Send us a message and we'll get back to you!"
     />
   </main>
 </Layout>
