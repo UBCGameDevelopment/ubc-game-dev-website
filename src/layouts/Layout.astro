@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
-import BlurOverlay from "../components/common/BlurOverlay";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
 ---
@@ -38,9 +37,6 @@ import Analytics from "@vercel/analytics/astro";
 
     <!-- Footer -->
     <Footer />
-
-    <!-- Blur overlay -->
-    <BlurOverlay client:load />
   </body>
 </html>
 
