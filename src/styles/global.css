@@ -86,7 +86,6 @@ body::after {
   transform: translateZ(0);
 }
 
-
 /* --- Reusable components (optional) --- */
 @layer components {
   .container-page {
