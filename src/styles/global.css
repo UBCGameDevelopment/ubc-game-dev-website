@@ -52,25 +52,6 @@
     isolation: isolate;
   }
 
-  /* Blurred gradient at bottom of viewport */
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(to top, rgba(64, 45, 173, 0.5), transparent);
-    -webkit-mask-image: linear-gradient(to top, black, transparent);
-    mask-image: linear-gradient(to top, black, transparent);
-    backdrop-filter: blur(40px) saturate(1.2);
-    -webkit-backdrop-filter: blur(40px) saturate(1.2);
-    pointer-events: none;
-    z-index: 9999;
-    will-change: transform;
-  }
-
   a {
     color: white;
     transition: color 0.6s ease-in-out;
@@ -84,6 +65,27 @@
     border-color: var(--border);
   }
 }
+
+/* Blurred gradient at bottom of viewport - outside @layer for better production support */
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, rgba(64, 45, 173, 0.6), transparent);
+  -webkit-mask-image: linear-gradient(to top, black, transparent);
+  mask-image: linear-gradient(to top, black, transparent);
+  backdrop-filter: blur(40px) saturate(1.2);
+  -webkit-backdrop-filter: blur(40px) saturate(1.2);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 
 /* --- Reusable components (optional) --- */
 @layer components {
