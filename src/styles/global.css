@@ -40,14 +40,26 @@
 @layer base {
   html {
     color-scheme: dark;
-    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat fixed;
-    background-size: cover;
+    overscroll-behavior: none;
   }
 
   body {
     @apply min-h-screen antialiased;
     color: var(--text);
     position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat center center;
+    background-size: cover;
+    pointer-events: none;
   }
 
   a {
