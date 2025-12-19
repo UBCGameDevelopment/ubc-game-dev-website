@@ -40,13 +40,12 @@
 @layer base {
   html {
     color-scheme: dark;
+    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat fixed;
+    background-size: cover;
   }
 
   body {
     @apply min-h-screen antialiased;
-    min-height: 100%;
-    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat fixed;
-    background-size: cover;
     color: var(--text);
     position: relative;
   }
@@ -68,17 +67,17 @@
 /* --- Reusable components (optional) --- */
 @layer components {
   .container-page {
-    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl;
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
 
   .card {
-    @apply shadow-lg p-5 rounded-2xl;
+    @apply rounded-2xl p-5 shadow-lg;
     background: color-mix(in oklab, var(--surface), white 4%);
     border: 1px solid var(--border);
   }
 
   .btn {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition;
+    @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-medium transition;
     border: 1px solid transparent;
   }
 
@@ -104,7 +103,7 @@
   }
 
   .badge {
-    @apply inline-flex items-center px-2 py-0.5 rounded-full font-semibold text-xs;
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
     background: var(--accent);
     color: #07210f;
     /* readable on the green */
@@ -112,7 +111,7 @@
 
   /* form focus ring using your brand */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2;
+    @apply focus:ring-2 focus:outline-none;
     box-shadow: 0 0 0 0 var(--ring);
   }
 
@@ -160,7 +159,10 @@
     width: 85px;
     height: 3px;
     border-radius: 9999px;
-    transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    transition:
+      transform 0.22s ease,
+      background 0.22s ease,
+      box-shadow 0.22s ease;
     transform-origin: center;
   }
 
@@ -170,7 +172,9 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: rgba(244, 247, 255, 0.95);
-    transition: opacity 0.18s ease, transform 0.18s ease;
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
     white-space: nowrap;
   }
 
