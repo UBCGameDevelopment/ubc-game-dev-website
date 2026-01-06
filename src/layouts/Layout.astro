@@ -4,13 +4,6 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
-import Snowfall from "react-snowfall";
-
-interface Props {
-  disableSnowfall?: boolean;
-}
-
-const { disableSnowfall = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -44,16 +37,10 @@ const { disableSnowfall = false } = Astro.props;
     <Analytics />
   </head>
   <body class="flex min-h-screen flex-col">
-    <!-- Snowfall effects -->
-    {!disableSnowfall && <Snowfall client:load />}
-
-    <!-- Navbar -->
     <Navbar />
 
-    <!-- Body/main content -->
     <slot />
 
-    <!-- Footer -->
     <Footer />
   </body>
 </html>
