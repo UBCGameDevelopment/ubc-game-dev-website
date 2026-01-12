@@ -38,7 +38,7 @@ export const events: Event[] = [
   },
   {
     title: "nwHacks 2026 Workshop",
-    date: "Friday, Jan. 16, 2026: 6pm",
+    date: "Friday, Jan. 16, 2026: 6-7:30pm",
     description: "Join our hands-on Unity workshop and build your first 3D game, Roll-a-Ball! You'll learn the essentials like scene setup, player movement, physics, and collecting objects. Leave with a playable mini-game and a strong base to keep creating on your own. <strong>No experience needed, just bring your laptop with the latest version of Unity installed.</strong>",
     location: "IRC 5",
     mapLink: "https://maps.app.goo.gl/yvfR3oCS7TRHdyUn8",
