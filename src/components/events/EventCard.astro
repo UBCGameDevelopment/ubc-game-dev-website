@@ -9,21 +9,24 @@ import GradientHeading from "../common/Typography/GradientHeading.astro";
 
 export interface Props extends Event {}
 
-const { title, date, description, location, mapLink, image } = Astro.props;
+const { title, date, description, location, mapLink, image, isActive } = Astro.props;
 ---
 
 <BaseCard>
-    <div class="p-4 md:p-6">
+    <div class:list={["p-4 md:p-6", { "pointer-events-none opacity-50": !isActive }]}>
         <!-- Grid Layout: Image Left, Content Right -->
         <div class="grid gap-4 md:grid-cols-2 md:gap-6">
             <!-- Left Section: Event Image -->
             <div class="flex flex-col justify-center">
                 <div
-                    class="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10">
+                    class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] ring-1 ring-white/10">
                     <Image
                         src={image}
                         alt={title}
-                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        class:list={[
+                            "w-full object-cover transition-transform duration-500",
+                            { grayscale: !isActive, "group-hover:scale-105": isActive },
+                        ]}
                         loading="lazy"
                     />
                 </div>
@@ -31,9 +34,9 @@ const { title, date, description, location, mapLink, image } = Astro.props;
 
             <!-- Right Section: Event Info -->
             <div class="flex flex-col">
-                <!-- Event Badge -->
+                <!-- Event Badge or Passed Badge -->
                 <Badge
-                    label="Event"
+                    label={isActive ? "Event" : "Passed"}
                     variant="event"
                     class="mb-2"
                 />
@@ -52,15 +55,16 @@ const { title, date, description, location, mapLink, image } = Astro.props;
                 </div>
 
                 <!-- Event Description -->
-                <p class="mb-3 text-sm leading-relaxed text-gray-50/80">
-                    {description}
-                </p>
+                <p
+                    class="mb-3 text-sm leading-relaxed text-gray-50/80"
+                    set:html={description}
+                />
 
                 <!-- Event Location -->
                 <div class="mt-auto flex items-center gap-2 text-sm">
                     <LocationIcon />
                     {
-                        mapLink ? (
+                        mapLink && isActive ? (
                             <a
                                 class="font-medium text-gray-200 hover:underline"
                                 href={mapLink}

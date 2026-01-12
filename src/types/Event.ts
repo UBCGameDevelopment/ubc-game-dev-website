@@ -10,4 +10,5 @@ export interface Event {
   location: string;
   mapLink?: string;
   image: ImageMetadata;
+  isActive: boolean;
 }
