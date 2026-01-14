@@ -1,47 +1,97 @@
+/* Google Fonts - must be first */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap");
+
 @import "tailwindcss";
 
-/* --- Theme tokens from your palette --- */
+/* --- Theme tokens: UBC Game Dev Shirt Palette (OKLCH) --- */
 @theme {
-  /* neutrals */
-  --color-gray-950: #101010;
-  --color-gray-700: #616161;
-  --color-gray-500: #b0b0b0;
-  --color-gray-200: #d6d6d6;
-  --color-gray-100: #e4e4e4;
-  --color-gray-50: #f1f1f1;
+  /* Typography */
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "VT323", monospace;
 
-  /* brand & accent (from your image) */
-  --color-brand-700: #402dad;
-  --color-brand-500: #9d7cff;
-  --color-brand-400: #bea9ff;
+  /* Washed Black scale (dark mode base) */
+  --color-black: oklch(26.032% 0 none);
+  --color-black-50: oklch(93.1% 0 none);
+  --color-black-100: oklch(90.365% 0 none);
+  --color-black-200: oklch(84.522% 0 none);
+  --color-black-300: oklch(78.26% 0 none);
+  --color-black-400: oklch(71.547% 0 none);
+  --color-black-500: oklch(64.673% 0 none);
+  --color-black-600: oklch(57.268% 0 none);
+  --color-black-700: oklch(48.906% 0 none);
+  --color-black-800: oklch(39.418% 0 none);
+  --color-black-900: oklch(26.032% 0 none);
+  --color-black-950: oklch(13.979% 0 none);
 
-  --color-accent-600: #5bcd84;
-  --color-accent-500: #93deae;
-  --color-accent-300: #c9eed6;
+  /* Cream scale (light mode base - matching the cream shirt) */
+  --color-cream: oklch(96% 0.015 90);
+  --color-cream-50: oklch(98.5% 0.008 90);
+  --color-cream-100: oklch(97% 0.012 90);
+  --color-cream-200: oklch(95% 0.018 90);
+  --color-cream-300: oklch(92% 0.022 90);
+  --color-cream-400: oklch(88% 0.025 90);
+  --color-cream-500: oklch(84% 0.028 90);
+
+  /* Lavender/Purple brand (matching shirt print) */
+  --color-lavender: oklch(72% 0.14 285);
+  --color-lavender-50: oklch(96% 0.03 285);
+  --color-lavender-100: oklch(92% 0.06 285);
+  --color-lavender-200: oklch(86% 0.1 285);
+  --color-lavender-300: oklch(80% 0.12 285);
+  --color-lavender-400: oklch(76% 0.13 285);
+  --color-lavender-500: oklch(72% 0.14 285);
+  --color-lavender-600: oklch(62% 0.16 285);
+  --color-lavender-700: oklch(52% 0.18 285);
+  --color-lavender-800: oklch(42% 0.16 285);
+  --color-lavender-900: oklch(32% 0.12 285);
+
+  /* Accent (lighter lavender for secondary highlights) */
+  --color-accent-500: oklch(85% 0.08 285);
+  --color-accent-600: oklch(78% 0.1 285);
 }
 
-/* Semantic CSS variables (optional but handy) */
+/* Dark mode (default) */
 :root {
-  --surface: var(--color-gray-950);
-  --surface-2: #151515;
-  /* subtle layer above surface */
-  --text: var(--color-gray-50);
-  --muted: var(--color-gray-500);
-  --border: color-mix(in oklab, var(--surface), white 14%);
-  --ring: var(--color-brand-500);
+  --surface: var(--color-black-950);
+  --surface-2: var(--color-black-900);
+  --surface-3: var(--color-black-800);
+  --text: var(--color-black-50);
+  --text-muted: var(--color-black-400);
+  --border: var(--color-black-700);
+  --ring: var(--color-lavender-500);
 
   /* brand helpers */
-  --brand: var(--color-brand-500);
-  --brand-strong: var(--color-brand-700);
-  --accent: var(--color-accent-500);
+  --brand: var(--color-lavender-500);
+  --brand-hover: var(--color-lavender-400);
+  --brand-strong: var(--color-lavender-700);
+  --accent: var(--color-lavender-300);
+}
+
+/* Light mode */
+[data-theme="light"] {
+  --surface: var(--color-cream-50);
+  --surface-2: var(--color-cream-100);
+  --surface-3: var(--color-cream-200);
+  --text: var(--color-black-950);
+  --text-muted: var(--color-black-600);
+  --border: var(--color-black-300);
+  --ring: var(--color-lavender-600);
+  --brand: var(--color-lavender-700);
+  --brand-hover: var(--color-lavender-600);
+  --brand-strong: var(--color-lavender-800);
+  --accent: var(--color-lavender-500);
 }
 
 /* --- Base (site-wide) --- */
 @layer base {
   html {
-    color-scheme: dark;
+    color-scheme: dark light;
     overscroll-behavior: none;
     forced-color-adjust: none;
+  }
+
+  [data-theme="light"] {
+    color-scheme: light;
   }
 
   body {
@@ -58,14 +108,13 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: linear-gradient(to bottom, #000 20%, #402dad 100%) no-repeat center center;
-    background-size: cover;
+    background: var(--surface);
     pointer-events: none;
   }
 
   a {
-    color: white;
-    transition: color 0.6s ease-in-out;
+    color: var(--text);
+    transition: color 0.2s ease-in-out;
   }
 
   a:hover {
@@ -184,7 +233,7 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(244, 247, 255, 0.95);
+    color: var(--text-muted);
     transition:
       opacity 0.18s ease,
       transform 0.18s ease;
@@ -230,4 +279,79 @@ html {
 
 * {
   scroll-margin-top: 2rem;
+}
+
+/* --- Modern + Vintage Effects --- */
+
+/* Subtle scanline overlay (CRT effect) */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  z-index: 100;
+}
+
+/* Pixel/stepped border corners */
+.pixel-corners {
+  --pixel-size: 4px;
+  clip-path: polygon(
+    0 var(--pixel-size),
+    var(--pixel-size) var(--pixel-size),
+    var(--pixel-size) 0,
+    calc(100% - var(--pixel-size)) 0,
+    calc(100% - var(--pixel-size)) var(--pixel-size),
+    100% var(--pixel-size),
+    100% calc(100% - var(--pixel-size)),
+    calc(100% - var(--pixel-size)) calc(100% - var(--pixel-size)),
+    calc(100% - var(--pixel-size)) 100%,
+    var(--pixel-size) 100%,
+    var(--pixel-size) calc(100% - var(--pixel-size)),
+    0 calc(100% - var(--pixel-size))
+  );
+}
+
+/* Lavender accent glow for interactive elements */
+.accent-glow {
+  box-shadow: 0 0 0 0 var(--brand);
+  transition: box-shadow 0.3s ease;
+}
+
+.accent-glow:hover,
+.accent-glow:focus {
+  box-shadow: 0 0 20px -5px var(--brand);
+}
+
+/* Hover lift animation */
+.hover-lift {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
+}
+
+/* Retro text shadow */
+.retro-shadow {
+  text-shadow: 2px 2px 0 var(--brand-strong);
+}
+
+/* Pixel font utility */
+.font-pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.05em;
 }

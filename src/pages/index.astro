@@ -1,72 +1,203 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/home/Hero.astro";
-import InfoBlock from "../components/home/InfoBlock.astro";
-import StatsCircles from "../components/home/StatsCircles.astro";
-import FeaturesRow from "../components/common/FeaturesRow.astro";
 import ContactForm from "../components/home/ContactForm";
+import CountingStats from "../components/home/CountingStats";
+import Mascot from "../components/home/Mascot";
+import StartButton from "../components/home/StartButton";
+import HeroTitle from "../components/home/HeroTitle";
+import CtaButton from "../components/common/CtaButton";
 import { LINKS } from "../config/links";
-
-import infoImage from "../assets/info.jpg";
+import { partnerLogos } from "../data/partnerLogos";
+import { GameService } from "../services/GameService";
 import eventImg from "../assets/events.jpg";
 import ourGamesImg from "../assets/ourGames.jpg";
+import mascotLight from "../assets/hero-mascot-light.png";
+import mascotDark from "../assets/hero-mascot-dark.png";
 ---
 
 <Layout>
-  <main>
-    <!-- Hero Section -->
-    <Hero />
+  <main class="min-h-screen">
+    <section class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-16">
+      <!-- Scanline Overlay -->
+      <div
+        class="pointer-events-none absolute inset-0 z-20 opacity-[0.03]"
+        style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--text) 2px, var(--text) 4px);"
+      >
+      </div>
 
-    <InfoBlock
-      title="WE CREATE GAMES"
-      imageSrc={infoImage.src}
-      imageAlt="Stylized neon sci-fi landscape"
-      ctaHref={LINKS.discord}
-      ctaLabel="Join our Discord">
-      <p>
-        We bring together artists, programmers, writers and musicians to make games! No previous experience required —
-        join a team and start building alongside other budding developers.
-      </p>
-      <p>We also host a Year End Showcase where industry judges check out the games and hand out awards.</p>
-      <p>Want to join? Keep an eye on our Discord for signup forms after our Launch Party.</p>
-    </InfoBlock>
+      <!-- Ambient Glow -->
+      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <div
+          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.12]"
+        >
+        </div>
+      </div>
 
-    <!-- StatCircles -->
-    <StatsCircles
-      items={[
-        { value: "200+", labelTop: "Members" },
-        { value: "5+", labelTop: "Events", labelBottom: "Per Year" },
-        { value: "10+", labelTop: "Sponsors" },
-      ]}
-    />
+      <!-- Content -->
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <!-- Mascot -->
+        <div class="mb-6 w-48 md:w-56">
+          <Mascot
+            client:load
+            lightSrc={mascotLight.src}
+            darkSrc={mascotDark.src}
+          />
+        </div>
 
-    <!-- Events + Our Games cards -->
-    <FeaturesRow
-      cards={[
+        <!-- Title -->
+        <!-- Title -->
+        <div class="mb-4">
+          <HeroTitle client:load />
+        </div>
+        <StartButton client:load />
+
+        <!-- Stats HUD -->
+        <CountingStats
+          client:visible
+          stats={[
+            { value: 200, suffix: "+", label: "Players" },
+            { value: 5, suffix: "+", label: "Quests" },
+            { value: GameService.getCount(), suffix: "", label: "Games" },
+          ]}
+        />
+
+        <!-- CTA -->
+        <CtaButton
+          client:load
+          label="Join Party"
+          href={LINKS.discord}
+          className="mt-10"
+        />
+      </div>
+    </section>
+
+    <section
+      id="select-mode"
+      class="container-page mx-auto px-6 py-24 md:py-32"
+    >
+      <h2 class="font-pixel mb-12 text-center text-4xl tracking-widest text-[var(--text-muted)] uppercase md:text-5xl">
+        Select Mode
+      </h2>
+
+      <div class="mx-auto flex max-w-5xl flex-wrap justify-center gap-6">
+        <!-- Menu Item: Events -->
+        <a
+          href="/events"
+          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
+        >
+          <div class="aspect-[16/9] overflow-hidden">
+            <img
+              src={eventImg.src}
+              alt="Events"
+              class="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
+          <div class="absolute right-0 bottom-0 left-0 p-6">
+            <div class="flex items-center justify-between">
+              <span class="font-pixel text-2xl text-[var(--text)]">Events</span>
+              <span
+                class="font-pixel rounded-md border-2 border-[var(--brand)] bg-[var(--brand)] px-2 py-1 text-xs text-white shadow-sm"
+              >
+                5+ / YEAR
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-[var(--text-muted)]">Game jams, workshops, socials</p>
+          </div>
+        </a>
+
+        <!-- Menu Item: Games -->
+        <a
+          href="/games"
+          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
+        >
+          <div class="aspect-[16/9] overflow-hidden">
+            <img
+              src={ourGamesImg.src}
+              alt="Games"
+              class="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
+            />
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
+          <div class="absolute right-0 bottom-0 left-0 p-6">
+            <div class="flex items-center justify-between">
+              <span class="font-pixel text-2xl text-[var(--text)]">Game Gallery</span>
+              <span
+                class="font-pixel rounded-md border-2 border-[var(--accent)] bg-[var(--accent)] px-2 py-1 text-xs text-white shadow-sm"
+              >
+                {GameService.getCount()} GAMES
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-[var(--text-muted)]">Community creations archive</p>
+          </div>
+        </a>
+
+        <!-- Menu Item: Team -->
+        <a
+          href="/team"
+          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
+        >
+          <div
+            class="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[var(--brand)]/20 to-[var(--accent)]/20"
+          >
+            <svg
+              class="h-20 w-20 text-[var(--brand)]/40"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 4a4 4 0 110 8 4 4 0 010-8zM6 8a3 3 0 100 6 3 3 0 000-6zm12 0a3 3 0 100 6 3 3 0 000-6zM6 18c0-2 2-4 6-4s6 2 6 4v2H6v-2z"
+              >
+              </path>
+            </svg>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
+          <div class="absolute right-0 bottom-0 left-0 p-6">
+            <div class="flex items-center justify-between">
+              <span class="font-pixel text-2xl text-[var(--text)]">The Team</span>
+              <span
+                class="font-pixel rounded-md border-2 border-[var(--brand)] bg-[var(--brand)] px-2 py-1 text-xs text-white shadow-sm"
+              >
+                EXECS
+              </span>
+            </div>
+            <p class="mt-1 text-sm text-[var(--text-muted)]">Meet the organizers</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="container-page mx-auto px-6 py-12">
+      <h2 class="font-pixel mb-12 text-center text-3xl tracking-widest text-[var(--text-muted)] uppercase md:text-4xl">
+        Supported By
+      </h2>
+      <div
+        class="flex flex-wrap items-center justify-center gap-8 opacity-70 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-12"
+      >
         {
-          title: "Events",
-          desc: ["Want to get involved?", "Come join us at the club events we'll be hosting this year."],
-          imageSrc: eventImg.src,
-          imageAlt: "Club event photo",
-          href: "/events",
-          cta: "Learn More",
-        },
-        {
-          title: "Our Games",
-          desc: ["Here's a collection of the games created by our members over the years."],
-          imageSrc: ourGamesImg.src,
-          imageAlt: "Game showcase banner",
-          href: "/games",
-          cta: "Learn More",
-        },
-      ]}
-    />
+          partnerLogos.map((logo) => (
+            <a
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative flex h-16 w-32 items-center justify-center transition-all duration-300 hover:scale-105 md:h-20 md:w-40"
+            >
+              <img
+                src={logo.src.src}
+                alt={logo.alt}
+                class="max-h-full max-w-full object-contain drop-shadow-lg"
+                loading="lazy"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </section>
 
-    <!-- Contact Form -->
     <ContactForm
       client:load
-      title="Contact Us"
-      subtitle="Have a question or want to collaborate? Send us a message and we'll get back to you!"
+      title="Send Message"
+      subtitle="Got questions? Drop us a line!"
     />
   </main>
 </Layout>

@@ -13,21 +13,30 @@ const { execs } = Astro.props;
 const presidentIndex = execs.findIndex((e) => e.role === "President");
 const president = presidentIndex >= 0 ? execs[presidentIndex] : null;
 const rest = execs.filter((_, i) => i !== presidentIndex);
+
+import PixelBadge from "../common/PixelBadge.astro";
 ---
 
-<section class="container-page my-16 md:my-20">
-  <!-- Section Header -->
-  <div class="mx-auto mb-12 max-w-3xl text-center">
+<section class="container-page relative my-16 overflow-hidden md:my-20">
+  <!-- Ambient Glow -->
+  <div class="pointer-events-none absolute inset-0 z-0 flex items-start justify-center pt-20">
     <div
-      class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5">
-      <span class="text-brand-400 text-sm font-semibold">Meet The Team</span>
+      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
+    >
+    </div>
+  </div>
+
+  <!-- Section Header -->
+  <div class="relative z-10 mx-auto mb-12 max-w-3xl text-center">
+    <div class="mb-4 inline-flex justify-center">
+      <PixelBadge
+        label="Meet The Team"
+        variant="brand"
+      />
     </div>
 
-    <h2
-      class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-3xl font-extrabold tracking-tight text-transparent md:text-5xl">
-      Our Executive Team
-    </h2>
-    <p class="mt-4 text-lg leading-relaxed text-gray-50/80">
+    <h2 class="font-pixel text-3xl font-extrabold tracking-tight text-[var(--text)] md:text-5xl">Our Executive Team</h2>
+    <p class="mt-4 text-lg leading-relaxed text-[var(--text-muted)]">
       Meet the folks who keep UBC Game Dev running—events, workshops, and community!
     </p>
   </div>

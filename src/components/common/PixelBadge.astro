@@ -1,0 +1,54 @@
+---
+interface Props {
+  label: string;
+  variant?: "brand" | "accent" | "lavender" | "pink";
+  class?: string;
+  icon?: string; // Optional icon slot or name
+}
+
+const { label, variant = "brand", class: className } = Astro.props;
+
+const variants = {
+  brand: {
+    border: "border-[var(--brand)]",
+    text: "text-[var(--brand)]",
+    shadow: "shadow-[4px_4px_0px_0px_var(--brand)]",
+    bg: "bg-[var(--surface)]", // Using surface to keep it dark inside
+  },
+  accent: {
+    border: "border-[var(--accent)]",
+    text: "text-[var(--accent)]",
+    shadow: "shadow-[4px_4px_0px_0px_var(--accent)]",
+    bg: "bg-[var(--surface)]",
+  },
+  lavender: {
+    border: "border-lavender-400",
+    text: "text-lavender-400",
+    shadow: "shadow-[4px_4px_0px_0px_theme(colors.lavender.400)]",
+    bg: "bg-[var(--surface)]",
+  },
+  pink: {
+    border: "border-pink-500",
+    text: "text-pink-500",
+    shadow: "shadow-[4px_4px_0px_0px_theme(colors.pink.500)]",
+    bg: "bg-[var(--surface)]",
+  },
+};
+
+const style = variants[variant] || variants.brand;
+---
+
+<div
+  class:list={[
+    "inline-flex items-center gap-2 rounded-lg border-2 px-4 py-1.5 font-bold tracking-widest uppercase transition-transform hover:-translate-y-0.5",
+    style.border,
+    style.bg,
+    style.shadow,
+    className,
+  ]}
+>
+  <slot name="icon" />
+  <span class:list={["font-pixel text-xs", style.text]}>
+    {label}
+  </span>
+</div>

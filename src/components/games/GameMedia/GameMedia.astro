@@ -12,7 +12,7 @@ export interface Props {
 const { media, name, cardId } = Astro.props;
 ---
 
-<div class="relative rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] overflow-hidden ring-1 ring-white/10">
+<div class="relative rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] overflow-hidden shadow-sm">
   {media.type === 'video' && media.videoUrl ? (
     <VideoEmbed videoUrl={media.videoUrl} name={name} />
   ) : media.type === 'images' && media.images && media.images.length > 0 ? (

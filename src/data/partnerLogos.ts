@@ -10,10 +10,10 @@ import tgs from "../assets/partners/tgs.webp";
 export type Logo = { src: ImageMetadata; alt: string; href?: string };
 
 export const partnerLogos: Logo[] = [
-  { src: archiact,   alt: "Archiact" },
-  { src: blackbird,  alt: "Blackbird Interactive", href: "https://blackbirdinteractive.com/" },
-  { src: skybox,     alt: "SkyBox Labs",           href: "https://skyboxlabs.com/" },
-  { src: telus,      alt: "TELUS",                 href: "https://www.telus.com/" },
-  { src: homekey,    alt: "The Home Key",          href: "https://thehomekey.ca/" },
-  { src: tgs,        alt: "The Gaming Stadium",    href: "https://discord.com/invite/tgs" }, 
+  { src: archiact, alt: "Archiact" },
+  { src: blackbird, alt: "Blackbird Interactive", href: "https://blackbirdinteractive.com/" },
+  { src: skybox, alt: "SkyBox Labs", href: "https://skyboxlabs.com/" },
+  { src: telus, alt: "TELUS", href: "https://www.telus.com/" },
+  { src: homekey, alt: "The Home Key", href: "https://www.instagram.com/thehomekeygg/" },
+  { src: tgs, alt: "The Gaming Stadium", href: "https://discord.com/invite/tgs" },
 ];

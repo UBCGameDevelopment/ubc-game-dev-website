@@ -1,26 +1,18 @@
 ---
-import CardGlow from "./CardGlow.astro";
-import CardOrbs from "./CardOrbs.astro";
-
 interface Props {
-    class?: string;
-    hasGlow?: boolean;
-    hasOrbs?: boolean;
+  class?: string;
 }
 
-const { class: className = "", hasGlow = true, hasOrbs = true } = Astro.props;
+const { class: className = "" } = Astro.props;
 ---
 
 <article class={`group relative ${className}`}>
-    {hasGlow && <CardGlow />}
-
-    <!-- Main card container -->
-    <div
-        class="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] shadow-2xl ring-1 shadow-black/40 ring-white/10 backdrop-blur-xl">
-        {hasOrbs && <CardOrbs />}
-
-        <div class="relative z-10">
-            <slot />
-        </div>
+  <!-- Main card container -->
+  <div
+    class="relative overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface-2)] shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand)] hover:shadow-lg"
+  >
+    <div class="relative z-10">
+      <slot />
     </div>
+  </div>
 </article>

@@ -1,66 +1,110 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import EventCard from "../components/events/EventCard.astro";
-import EventTimeline from "../components/events/EventTimeline.astro";
+import CtaButton from "../components/common/CtaButton";
+import LevelCard from "../components/events/LevelCard.astro";
+import EventModal from "../components/events/EventModal";
 import { EventService } from "../services";
 import { LINKS } from "../config/links";
 
 const events = EventService.getAll();
+
+// Prepare events data for the modal
+const eventsForModal = events.map((event, index) => ({
+  title: event.title,
+  date: event.date,
+  description: event.description,
+  location: event.location,
+  mapLink: event.mapLink || "",
+  imageSrc: event.image.src,
+  isActive: event.isActive,
+  chapterNumber: index + 1,
+}));
+
+import PixelBadge from "../components/common/PixelBadge.astro";
 ---
 
 <Layout>
-    <!-- Header -->
-    <div class="mb-8 flex w-full justify-center px-4">
+  <main>
+    <!-- Header Section -->
+    <section class="relative overflow-hidden py-16 md:py-24">
+      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
-            class="mt-20 mb-8 flex w-full max-w-6xl flex-col gap-4 md:my-16 md:flex-row md:items-center md:justify-between">
-            <p class="text-3xl font-extrabold sm:text-4xl md:text-5xl">Upcoming Events (2025-2026)</p>
-            <a
-                href={LINKS.discord}
-                class="self-start rounded-4xl border border-[#E4E4E4] px-4 py-2 whitespace-nowrap text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black md:self-auto">
-                Join our Discord
-            </a>
+          class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
+        >
         </div>
-    </div>
+      </div>
 
-    <!-- Events with vertical timeline -->
-    <div class="flex w-full justify-center px-4 pb-16">
-        <div class="w-full max-w-7xl">
-            {
-                events.map((event, index) => {
-                    const isEven = index % 2 === 0;
-                    return (
-                        <div
-                            class="relative mb-8 last:mb-0 md:mb-12"
-                            data-timeline-row>
-                            {/* Desktop layout - alternating sides */}
-                            <div class="hidden md:grid md:grid-cols-[1fr_80px_1fr] md:gap-8">
-                                {/* Left side - shows card on even indices */}
-                                <div class={`flex ${isEven ? "justify-end" : "justify-start"}`}>
-                                    {isEven && <EventCard {...event} />}
-                                </div>
-
-                                {/* Timeline column (center) */}
-                                <div class="timeline-container flex h-full justify-center">
-                                    <EventTimeline
-                                        index={index}
-                                        isLast={index === events.length - 1}
-                                    />
-                                </div>
-
-                                {/* Right side - shows card on odd indices */}
-                                <div class={`flex ${isEven ? "justify-start" : "justify-end"}`}>
-                                    {!isEven && <EventCard {...event} />}
-                                </div>
-                            </div>
-
-                            {/* Mobile layout - simple vertical stack */}
-                            <div class="flex justify-center md:hidden">
-                                <EventCard {...event} />
-                            </div>
-                        </div>
-                    );
-                })
-            }
+      <div class="container-page relative z-10 mx-auto px-4 text-center">
+        <div class="mb-4 inline-flex justify-center">
+          <PixelBadge
+            label="Season 2025-2026"
+            variant="brand"
+          />
         </div>
-    </div>
+
+        <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] md:text-5xl lg:text-6xl">
+          Event Chapters
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
+          Journey through our club events like levels in a game. Complete challenges, unlock achievements, and level up
+          your game dev skills!
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="mx-auto mt-8 max-w-md">
+          <div class="mb-2 flex items-center justify-between text-sm">
+            <span class="font-medium text-[var(--text)]">Season Progress</span>
+            <span class="font-pixel text-[var(--brand)]">
+              {events.filter((e) => !e.isActive).length} / {events.length} Completed
+            </span>
+          </div>
+          <div class="h-3 w-full overflow-hidden rounded-full border border-[var(--border)] bg-[var(--surface-2)]">
+            <div
+              class="h-full rounded-full bg-gradient-to-r from-[var(--brand)] to-[var(--accent)] transition-all duration-500"
+              style={`width: ${(events.filter((e) => !e.isActive).length / events.length) * 100}%`}
+            >
+            </div>
+          </div>
+        </div>
+
+        <CtaButton
+          client:load
+          label="Join the Adventure"
+          href={LINKS.discord}
+          className="mt-8"
+        />
+      </div>
+    </section>
+
+    <!-- Level Grid -->
+    <section class="container-page mx-auto px-4 pb-20">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          events.map((event, index) => (
+            <LevelCard
+              {...event}
+              chapterNumber={index + 1}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Event Modal -->
+    <EventModal
+      client:load
+      events={eventsForModal}
+    />
+  </main>
 </Layout>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest("[data-open-modal]");
+    if (button) {
+      const index = parseInt(button.getAttribute("data-open-modal") || "0", 10);
+      window.dispatchEvent(new CustomEvent("openEventModal", { detail: { index } }));
+    }
+  });
+</script>

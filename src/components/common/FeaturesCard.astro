@@ -12,11 +12,12 @@ const { title, imageSrc, imageAlt = "", href, cta = "Learn More" } = Astro.props
 ---
 
 <article
-  class="flex h-full flex-col gap-5 rounded-3xl border border-white/30 bg-white/5 p-6 shadow-2xl shadow-black/50 backdrop-blur-3xl md:min-h-96 md:p-8">
+  class="flex h-full flex-col gap-5 rounded-3xl border border-[var(--border)] bg-[var(--surface-2)] p-6 shadow-xl transition-transform hover:-translate-y-1 md:min-h-96 md:p-8"
+>
   <!-- Title -->
-  <h5 class="my-4 text-5xl font-extrabold tracking-wide">{title}</h5>
+  <h5 class="font-pixel my-4 text-5xl tracking-wide text-[var(--text)]">{title}</h5>
 
-  <div class="text-lg leading-relaxed text-gray-50/85">
+  <div class="text-lg leading-relaxed text-[var(--text-muted)]">
     <slot />
   </div>
 
@@ -26,7 +27,7 @@ const { title, imageSrc, imageAlt = "", href, cta = "Learn More" } = Astro.props
         src={imageSrc}
         alt={imageAlt}
         loading="lazy"
-        class="max-h-60 rounded-xl border border-white/10 object-cover"
+        class="max-h-60 rounded-xl border border-[var(--border)] object-cover"
       />
     )
   }
@@ -36,7 +37,8 @@ const { title, imageSrc, imageAlt = "", href, cta = "Learn More" } = Astro.props
       <div class="mt-2">
         <a
           href={href}
-          class="btn-outline btn rounded-full border border-white/30 px-5 py-2">
+          class="inline-block rounded-xl bg-[var(--brand)] px-6 py-3 font-semibold text-white transition-all hover:bg-[var(--brand-hover)] hover:shadow-[var(--brand)]/20 hover:shadow-lg"
+        >
           {cta}
         </a>
       </div>

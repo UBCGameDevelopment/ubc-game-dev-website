@@ -16,11 +16,11 @@ import Analytics from "@vercel/analytics/astro";
     />
     <meta
       name="color-scheme"
-      content="dark"
+      content="dark light"
     />
     <meta
       name="theme-color"
-      content="#101010"
+      content="#1a1a1a"
     />
     <link
       rel="icon"
@@ -32,11 +32,22 @@ import Analytics from "@vercel/analytics/astro";
       content={Astro.generator}
     />
     <title>UBC Game Development</title>
+    <!-- Theme initialization (prevents flash) -->
+    <script is:inline>
+      (function () {
+        const theme = localStorage.getItem("theme");
+        if (theme) {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+      })();
+    </script>
     <script src="../scripts/smoothScroll.ts"></script>
     <SpeedInsights />
     <Analytics />
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body
+    class="flex min-h-screen flex-col bg-[var(--surface)] pt-16 font-sans text-[var(--text)] transition-colors duration-300"
+  >
     <Navbar />
 
     <slot />

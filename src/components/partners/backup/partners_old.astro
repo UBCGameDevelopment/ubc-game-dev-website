@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { partners } from "../data/partners";
+import { partnerLogos } from "../data/partnerLogos";
+import PartnerSlider from "../components/partners/PartnerSlider.astro";
+import { LINKS } from "../config/links";
+---
+
+<Layout>
+  <main>
+    <!-- Header Section -->
+    <section class="relative overflow-hidden py-16 md:py-24">
+      <!-- Ambient Glow -->
+      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <div class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"></div>
+      </div>
+
+      <div class="container-page relative z-10 mx-auto px-4 text-center">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--brand)]/20 bg-[var(--brand)]/10 px-4 py-1.5">
+          <span class="text-sm font-semibold text-[var(--brand)]">Our Allies</span>
+        </div>
+
+        <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] md:text-5xl lg:text-6xl">
+          Power-Ups & Allies
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
+          These incredible studios and organizations help us level up! Their support powers our events, workshops, and game jams.
+        </p>
+      </div>
+    </section>
+
+    <!-- Logo Slider -->
+    <section class="py-8">
+      <PartnerSlider
+        logos={partnerLogos}
+        height={180}
+        maxWidth={200}
+        speed="normal"
+        gap={60}
+      />
+    </section>
+
+    <!-- Partner Cards Grid -->
+    <section class="container-page mx-auto px-4 py-16">
+      <div class="mb-12 text-center">
+        <h2 class="font-pixel text-2xl text-[var(--text)] md:text-3xl">Meet Our Allies</h2>
+        <p class="mx-auto mt-2 max-w-xl text-[var(--text-muted)]">
+          Click on any ally to learn more about them
+        </p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {partners.map((partner, index) => (
+          <div
+            class="group relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.12)]"
+          >
+            <!-- Ally Number Badge -->
+            <div class="absolute top-4 left-4 z-20 flex h-10 w-10 items-center justify-center rounded-lg border-2 border-[var(--brand)] bg-[var(--brand)] font-pixel text-sm text-white shadow-lg">
+              {index + 1}
+            </div>
+
+            <!-- Partner Logo/Image -->
+            <div class="relative flex aspect-video items-center justify-center overflow-hidden bg-gradient-to-br from-[var(--surface)] to-[var(--surface-3)] p-8">
+              {partner.image && (
+                <Image
+                  src={partner.image}
+                  alt={partner.imageAlt || partner.name}
+                  class="max-h-full max-w-full object-contain opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
+                />
+              )}
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <h3 class="font-pixel text-xl text-[var(--text)]">
+                {partner.name}
+              </h3>
+              
+              <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-[var(--text-muted)]">
+                {partner.paragraphs[0]}
+              </p>
+
+              <!-- Action -->
+              {partner.website && (
+                <a
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand)] transition-all hover:underline"
+                >
+                  Visit Ally
+                  <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+
+            <!-- Expand Button for Full Details -->
+            <button
+              data-partner-expand={index}
+              class="absolute bottom-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-3)] text-[var(--text-muted)] transition-all hover:border-[var(--brand)] hover:text-[var(--brand)]"
+              aria-label="View full details"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+              </svg>
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Become a Partner CTA -->
+    <section class="container-page mx-auto px-4 pb-20">
+      <div class="rounded-3xl border border-[var(--brand)]/30 bg-gradient-to-br from-[var(--brand)]/10 to-[var(--accent)]/10 p-8 text-center md:p-12">
+        <h2 class="font-pixel text-2xl text-[var(--text)] md:text-3xl">
+          Join Our Alliance!
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl text-[var(--text-muted)]">
+          Interested in partnering with UBC Game Dev? We'd love to hear from you. Together, we can support the next generation of game developers!
+        </p>
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center gap-2 rounded-xl bg-[var(--brand)] px-6 py-3 font-semibold text-white shadow-lg shadow-[var(--brand)]/20 transition-all hover:-translate-y-0.5"
+        >
+          Get In Touch
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Premium card hover effect */
+  .group:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+  }
+</style>

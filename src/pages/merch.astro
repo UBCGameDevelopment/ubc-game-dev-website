@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CtaButton from "../components/common/CtaButton";
+import MerchCard from "../components/merch/MerchCard.astro";
+import { merchItems, categories } from "../data/merch";
+import { LINKS } from "../config/links";
+import PixelBadge from "../components/common/PixelBadge.astro";
+---
+
+<Layout>
+  <main>
+    <!-- Header Section -->
+    <section class="relative overflow-hidden py-16 md:py-24">
+      <!-- Ambient Glow -->
+      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+        <div
+          class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
+        >
+        </div>
+      </div>
+
+      <div class="container-page relative z-10 mx-auto px-4 text-center">
+        <div class="mb-4 inline-flex justify-center">
+          <PixelBadge
+            label="Shop"
+            variant="brand"
+          />
+        </div>
+
+        <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] md:text-5xl lg:text-6xl">
+          Merch Store
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
+          Rep UBC Game Dev with our exclusive merch! All proceeds support club events, workshops, and events.
+        </p>
+
+        <!-- Category Filter -->
+        <div class="mx-auto mt-8 flex flex-wrap justify-center gap-2">
+          {
+            categories.map((cat) => (
+              <button
+                data-category={cat.id}
+                class:list={[
+                  "font-pixel rounded-xl border px-4 py-2 text-sm transition-all duration-200",
+                  cat.id === "all"
+                    ? "border-[var(--brand)] bg-[var(--brand)] text-white"
+                    : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-muted)] hover:border-[var(--brand)]/50 hover:text-[var(--text)]",
+                ]}
+              >
+                {cat.label}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="container-page mx-auto px-4 pb-20">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          merchItems.map((item) => (
+            <div
+              data-merch-item
+              data-item-category={item.category}
+              class="h-full"
+            >
+              <MerchCard {...item} />
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Empty State -->
+      <div
+        id="empty-state"
+        class="hidden py-16 text-center"
+      >
+        <p class="font-pixel text-xl text-[var(--text-muted)]">No items in this category</p>
+      </div>
+    </section>
+
+    <!-- Coming Soon Banner -->
+    <section class="container-page mx-auto px-4 pb-20">
+      <div
+        class="rounded-3xl border border-[var(--brand)]/30 bg-gradient-to-br from-[var(--brand)]/10 to-[var(--accent)]/10 p-8 text-center md:p-12"
+      >
+        <h2 class="font-pixel text-2xl text-[var(--text)] md:text-3xl">More Coming Soon!</h2>
+        <p class="mx-auto mt-3 max-w-xl text-[var(--text-muted)]">
+          Join our Discord to get notified when new items drop and for exclusive member discounts.
+        </p>
+        <CtaButton
+          client:load
+          label="Join Discord"
+          href={LINKS.discord}
+          className="mt-6"
+        />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Category filter functionality
+  const categoryButtons = document.querySelectorAll("[data-category]");
+  const merchItems = document.querySelectorAll("[data-merch-item]");
+  const emptyState = document.getElementById("empty-state");
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.getAttribute("data-category");
+
+      // Update button styles
+      categoryButtons.forEach((btn) => {
+        btn.classList.remove("border-[var(--brand)]", "bg-[var(--brand)]", "text-white");
+        btn.classList.add("border-[var(--border)]", "bg-[var(--surface-2)]", "text-[var(--text-muted)]");
+      });
+      button.classList.remove("border-[var(--border)]", "bg-[var(--surface-2)]", "text-[var(--text-muted)]");
+      button.classList.add("border-[var(--brand)]", "bg-[var(--brand)]", "text-white");
+
+      // Filter items
+      let visibleCount = 0;
+      merchItems.forEach((item) => {
+        const itemCategory = item.getAttribute("data-item-category");
+        if (category === "all" || itemCategory === category) {
+          (item as HTMLElement).style.display = "";
+          visibleCount++;
+        } else {
+          (item as HTMLElement).style.display = "none";
+        }
+      });
+
+      // Show/hide empty state
+      if (emptyState) {
+        emptyState.classList.toggle("hidden", visibleCount > 0);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+---
+import EventTimelineReact from "./EventTimeline";
+
+interface Props {
+    index: number;
+    isLast: boolean;
+}
+
+const { index, isLast } = Astro.props;
+---
+
+<EventTimelineReact
+    index={index}
+    isLast={isLast}
+    client:load
+/>
