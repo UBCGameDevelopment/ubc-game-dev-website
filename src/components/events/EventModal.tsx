@@ -40,11 +40,14 @@ export default function EventModal({ events }: EventModalProps) {
   useEffect(() => {
     if (activeEvent !== null) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [activeEvent]);
 
@@ -70,7 +73,7 @@ export default function EventModal({ events }: EventModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+            className="fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto rounded-xl border border-[var(--brand)] bg-[rgba(10,10,20,0.95)] shadow-[0_0_50px_-10px_var(--brand)] backdrop-blur-md md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
           >
             {/* Close Button */}
             <button
@@ -94,25 +97,23 @@ export default function EventModal({ events }: EventModalProps) {
 
             {/* Chapter Badge */}
             <div
-              className="absolute top-4 left-4 z-10 flex h-12 w-12 items-center justify-center rounded-xl border-2 text-lg font-bold shadow-lg"
+              className="font-pixel absolute top-4 left-4 z-10 flex h-12 w-12 items-center justify-center text-lg font-bold text-white shadow-lg"
               style={{
-                borderColor: "var(--brand)",
                 backgroundColor: "var(--brand)",
-                color: "white",
-                boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
+                clipPath: "polygon(12px 0, 100% 0, 100% 100%, 0 calc(100% - 12px))",
               }}
             >
               {event.chapterNumber}
             </div>
 
             {/* Image */}
-            <div className="relative aspect-[16/9] overflow-hidden rounded-t-3xl">
+            <div className="relative aspect-[16/9] overflow-hidden rounded-t-xl">
               <img
                 src={event.imageSrc}
                 alt={event.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,20,0.95)] via-transparent to-transparent" />
             </div>
 
             {/* Content */}
@@ -120,12 +121,21 @@ export default function EventModal({ events }: EventModalProps) {
               {/* Status */}
               <div className="mb-4">
                 {event.isActive ? (
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-[var(--brand)] px-3 py-1.5 text-xs font-bold text-white">
-                    <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
+                  <span
+                    className="inline-flex items-center gap-2 bg-[var(--cyber-magenta)] px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase shadow-[0_0_15px_var(--cyber-magenta)]"
+                    style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
+                  >
+                    <span
+                      className="h-2 w-2 animate-pulse bg-white"
+                      style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
+                    />
                     Active Event
                   </span>
                 ) : (
-                  <span className="inline-flex items-center gap-2 rounded-lg bg-[var(--surface-2)] px-3 py-1.5 text-xs font-semibold text-[var(--text-muted)]">
+                  <span
+                    className="inline-flex items-center gap-2 bg-[var(--surface-3)] px-4 py-1.5 text-xs font-bold tracking-wider text-[var(--text-muted)] uppercase"
+                    style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
+                  >
                     Completed
                   </span>
                 )}
@@ -222,26 +232,28 @@ export default function EventModal({ events }: EventModalProps) {
                     href={event.mapLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-white shadow-lg transition-all hover:-translate-y-0.5"
+                    className="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-yellow)] px-6 py-3 font-bold text-black shadow-lg transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
                     style={{
-                      backgroundColor: "var(--brand)",
-                      boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
+                      clipPath:
+                        "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)",
                     }}
                   >
-                    View Location
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    <span className="font-pixel relative z-10 flex items-center gap-2 text-sm tracking-wider uppercase">
+                      View Location
+                      <svg
+                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </span>
                   </a>
                 </div>
               )}

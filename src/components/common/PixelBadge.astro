@@ -1,7 +1,7 @@
 ---
 interface Props {
   label: string;
-  variant?: "brand" | "accent" | "lavender" | "pink";
+  variant?: "brand" | "accent" | "yellow" | "magenta";
   class?: string;
   icon?: string; // Optional icon slot or name
 }
@@ -10,28 +10,28 @@ const { label, variant = "brand", class: className } = Astro.props;
 
 const variants = {
   brand: {
-    border: "border-[var(--brand)]",
-    text: "text-[var(--brand)]",
-    shadow: "shadow-[4px_4px_0px_0px_var(--brand)]",
-    bg: "bg-[var(--surface)]", // Using surface to keep it dark inside
+    bg: "bg-[var(--brand)]",
+    text: "text-white",
+    border: "border-transparent",
+    shadow: "shadow-[0_0_15px_var(--brand)]",
   },
   accent: {
-    border: "border-[var(--accent)]",
-    text: "text-[var(--accent)]",
-    shadow: "shadow-[4px_4px_0px_0px_var(--accent)]",
-    bg: "bg-[var(--surface)]",
+    bg: "bg-[var(--accent)]",
+    text: "text-[var(--surface)]",
+    border: "border-transparent",
+    shadow: "shadow-[0_0_15px_var(--accent)]",
   },
-  lavender: {
-    border: "border-lavender-400",
-    text: "text-lavender-400",
-    shadow: "shadow-[4px_4px_0px_0px_theme(colors.lavender.400)]",
-    bg: "bg-[var(--surface)]",
+  yellow: {
+    bg: "bg-[var(--cyber-yellow)]",
+    text: "text-[var(--surface)]",
+    border: "border-transparent",
+    shadow: "shadow-[0_0_15px_var(--cyber-yellow)]",
   },
-  pink: {
-    border: "border-pink-500",
-    text: "text-pink-500",
-    shadow: "shadow-[4px_4px_0px_0px_theme(colors.pink.500)]",
-    bg: "bg-[var(--surface)]",
+  magenta: {
+    bg: "bg-[var(--cyber-magenta)]",
+    text: "text-white",
+    border: "border-transparent",
+    shadow: "shadow-[0_0_15px_var(--cyber-magenta)]",
   },
 };
 
@@ -40,15 +40,16 @@ const style = variants[variant] || variants.brand;
 
 <div
   class:list={[
-    "inline-flex items-center gap-2 rounded-lg border-2 px-4 py-1.5 font-bold tracking-widest uppercase transition-transform hover:-translate-y-0.5",
-    style.border,
+    "inline-flex items-center gap-2 px-4 py-1.5 font-bold tracking-widest uppercase transition-transform hover:-translate-y-0.5",
     style.bg,
+    style.text,
     style.shadow,
     className,
   ]}
+  style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
 >
   <slot name="icon" />
-  <span class:list={["font-pixel text-xs", style.text]}>
+  <span class="font-tech text-xs tracking-[0.15em]">
     {label}
   </span>
 </div>

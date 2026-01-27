@@ -35,8 +35,18 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix: string 
 
   return (
     <span
-      className="font-pixel text-3xl md:text-4xl"
-      style={{ color: "var(--brand)" }}
+      className="font-pixel animate-pulse text-2xl md:text-3xl"
+      style={{
+        color: "var(--brand)",
+        textShadow: `
+          0 0 5px var(--brand),
+          0 0 10px var(--brand),
+          0 0 20px var(--brand),
+          0 0 40px var(--brand-strong),
+          0 0 80px var(--brand-strong)
+        `,
+        filter: "brightness(1.2)",
+      }}
     >
       {displayValue}
       {suffix}
@@ -73,7 +83,7 @@ export default function CountingStats({ stats }: CountingStatsProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mt-10 flex items-center gap-8 rounded-2xl border px-8 py-4 shadow-lg backdrop-blur-sm md:gap-12"
+      className="mt-8 flex items-center justify-center gap-6 rounded-xl border px-6 py-3 shadow-lg backdrop-blur-sm md:gap-10"
       style={{
         borderColor: "var(--border)",
         backgroundColor: "color-mix(in srgb, var(--surface-2) 80%, transparent)",

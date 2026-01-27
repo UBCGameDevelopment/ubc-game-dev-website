@@ -14,40 +14,80 @@ const { name, description, media, gameLink, teamMembers, award } = Astro.props;
 const cardId = `game-${name.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
-<BaseCard>
-  <div class="p-6 md:p-8">
-    <!-- Top Section: Grid Layout -->
-    <div class="grid items-center gap-8 md:grid-cols-2">
-      <!-- Left Section: Game Info -->
-      <div class="flex flex-col">
-        <div class="flex-1">
-          <Badge
-            label="Game"
-            variant="game"
-            class="mb-4 px-3 py-1"
-          />
-          <GameTitle
-            name={name}
-            gameLink={gameLink}
-          />
+<div
+  class="angular-card group relative p-6 transition-all duration-300 hover:border-[var(--cyber-magenta)] hover:shadow-[0_0_25px_rgba(255,0,170,0.2)] md:p-8"
+>
+  <!-- Decorative Header Line -->
+  <div
+    class="absolute top-0 right-0 left-0 h-1 bg-gradient-to-r from-[var(--cyber-magenta)] via-[var(--brand)] to-transparent opacity-50"
+  >
+  </div>
 
-          <p class="text-sm leading-relaxed text-[var(--text-muted)] md:text-base">
-            {description}
-          </p>
+  <!-- Corner Accent -->
+  <div
+    class="absolute right-0 bottom-0 h-8 w-8 border-r-2 border-b-2 border-[var(--cyber-yellow)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  >
+  </div>
+
+  <!-- Top Section: Grid Layout -->
+  <div class="grid items-start gap-8 md:grid-cols-2">
+    <!-- Left Section: Game Info -->
+    <div class="flex h-full flex-col justify-between">
+      <div>
+        <div class="mb-4 flex items-center gap-3">
+          <span
+            class="bg-[var(--cyber-yellow)] px-3 py-1 text-xs font-bold tracking-wider text-[var(--surface)] uppercase"
+            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8px));"
+          >
+            PROJECT
+          </span>
+          <div class="h-[1px] flex-1 bg-[var(--border)] transition-colors group-hover:bg-[var(--brand)]"></div>
         </div>
 
-        {award && <AwardBadge award={award} />}
+        <h3
+          class="font-pixel text-2xl text-[var(--text)] transition-colors group-hover:text-[var(--cyber-magenta)] md:text-3xl"
+        >
+          {name}
+        </h3>
+
+        {
+          gameLink && (
+            <a
+              href={gameLink}
+              target="_blank"
+              class="mt-1 mb-4 inline-block font-mono text-xs text-[var(--brand)] transition-colors hover:text-[var(--cyber-yellow)]"
+            >
+              > {gameLink.replace(/^https?:\/\//, "")}
+            </a>
+          )
+        }
+
+        <p
+          class="mt-4 border-l-2 border-[var(--border)] pl-4 text-sm leading-relaxed text-[var(--text-muted)] md:text-base"
+        >
+          {description}
+        </p>
       </div>
 
-      <!-- Right Section: Media & Team -->
-      <div class="flex h-fit flex-col gap-4">
+      {
+        award && (
+          <div class="mt-6">
+            <AwardBadge award={award} />
+          </div>
+        )
+      }
+    </div>
+
+    <!-- Right Section: Media & Team -->
+    <div class="flex h-fit flex-col gap-6">
+      <div class="relative overflow-hidden border border-[var(--border)] bg-[var(--surface)] p-1">
         <GameMedia
           media={media}
           name={name}
           cardId={cardId}
         />
-        {teamMembers && teamMembers.length > 0 && <TeamMembers members={teamMembers} />}
       </div>
+      {teamMembers && teamMembers.length > 0 && <TeamMembers members={teamMembers} />}
     </div>
   </div>
-</BaseCard>
+</div>

@@ -1,28 +1,30 @@
 ---
 interface Props {
-    label: string;
-    variant?: "event" | "game" | "default";
-    class?: string;
+  label: string;
+  variant?: "event" | "game" | "default";
+  class?: string;
 }
 
 const { label, variant = "default", class: className = "" } = Astro.props;
 
 const variantClasses = {
-    event: "border-brand-500/30 bg-brand-500/20",
-    game: "border-brand-500/30 bg-brand-500/20",
-    default: "border-white/30 bg-white/20",
+  event: "border-brand-500/30 bg-brand-500/20",
+  game: "border-brand-500/30 bg-brand-500/20",
+  default: "border-white/30 bg-white/20",
 };
 
 const textColorClasses = {
-    event: "text-brand-400",
-    game: "text-brand-400",
-    default: "text-white",
+  event: "text-brand-400",
+  game: "text-brand-400",
+  default: "text-white",
 };
 ---
 
 <div
-    class={`inline-flex w-fit items-center gap-2 rounded-full border px-2.5 py-0.5 ${variantClasses[variant]} ${className}`}>
-    <span class={`text-xs font-semibold tracking-wide uppercase ${textColorClasses[variant]}`}>
-        {label}
-    </span>
+  class={`inline-flex w-fit items-center gap-2 px-3 py-1 bg-[var(--brand)] text-white shadow-[0_0_10px_rgba(168,85,247,0.4)] ${className}`}
+  style="clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);"
+>
+  <span class={`font-pixel text-[10px] tracking-widest uppercase`}>
+    {label}
+  </span>
 </div>

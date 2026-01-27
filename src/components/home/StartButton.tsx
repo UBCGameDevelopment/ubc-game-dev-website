@@ -16,7 +16,7 @@ export default function StartButton() {
     <motion.button
       ref={ref}
       onClick={handleClick}
-      className="font-pixel mt-3 cursor-pointer text-lg tracking-widest text-[var(--brand)] uppercase transition-none hover:text-[var(--accent)] hover:drop-shadow-[0_0_8px_rgba(168,85,247,0.5)] md:text-xl"
+      className="font-pixel cursor-pointer text-sm tracking-widest text-[var(--brand)] uppercase transition-none hover:text-[var(--cyber-magenta)] hover:drop-shadow-[0_0_12px_rgba(255,0,170,0.6)] md:text-base"
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -26,7 +26,7 @@ export default function StartButton() {
       }}
       whileTap={{ scale: 0.95 }}
     >
-      Press Here to Create
+      <span className="text-neon-cyber flicker">&gt;</span> Press Start to Create
     </motion.button>
   );
 }

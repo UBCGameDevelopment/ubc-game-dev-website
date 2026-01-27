@@ -4,54 +4,92 @@
  *  - How It Works -> GUILD STRUCTURE
  *  - Join Us -> JOIN THE PARTY
  */
+import PixelBadge from "../common/PixelBadge.astro";
 ---
 
-<section class="container-page my-10 md:my-14">
+<section class="container-page pt-32 pb-10 md:pb-14">
   <div class="relative">
-    <!-- Background Decor -->
-    <div class="pointer-events-none absolute -top-20 -left-20 h-96 w-96 rounded-full bg-[var(--brand)]/10 blur-[100px]">
-    </div>
-    <div
-      class="pointer-events-none absolute -right-20 -bottom-20 h-96 w-96 rounded-full bg-[var(--accent)]/10 blur-[100px]"
-    >
+    <!-- Atmospheric Cyber Background -->
+    <div class="pointer-events-none fixed inset-0 z-0">
+      <!-- Deep Void Base -->
+      <div class="absolute inset-0 bg-[#030014]"></div>
+
+      <!-- City Lights Glow (Reference: Red Tower, Blue Signs) -->
+      <div
+        class="absolute top-[-20%] right-[-10%] h-[800px] w-[800px] rounded-full bg-[var(--cyber-red)] opacity-[0.15] mix-blend-screen blur-[150px]"
+        style="animation: glow-pulse 8s infinite alternate;"
+      >
+      </div>
+      <div
+        class="absolute bottom-[-20%] left-[-10%] h-[800px] w-[800px] rounded-full bg-[var(--cyber-blue)] opacity-[0.12] mix-blend-screen blur-[150px]"
+        style="animation: glow-pulse 10s infinite alternate-reverse;"
+      >
+      </div>
+      <div
+        class="absolute top-[30%] left-[20%] h-[600px] w-[600px] rounded-full bg-[var(--brand)] opacity-[0.08] blur-[120px]"
+      >
+      </div>
+
+      <!-- Digital Rain / Vertical Texture -->
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .3) 25%, rgba(255, 255, 255, .3) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .3) 75%, rgba(255, 255, 255, .3) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .3) 25%, rgba(255, 255, 255, .3) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .3) 75%, rgba(255, 255, 255, .3) 76%, transparent 77%, transparent); background-size: 50px 50px;"
+      >
+      </div>
+
+      <!-- Vignette & Fog -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#030014_90%)]"></div>
     </div>
 
     <!-- MAIN QUEST (Mission) -->
     <div class="relative mb-24 text-center">
-      <div
-        class="mb-6 inline-flex items-center gap-2 rounded-lg border-2 border-[var(--brand)] bg-[var(--surface)] px-4 py-1.5 shadow-[4px_4px_0px_0px_var(--brand)]"
-      >
-        <span class="font-pixel text-xs font-bold tracking-widest text-[var(--brand)] uppercase">
-          Current Objective
-        </span>
+      <div class="mb-6 inline-flex justify-center">
+        <PixelBadge
+          label="Current Objective"
+          variant="brand"
+        />
       </div>
 
-      <h1 class="font-pixel text-4xl tracking-tight text-[var(--text)] md:text-6xl lg:text-7xl">UBC GAME DEV</h1>
-      <p class="font-pixel mt-4 text-xl tracking-widest text-[var(--brand)] uppercase">The Main Quest</p>
+      <h1 class="font-pixel text-neon text-4xl tracking-widest uppercase md:text-6xl lg:text-7xl">
+        UBC <span class="text-[var(--cyber-yellow)]">GAME DEV</span>
+      </h1>
+      <p class="font-pixel mt-4 text-xl tracking-widest text-[var(--accent)] uppercase">The Main Quest</p>
 
       <div
-        class="mx-auto mt-12 max-w-4xl rounded-2xl border-2 border-[var(--border)] bg-[var(--surface-2)]/50 p-8 backdrop-blur-sm md:p-12"
+        class="hero-terminal glow-pulse mx-auto mt-12 max-w-4xl border border-[var(--brand)]/40 bg-[var(--surface)]/90 p-8 shadow-[0_0_30px_-5px_var(--brand)] backdrop-blur-lg md:p-12"
+        style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);"
       >
-        <p class="text-lg leading-relaxed text-[var(--text-muted)] md:text-2xl">
+        <p class="font-mono text-lg leading-relaxed text-[var(--text-muted)] md:text-2xl">
           "To equip every student with the tools, knowledge, and party members needed to craft their own legendary video
           games."
         </p>
-        <div class="mt-8 flex justify-center gap-2">
-          <div class="h-2 w-2 rounded-full bg-[var(--text-muted)]/20"></div>
-          <div class="h-2 w-2 rounded-full bg-[var(--text-muted)]/20"></div>
-          <div class="h-2 w-2 rounded-full bg-[var(--text-muted)]/20"></div>
+        <div class="mt-8 flex justify-center gap-3">
+          <div class="h-2 w-2 animate-pulse bg-[var(--brand)]"></div>
+          <div
+            class="h-2 w-2 animate-pulse bg-[var(--brand)]"
+            style="animation-delay: 0.2s;"
+          >
+          </div>
+          <div
+            class="h-2 w-2 animate-pulse bg-[var(--brand)]"
+            style="animation-delay: 0.4s;"
+          >
+          </div>
         </div>
       </div>
     </div>
 
     <!-- GUILD STRUCTURE (How It Works) -->
     <div class="relative mb-24">
-      <h2 class="font-pixel mb-12 text-center text-3xl text-[var(--text)] md:text-4xl">Guild Structure</h2>
+      <h2 class="font-pixel text-neon mb-12 text-center text-3xl tracking-widest uppercase md:text-4xl">
+        Guild <span class="text-[var(--cyber-yellow)]">Structure</span>
+      </h2>
 
       <div class="grid gap-8 md:grid-cols-2">
         <!-- Class: Project Teams -->
         <div
-          class="group relative overflow-hidden rounded-xl border-2 border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]"
+          class="holo-card group relative overflow-hidden border border-[var(--brand)]/30 bg-[var(--surface)]/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.25)]"
+          style="clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);"
         >
           <div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
             <svg
@@ -67,12 +105,13 @@
           </div>
 
           <div class="p-8">
-            <div
-              class="font-pixel mb-4 inline-block rounded bg-[var(--brand)]/10 px-3 py-1 text-xs text-[var(--brand)]"
-            >
-              Class: Vanguard
+            <div class="mb-4">
+              <PixelBadge
+                label="Class: Vanguard"
+                variant="brand"
+              />
             </div>
-            <h3 class="font-pixel mb-4 text-2xl text-[var(--text)]">Project Teams</h3>
+            <h3 class="font-pixel text-neon mb-4 text-2xl">Project Teams</h3>
             <p class="leading-relaxed text-[var(--text-muted)]">
               Elite squads led by veteran developers. These parties are balanced with diverse skill sets—programmers,
               artists, and designers—working together to ship original titles.
@@ -100,7 +139,8 @@
 
         <!-- Class: Learning Community -->
         <div
-          class="group relative overflow-hidden rounded-xl border-2 border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_0_30px_rgba(232,121,249,0.15)]"
+          class="holo-card group relative overflow-hidden border border-[var(--accent)]/30 bg-[var(--surface)]/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--accent)] hover:shadow-[0_0_30px_rgba(232,121,249,0.25)]"
+          style="clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);"
         >
           <div class="absolute top-0 right-0 p-4 opacity-10 transition-opacity group-hover:opacity-20">
             <svg
@@ -120,12 +160,13 @@
           </div>
 
           <div class="p-8">
-            <div
-              class="font-pixel mb-4 inline-block rounded bg-[var(--accent)]/10 px-3 py-1 text-xs text-[var(--accent)]"
-            >
-              Class: Recruit
+            <div class="mb-4">
+              <PixelBadge
+                label="Class: Recruit"
+                variant="accent"
+              />
             </div>
-            <h3 class="font-pixel mb-4 text-2xl text-[var(--text)]">Learning Community</h3>
+            <h3 class="font-pixel text-neon-accent mb-4 text-2xl">Learning Community</h3>
             <p class="leading-relaxed text-[var(--text-muted)]">
               The training grounds for aspiring devs. A safe zone to grind skills, experiment with mechanics, and find
               future party members. No prior level requirement.
@@ -155,17 +196,19 @@
 
     <!-- JOIN THE PARTY -->
     <div
-      class="relative overflow-hidden rounded-2xl border-2 border-dashed border-[var(--border)] bg-[var(--surface-2)]/30 p-12 text-center"
+      class="hero-terminal relative overflow-hidden border border-[var(--brand)]/40 bg-[var(--surface)]/80 p-12 text-center shadow-[0_0_30px_-5px_var(--brand)] backdrop-blur-lg"
+      style="clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);"
     >
-      <h2 class="font-pixel mb-6 text-3xl text-[var(--text)]">Ready to Join the Party?</h2>
-      <p class="mx-auto mb-8 max-w-2xl text-lg text-[var(--text-muted)]">
+      <h2 class="font-pixel text-neon mb-6 text-3xl tracking-widest uppercase">Ready to Join the Party?</h2>
+      <p class="mx-auto mb-8 max-w-2xl font-mono text-lg text-[var(--text-muted)]">
         Whether you're a LVL 1 Beginner or a LVL 99 Expert, there's a spot for you in our guild. Equip your creativity
         and start your adventure today.
       </p>
 
       <a
         href="/contact"
-        class="group relative inline-flex items-center gap-3 overflow-hidden rounded-xl bg-[var(--brand)] px-8 py-4 font-bold text-white shadow-[0_4px_0_0_rgb(147,51,234)] transition-all hover:translate-y-1 hover:shadow-none"
+        class="box-neon glow-pulse group relative inline-flex items-center gap-3 overflow-hidden bg-[var(--brand)] px-8 py-4 font-bold text-white transition-all hover:scale-105"
+        style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
       >
         <span class="font-pixel relative z-10 tracking-wider">PRESS START</span>
         <svg

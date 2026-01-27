@@ -1,203 +1,333 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ContactForm from "../components/home/ContactForm";
-import CountingStats from "../components/home/CountingStats";
-import Mascot from "../components/home/Mascot";
-import StartButton from "../components/home/StartButton";
-import HeroTitle from "../components/home/HeroTitle";
-import CtaButton from "../components/common/CtaButton";
-import { LINKS } from "../config/links";
-import { partnerLogos } from "../data/partnerLogos";
-import { GameService } from "../services/GameService";
-import eventImg from "../assets/events.jpg";
-import ourGamesImg from "../assets/ourGames.jpg";
-import mascotLight from "../assets/hero-mascot-light.png";
-import mascotDark from "../assets/hero-mascot-dark.png";
+import ImmersiveLayout from "../layouts/ImmersiveLayout.astro";
+import PixelBadge from "../components/common/PixelBadge.astro";
+import { GameService } from "../services";
+import { EventService } from "../services/EventService";
+import CyberMarquee from "../components/effects/CyberMarquee.astro";
+import GlitchText from "../components/effects/GlitchText";
+
+const featuredGames = GameService.getAll().slice(0, 3);
+const latestEvents = (EventService.getAll() || [])
+  .sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime())
+  .slice(0, 2); 
+
+const faqs = [
+  {
+    q: "Who can join UBC Game Dev?",
+    a: "Anyone. No prior experience required. Whether you're a coder, artist, musician, or writer, there's a place for you in our guild."
+  },
+  {
+    q: "Do I need to be a UBC student?",
+    a: "Primary operations are for UBC students, but our public events (game jams, showcases) are often open to external allies."
+  },
+  {
+    q: "What tools do you use?",
+    a: "We are engine-agnostic. Unity, Unreal, Godot, custom C++ engines—use whatever weapon suits your mission."
+  },
+  {
+    q: "How do I join a team?",
+    a: "Attend our kickoff events or join the Discord. We facilitate team formation protocols at the start of each semester."
+  }
+];
 ---
 
-<Layout>
-  <main class="min-h-screen">
-    <section class="relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 py-16">
-      <!-- Scanline Overlay -->
-      <div
-        class="pointer-events-none absolute inset-0 z-20 opacity-[0.03]"
-        style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, var(--text) 2px, var(--text) 4px);"
-      >
+<ImmersiveLayout title="UBC Game Dev // Neon Operator">
+  <!-- Hero Section -->
+  <section class="relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
+    <!-- Background Marquees (Behind Content) -->
+    <div class="absolute inset-0 z-0 flex flex-col justify-between py-32 overflow-hidden pointer-events-none select-none">
+      <CyberMarquee 
+        text="UBC GAME DEV /// EST. 2017 /// VANCOUVER" 
+        speed={50}
+        opacity="0.02"
+        color="var(--text-muted)"
+      />
+      <CyberMarquee 
+        text="BUILD /// BREAK /// DEPLOY ///" 
+        direction="right"
+        speed={40}
+        opacity="0.02"
+        color="var(--text-muted)"
+      />
+    </div>
+
+    <!-- Center HUD (z-20 to ensure it is above background) -->
+    <div class="relative z-20 text-center">
+      <div class="mb-6 animate-pulse">
+        <span class="border border-[var(--cyber-blue)] bg-[var(--cyber-blue)]/10 px-4 py-1 text-xs font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
+          System Online
+        </span>
       </div>
 
-      <!-- Ambient Glow -->
-      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div
-          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.12]"
-        >
-        </div>
-      </div>
+      <GlitchText 
+        client:visible
+        tag="h1"
+        text="UBC GAME DEV"
+        className="mb-4 text-6xl font-black uppercase tracking-tighter text-white md:text-8xl lg:text-9xl cursor-default"
+        options={{ interval: [50, 90], delay: [0, 100] }}
+      />
 
-      <!-- Content -->
-      <div class="relative z-10 flex flex-col items-center text-center">
-        <!-- Mascot -->
-        <div class="mb-6 w-48 md:w-56">
-          <Mascot
-            client:load
-            lightSrc={mascotLight.src}
-            darkSrc={mascotDark.src}
-          />
-        </div>
+      <p class="mx-auto max-w-xl text-lg font-medium tracking-widest text-[var(--text-muted)] uppercase md:text-xl">
+        Build. <span class="text-[var(--cyber-yellow)]">Break.</span> Deploy.
+      </p>
 
-        <!-- Title -->
-        <!-- Title -->
-        <div class="mb-4">
-          <HeroTitle client:load />
-        </div>
-        <StartButton client:load />
-
-        <!-- Stats HUD -->
-        <CountingStats
-          client:visible
-          stats={[
-            { value: 200, suffix: "+", label: "Players" },
-            { value: 5, suffix: "+", label: "Quests" },
-            { value: GameService.getCount(), suffix: "", label: "Games" },
-          ]}
-        />
-
-        <!-- CTA -->
-        <CtaButton
-          client:load
-          label="Join Party"
-          href={LINKS.discord}
-          className="mt-10"
-        />
-      </div>
-    </section>
-
-    <section
-      id="select-mode"
-      class="container-page mx-auto px-6 py-24 md:py-32"
-    >
-      <h2 class="font-pixel mb-12 text-center text-4xl tracking-widest text-[var(--text-muted)] uppercase md:text-5xl">
-        Select Mode
-      </h2>
-
-      <div class="mx-auto flex max-w-5xl flex-wrap justify-center gap-6">
-        <!-- Menu Item: Events -->
-        <a
-          href="/events"
-          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
-        >
-          <div class="aspect-[16/9] overflow-hidden">
-            <img
-              src={eventImg.src}
-              alt="Events"
-              class="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
-            />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
-          <div class="absolute right-0 bottom-0 left-0 p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-pixel text-2xl text-[var(--text)]">Events</span>
-              <span
-                class="font-pixel rounded-md border-2 border-[var(--brand)] bg-[var(--brand)] px-2 py-1 text-xs text-white shadow-sm"
-              >
-                5+ / YEAR
-              </span>
-            </div>
-            <p class="mt-1 text-sm text-[var(--text-muted)]">Game jams, workshops, socials</p>
-          </div>
-        </a>
-
-        <!-- Menu Item: Games -->
+      <div class="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
         <a
           href="/games"
-          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
+          class="relative overflow-hidden bg-[var(--brand)] px-8 py-4 font-bold uppercase tracking-widest text-white transition-all hover:bg-[var(--accent)] hover:shadow-[0_0_30px_var(--accent)]"
+          style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
         >
-          <div class="aspect-[16/9] overflow-hidden">
-            <img
-              src={ourGamesImg.src}
-              alt="Games"
-              class="h-full w-full object-cover opacity-70 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100"
-            />
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
-          <div class="absolute right-0 bottom-0 left-0 p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-pixel text-2xl text-[var(--text)]">Game Gallery</span>
-              <span
-                class="font-pixel rounded-md border-2 border-[var(--accent)] bg-[var(--accent)] px-2 py-1 text-xs text-white shadow-sm"
-              >
-                {GameService.getCount()} GAMES
-              </span>
-            </div>
-            <p class="mt-1 text-sm text-[var(--text-muted)]">Community creations archive</p>
-          </div>
+          <span class="relative z-10">Initialize / Projects</span>
         </a>
-
-        <!-- Menu Item: Team -->
+        
         <a
-          href="/team"
-          class="group relative w-full overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] transition-all duration-300 hover:border-[var(--brand)] hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] md:w-96 lg:w-[28rem]"
+          href="/about"
+          class="group relative flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase transition-colors hover:text-white"
         >
-          <div
-            class="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-[var(--brand)]/20 to-[var(--accent)]/20"
-          >
-            <svg
-              class="h-20 w-20 text-[var(--brand)]/40"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 4a4 4 0 110 8 4 4 0 010-8zM6 8a3 3 0 100 6 3 3 0 000-6zm12 0a3 3 0 100 6 3 3 0 000-6zM6 18c0-2 2-4 6-4s6 2 6 4v2H6v-2z"
-              >
-              </path>
-            </svg>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent"></div>
-          <div class="absolute right-0 bottom-0 left-0 p-6">
-            <div class="flex items-center justify-between">
-              <span class="font-pixel text-2xl text-[var(--text)]">The Team</span>
-              <span
-                class="font-pixel rounded-md border-2 border-[var(--brand)] bg-[var(--brand)] px-2 py-1 text-xs text-white shadow-sm"
-              >
-                EXECS
-              </span>
-            </div>
-            <p class="mt-1 text-sm text-[var(--text-muted)]">Meet the organizers</p>
-          </div>
+          <span>System Info</span>
+          <span class="block h-1 w-1 bg-[var(--cyber-yellow)] transition-transform group-hover:scale-150"></span>
         </a>
       </div>
-    </section>
+    </div>
 
-    <section class="container-page mx-auto px-6 py-12">
-      <h2 class="font-pixel mb-12 text-center text-3xl tracking-widest text-[var(--text-muted)] uppercase md:text-4xl">
-        Supported By
-      </h2>
-      <div
-        class="flex flex-wrap items-center justify-center gap-8 opacity-70 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-12"
-      >
-        {
-          partnerLogos.map((logo) => (
-            <a
-              href={logo.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group relative flex h-16 w-32 items-center justify-center transition-all duration-300 hover:scale-105 md:h-20 md:w-40"
-            >
-              <img
-                src={logo.src.src}
-                alt={logo.alt}
-                class="max-h-full max-w-full object-contain drop-shadow-lg"
-                loading="lazy"
-              />
-            </a>
-          ))
-        }
+    <!-- Bottom HUD Data -->
+    <div class="absolute bottom-8 left-8 hidden font-tech text-xs text-[var(--border-dim)] md:block">
+      <p>CORD: 49.2606° N, 123.2460° W</p>
+      <p>LOC: VANCOUVER_GRID_04</p>
+    </div>
+
+    <div class="absolute bottom-8 right-8 hidden font-tech text-xs text-[var(--border-dim)] md:block">
+      <p>STATUS: OPTIMAL</p>
+      <p>VER: 2.0.77</p>
+    </div>
+  </section>
+
+  <!-- Mission Briefing (About) -->
+  <section class="relative z-10 py-24 overflow-hidden">
+    <CyberMarquee text="SYSTEM INFO /// MISSION BRIEFING" className="top-10 left-0" />
+    <div class="container-page mx-auto px-4 relative z-10">
+      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
+          <span class="text-[var(--cyber-yellow)]">//</span> 
+          <GlitchText client:visible text="Mission_Briefing" tag="span" />
+        </h2>
       </div>
-    </section>
 
-    <ContactForm
-      client:load
-      title="Send Message"
-      subtitle="Got questions? Drop us a line!"
-    />
-  </main>
-</Layout>
+      <div class="grid gap-12 md:grid-cols-2 items-center">
+        <div class="prose prose-invert prose-lg max-w-none">
+          <p class="text-[var(--text-muted)] text-base md:text-lg leading-relaxed">
+            We are the <span class="text-white font-bold">UBC Game Development Association</span>. An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
+          </p>
+          <p class="text-[var(--text-muted)] text-base md:text-lg leading-relaxed mt-6">
+            Our objective is simple: equip students with the skills to survive and thrive in the game industry. From 48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
+          </p>
+          
+          <div class="mt-12 flex gap-16">
+            <div class="flex flex-col border-l-4 border-[var(--cyber-blue)] pl-6">
+              <span class="text-6xl md:text-7xl font-black text-white tracking-tighter">500+</span>
+              <span class="text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Agents</span>
+            </div>
+            <div class="flex flex-col border-l-4 border-[var(--cyber-red)] pl-6">
+              <span class="text-6xl md:text-7xl font-black text-white tracking-tighter">50+</span>
+              <span class="text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Shipped Titles</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-card holo-effect relative min-h-[300px] flex items-center justify-center px-4 py-8 border border-[var(--cyber-blue)] shadow-[0_0_15px_rgba(0,240,255,0.5),0_0_50px_rgba(0,240,255,0.3)] bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.03)_0%,rgba(0,10,20,0.9)_100%)]">
+           <!-- Decorative Code Element -->
+           <div class="font-tech text-sm md:text-base text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] leading-loose">
+<pre class="bg-transparent">
+<span class="text-[var(--cyber-blue)]">class</span> <span class="text-white">GameDev</span> <span class="text-[var(--cyber-blue)]">extends</span> <span class="text-white">Society</span> &#123;
+  <span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) &#123;
+    <span class="text-[var(--cyber-blue)]">super</span>();
+    <span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;
+    <span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;
+  &#125;
+  
+  <span class="text-[var(--cyber-yellow)]">deploy</span>() &#123;
+    <span class="text-[var(--cyber-blue)]">while</span>(<span class="text-[var(--cyber-blue)]">true</span>) &#123;
+      build();
+      learn();
+      repeat();
+    &#125;
+  &#125;
+&#125;
+</pre>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tactical Operations (Events) -->
+  <section class="relative z-10 py-24 bg-[var(--bg-panel)]/50 overflow-hidden">
+     <CyberMarquee text="TACTICAL OPS /// EVENTS" direction="right" className="top-20 left-0" />
+    <div class="container-page mx-auto px-4 relative z-10">
+      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
+          <span class="text-[var(--cyber-red)]">//</span> 
+          <GlitchText client:visible text="Tactical_Ops" tag="span" />
+        </h2>
+        <a href="/events" class="font-tech text-xs text-[var(--accent)] hover:text-white transition-colors">FULL_SCHEDULE >></a>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        {latestEvents.length > 0 ? latestEvents.map(event => (
+          <div class="hud-card group p-6 transition-all hover:bg-[var(--bg-panel)] hover:border-[var(--cyber-red)]">
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="w-full md:w-32 aspect-square bg-cover bg-center shrink-0 border border-[var(--border-dim)] grayscale group-hover:grayscale-0 transition-all" 
+                   style={`background-image: url('${event.image.src}');`}></div>
+              
+              <div class="flex-1">
+                <div class="flex items-center justify-between mb-2">
+                  <span class={`text-black text-xs font-bold px-2 py-0.5 uppercase tracking-wider ${event.isActive ? 'bg-[var(--cyber-red)]' : 'bg-[var(--text-muted)]'}`}>
+                    {event.isActive ? 'Active' : 'Completed'}
+                  </span>
+                  <span class="font-tech text-xs text-[var(--cyber-yellow)]">{new Date(event.isoDate).toLocaleDateString()}</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">{event.title}</h3>
+                <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-2">{event.description}</p>
+                <div class="font-tech text-xs text-[var(--text-muted)] flex items-center gap-2">
+                  <span class={`w-2 h-2 rounded-full ${event.isActive ? 'bg-[var(--cyber-blue)] animate-pulse' : 'bg-[var(--text-muted)]'}`}></span>
+                  {event.location}
+                </div>
+              </div>
+            </div>
+          </div>
+        )) : (
+          <div class="col-span-2 p-8 text-center border border-dashed border-[var(--border-dim)] text-[var(--text-muted)] font-tech">
+            [NO OPERATIONS DETECTED] <br/> Check back later for mission updates.
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects Panel (Glassmorphism + Hologram) -->
+  <section class="relative z-10 py-24 overflow-hidden">
+     <CyberMarquee text="PROJECT ARCHIVE /// DEPLOYED" className="top-10 left-0" />
+    <div class="container-page mx-auto px-4 relative z-10">
+      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
+          <span class="text-[var(--cyber-yellow)]">//</span> 
+          <GlitchText client:visible text="Selected_Works" tag="span" />
+        </h2>
+        <a href="/games" class="font-tech text-xs text-[var(--accent)] hover:text-white transition-colors">VIEW_ALL_LOGS >></a>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {featuredGames.map((game, index) => {
+          let imageSrc = "/assets/placeholder-game.png"; // Fallback
+          // Safe check for media
+          if (game.media && game.media.image) {
+             imageSrc = game.media.image.src;
+          } else if (game.media && game.media.images && game.media.images.length > 0) {
+             imageSrc = game.media.images[0].src;
+          }
+
+          return (
+          <a href={game.gameLink || '#'} target="_blank" rel="noopener noreferrer" 
+             class="group hud-card holo-effect cursor-pointer transition-transform hover:-translate-y-1 hover:border-[var(--cyber-blue)]"
+             style={`animation-delay: ${index * 0.2}s`}>
+            <div class="aspect-video overflow-hidden relative">
+              <div 
+                class="h-full w-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                style={`background-image: url('${imageSrc}'); filter: sepia(20%) hue-rotate(180deg) saturate(150%) contrast(1.2);`}
+              >
+                <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-panel)] to-transparent opacity-80"></div>
+              </div>
+              <!-- Glitch Overlay on Hover -->
+              <div class="absolute inset-0 bg-white/5 opacity-0 mix-blend-overlay group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <div class="p-6 relative">
+              <!-- Scanline for Card -->
+              <div class="absolute top-0 left-0 w-full h-[2px] bg-[var(--cyber-blue)] opacity-0 group-hover:opacity-50 animate-pulse"></div>
+              
+              <div class="mb-2 flex items-center justify-between">
+                <span class="font-tech text-xs text-[var(--cyber-yellow)]">{game.year}</span>
+                {game.award && <span class="font-tech text-xs text-[var(--text-muted)]">{game.award}</span>}
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-[var(--cyber-blue)] transition-colors">{game.name}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-[var(--text-muted)]">{game.description}</p>
+            </div>
+          </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Base (FAQ) -->
+  <section class="relative z-10 py-24 bg-[var(--bg-panel)]/30">
+    <div class="container-page mx-auto px-4 max-w-4xl">
+      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <h2 class="text-3xl font-bold uppercase tracking-wide text-white">
+          <span class="text-[var(--brand)]">//</span> Knowledge_Base
+        </h2>
+      </div>
+      
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group hud-card cursor-pointer open:border-[var(--brand)] open:bg-[var(--bg-panel)]">
+            <summary class="flex items-center justify-between p-6 font-bold text-lg text-white list-none">
+              <span class="group-hover:text-[var(--brand)] transition-colors">{faq.q}</span>
+              <span class="text-[var(--brand)] transition-transform group-open:rotate-180">▼</span>
+            </summary>
+            <div class="px-6 pb-6 text-[var(--text-muted)] border-t border-[var(--border-dim)] pt-4 mt-[-1px]">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal Log Section -->
+  <section class="relative z-10 py-24">
+    <div class="container-page mx-auto px-4">
+      <div class="hud-card p-8 font-tech text-sm text-[var(--text-muted)]">
+        <div class="mb-4 text-[var(--cyber-blue)]">root@ubc-gamedev:~$ ./status_log.sh</div>
+        <div class="space-y-1">
+          <p><span class="text-green-500">[SUCCESS]</span> Loading assets... 100%</p>
+          <p><span class="text-green-500">[SUCCESS]</span> Connecting to neural net... OK</p>
+          <p><span class="text-[var(--cyber-yellow)]">[WARN]</span> Upcoming event detected: GAME_JAM_2026</p>
+          <p><span class="text-[var(--cyber-magenta)]">[ALERT]</span> New members recruiting now.</p>
+          <p class="animate-pulse">_</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .holo-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .holo-effect::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom,
+        transparent 45%,
+        rgba(0, 240, 255, 0.1) 50%,
+        transparent 55%
+      );
+      background-size: 100% 8px; /* High frequency lines */
+      animation: holo-scan 6s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.3;
+      mix-blend-mode: overlay;
+    }
+
+    @keyframes holo-scan {
+      0% { transform: translateY(-10%) rotate(0deg); }
+      100% { transform: translateY(10%) rotate(0deg); }
+    }
+  </style>
+</ImmersiveLayout>

@@ -6,45 +6,74 @@ import TwitchIcon from "../common/Icons/TwitchIcon.astro";
 import LinkIcon from "../common/Icons/LinkIcon.astro";
 ---
 
-<footer class="py-14 text-2xl text-[var(--color-gray-200)]">
-  <div class="container-page">
+<footer class="relative mt-20 border-t-4 border-[var(--cyber-magenta)] bg-[var(--surface-2)] py-16">
+  <!-- Decorative top elements -->
+  <div
+    class="absolute -top-1 left-10 h-4 w-32 bg-[var(--cyber-yellow)]"
+    style="clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);"
+  >
+  </div>
+  <div class="absolute -top-1 right-10 h-4 w-10 bg-[var(--brand)]"></div>
+
+  <div class="container-page text-center">
     <!-- Text -->
-    <h3 class="mb-8 text-center text-base font-bold tracking-wide md:text-2xl">Follow Us on Social Media</h3>
+    <h3 class="mb-8 text-xl font-bold tracking-widest text-[var(--text)] uppercase md:text-2xl">
+      Connect with <span class="text-[var(--cyber-yellow)]">UBC Game Dev</span>
+    </h3>
 
     <!-- Social Media icons via SVG -->
-    <ul class="mt-4 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+    <ul class="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-8">
       <!-- Discord -->
       <a
         href={LINKS.discord}
-        class="text-[#C3B9FF] hover:text-white">
-        <DiscordIcon />
+        class="group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+      >
+        <div class="scale-125 transform">
+          <DiscordIcon />
+        </div>
       </a>
 
       <!-- Instagram -->
       <a
         href={LINKS.instagram}
         target="_blank"
-        class="text-[#C3B9FF] hover:text-white">
-        <InstagramIcon />
+        class="group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+      >
+        <div class="scale-125 transform">
+          <InstagramIcon />
+        </div>
       </a>
 
       <!-- Twitch -->
       <a
         href={LINKS.twitch}
-        class="text-[#C3B9FF] hover:text-white">
-        <TwitchIcon />
+        class="group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+      >
+        <div class="scale-125 transform">
+          <TwitchIcon />
+        </div>
       </a>
 
       <!-- Link Icon -->
       <a
         href="/"
-        class="text-[#C3B9FF] hover:text-white">
-        <LinkIcon />
+        class="group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+      >
+        <div class="scale-125 transform">
+          <LinkIcon />
+        </div>
       </a>
     </ul>
 
-    <!-- <p class="mt-5 text-gray-400 text-xs text-center">
-      © {new Date().getFullYear()} UBC Game Development. All rights reserved.
-    </p> -->
+    <div class="mt-12 flex flex-col items-center gap-2">
+      <div class="h-1 w-20 bg-[var(--border)]"></div>
+      <p class="font-mono text-xs tracking-wider text-[var(--text-muted)]">
+        © {new Date().getFullYear()} UBC GAME DEV
+      </p>
+    </div>
   </div>
 </footer>

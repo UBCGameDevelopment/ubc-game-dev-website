@@ -59,7 +59,7 @@ export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) 
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
-                    <span className="font-pixel relative z-10 text-lg">{link.label}</span>
+                    <span className="relative z-10 text-lg font-bold tracking-wide">{link.label}</span>
                     <svg
                       className="relative z-10 h-4 w-4 opacity-50"
                       fill="none"

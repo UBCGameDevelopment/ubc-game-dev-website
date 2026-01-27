@@ -1,70 +1,162 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Timeline from "../components/games/Timeline/Timeline.astro";
-import GameCard from "../components/games/GameCard/GameCard.astro";
-import GameGrid from "../components/games/GameGrid";
+import ImmersiveLayout from "../layouts/ImmersiveLayout.astro";
 import { GameService } from "../services";
+import LoadingScreen from "../components/ui/LoadingScreen";
+import CyberMarquee from "../components/effects/CyberMarquee.astro";
+import GlitchText from "../components/effects/GlitchText";
 
-const games = GameService.getAll();
-import PixelBadge from "../components/common/PixelBadge.astro";
+// Get all games and sort by year descending
+const allGames = GameService.getAll().sort((a, b) => {
+  return parseInt(b.year) - parseInt(a.year);
+});
+
+// Group games by year
+const gamesByYear = allGames.reduce((acc, game) => {
+  const year = game.year;
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(game);
+  return acc;
+}, {} as Record<string, typeof allGames>);
+
+const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<Layout>
-  <main class="container-page">
-    <!-- Page Header -->
-    <section class="relative my-12 overflow-hidden text-center md:my-16">
-      <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <div
-          class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
-        >
-        </div>
+<ImmersiveLayout title="Club Timeline // Games">
+  <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" direction="left" className="top-32 left-0 fixed opacity-[0.02]" />
+  <div class="container-page mx-auto px-4 pt-32 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
+    
+    <!-- Sidebar Timeline Navigation -->
+    <aside class="w-full md:w-64 shrink-0 md:sticky md:top-32 h-fit">
+      <div class="hud-card p-6 border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 backdrop-blur-md">
+        <h2 class="font-black text-xl mb-6 tracking-widest uppercase text-white border-b border-[var(--border-dim)] pb-4">
+          Club Timeline
+        </h2>
+        
+        <nav class="space-y-2">
+          {years.map(year => (
+            <a 
+              href={`#year-${year}`}
+              class="block w-full text-left px-4 py-3 rounded text-[var(--text-muted)] hover:text-white hover:bg-[var(--bg-deep)] hover:border-l-2 hover:border-[var(--cyber-yellow)] transition-all font-tech tracking-wider"
+            >
+              <span class="text-[var(--cyber-yellow)] mr-2">//</span> {year}
+            </a>
+          ))}
+        </nav>
       </div>
 
-      <div class="relative z-10">
-        <div class="mb-4 inline-flex justify-center">
-          <PixelBadge
-            label="Our Projects"
-            variant="brand"
-          />
+      <!-- Decorative Elements -->
+      <div class="mt-8 hidden md:block">
+        <div class="font-tech text-xs text-[var(--border-dim)]">
+          <p>SYS.STATUS: ONLINE</p>
+          <p>ARCHIVE_ACCESS: GRANTED</p>
         </div>
-
-        <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] md:text-6xl">Game Showcase</h1>
-        <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-[var(--text-muted)]">
-          Explore the amazing games created by our talented teams. Each project represents countless hours of
-          creativity, collaboration, and passion for game development.
-        </p>
       </div>
-    </section>
+    </aside>
 
-    <!-- Timeline + Games -->
-    <section class="my-12 md:my-16">
-      <div class="items-start gap-8 md:grid md:grid-cols-[minmax(180px,220px)_minmax(0,1fr)] lg:gap-14">
-        <aside class="order-2 mb-8 md:sticky md:top-24 md:order-1 md:mb-0">
-          <div class="rounded-3xl border border-[var(--border)] bg-[var(--surface-2)] p-5 shadow-xl">
-            <h2 class="mb-3 text-lg font-bold tracking-wide text-[var(--text)]">Club Timeline</h2>
-            <Timeline />
+    <!-- Main Content: Games Stream -->
+    <div class="flex-1 space-y-32">
+       {years.map(year => (
+          <div id={`year-${year}`} class="scroll-mt-32 relative">
+             <!-- Year Marker -->
+             <div class="flex items-center gap-4 mb-12">
+               <span class="text-6xl font-black text-[var(--border-dim)] opacity-20 select-none absolute -left-4 -top-10 md:-left-12">{year}</span>
+               <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
+                 <GlitchText client:visible text={year} tag="span" /> 
+                 <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>
+               </h3>
+               <div class="h-px bg-[var(--border-dim)] flex-1 ml-4"></div>
+             </div>
+
+             <div class="space-y-16">
+               {gamesByYear[year].map((game) => {
+                  let imageSrc = "/assets/placeholder-game.png"; // Fallback
+                  if (game.media && game.media.image) {
+                     imageSrc = game.media.image.src;
+                  } else if (game.media && game.media.images && game.media.images.length > 0) {
+                     imageSrc = game.media.images[0].src;
+                  }
+
+                  return (
+                    <article class="group relative grid lg:grid-cols-[1.2fr_1fr] gap-8 p-6 lg:p-0">
+                      <!-- Left: Content -->
+                      <div class="flex flex-col justify-center order-2 lg:order-1">
+                        <div class="mb-4">
+                           <span class="bg-[var(--cyber-yellow)] text-black text-xs font-bold px-2 py-1 uppercase tracking-wider inline-block mb-2">Project</span>
+                           <h4 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 glitch-hover" data-text={game.name}>{game.name}</h4>
+                           
+                           {game.award && (
+                             <div class="inline-flex items-center gap-2 border border-[var(--cyber-yellow)] px-3 py-2 mb-6 bg-[var(--cyber-yellow)]/10">
+                               <span class="text-[var(--cyber-yellow)]">★</span>
+                               <span class="font-bold text-[var(--cyber-yellow)] text-sm uppercase tracking-wide">{game.award}</span>
+                             </div>
+                           )}
+
+                           <p class="text-[var(--text-muted)] text-lg leading-relaxed mb-8 border-l-2 border-[var(--border-dim)] pl-6">
+                             {game.description}
+                           </p>
+
+                           <!-- Team Members -->
+                           {game.teamMembers && (
+                             <div class="space-y-2">
+                               <h5 class="text-xs font-bold text-[var(--brand)] uppercase tracking-widest flex items-center gap-2">
+                                 <span class="w-1 h-1 bg-[var(--brand)] rounded-full"></span> Team Members
+                               </h5>
+                               <div class="flex flex-wrap gap-2">
+                                 {game.teamMembers.map(member => (
+                                   <span class="px-3 py-1 rounded-full border border-[var(--border-dim)] text-xs text-[var(--text-muted)] bg-[var(--bg-panel)] font-tech">
+                                     {member}
+                                   </span>
+                                 ))}
+                               </div>
+                             </div>
+                           )}
+                           
+                           <div class="mt-8">
+                             <a href={game.gameLink || '#'} target="_blank" class="inline-flex items-center gap-2 text-white hover:text-[var(--cyber-blue)] transition-colors font-bold uppercase tracking-widest text-sm group-link">
+                               <span>Play Game</span>
+                               <span class="transform transition-transform group-link-hover:translate-x-1">>></span>
+                             </a>
+                           </div>
+                        </div>
+                      </div>
+
+                      <!-- Right: Image -->
+                      <div class="order-1 lg:order-2">
+                         <div class="hud-card lg:-mr-6 relative aspect-video overflow-hidden rounded-lg group-hover:border-[var(--cyber-blue)] transition-colors border-2 border-transparent">
+                            <div 
+                              class="absolute inset-0 bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105"
+                              style={`background-image: url('${imageSrc}');`}
+                            >
+                              <div class="absolute inset-0 bg-[var(--bg-deep)]/20 group-hover:bg-transparent transition-colors"></div>
+                            </div>
+                            
+                            <!-- CRT Scanline Overlay -->
+                            <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+                         </div>
+                      </div>
+                    </article>
+                  );
+               })}
+             </div>
           </div>
-        </aside>
+       ))}
+    </div>
+  </div>
 
-        <div class="order-1 md:order-2">
-          <GameGrid client:load />
-
-          <div class="game-cards-container space-y-8 md:space-y-12">
-            {
-              games.map((game) => (
-                <div
-                  class="game-card-wrapper"
-                  data-game-card
-                  data-year={game.year}
-                  style="opacity: 0; transform: scale(0.9); filter: blur(8px);"
-                >
-                  <GameCard {...game} />
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</Layout>
+  <style>
+    .glitch-hover:hover {
+      animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+      color: var(--cyber-blue);
+    }
+    @keyframes glitch-skew {
+      0% { transform: skew(0deg); }
+      20% { transform: skew(-2deg); }
+      40% { transform: skew(2deg); }
+      60% { transform: skew(0deg); }
+      80% { transform: skew(-1deg); }
+      100% { transform: skew(0deg); }
+    }
+  </style>
+</ImmersiveLayout>

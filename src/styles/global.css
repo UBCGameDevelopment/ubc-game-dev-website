@@ -1,357 +1,288 @@
-/* Google Fonts - must be first */
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap");
-
+/* Cyberpunk 2.0 "Neon Operator" Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 @import "tailwindcss";
 
-/* --- Theme tokens: UBC Game Dev Shirt Palette (OKLCH) --- */
 @theme {
-  /* Typography */
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-pixel: "VT323", monospace;
+  /* Colors */
+  --color-brand: oklch(65% 0.25 290);
+  --color-accent: oklch(70% 0.2 320);
+  --color-cyber-yellow: #fcee0a;
+  --color-cyber-blue: #00f0ff;
+  --color-cyber-red: #ff003c;
 
-  /* Washed Black scale (dark mode base) */
-  --color-black: oklch(26.032% 0 none);
-  --color-black-50: oklch(93.1% 0 none);
-  --color-black-100: oklch(90.365% 0 none);
-  --color-black-200: oklch(84.522% 0 none);
-  --color-black-300: oklch(78.26% 0 none);
-  --color-black-400: oklch(71.547% 0 none);
-  --color-black-500: oklch(64.673% 0 none);
-  --color-black-600: oklch(57.268% 0 none);
-  --color-black-700: oklch(48.906% 0 none);
-  --color-black-800: oklch(39.418% 0 none);
-  --color-black-900: oklch(26.032% 0 none);
-  --color-black-950: oklch(13.979% 0 none);
+  /* Backgrounds */
+  --color-bg-deep: #030305;
+  --color-bg-panel: #0a0a0c;
 
-  /* Cream scale (light mode base - matching the cream shirt) */
-  --color-cream: oklch(96% 0.015 90);
-  --color-cream-50: oklch(98.5% 0.008 90);
-  --color-cream-100: oklch(97% 0.012 90);
-  --color-cream-200: oklch(95% 0.018 90);
-  --color-cream-300: oklch(92% 0.022 90);
-  --color-cream-400: oklch(88% 0.025 90);
-  --color-cream-500: oklch(84% 0.028 90);
+  /* Text */
+  --color-text-main: #e0e0e0;
+  --color-text-muted: #8a8a90;
 
-  /* Lavender/Purple brand (matching shirt print) */
-  --color-lavender: oklch(72% 0.14 285);
-  --color-lavender-50: oklch(96% 0.03 285);
-  --color-lavender-100: oklch(92% 0.06 285);
-  --color-lavender-200: oklch(86% 0.1 285);
-  --color-lavender-300: oklch(80% 0.12 285);
-  --color-lavender-400: oklch(76% 0.13 285);
-  --color-lavender-500: oklch(72% 0.14 285);
-  --color-lavender-600: oklch(62% 0.16 285);
-  --color-lavender-700: oklch(52% 0.18 285);
-  --color-lavender-800: oklch(42% 0.16 285);
-  --color-lavender-900: oklch(32% 0.12 285);
+  /* Fonts */
+  --font-main: "Rajdhani", sans-serif;
+  --font-mono: "Share Tech Mono", monospace;
+  --font-tech: "Share Tech Mono", monospace;
 
-  /* Accent (lighter lavender for secondary highlights) */
-  --color-accent-500: oklch(85% 0.08 285);
-  --color-accent-600: oklch(78% 0.1 285);
+  /* Border */
+  --color-border-dim: rgba(255, 255, 255, 0.1);
 }
 
-/* Dark mode (default) */
 :root {
-  --surface: var(--color-black-950);
-  --surface-2: var(--color-black-900);
-  --surface-3: var(--color-black-800);
-  --text: var(--color-black-50);
-  --text-muted: var(--color-black-400);
-  --border: var(--color-black-700);
-  --ring: var(--color-lavender-500);
+  /* Functional Colors mapped to theme or custom vars */
+  --brand: var(--color-brand);
+  --accent: var(--color-accent);
+  --cyber-yellow: var(--color-cyber-yellow);
+  --cyber-blue: var(--color-cyber-blue);
+  --cyber-red: var(--color-cyber-red);
 
-  /* brand helpers */
-  --brand: var(--color-lavender-500);
-  --brand-hover: var(--color-lavender-400);
-  --brand-strong: var(--color-lavender-700);
-  --accent: var(--color-lavender-300);
-}
+  --bg-deep: var(--color-bg-deep);
+  --bg-panel: var(--color-bg-panel);
 
-/* Light mode */
-[data-theme="light"] {
-  --surface: var(--color-cream-50);
-  --surface-2: var(--color-cream-100);
-  --surface-3: var(--color-cream-200);
-  --text: var(--color-black-950);
-  --text-muted: var(--color-black-600);
-  --border: var(--color-black-300);
-  --ring: var(--color-lavender-600);
-  --brand: var(--color-lavender-700);
-  --brand-hover: var(--color-lavender-600);
-  --brand-strong: var(--color-lavender-800);
-  --accent: var(--color-lavender-500);
-}
+  --text-main: var(--color-text-main);
+  --text-muted: var(--color-text-muted);
 
-/* --- Base (site-wide) --- */
-@layer base {
-  html {
-    color-scheme: dark light;
-    overscroll-behavior: none;
-    forced-color-adjust: none;
-  }
-
-  [data-theme="light"] {
-    color-scheme: light;
-  }
-
-  body {
-    @apply min-h-screen antialiased;
-    color: var(--text);
-    position: relative;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: var(--surface);
-    pointer-events: none;
-  }
-
-  a {
-    color: var(--text);
-    transition: color 0.2s ease-in-out;
-  }
-
-  a:hover {
-    color: var(--brand);
-  }
-
-  hr {
-    border-color: var(--border);
-  }
-}
-
-/* --- Reusable components (optional) --- */
-@layer components {
-  .container-page {
-    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
-  }
-
-  .card {
-    @apply rounded-2xl p-5 shadow-lg;
-    background: color-mix(in oklab, var(--surface), white 4%);
-    border: 1px solid var(--border);
-  }
-
-  .btn {
-    @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 font-medium transition;
-    border: 1px solid transparent;
-  }
-
-  .btn-primary {
-    @apply text-white;
-    background: var(--brand);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-
-  .btn-primary:hover {
-    background: var(--brand-strong);
-  }
-
-  .btn-outline {
-    color: var(--text);
-    border-color: var(--border);
-    background: transparent;
-  }
-
-  .btn-outline:hover {
-    border-color: var(--ring);
-    color: var(--ring);
-  }
-
-  .badge {
-    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-semibold;
-    background: var(--accent);
-    color: #07210f;
-    /* readable on the green */
-  }
-
-  /* form focus ring using your brand */
-  .focus-ring {
-    @apply focus:ring-2 focus:outline-none;
-    box-shadow: 0 0 0 0 var(--ring);
-  }
-
-  .focus-ring:focus {
-    --tw-ring-color: var(--ring);
-  }
-
-  /* Timeline with fish-eye effect (React component) */
-  .timeline-react {
-    padding: 0.5rem 0;
-  }
-
-  .timeline-react ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .timeline-react li {
-    position: relative;
-    transform-origin: left center;
-  }
-
-  .timeline-btn {
-    all: unset;
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    max-width: 100%;
-    cursor: pointer;
-    padding: 0.3rem 0;
-    outline-offset: 4px;
-  }
-
-  .timeline-btn:focus-visible {
-    outline: 2px solid rgba(157, 124, 255, 0.6);
-    border-radius: 0.5rem;
-  }
-
-  .timeline-bar {
-    display: block;
-    width: 85px;
-    height: 3px;
-    border-radius: 9999px;
-    transition:
-      transform 0.22s ease,
-      background 0.22s ease,
-      box-shadow 0.22s ease;
-    transform-origin: center;
-  }
-
-  .timeline-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    transition:
-      opacity 0.18s ease,
-      transform 0.18s ease;
-    white-space: nowrap;
-  }
-
-  @media (max-width: 768px) {
-    .timeline-bar {
-      width: 68px;
-    }
-
-    .timeline-label {
-      font-size: 0.65rem;
-    }
-  }
-}
-
-/* --- Smooth Scroll --- */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+  --border-dim: var(--color-border-dim);
+  --glass-str: rgba(10, 10, 12, 0.7);
 }
 
 html {
-  scroll-padding-top: 2rem;
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
 }
 
-* {
-  scroll-margin-top: 2rem;
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- Modern + Vintage Effects --- */
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
 
-/* Subtle scanline overlay (CRT effect) */
-.scanlines {
+/* Typography Overrides */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Glitch Effect - Subtle (Class: .glitch-text) */
+.glitch-text {
   position: relative;
+  display: inline-block;
 }
 
-.scanlines::after {
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-deep);
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  color: var(--cyber-blue);
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-1px, -1px);
+  animation: glitch-anim-1 4s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  color: var(--cyber-red);
+  z-index: -2;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translate(1px, 1px);
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: translate(-2px, 1px);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -1px);
+  }
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(2px, 2px);
+  }
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-2px, 1px);
+  }
+  100% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(2px, -1px);
+  }
+  20% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    clip-path: inset(30% 0 20% 0);
+    transform: translate(2px, 2px);
+  }
+  60% {
+    clip-path: inset(15% 0 80% 0);
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    clip-path: inset(55% 0 10% 0);
+    transform: translate(2px, 1px);
+  }
+  100% {
+    clip-path: inset(40% 0 30% 0);
+    transform: translate(-2px, -1px);
+  }
+}
+
+/* Glitch Intense */
+.glitch-intense {
+  position: relative;
+  display: inline-block;
+  color: white;
+}
+.glitch-intense::before,
+.glitch-intense::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-deep);
+}
+.glitch-intense::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--cyber-red);
+  clip-path: rect(24px, 550px, 90px, 0);
+  animation: glitch-anim-intense 2s infinite linear alternate-reverse;
+}
+.glitch-intense::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--cyber-blue);
+  clip-path: rect(85px, 550px, 140px, 0);
+  animation: glitch-anim-intense 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-intense {
+  0% {
+    clip-path: inset(20% 0 80% 0);
+    transform: skew(0.5deg);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: skew(-0.5deg);
+  }
+  40% {
+    clip-path: inset(40% 0 50% 0);
+    transform: skew(1deg);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: skew(-1deg);
+  }
+  80% {
+    clip-path: inset(10% 0 70% 0);
+    transform: skew(0.5deg);
+  }
+  100% {
+    clip-path: inset(30% 0 20% 0);
+    transform: skew(-0.5deg);
+  }
+}
+
+/* Angular Card Base */
+.hud-card {
+  background: var(--glass-str);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-dim);
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-card::after {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--cyber-yellow);
+  border-right: 2px solid var(--cyber-yellow);
+  opacity: 0.5;
+}
+
+/* Scanline Overlay (Global) */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1)
+  );
+  background-size: 100% 4px;
   pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 0, 0, 0.03) 2px,
-    rgba(0, 0, 0, 0.03) 4px
-  );
-  z-index: 100;
+  z-index: 9999;
+  opacity: 0.15;
 }
 
-/* Pixel/stepped border corners */
-.pixel-corners {
-  --pixel-size: 4px;
-  clip-path: polygon(
-    0 var(--pixel-size),
-    var(--pixel-size) var(--pixel-size),
-    var(--pixel-size) 0,
-    calc(100% - var(--pixel-size)) 0,
-    calc(100% - var(--pixel-size)) var(--pixel-size),
-    100% var(--pixel-size),
-    100% calc(100% - var(--pixel-size)),
-    calc(100% - var(--pixel-size)) calc(100% - var(--pixel-size)),
-    calc(100% - var(--pixel-size)) 100%,
-    var(--pixel-size) 100%,
-    var(--pixel-size) calc(100% - var(--pixel-size)),
-    0 calc(100% - var(--pixel-size))
-  );
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-yellow);
 }
 
-/* Lavender accent glow for interactive elements */
-.accent-glow {
-  box-shadow: 0 0 0 0 var(--brand);
-  transition: box-shadow 0.3s ease;
+/* Utilities for compatibility */
+.text-neon {
+  text-shadow:
+    0 0 10px rgba(147, 51, 234, 0.5),
+    0 0 20px rgba(147, 51, 234, 0.3);
 }
-
-.accent-glow:hover,
-.accent-glow:focus {
-  box-shadow: 0 0 20px -5px var(--brand);
-}
-
-/* Hover lift animation */
-.hover-lift {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.3);
-}
-
-/* Retro text shadow */
-.retro-shadow {
-  text-shadow: 2px 2px 0 var(--brand-strong);
-}
-
-/* Pixel font utility */
 .font-pixel {
-  font-family: var(--font-pixel);
-  letter-spacing: 0.05em;
+  font-family: var(--font-tech); /* Fallback to tech font */
 }

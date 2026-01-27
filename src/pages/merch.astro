@@ -10,11 +10,38 @@ import PixelBadge from "../components/common/PixelBadge.astro";
 <Layout>
   <main>
     <!-- Header Section -->
-    <section class="relative overflow-hidden py-16 md:py-24">
-      <!-- Ambient Glow -->
+    <section class="relative overflow-hidden pt-32 pb-16 md:pb-24">
+      <!-- Enhanced Ambient Glow - Space Vibes -->
       <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
-          class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
+          class="h-[550px] w-[550px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_50%)] opacity-[0.15]"
+        >
+        </div>
+        <div
+          class="absolute -left-24 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,var(--accent)_0%,transparent_70%)] opacity-[0.12]"
+        >
+        </div>
+        <div
+          class="absolute -right-24 h-[300px] w-[300px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.08]"
+        >
+        </div>
+      </div>
+
+      <!-- Floating Particles -->
+      <div class="pointer-events-none absolute inset-0 z-5 overflow-hidden">
+        <div
+          class="float-anim absolute top-[25%] left-[12%] h-1.5 w-1.5 rotate-45 bg-[var(--brand)] opacity-35"
+          style="animation-delay: 0.3s;"
+        >
+        </div>
+        <div
+          class="float-anim absolute top-[35%] right-[15%] h-2 w-2 rotate-45 bg-[var(--accent)] opacity-25"
+          style="animation-delay: 1s;"
+        >
+        </div>
+        <div
+          class="float-anim absolute top-[65%] right-[8%] h-1 w-1 rounded-full bg-[var(--cyber-magenta)] opacity-45"
+          style="animation-delay: 1.8s;"
         >
         </div>
       </div>
@@ -27,33 +54,53 @@ import PixelBadge from "../components/common/PixelBadge.astro";
           />
         </div>
 
-        <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] md:text-5xl lg:text-6xl">
-          Merch Store
+        <h1
+          class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] uppercase md:text-5xl lg:text-6xl"
+        >
+          Merch <span class="text-[var(--cyber-yellow)]">Store</span>
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
           Rep UBC Game Dev with our exclusive merch! All proceeds support club events, workshops, and events.
         </p>
 
-        <!-- Category Filter -->
-        <div class="mx-auto mt-8 flex flex-wrap justify-center gap-2">
+        <!-- Category Filter - Angular Style -->
+        <div class="mx-auto mt-12 flex flex-wrap justify-center gap-4">
+          <button
+            data-category="all"
+            class="filter-btn active font-pixel px-6 py-2 text-sm tracking-wider uppercase transition-all duration-200"
+            style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+          >
+            All Items
+          </button>
+
           {
-            categories.map((cat) => (
-              <button
-                data-category={cat.id}
-                class:list={[
-                  "font-pixel rounded-xl border px-4 py-2 text-sm transition-all duration-200",
-                  cat.id === "all"
-                    ? "border-[var(--brand)] bg-[var(--brand)] text-white"
-                    : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-muted)] hover:border-[var(--brand)]/50 hover:text-[var(--text)]",
-                ]}
-              >
-                {cat.label}
-              </button>
-            ))
+            categories
+              .filter((c) => c.id !== "all")
+              .map((cat) => (
+                <button
+                  data-category={cat.id}
+                  class="filter-btn font-pixel bg-[var(--surface-2)] px-6 py-2 text-sm tracking-wider text-[var(--text-muted)] uppercase transition-all duration-200 hover:bg-[var(--surface-3)] hover:text-white"
+                  style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+                >
+                  {cat.label}
+                </button>
+              ))
           }
         </div>
       </div>
     </section>
+
+    <!-- Hex Divider -->
+    <div class="hex-divider mx-auto mb-16 max-w-4xl opacity-50"></div>
+
+    <style>
+      .filter-btn.active {
+        background-color: var(--cyber-yellow);
+        color: var(--surface);
+        font-weight: bold;
+        box-shadow: 0 0 15px rgba(252, 238, 10, 0.3);
+      }
+    </style>
 
     <!-- Product Grid -->
     <section class="container-page mx-auto px-4 pb-20">
@@ -112,11 +159,11 @@ import PixelBadge from "../components/common/PixelBadge.astro";
 
       // Update button styles
       categoryButtons.forEach((btn) => {
-        btn.classList.remove("border-[var(--brand)]", "bg-[var(--brand)]", "text-white");
-        btn.classList.add("border-[var(--border)]", "bg-[var(--surface-2)]", "text-[var(--text-muted)]");
+        btn.classList.remove("active");
+        btn.classList.add("bg-[var(--surface-2)]", "text-[var(--text-muted)]");
       });
-      button.classList.remove("border-[var(--border)]", "bg-[var(--surface-2)]", "text-[var(--text-muted)]");
-      button.classList.add("border-[var(--brand)]", "bg-[var(--brand)]", "text-white");
+      button.classList.remove("bg-[var(--surface-2)]", "text-[var(--text-muted)]");
+      button.classList.add("active");
 
       // Filter items
       let visibleCount = 0;

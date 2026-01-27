@@ -1,20 +1,27 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ContactForm from "../components/home/ContactForm";
+import PixelBadge from "../components/common/PixelBadge.astro";
 ---
 
 <Layout>
-    <div class="mx-auto mt-20 max-w-3xl text-center">
-        <div
-            class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5">
-            <span class="text-brand-400 text-sm font-semibold">Contact Us</span>
-        </div>
+  <div class="mx-auto mt-24 mb-12 max-w-3xl text-center">
+    <div class="mb-6 inline-flex justify-center">
+      <PixelBadge
+        label="Contact Us"
+        variant="brand"
+      />
     </div>
 
-    <!-- Contact Form -->
-    <ContactForm
-        client:load
-        title="Contact Us"
-        subtitle="Have a question or want to collaborate? Send us a message and we'll get back to you!"
-    />
+    <h1 class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] uppercase md:text-5xl">
+      Get in <span class="text-[var(--cyber-yellow)]">Touch</span>
+    </h1>
+  </div>
+
+  <!-- Contact Form -->
+  <ContactForm
+    client:load
+    title="Contact Us"
+    subtitle="Have a question or want to collaborate? Send us a message and we'll get back to you!"
+  />
 </Layout>
