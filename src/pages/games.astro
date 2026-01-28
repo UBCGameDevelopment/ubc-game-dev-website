@@ -115,10 +115,18 @@ const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a))
                            )}
                            
                            <div class="mt-8">
-                             <a href={game.gameLink || '#'} target="_blank" class="inline-flex items-center gap-2 text-white hover:text-[var(--cyber-blue)] transition-colors font-bold uppercase tracking-widest text-sm group-link">
-                               <span>Play Game</span>
-                               <span class="transform transition-transform group-link-hover:translate-x-1">>></span>
-                             </a>
+                             {game.gameLink && (
+                               <a 
+                                 href={game.gameLink} 
+                                 target="_blank" 
+                                 rel="noopener noreferrer"
+                                 class="inline-flex items-center gap-2 bg-[var(--cyber-blue)] text-black font-bold uppercase tracking-widest text-sm px-6 py-3 hover:bg-white transition-all transform hover:-translate-y-1 hover:shadow-[0_0_15px_var(--cyber-blue)]"
+                                 style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+                               >
+                                 <span>Play Game</span>
+                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                               </a>
+                             )}
                            </div>
                         </div>
                       </div>
@@ -126,15 +134,28 @@ const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a))
                       <!-- Right: Image -->
                       <div class="order-1 lg:order-2">
                          <div class="hud-card lg:-mr-6 relative aspect-video overflow-hidden rounded-lg group-hover:border-[var(--cyber-blue)] transition-colors border-2 border-transparent">
-                            <div 
-                              class="absolute inset-0 bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105"
-                              style={`background-image: url('${imageSrc}');`}
-                            >
-                              <div class="absolute inset-0 bg-[var(--bg-deep)]/20 group-hover:bg-transparent transition-colors"></div>
-                            </div>
-                            
-                            <!-- CRT Scanline Overlay -->
-                            <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+                            {game.media && game.media.type === 'video' ? (
+                              <iframe 
+                                src={game.media.videoUrl} 
+                                title={game.name}
+                                class="absolute inset-0 w-full h-full"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                              ></iframe>
+                            ) : (
+                              <>
+                                <div 
+                                  class="absolute inset-0 bg-cover bg-center transform transition-transform duration-700 group-hover:scale-105"
+                                  style={`background-image: url('${imageSrc}');`}
+                                >
+                                  <div class="absolute inset-0 bg-[var(--bg-deep)]/20 group-hover:bg-transparent transition-colors"></div>
+                                </div>
+                                
+                                <!-- CRT Scanline Overlay -->
+                                <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 bg-[length:100%_2px,3px_100%] pointer-events-none"></div>
+                              </>
+                            )}
                          </div>
                       </div>
                     </article>
