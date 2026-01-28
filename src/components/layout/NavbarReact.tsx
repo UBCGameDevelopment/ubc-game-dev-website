@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import MobileMenu from "./navbar/MobileMenu";
 
@@ -11,11 +11,6 @@ interface NavbarProps {
 export default function Navbar({ logo, links }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Lock scroll when mobile menu is open
   useEffect(() => {
@@ -31,8 +26,6 @@ export default function Navbar({ logo, links }: NavbarProps) {
 
   const regularLinks = links.slice(0, -1);
   const contactLink = links[links.length - 1];
-
-  if (!mounted) return null;
 
   return (
     <>

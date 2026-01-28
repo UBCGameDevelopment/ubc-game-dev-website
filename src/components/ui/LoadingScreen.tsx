@@ -23,17 +23,20 @@ export default function LoadingScreen() {
     // Mark as booted immediately so refreshes/navs don't trigger it again
     sessionStorage.setItem("cyber_boot_custom", "true");
 
-    // Prevent scrolling while loading
+    // Prevent scrolling and remove scrollbar while loading
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, []);
 
   const handleEnter = () => {
     setIsLoaded(true);
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
   };
 
   return (

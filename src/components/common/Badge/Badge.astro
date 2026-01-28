@@ -5,19 +5,7 @@ interface Props {
   class?: string;
 }
 
-const { label, variant = "default", class: className = "" } = Astro.props;
-
-const variantClasses = {
-  event: "border-brand-500/30 bg-brand-500/20",
-  game: "border-brand-500/30 bg-brand-500/20",
-  default: "border-white/30 bg-white/20",
-};
-
-const textColorClasses = {
-  event: "text-brand-400",
-  game: "text-brand-400",
-  default: "text-white",
-};
+const { label, class: className = "" } = Astro.props;
 ---
 
 <div
