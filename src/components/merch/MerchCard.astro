@@ -120,7 +120,30 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
       <span class="font-pixel text-2xl text-[var(--brand)] transition-colors group-hover:text-[var(--cyber-yellow)]">
         ${price}
       </span>
-      {!isSoldOut && <button class="cyber-button px-4 py-2 text-xs">Buy Now</button>}
+      {
+        !isSoldOut && (
+          <button
+            onclick={`window.dispatchEvent(new CustomEvent('open-merch-modal', { detail: { itemName: '${name}', price: ${price} } }))`}
+            class="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-xs font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
+            style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+          >
+            <span class="relative z-10">Buy Now</span>
+            <svg
+              class="relative z-10 h-3 w-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          </button>
+        )
+      }
     </div>
   </div>
 </div>

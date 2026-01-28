@@ -5,9 +5,11 @@ import MerchCard from "../components/merch/MerchCard.astro";
 import { merchItems, categories } from "../data/merch";
 import { LINKS } from "../config/links";
 import PixelBadge from "../components/common/PixelBadge.astro";
+import MerchPurchaseModal from "../components/merch/MerchPurchaseModal.tsx";
 ---
 
 <Layout>
+  <MerchPurchaseModal client:load />
   <main>
     <!-- Header Section -->
     <section class="relative overflow-hidden pt-32 pb-16 md:pb-24">
