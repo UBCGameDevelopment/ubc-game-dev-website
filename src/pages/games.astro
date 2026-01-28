@@ -4,6 +4,7 @@ import { GameService } from "../services";
 
 import CyberMarquee from "../components/effects/CyberMarquee.astro";
 import GlitchText from "../components/effects/GlitchText";
+import BackgroundText from "../components/effects/BackgroundText.astro";
 
 // Get all games and sort by year descending
 const allGames = GameService.getAll().sort((a, b) => {
@@ -61,7 +62,7 @@ const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a))
           <div id={`year-${year}`} class="scroll-mt-32 relative">
              <!-- Year Marker -->
              <div class="flex items-center gap-4 mb-12">
-               <span class="text-6xl font-black text-[var(--border-dim)] opacity-20 select-none absolute -left-4 -top-10 md:-left-12">{year}</span>
+               <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-20" />
                <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
                  <GlitchText client:visible text={year} tag="span" /> 
                  <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>

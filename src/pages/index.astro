@@ -5,6 +5,7 @@ import { GameService } from "../services";
 import { EventService } from "../services/EventService";
 import CyberMarquee from "../components/effects/CyberMarquee.astro";
 import GlitchText from "../components/effects/GlitchText";
+import BackgroundText from "../components/effects/BackgroundText.astro";
 
 const featuredGames = GameService.getAll().slice(0, 3);
 const latestEvents = (EventService.getAll() || [])
@@ -104,9 +105,10 @@ const faqs = [
 
   <!-- Mission Briefing (About) -->
   <section class="relative z-10 py-24 overflow-hidden">
-    <CyberMarquee text="SYSTEM INFO /// MISSION BRIEFING" className="top-10 left-0" />
+
     <div class="container-page mx-auto px-4 relative z-10">
-      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+      <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <BackgroundText text="MISSION" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-yellow)]">//</span> 
           <GlitchText client:visible text="Mission_Briefing" tag="span" />
@@ -115,10 +117,10 @@ const faqs = [
 
       <div class="grid gap-12 md:grid-cols-2 items-center">
         <div class="prose prose-invert prose-lg max-w-none">
-          <p class="text-[var(--text-muted)] text-base md:text-lg leading-relaxed">
+          <p class="text-[var(--text-muted)] text-xl md:text-2xl leading-relaxed">
             We are the <span class="text-white font-bold">UBC Game Development Association</span>. An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
           </p>
-          <p class="text-[var(--text-muted)] text-base md:text-lg leading-relaxed mt-6">
+          <p class="text-[var(--text-muted)] text-xl md:text-2xl leading-relaxed mt-6">
             Our objective is simple: equip students with the skills to survive and thrive in the game industry. From 48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
           </p>
           
@@ -162,9 +164,10 @@ const faqs = [
 
   <!-- Tactical Operations (Events) -->
   <section class="relative z-10 py-24 bg-[var(--bg-panel)]/50 overflow-hidden">
-     <CyberMarquee text="TACTICAL OPS /// EVENTS" direction="right" className="top-20 left-0" />
+
     <div class="container-page mx-auto px-4 relative z-10">
-      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+      <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <BackgroundText text="EVENTS" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-red)]">//</span> 
           <GlitchText client:visible text="Tactical_Ops" tag="span" />
@@ -176,7 +179,7 @@ const faqs = [
         {latestEvents.length > 0 ? latestEvents.map(event => (
           <div class="hud-card group p-6 transition-all hover:bg-[var(--bg-panel)] hover:border-[var(--cyber-red)]">
             <div class="flex flex-col md:flex-row gap-6">
-              <div class="w-full md:w-32 aspect-square bg-cover bg-center shrink-0 border border-[var(--border-dim)] grayscale group-hover:grayscale-0 transition-all" 
+              <div class="w-full md:w-48 aspect-square bg-cover bg-center shrink-0 border border-[var(--border-dim)] grayscale group-hover:grayscale-0 transition-all" 
                    style={`background-image: url('${event.image.src}');`}></div>
               
               <div class="flex-1">
@@ -184,11 +187,11 @@ const faqs = [
                   <span class={`text-black text-xs font-bold px-2 py-0.5 uppercase tracking-wider ${event.isActive ? 'bg-[var(--cyber-red)]' : 'bg-[var(--text-muted)]'}`}>
                     {event.isActive ? 'Active' : 'Completed'}
                   </span>
-                  <span class="font-tech text-xs text-[var(--cyber-yellow)]">{new Date(event.isoDate).toLocaleDateString()}</span>
+                  <span class="font-tech text-base text-[var(--cyber-yellow)]">{new Date(event.isoDate).toLocaleDateString()}</span>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-2">{event.title}</h3>
-                <p class="text-sm text-[var(--text-muted)] mb-4 line-clamp-2">{event.description}</p>
-                <div class="font-tech text-xs text-[var(--text-muted)] flex items-center gap-2">
+                <h3 class="text-3xl font-bold text-white mb-2">{event.title}</h3>
+                <p class="text-lg text-[var(--text-muted)] mb-4 line-clamp-2">{event.description}</p>
+                <div class="font-tech text-base text-[var(--text-muted)] flex items-center gap-2">
                   <span class={`w-2 h-2 rounded-full ${event.isActive ? 'bg-[var(--cyber-blue)] animate-pulse' : 'bg-[var(--text-muted)]'}`}></span>
                   {event.location}
                 </div>
@@ -206,9 +209,10 @@ const faqs = [
 
   <!-- Featured Projects Panel (Glassmorphism + Hologram) -->
   <section class="relative z-10 py-24 overflow-hidden">
-     <CyberMarquee text="PROJECT ARCHIVE /// DEPLOYED" className="top-10 left-0" />
+
     <div class="container-page mx-auto px-4 relative z-10">
-      <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+      <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+        <BackgroundText text="PROJECTS" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-yellow)]">//</span> 
           <GlitchText client:visible text="Selected_Works" tag="span" />
@@ -245,11 +249,11 @@ const faqs = [
               <div class="absolute top-0 left-0 w-full h-[2px] bg-[var(--cyber-blue)] opacity-0 group-hover:opacity-50 animate-pulse"></div>
               
               <div class="mb-2 flex items-center justify-between">
-                <span class="font-tech text-xs text-[var(--cyber-yellow)]">{game.year}</span>
-                {game.award && <span class="font-tech text-xs text-[var(--text-muted)]">{game.award}</span>}
+                <span class="font-tech text-base text-[var(--cyber-yellow)]">{game.year}</span>
+                {game.award && <span class="font-tech text-base text-[var(--text-muted)]">{game.award}</span>}
               </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-[var(--cyber-blue)] transition-colors">{game.name}</h3>
-              <p class="mt-2 line-clamp-2 text-sm text-[var(--text-muted)]">{game.description}</p>
+              <h3 class="text-3xl font-bold text-white group-hover:text-[var(--cyber-blue)] transition-colors">{game.name}</h3>
+              <p class="mt-2 line-clamp-2 text-lg text-[var(--text-muted)]">{game.description}</p>
             </div>
           </a>
           );
@@ -270,11 +274,11 @@ const faqs = [
       <div class="space-y-4">
         {faqs.map((faq) => (
           <details class="group hud-card cursor-pointer open:border-[var(--brand)] open:bg-[var(--bg-panel)]">
-            <summary class="flex items-center justify-between p-6 font-bold text-lg text-white list-none">
+            <summary class="flex items-center justify-between p-6 font-bold text-2xl text-white list-none">
               <span class="group-hover:text-[var(--brand)] transition-colors">{faq.q}</span>
               <span class="text-[var(--brand)] transition-transform group-open:rotate-180">▼</span>
             </summary>
-            <div class="px-6 pb-6 text-[var(--text-muted)] border-t border-[var(--border-dim)] pt-4 mt-[-1px]">
+            <div class="px-6 pb-6 text-xl text-[var(--text-muted)] border-t border-[var(--border-dim)] pt-4 mt-[-1px]">
               {faq.a}
             </div>
           </details>

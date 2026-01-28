@@ -21,6 +21,7 @@ const eventsForModal = events.map((event, index) => ({
 }));
 
 import PixelBadge from "../components/common/PixelBadge.astro";
+import BackgroundText from "../components/effects/BackgroundText.astro";
 ---
 
 <Layout>
@@ -68,6 +69,10 @@ import PixelBadge from "../components/common/PixelBadge.astro";
       </div>
 
       <div class="container-page relative z-10 mx-auto px-4 text-center">
+        <BackgroundText
+          text="CHAPTERS"
+          className="top-10 left-1/2 -translate-x-1/2 text-8xl opacity-[0.05] md:text-[10rem]"
+        />
         <div class="mb-4 inline-flex justify-center">
           <PixelBadge
             label="Season 2025-2026"
