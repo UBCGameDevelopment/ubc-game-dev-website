@@ -35,15 +35,13 @@ const { title = "UBC Game Development" } = Astro.props;
     <Analytics />
   </head>
   <body
-    class="overflow-x-hidden bg-[var(--bg-deep)] text-[var(--text-main)] selection:bg-[var(--accent)] selection:text-white"
-  >
+    class="overflow-x-hidden bg-[var(--bg-deep)] text-[var(--text-main)] selection:bg-[var(--accent)] selection:text-white">
     <LoadingScreen client:only="react" />
 
     <!-- Background Base -->
     <div class="fixed inset-0 z-0 bg-[var(--bg-deep)]">
       <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40"
-      >
+        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40">
       </div>
     </div>
 

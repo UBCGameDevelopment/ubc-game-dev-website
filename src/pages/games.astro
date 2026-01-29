@@ -6,22 +6,7 @@ import CyberMarquee from "../components/effects/CyberMarquee.astro";
 import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 
-// Get all games and sort by year descending
-const allGames = GameService.getAll().sort((a, b) => {
-  return parseInt(b.year) - parseInt(a.year);
-});
-
-// Group games by year
-const gamesByYear = allGames.reduce((acc, game) => {
-  const year = game.year;
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(game);
-  return acc;
-}, {} as Record<string, typeof allGames>);
-
-const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a));
+const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
 <ImmersiveLayout title="Club Timeline // Games">
@@ -71,16 +56,10 @@ const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a))
              </div>
 
              <div class="space-y-16">
-               {gamesByYear[year].map((game) => {
-                  let imageSrc = "/assets/placeholder-game.png"; // Fallback
-                  if (game.media && game.media.image) {
-                     imageSrc = game.media.image.src;
-                  } else if (game.media && game.media.images && game.media.images.length > 0) {
-                     imageSrc = game.media.images[0].src;
-                  }
-
-                  return (
-                    <article class="group relative grid lg:grid-cols-[1.2fr_1fr] gap-8 p-6 lg:p-0">
+              {gamesByYear[year].map((game) => {
+                const imageSrc = GameService.getGameImageSrc(game);
+                return (
+                  <article class="group relative grid lg:grid-cols-[1.2fr_1fr] gap-8 p-6 lg:p-0">
                       <!-- Left: Content -->
                       <div class="flex flex-col justify-center order-2 lg:order-1">
                         <div class="mb-4">

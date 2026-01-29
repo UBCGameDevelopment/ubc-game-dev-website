@@ -9,10 +9,8 @@ export interface Props {
 
 const { execs } = Astro.props;
 
-// Find a single President; keep the rest in original order
-const presidentIndex = execs.findIndex((e) => e.role === "President");
-const president = presidentIndex >= 0 ? execs[presidentIndex] : null;
-const rest = execs.filter((_, i) => i !== presidentIndex);
+import { ExecService } from "../../services";
+const { president, rest } = ExecService.getWithPresidentSeparated();
 
 import PixelBadge from "../common/PixelBadge.astro";
 ---
@@ -21,8 +19,7 @@ import PixelBadge from "../common/PixelBadge.astro";
   <!-- Ambient Glow -->
   <div class="pointer-events-none absolute inset-0 z-0 flex items-start justify-center pt-20">
     <div
-      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
-    >
+      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]">
     </div>
   </div>
 

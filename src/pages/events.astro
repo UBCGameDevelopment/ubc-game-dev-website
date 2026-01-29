@@ -7,18 +7,7 @@ import { EventService } from "../services";
 import { LINKS } from "../config/links";
 
 const events = EventService.getAll();
-
-// Prepare events data for the modal
-const eventsForModal = events.map((event, index) => ({
-  title: event.title,
-  date: event.date,
-  description: event.description,
-  location: event.location,
-  mapLink: event.mapLink || "",
-  imageSrc: event.image.src,
-  isActive: event.isActive,
-  chapterNumber: index + 1,
-}));
+const eventsForModal = EventService.prepareForModal(events);
 
 import PixelBadge from "../components/common/PixelBadge.astro";
 import BackgroundText from "../components/effects/BackgroundText.astro";
@@ -31,16 +20,13 @@ import BackgroundText from "../components/effects/BackgroundText.astro";
       <!-- Enhanced Ambient Glow - Space Vibes -->
       <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
-          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_50%)] opacity-[0.15]"
-        >
+          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_50%)] opacity-[0.15]">
         </div>
         <div
-          class="absolute -left-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--accent)_0%,transparent_70%)] opacity-[0.12]"
-        >
+          class="absolute -left-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--accent)_0%,transparent_70%)] opacity-[0.12]">
         </div>
         <div
-          class="absolute -right-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.10]"
-        >
+          class="absolute -right-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.10]">
         </div>
       </div>
 
@@ -48,23 +34,19 @@ import BackgroundText from "../components/effects/BackgroundText.astro";
       <div class="pointer-events-none absolute inset-0 z-5 overflow-hidden">
         <div
           class="float-anim absolute top-[20%] left-[8%] h-1.5 w-1.5 rotate-45 bg-[var(--brand)] opacity-40"
-          style="animation-delay: 0.2s;"
-        >
+          style="animation-delay: 0.2s;">
         </div>
         <div
           class="float-anim absolute top-[30%] right-[10%] h-2 w-2 rotate-45 bg-[var(--accent)] opacity-30"
-          style="animation-delay: 0.8s;"
-        >
+          style="animation-delay: 0.8s;">
         </div>
         <div
           class="float-anim absolute top-[70%] left-[15%] h-1 w-1 rounded-full bg-[var(--cyber-magenta)] opacity-50"
-          style="animation-delay: 1.5s;"
-        >
+          style="animation-delay: 1.5s;">
         </div>
         <div
           class="float-anim absolute top-[60%] right-[20%] h-1.5 w-1.5 rounded-full bg-[var(--brand)] opacity-35"
-          style="animation-delay: 2s;"
-        >
+          style="animation-delay: 2s;">
         </div>
       </div>
 
@@ -81,8 +63,7 @@ import BackgroundText from "../components/effects/BackgroundText.astro";
         </div>
 
         <h1
-          class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] uppercase md:text-5xl lg:text-6xl"
-        >
+          class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] uppercase md:text-5xl lg:text-6xl">
           <span class="text-[var(--cyber-yellow)]">Event</span> Chapters
         </h1>
         <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
@@ -95,20 +76,17 @@ import BackgroundText from "../components/effects/BackgroundText.astro";
           <div class="font-pixel mb-2 flex items-center justify-between text-sm tracking-wider">
             <span class="text-[var(--text)] uppercase">Season Progress</span>
             <span class="text-[var(--cyber-yellow)]">
-              {events.filter((e) => !e.isActive).length} / {events.length} Completed
+              {EventService.getCompletedCount()} / {events.length} Completed
             </span>
           </div>
           <div
             class="h-4 w-full bg-[var(--surface-3)] p-0.5"
-            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));"
-          >
+            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
             <div
               class="relative h-full overflow-hidden bg-[var(--cyber-magenta)] transition-all duration-500"
-              style={`width: ${(events.filter((e) => !e.isActive).length / events.length) * 100}%`}
-            >
+              style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}>
               <div
-                class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:10px_10px]"
-              >
+                class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:10px_10px]">
               </div>
             </div>
           </div>

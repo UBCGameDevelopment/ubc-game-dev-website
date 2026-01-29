@@ -8,18 +8,19 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
 
 <div
   class:list={[
-    "group angular-card relative flex h-full flex-col overflow-hidden transition-all duration-300",
+    "group merch-hud-card relative flex h-full flex-col overflow-hidden transition-all duration-300",
     isSoldOut
-      ? "bg-[var(--surface-2)]/50 opacity-70 grayscale"
-      : "bg-[var(--surface-2)] shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)] hover:shadow-[0_0_30px_rgba(255,0,170,0.15)]",
+      ? "opacity-70 grayscale"
+      : "hover:shadow-[0_0_35px_rgba(0,240,255,0.2)]",
   ]}
 >
+  <div class="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_2px] opacity-10"></div>
   <!-- Badges -->
   <div class="absolute top-0 left-0 z-10 flex flex-col gap-2 p-0">
     {
       isNew && !isSoldOut && (
         <span
-          class="bg-[var(--cyber-yellow)] px-3 py-1 text-xs font-bold tracking-wider text-[var(--surface)] uppercase shadow-lg"
+          class="bg-[var(--cyber-yellow)] px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-black uppercase shadow-[0_0_12px_rgba(252,238,10,0.35)]"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8px));"
         >
           NEW ARRIVAL
@@ -29,7 +30,7 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
     {
       isSoldOut && (
         <span
-          class="bg-[var(--surface-3)] px-3 py-1 text-xs font-bold tracking-wider text-[var(--text-muted)] uppercase"
+          class="bg-[var(--bg-panel)] px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8px));"
         >
           SOLD OUT
@@ -39,14 +40,14 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
   </div>
 
   <!-- Image -->
-  <div class="relative aspect-square overflow-hidden bg-gradient-to-br from-[var(--surface-3)] to-[var(--surface-2)]">
+  <div class="relative aspect-square overflow-hidden bg-[radial-gradient(circle_at_30%_20%,rgba(0,240,255,0.15)_0%,rgba(0,0,0,0.6)_55%)]">
     <div class="flex h-full w-full items-center justify-center p-8">
       <!-- Placeholder icon since we don't have real images -->
       <svg
         class:list={[
-          "h-24 w-24 transition-transform duration-500",
+          "h-24 w-24 transition-transform duration-500 drop-shadow-[0_0_18px_rgba(0,240,255,0.4)]",
           !isSoldOut && "group-hover:scale-110 group-hover:rotate-3",
-          isSoldOut ? "text-[var(--text-muted)]/30" : "text-[var(--brand)]",
+          isSoldOut ? "text-[var(--text-muted)]/30" : "text-[var(--cyber-blue)]",
         ]}
         fill="currentColor"
         viewBox="0 0 24 24"
@@ -70,25 +71,23 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
     </div>
 
     <!-- Decorative corner accent -->
-    {
-      !isSoldOut && (
-        <div class="absolute right-0 bottom-0 h-1 w-12 bg-[var(--cyber-magenta)] transition-all duration-300 group-hover:w-full" />
-      )
-    }
+    {!isSoldOut && (
+      <div class="absolute right-0 bottom-0 h-0.5 w-16 bg-[var(--cyber-yellow)] transition-all duration-300 group-hover:w-full" />
+    )}
   </div>
 
   <!-- Content -->
-  <div class="flex flex-1 flex-col p-5">
+  <div class="relative z-10 flex flex-1 flex-col p-5">
     <!-- Category -->
     <div class="flex items-start justify-between">
-      <span class="text-xs font-bold tracking-widest text-[var(--cyber-yellow)] uppercase">
+      <span class="text-[10px] font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
         {category}
       </span>
-      <div class="h-1 w-8 bg-[var(--border)] transition-colors group-hover:bg-[var(--brand)]"></div>
+      <div class="h-1 w-8 bg-[var(--border-dim)] transition-colors group-hover:bg-[var(--cyber-blue)]"></div>
     </div>
 
     <!-- Name -->
-    <h3 class="font-pixel mt-2 text-lg text-[var(--text)] transition-colors group-hover:text-[var(--cyber-magenta)]">
+    <h3 class="font-pixel mt-2 text-lg text-white transition-colors group-hover:text-[var(--cyber-blue)]">
       {name}
     </h3>
 
@@ -100,31 +99,31 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
     <!-- Options -->
     {
       colors && colors.length > 0 && (
-        <div class="mt-3 flex items-center gap-2 font-mono text-xs text-[var(--text-muted)]">
-          <span class="text-[var(--brand)]">></span>
-          <span class="text-[var(--text)]">{colors.join(" / ")}</span>
+        <div class="mt-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
+          <span class="text-[var(--cyber-blue)]">></span>
+          <span class="text-white">{colors.join(" / ")}</span>
         </div>
       )
     }
     {
       sizes && sizes.length > 0 && (
-        <div class="mt-1 flex items-center gap-2 font-mono text-xs text-[var(--text-muted)]">
-          <span class="text-[var(--brand)]">></span>
-          <span class="text-[var(--text)]">{sizes.join(" / ")}</span>
+        <div class="mt-1 flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[var(--text-muted)]">
+          <span class="text-[var(--cyber-blue)]">></span>
+          <span class="text-white">{sizes.join(" / ")}</span>
         </div>
       )
     }
 
     <!-- Price & Action -->
     <div class="mt-auto flex items-center justify-between pt-6">
-      <span class="font-pixel text-2xl text-[var(--brand)] transition-colors group-hover:text-[var(--cyber-yellow)]">
+      <span class="font-pixel text-2xl text-[var(--cyber-yellow)] transition-colors group-hover:text-white">
         ${price}
       </span>
       {
         !isSoldOut && (
           <button
             onclick={`window.dispatchEvent(new CustomEvent('open-merch-modal', { detail: { itemName: '${name}', price: ${price} } }))`}
-            class="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-xs font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
+            class="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-[10px] font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
             style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
           >
             <span class="relative z-10">Buy Now</span>

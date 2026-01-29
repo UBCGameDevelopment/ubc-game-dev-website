@@ -7,10 +7,8 @@ import CyberMarquee from "../components/effects/CyberMarquee.astro";
 import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 
-const featuredGames = GameService.getAll().slice(0, 3);
-const latestEvents = (EventService.getAll() || [])
-  .sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime())
-  .slice(0, 2); 
+const featuredGames = GameService.getFeatured(3);
+const latestEvents = EventService.getLatest(2);
 
 const faqs = [
   {
@@ -34,7 +32,7 @@ const faqs = [
 
 <ImmersiveLayout title="UBC Game Dev // Neon Operator">
   <!-- Hero Section -->
-  <section class="relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
+  <section class="section-block relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
     <!-- Background Marquees (Behind Content) -->
     <div class="absolute inset-0 z-0 flex flex-col justify-between py-32 overflow-hidden pointer-events-none select-none">
       <CyberMarquee 
@@ -104,19 +102,19 @@ const faqs = [
   </section>
 
   <!-- Mission Briefing (About) -->
-  <section class="relative z-10 py-24 overflow-hidden">
+  <section class="section-block relative z-10 py-24 overflow-hidden">
 
     <div class="container-page mx-auto px-4 relative z-10">
       <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
-        <BackgroundText text="MISSION" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
+        <BackgroundText text="MISSION" className="text-6xl md:text-8xl lg:text-[10rem] -top-12 md:-top-20 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-yellow)]">//</span> 
           <GlitchText client:visible text="Mission_Briefing" tag="span" />
         </h2>
       </div>
 
-      <div class="grid gap-12 md:grid-cols-2 items-center">
-        <div class="prose prose-invert prose-lg max-w-none">
+      <div class="grid gap-8 md:grid-cols-[1.1fr_0.9fr] items-start">
+        <div class="hud-card bg-[var(--bg-panel)]/50 p-8 md:p-10">
           <p class="text-[var(--text-muted)] text-xl md:text-2xl leading-relaxed">
             We are the <span class="text-white font-bold">UBC Game Development Association</span>. An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
           </p>
@@ -124,19 +122,19 @@ const faqs = [
             Our objective is simple: equip students with the skills to survive and thrive in the game industry. From 48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
           </p>
           
-          <div class="mt-12 flex gap-16">
-            <div class="flex flex-col border-l-4 border-[var(--cyber-blue)] pl-6">
-              <span class="text-6xl md:text-7xl font-black text-white tracking-tighter">500+</span>
-              <span class="text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Agents</span>
+          <div class="mt-8 grid gap-6 sm:grid-cols-2">
+            <div class="flex flex-col border-l-4 border-[var(--cyber-blue)] pl-5">
+              <span class="text-5xl md:text-6xl font-black text-white tracking-tighter">500+</span>
+              <span class="text-xs font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Agents</span>
             </div>
-            <div class="flex flex-col border-l-4 border-[var(--cyber-red)] pl-6">
-              <span class="text-6xl md:text-7xl font-black text-white tracking-tighter">50+</span>
-              <span class="text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Shipped Titles</span>
+            <div class="flex flex-col border-l-4 border-[var(--cyber-red)] pl-5">
+              <span class="text-5xl md:text-6xl font-black text-white tracking-tighter">50+</span>
+              <span class="text-xs font-bold tracking-widest text-[var(--text-muted)] uppercase mt-2">Shipped Titles</span>
             </div>
           </div>
         </div>
 
-        <div class="hud-card holo-effect relative min-h-[300px] flex items-center justify-center px-4 py-8 border border-[var(--cyber-blue)] shadow-[0_0_15px_rgba(0,240,255,0.5),0_0_50px_rgba(0,240,255,0.3)] bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.03)_0%,rgba(0,10,20,0.9)_100%)]">
+        <div class="hud-card holo-panel relative min-h-[300px] flex items-center justify-center px-6 py-8">
            <!-- Decorative Code Element -->
            <div class="font-tech text-sm md:text-base text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] leading-loose">
 <pre class="bg-transparent">
@@ -163,11 +161,11 @@ const faqs = [
   </section>
 
   <!-- Tactical Operations (Events) -->
-  <section class="relative z-10 py-24 bg-[var(--bg-panel)]/50 overflow-hidden">
+  <section class="section-block relative z-10 py-24 bg-[var(--bg-panel)]/50 overflow-hidden">
 
     <div class="container-page mx-auto px-4 relative z-10">
       <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
-        <BackgroundText text="EVENTS" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
+        <BackgroundText text="EVENTS" className="text-6xl md:text-8xl lg:text-[10rem] -top-12 md:-top-20 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-red)]">//</span> 
           <GlitchText client:visible text="Tactical_Ops" tag="span" />
@@ -208,11 +206,11 @@ const faqs = [
   </section>
 
   <!-- Featured Projects Panel (Glassmorphism + Hologram) -->
-  <section class="relative z-10 py-24 overflow-hidden">
+  <section class="section-block relative z-10 py-24 overflow-hidden">
 
     <div class="container-page mx-auto px-4 relative z-10">
       <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
-        <BackgroundText text="PROJECTS" className="text-8xl md:text-[12rem] -top-16 md:-top-24 -left-4 opacity-[0.1]" />
+        <BackgroundText text="PROJECTS" className="text-6xl md:text-8xl lg:text-[10rem] -top-12 md:-top-20 -left-4 opacity-[0.1]" />
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white flex items-center gap-2">
           <span class="text-[var(--cyber-yellow)]">//</span> 
           <GlitchText client:visible text="Selected_Works" tag="span" />
@@ -263,7 +261,7 @@ const faqs = [
   </section>
 
   <!-- Knowledge Base (FAQ) -->
-  <section class="relative z-10 py-24 bg-[var(--bg-panel)]/30">
+  <section class="section-block relative z-10 py-24 bg-[var(--bg-panel)]/30">
     <div class="container-page mx-auto px-4 max-w-4xl">
       <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
         <h2 class="text-3xl font-bold uppercase tracking-wide text-white">
@@ -288,7 +286,7 @@ const faqs = [
   </section>
 
   <!-- Terminal Log Section -->
-  <section class="relative z-10 py-24">
+  <section class="section-block relative z-10 py-24">
     <div class="container-page mx-auto px-4">
       <div class="hud-card p-8 font-tech text-sm text-[var(--text-muted)]">
         <div class="mb-4 text-[var(--cyber-blue)]">root@ubc-gamedev:~$ ./status_log.sh</div>

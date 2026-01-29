@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type TabValues = "STATUS" | "CLASSES" | "SYSTEM";
+type TabValues = "STATUS" | "ROLES" | "SYSTEM";
 
 const TabButton = ({ active, label, onClick }: { active: boolean; label: string; onClick: () => void }) => (
   <button
@@ -45,9 +45,9 @@ export default function CyberSettingsMenu() {
             onClick={() => setActiveTab("STATUS")}
           />
           <TabButton
-            active={activeTab === "CLASSES"}
-            label="Guild Classes"
-            onClick={() => setActiveTab("CLASSES")}
+            active={activeTab === "ROLES"}
+            label="Crew Roles"
+            onClick={() => setActiveTab("ROLES")}
           />
           <TabButton
             active={activeTab === "SYSTEM"}
@@ -87,28 +87,26 @@ export default function CyberSettingsMenu() {
                 </div>
                 <div className="prose prose-invert max-w-none">
                   <p className="font-mono text-xl leading-relaxed text-[var(--text-muted)] md:text-2xl">
-                    "To equip every student with the tools, knowledge, and party members needed to craft their own{" "}
-                    <span className="font-bold text-white">legendary video games</span>."
+                    "Arm every student with the tools, know-how, and squadmates to forge their own{" "}
+                    <span className="font-bold text-white">legendary games</span>."
                   </p>
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div className="border-l-2 border-[var(--cyber-blue)] bg-[var(--bg-deep)] p-6">
                     <h4 className="mb-2 font-bold text-[var(--cyber-blue)] uppercase">Primary Directive</h4>
-                    <p className="text-sm text-[var(--text-muted)]">
-                      Build games. Break boundaries. Deploy to production.
-                    </p>
+                    <p className="text-sm text-[var(--text-muted)]">Build worlds. Break limits. Deploy to players.</p>
                   </div>
                   <div className="border-l-2 border-[var(--cyber-red)] bg-[var(--bg-deep)] p-6">
                     <h4 className="mb-2 font-bold text-[var(--cyber-red)] uppercase">Secondary Directive</h4>
-                    <p className="text-sm text-[var(--text-muted)]">Scale the community. Train new agents.</p>
+                    <p className="text-sm text-[var(--text-muted)]">Expand the network. Train new operators.</p>
                   </div>
                 </div>
               </motion.div>
             )}
 
-            {activeTab === "CLASSES" && (
+            {activeTab === "ROLES" && (
               <motion.div
-                key="CLASSES"
+                key="ROLES"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
@@ -117,7 +115,7 @@ export default function CyberSettingsMenu() {
               >
                 <div className="border-b border-[var(--brand)] pb-4">
                   <h3 className="text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
-                    Guild <span className="text-[var(--brand)]">Structure</span>
+                    Crew <span className="text-[var(--brand)]">Structure</span>
                   </h3>
                 </div>
 
@@ -125,12 +123,12 @@ export default function CyberSettingsMenu() {
                   {/* Class A */}
                   <div className="group relative overflow-hidden border border-[var(--brand)]/30 bg-[var(--bg-deep)] p-6 transition-colors hover:border-[var(--brand)]">
                     <div className="mb-2 flex items-center justify-between">
-                      <h4 className="text-xl font-bold text-white">CLASS: VANGUARD</h4>
+                      <h4 className="text-xl font-bold text-white">ROLE: VANGUARD</h4>
                       <span className="rounded-sm bg-[var(--brand)] px-2 py-0.5 text-xs text-white">LVL 50+</span>
                     </div>
                     <p className="mb-4 text-[var(--text-muted)]">
-                      Elite project teams led by veteran developers. Balanced parties of programmers, artists, and
-                      designers working to ship commercial-grade titles.
+                      Elite strike teams led by veteran devs. Balanced squads of coders, artists, and designers shipping
+                      commercial-grade titles.
                     </p>
                     <div className="flex gap-2">
                       <span className="border border-[var(--border-dim)] px-2 py-1 text-[10px] text-[var(--text-muted)] uppercase">
@@ -145,12 +143,12 @@ export default function CyberSettingsMenu() {
                   {/* Class B */}
                   <div className="group relative overflow-hidden border border-[var(--accent)]/30 bg-[var(--bg-deep)] p-6 transition-colors hover:border-[var(--accent)]">
                     <div className="mb-2 flex items-center justify-between">
-                      <h4 className="text-xl font-bold text-white">CLASS: RECRUIT</h4>
+                      <h4 className="text-xl font-bold text-white">ROLE: RECRUIT</h4>
                       <span className="rounded-sm bg-[var(--accent)] px-2 py-0.5 text-xs text-black">LVL 1+</span>
                     </div>
                     <p className="mb-4 text-[var(--text-muted)]">
-                      The learning community. A flexible environment to grind skills through workshops, game jams, and
-                      social events. No prior experience required.
+                      The training ring. A flexible environment to level skills through workshops, game jams, and
+                      social ops. No prior experience required.
                     </p>
                     <div className="flex gap-2">
                       <span className="border border-[var(--border-dim)] px-2 py-1 text-[10px] text-[var(--text-muted)] uppercase">
@@ -182,8 +180,7 @@ export default function CyberSettingsMenu() {
 
                 <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-8 text-center">
                   <p className="mb-8 text-xl text-[var(--text-muted)]">
-                    Are you ready to initialize your journey? Access is open to all students regardless of faculty or
-                    skill level.
+                    Ready to jack in? Access is open to all students, regardless of faculty or skill level.
                   </p>
 
                   <a
