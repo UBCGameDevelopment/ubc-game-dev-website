@@ -67,7 +67,7 @@ export default function CyberSettingsMenu() {
       {/* Main Content Area */}
       <div className="relative min-h-[500px] border border-[var(--border-dim)] bg-[var(--bg-panel)]/50 backdrop-blur-md">
         {/* CRT Scanline Overlay */}
-        <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-10"></div>
+        <div className="pointer-events-none absolute inset-0 z-0 scanline-rgb opacity-10"></div>
 
         <div className="relative z-10 p-8 md:p-12">
           <AnimatePresence mode="wait">
@@ -185,11 +185,7 @@ export default function CyberSettingsMenu() {
 
                   <a
                     href="/contact"
-                    className="inline-flex items-center gap-3 bg-[var(--cyber-blue)] px-8 py-4 font-bold text-black transition-transform hover:scale-105 hover:shadow-[0_0_20px_var(--cyber-blue)]"
-                    style={{
-                      clipPath:
-                        "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)",
-                    }}
+                    className="clip-angled inline-flex items-center gap-3 bg-[var(--cyber-blue)] px-8 py-4 font-bold text-black transition-transform hover:scale-105 hover:shadow-[0_0_20px_var(--cyber-blue)]"
                   >
                     <span className="tracking-widest">INITIALIZE_JOIN_SEQUENCE</span>
                   </a>

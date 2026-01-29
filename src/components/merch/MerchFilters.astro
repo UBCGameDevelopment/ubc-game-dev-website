@@ -1,0 +1,28 @@
+---
+interface Props {
+  categories: ReadonlyArray<{ id: string; label: string }>;
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="mt-4 flex flex-col gap-2 px-4">
+  <button
+    data-category="all"
+    class="filter-btn active loadout-btn">
+    <span>All Items</span>
+    <span class="loadout-btn-indicator">//</span>
+  </button>
+  {
+    categories
+      .filter((c) => c.id !== "all")
+      .map((cat) => (
+        <button
+          data-category={cat.id}
+          class="filter-btn loadout-btn">
+          <span>{cat.label}</span>
+          <span class="loadout-btn-indicator">//</span>
+        </button>
+      ))
+  }
+</div>

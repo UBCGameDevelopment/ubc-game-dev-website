@@ -35,12 +35,7 @@ export default function Navbar({ logo, links }: NavbarProps) {
         transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
         className="fixed top-3 right-0 left-0 z-[100] mx-auto w-[92%] max-w-5xl"
       >
-        <div
-          className="relative flex items-center justify-between border-b border-[var(--brand)]/60 bg-[var(--surface)]/95 px-6 py-2 shadow-[0_0_20px_rgba(168,85,247,0.2)] backdrop-blur-xl md:px-8"
-          style={{
-            clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)",
-          }}
-        >
+        <div className="clip-angled relative flex items-center justify-between border-b border-[var(--brand)]/60 bg-[var(--surface)]/95 px-6 py-2 shadow-[0_0_20px_rgba(168,85,247,0.2)] backdrop-blur-xl md:px-8">
           {/* Decorative Corner Lines */}
           <div className="absolute top-0 left-0 h-5 w-5 border-t-2 border-l-2 border-[var(--brand)] shadow-[0_0_10px_var(--brand)]"></div>
           <div className="absolute right-0 bottom-0 h-5 w-5 border-r-2 border-b-2 border-[var(--brand)] shadow-[0_0_10px_var(--brand)]"></div>
@@ -95,10 +90,7 @@ export default function Navbar({ logo, links }: NavbarProps) {
             {/* CTA Button */}
             <a
               href={contactLink.href}
-              className="group relative hidden overflow-hidden border border-[var(--brand)] bg-[var(--brand)]/10 px-6 py-2 text-sm font-bold text-[var(--brand)] transition-all duration-300 hover:bg-[var(--brand)] hover:text-white hover:shadow-[0_0_20px_var(--brand)] md:block"
-              style={{
-                clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)",
-              }}
+              className="clip-angled group relative hidden overflow-hidden border border-[var(--brand)] bg-[var(--brand)]/10 px-6 py-2 text-sm font-bold text-[var(--brand)] transition-all duration-300 hover:bg-[var(--brand)] hover:text-white hover:shadow-[0_0_20px_var(--brand)] md:block"
             >
               <span className="relative z-10 tracking-widest">{contactLink.label}</span>
             </a>

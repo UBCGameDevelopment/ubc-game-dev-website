@@ -14,7 +14,7 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
       : "hover:shadow-[0_0_35px_rgba(0,240,255,0.2)]",
   ]}
 >
-  <div class="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_2px] opacity-10"></div>
+  <div class="pointer-events-none absolute inset-0 z-0 scanline-soft opacity-10"></div>
   <!-- Badges -->
   <div class="absolute top-0 left-0 z-10 flex flex-col gap-2 p-0">
     {
@@ -123,8 +123,7 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
         !isSoldOut && (
           <button
             onclick={`window.dispatchEvent(new CustomEvent('open-merch-modal', { detail: { itemName: '${name}', price: ${price} } }))`}
-            class="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-[10px] font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
-            style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+            class="clip-angled group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-[10px] font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
           >
             <span class="relative z-10">Buy Now</span>
             <svg

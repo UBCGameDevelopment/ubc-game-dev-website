@@ -106,10 +106,7 @@ export default function MerchPurchaseModal() {
               <div className="mt-8 flex justify-end">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="group relative overflow-hidden bg-[var(--brand)] px-6 py-2 font-bold text-white uppercase transition-all hover:bg-[var(--accent)]"
-                  style={{
-                    clipPath: "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)",
-                  }}
+                  className="clip-angled group relative overflow-hidden bg-[var(--brand)] px-6 py-2 font-bold text-white uppercase transition-all hover:bg-[var(--accent)]"
                 >
                   <span className="relative z-10">Acknowledge</span>
                 </button>
@@ -117,7 +114,7 @@ export default function MerchPurchaseModal() {
             </div>
 
             {/* Scanlines */}
-            <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] opacity-10"></div>
+            <div className="pointer-events-none absolute inset-0 z-0 scanline-rgb opacity-10"></div>
           </motion.div>
         </div>
       )}
