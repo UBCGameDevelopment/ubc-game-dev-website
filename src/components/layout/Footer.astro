@@ -3,32 +3,52 @@ import { LINKS } from "../../config/links";
 import DiscordIcon from "../common/Icons/DiscordIcon.astro";
 import InstagramIcon from "../common/Icons/InstagramIcon.astro";
 import TwitchIcon from "../common/Icons/TwitchIcon.astro";
-import LinkIcon from "../common/Icons/LinkIcon.astro";
 ---
 
-<footer class="relative mt-20 border-t-4 border-[var(--cyber-magenta)] bg-[var(--surface-2)] py-16">
-  <!-- Decorative top elements -->
+<footer class="relative mt-20 overflow-hidden border-t border-[var(--border-dim)] bg-[var(--bg-deep)]">
+  <!-- Background grid effect -->
+  <div class="pointer-events-none absolute inset-0 opacity-[0.03]">
+    <div
+      class="absolute inset-0"
+      style="background-image: linear-gradient(var(--cyber-blue) 1px, transparent 1px), linear-gradient(90deg, var(--cyber-blue) 1px, transparent 1px); background-size: 40px 40px;"
+    >
+    </div>
+  </div>
+
+  <!-- Accent line -->
   <div
-    class="absolute -top-1 left-10 h-4 w-32 bg-[var(--cyber-yellow)]"
-    style="clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);"
+    class="absolute top-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[var(--cyber-magenta)] to-transparent"
   >
   </div>
-  <div class="absolute -top-1 right-10 h-4 w-10 bg-[var(--brand)]"></div>
 
-  <div class="container-page text-center">
-    <!-- Text -->
-    <h3 class="mb-8 text-xl font-bold tracking-widest text-[var(--text)] uppercase md:text-2xl">
-      Connect with <span class="text-[var(--cyber-yellow)]">UBC Game Dev</span>
-    </h3>
+  <!-- Corner accents -->
+  <div
+    class="absolute top-0 left-8 h-6 w-24 bg-[var(--cyber-yellow)]"
+    style="clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);"
+  >
+  </div>
+  <div class="absolute top-0 right-8 h-4 w-4 bg-[var(--brand)]"></div>
 
-    <!-- Social Media icons via SVG -->
-    <ul class="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-8">
+  <div class="container-page relative z-10 py-12 text-center">
+    <!-- Header -->
+    <div class="mb-8">
+      <p class="font-tech text-xs tracking-[0.3em] text-[var(--text-muted)] uppercase">// Network_Access</p>
+      <h3 class="mt-2 text-xl font-bold tracking-widest text-white uppercase md:text-2xl">
+        Connect with <span class="text-[var(--cyber-yellow)]">UBC Game Dev</span>
+      </h3>
+    </div>
+
+    <!-- Social Icons -->
+    <ul class="flex flex-wrap items-center justify-center gap-4 md:gap-6">
       <!-- Discord -->
       <a
         href={LINKS.discord}
-        class="clip-angled group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        target="_blank"
+        aria-label="Discord"
+        class="group relative flex h-14 w-14 items-center justify-center border border-[var(--border-dim)] bg-[var(--bg-panel)]/60 text-[var(--cyber-blue)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyber-magenta)] hover:bg-[var(--cyber-magenta)] hover:text-white hover:shadow-[0_0_20px_rgba(255,0,128,0.4)]"
+        style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
       >
-        <div class="scale-125 transform">
+        <div class="scale-110 transform">
           <DiscordIcon />
         </div>
       </a>
@@ -37,9 +57,11 @@ import LinkIcon from "../common/Icons/LinkIcon.astro";
       <a
         href={LINKS.instagram}
         target="_blank"
-        class="clip-angled group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        aria-label="Instagram"
+        class="group relative flex h-14 w-14 items-center justify-center border border-[var(--border-dim)] bg-[var(--bg-panel)]/60 text-[var(--cyber-blue)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyber-magenta)] hover:bg-[var(--cyber-magenta)] hover:text-white hover:shadow-[0_0_20px_rgba(255,0,128,0.4)]"
+        style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
       >
-        <div class="scale-125 transform">
+        <div class="scale-110 transform">
           <InstagramIcon />
         </div>
       </a>
@@ -47,28 +69,22 @@ import LinkIcon from "../common/Icons/LinkIcon.astro";
       <!-- Twitch -->
       <a
         href={LINKS.twitch}
-        class="clip-angled group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
+        target="_blank"
+        aria-label="Twitch"
+        class="group relative flex h-14 w-14 items-center justify-center border border-[var(--border-dim)] bg-[var(--bg-panel)]/60 text-[var(--cyber-blue)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--cyber-magenta)] hover:bg-[var(--cyber-magenta)] hover:text-white hover:shadow-[0_0_20px_rgba(255,0,128,0.4)]"
+        style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
       >
-        <div class="scale-125 transform">
+        <div class="scale-110 transform">
           <TwitchIcon />
-        </div>
-      </a>
-
-      <!-- Link Icon -->
-      <a
-        href="/"
-        class="clip-angled group relative flex h-16 w-16 items-center justify-center bg-[var(--surface)] text-[var(--brand)] transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--cyber-magenta)] hover:text-white"
-      >
-        <div class="scale-125 transform">
-          <LinkIcon />
         </div>
       </a>
     </ul>
 
-    <div class="mt-12 flex flex-col items-center gap-2">
-      <div class="h-1 w-20 bg-[var(--border)]"></div>
-      <p class="font-mono text-xs tracking-wider text-[var(--text-muted)]">
-        © {new Date().getFullYear()} UBC GAME DEV
+    <!-- Footer bar -->
+    <div class="mt-10 flex flex-col items-center gap-3">
+      <div class="h-px w-32 bg-gradient-to-r from-transparent via-[var(--border)] to-transparent"></div>
+      <p class="font-tech text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+        © {new Date().getFullYear()} UBC GAME DEV // ALL RIGHTS RESERVED
       </p>
     </div>
   </div>
