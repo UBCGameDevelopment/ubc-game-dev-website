@@ -95,10 +95,9 @@ export default function Navbar({ logo, links }: NavbarProps) {
               <span className="relative z-10 tracking-widest">{contactLink.label}</span>
             </a>
 
-            {/* Mobile Hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-3)]/50 transition-all hover:border-[var(--brand)]/50 hover:bg-[var(--surface-3)] lg:hidden"
+              className="flex h-10 w-10 items-center justify-center border border-[var(--border)] bg-[var(--surface-3)]/50 transition-all hover:border-[var(--brand)] hover:bg-[var(--surface-3)] hover:shadow-[0_0_10px_var(--brand)] lg:hidden"
               aria-label="Toggle menu"
             >
               <svg

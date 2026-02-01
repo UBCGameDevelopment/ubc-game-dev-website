@@ -34,7 +34,8 @@ export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) 
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed top-24 right-0 left-0 z-[95] mx-auto w-[95%] max-w-5xl overflow-hidden rounded-[2rem] border border-[var(--brand)]/20 bg-[var(--surface-2)]/95 p-2 shadow-2xl backdrop-blur-xl lg:hidden"
+            className="fixed top-24 right-0 left-0 z-[95] mx-auto w-[95%] max-w-5xl overflow-hidden border border-[var(--brand)]/40 bg-[var(--surface-2)]/95 p-2 shadow-[0_0_30px_rgba(168,85,247,0.15)] backdrop-blur-xl lg:hidden"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)" }}
           >
             <nav
               className="flex flex-col gap-1"
@@ -50,12 +51,12 @@ export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) 
                     href={link.href}
                     onClick={onClose}
                     onMouseEnter={() => setHoveredIndex(index)}
-                    className="relative flex items-center justify-between rounded-2xl px-4 py-3 text-[var(--text-muted)] transition-colors hover:text-[var(--text)]"
+                    className="relative flex items-center justify-between px-4 py-3 text-[var(--text-muted)] transition-colors hover:text-[var(--brand)]"
                   >
                     {hoveredIndex === index && (
                       <motion.div
                         layoutId="mobile-navbar-pill"
-                        className="absolute inset-0 rounded-2xl bg-[var(--brand)]/10"
+                        className="absolute inset-0 border-l-2 border-[var(--brand)] bg-[var(--brand)]/10"
                         transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                       />
                     )}
