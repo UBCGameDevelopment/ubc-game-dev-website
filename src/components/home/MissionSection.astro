@@ -1,0 +1,74 @@
+---
+import GlitchText from "../effects/GlitchText";
+import BackgroundText from "../effects/BackgroundText.astro";
+---
+
+<section class="section-block relative z-10 overflow-hidden py-24">
+  <div class="container-page relative z-10 mx-auto px-4">
+    <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+      <BackgroundText
+        text="MISSION"
+        className="-top-12 -left-4 text-6xl opacity-[0.1] md:-top-20 md:text-8xl lg:text-[10rem]"
+      />
+      <h2 class="flex items-center gap-2 text-3xl font-bold tracking-wide text-white uppercase">
+        <span class="text-[var(--cyber-yellow)]">//</span>
+        <GlitchText
+          client:visible
+          text="Mission_Briefing"
+          tag="span"
+        />
+      </h2>
+    </div>
+
+    <div class="grid items-stretch gap-8 md:grid-cols-[1.1fr_0.9fr]">
+      <div class="hud-card flex h-full flex-col bg-[var(--bg-panel)]/50 p-8 md:p-10">
+        <p class="text-xl leading-relaxed text-[var(--text-muted)] md:text-2xl">
+          We are the <span class="font-bold text-white">UBC Game Development Association</span>. An elite unit of
+          developers, artists, and designers dedicated to the craft of interactive entertainment.
+        </p>
+        <p class="mt-6 text-xl leading-relaxed text-[var(--text-muted)] md:text-2xl">
+          Our objective is simple: equip students with the skills to survive and thrive in the game industry. From
+          48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
+        </p>
+
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          <div class="flex flex-col border-l-4 border-[var(--cyber-blue)] pl-5">
+            <span class="text-5xl font-black tracking-tighter text-white md:text-6xl">500+</span>
+            <span class="mt-2 text-xs font-bold tracking-widest text-[var(--text-muted)] uppercase">Agents</span>
+          </div>
+          <div class="flex flex-col border-l-4 border-[var(--cyber-red)] pl-5">
+            <span class="text-5xl font-black tracking-tighter text-white md:text-6xl">50+</span>
+            <span class="mt-2 text-xs font-bold tracking-widest text-[var(--text-muted)] uppercase">
+              Shipped Titles
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-card holo-panel relative flex h-full min-h-[300px] items-center justify-center px-6 py-8">
+        <div
+          class="font-tech text-sm leading-loose text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] md:text-base"
+        >
+          <pre
+            class="bg-transparent">
+<span class="text-[var(--cyber-blue)]">class</span> <span class="text-white">GameDev</span> <span class="text-[var(--cyber-blue)]">extends</span> <span class="text-white">Society</span> &#123;
+  <span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) &#123;
+    <span class="text-[var(--cyber-blue)]">super</span>();
+    <span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;
+    <span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;
+  &#125;
+  
+  <span class="text-[var(--cyber-yellow)]">deploy</span>() &#123;
+    <span class="text-[var(--cyber-blue)]">while</span>(<span class="text-[var(--cyber-blue)]">true</span>) &#123;
+      build();
+      learn();
+      repeat();
+    &#125;
+  &#125;
+&#125;
+</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

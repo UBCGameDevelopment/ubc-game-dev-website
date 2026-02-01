@@ -1,0 +1,42 @@
+---
+import BackgroundText from "../effects/BackgroundText.astro";
+import PixelBadge from "../common/PixelBadge.astro";
+---
+
+<section class="relative overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16">
+  <div class="pointer-events-none absolute inset-0 z-0">
+    <div
+      class="absolute -top-24 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,var(--cyber-blue)_0%,transparent_60%)] opacity-[0.15]"
+    >
+    </div>
+    <div
+      class="absolute top-12 left-8 h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.12]"
+    >
+    </div>
+    <div
+      class="absolute top-20 -right-20 h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.10]"
+    >
+    </div>
+  </div>
+
+  <div class="container-page relative z-10 mx-auto px-4">
+    <div class="relative">
+      <BackgroundText
+        text="ARMORY"
+        className="pointer-events-none top-0 left-1/2 -translate-x-1/2 text-7xl opacity-[0.06] md:text-[11rem]"
+      />
+      <div class="relative z-10 flex flex-col items-center text-center">
+        <PixelBadge
+          label="Loadout Menu"
+          variant="brand"
+        />
+        <h1 class="mt-4 text-4xl font-black tracking-tight text-white uppercase md:text-6xl lg:text-7xl">
+          Merch <span class="text-[var(--cyber-yellow)]">Armory</span>
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)] md:text-xl">
+          Configure your operator look. Every purchase supports club ops, workshops, and showcases.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

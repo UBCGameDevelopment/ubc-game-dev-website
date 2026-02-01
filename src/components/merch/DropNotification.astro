@@ -1,0 +1,21 @@
+---
+import CtaButton from "../common/CtaButton";
+import { LINKS } from "../../config/links";
+---
+
+<section class="container-page mx-auto px-4 pb-20">
+  <div
+    class="hud-card border border-[var(--brand)]/30 bg-[linear-gradient(120deg,rgba(255,255,255,0.03),rgba(0,0,0,0.6))] p-8 text-center md:p-12"
+  >
+    <h2 class="text-2xl font-bold text-white uppercase md:text-3xl">Next Drop Incoming</h2>
+    <p class="mx-auto mt-3 max-w-xl text-[var(--text-muted)]">
+      Join our Discord to get notified when new gear deploys and for exclusive operator discounts.
+    </p>
+    <CtaButton
+      client:load
+      label="Join Discord"
+      href={LINKS.discord}
+      className="mt-6"
+    />
+  </div>
+</section>
