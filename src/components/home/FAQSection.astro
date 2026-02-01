@@ -9,7 +9,7 @@ const { faqs } = Astro.props;
 <section class="section-block relative z-10 bg-[var(--bg-panel)]/30 py-24">
   <div class="container-page mx-auto max-w-4xl px-4">
     <div class="mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
-      <h2 class="text-3xl font-bold tracking-wide text-white uppercase">
+      <h2 class="text-2xl font-bold tracking-wide text-white uppercase md:text-3xl">
         <span class="text-[var(--brand)]">//</span> Knowledge_Base
       </h2>
     </div>
@@ -18,11 +18,11 @@ const { faqs } = Astro.props;
       {
         faqs.map((faq) => (
           <details class="group hud-card cursor-pointer open:border-[var(--brand)] open:bg-[var(--bg-panel)]">
-            <summary class="flex list-none items-center justify-between p-6 text-2xl font-bold text-white">
+            <summary class="flex list-none items-center justify-between p-6 text-xl font-bold text-white">
               <span class="transition-colors group-hover:text-[var(--brand)]">{faq.q}</span>
               <span class="text-[var(--brand)] transition-transform group-open:rotate-180">▼</span>
             </summary>
-            <div class="mt-[-1px] border-t border-[var(--border-dim)] px-6 pt-4 pb-6 text-xl text-[var(--text-muted)]">
+            <div class="mt-[-1px] border-t border-[var(--border-dim)] px-6 pt-4 pb-6 text-base text-[var(--text-muted)]">
               {faq.a}
             </div>
           </details>
