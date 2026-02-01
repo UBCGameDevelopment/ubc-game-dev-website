@@ -4,7 +4,7 @@ import MerchHeader from "../components/merch/MerchHeader.astro";
 import MerchSidebar from "../components/merch/MerchSidebar.astro";
 import DropNotification from "../components/merch/DropNotification.astro";
 import MerchCard from "../components/merch/MerchCard.astro";
-import MerchPurchaseModal from "../components/merch/MerchPurchaseModal.tsx";
+import MerchPurchaseModal from "../components/merch/MerchPurchaseModal";
 import { merchItems, categories } from "../data/merch";
 
 const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ?? merchItems[0];
