@@ -7,26 +7,27 @@ export interface Props {
   execs: Exec[];
 }
 
-const { execs } = Astro.props;
+// const { execs } = Astro.props;
 
 import { ExecService } from "../../services";
 const { president, rest } = ExecService.getWithPresidentSeparated();
 
-import PixelBadge from "../common/PixelBadge.astro";
+import CyberBadge from "../common/CyberBadge.astro";
 ---
 
 <section class="container-page relative my-16 overflow-hidden md:my-20">
   <!-- Ambient Glow -->
   <div class="pointer-events-none absolute inset-0 z-0 flex items-start justify-center pt-20">
     <div
-      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]">
+      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
+    >
     </div>
   </div>
 
   <!-- Section Header -->
   <div class="relative z-10 mx-auto mb-12 max-w-3xl text-center">
     <div class="mb-4 inline-flex justify-center">
-      <PixelBadge
+      <CyberBadge
         label="Meet The Team"
         variant="brand"
       />

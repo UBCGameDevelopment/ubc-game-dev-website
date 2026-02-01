@@ -47,7 +47,7 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: -50 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black font-mono text-white"
+          className="font-tech fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
         >
           {/* Matrix / Grid Background for texture */}
           <div
@@ -61,7 +61,7 @@ export default function LoadingScreen() {
 
           <div className="relative z-10 w-full max-w-2xl px-8">
             <div className="mb-8 flex items-end justify-between border-b border-[var(--cyber-yellow)]/30 pb-2">
-              <span className="text-xs text-[var(--cyber-yellow)]/70">UBC_GAME_DEV_OS v2.0.77</span>
+              <span className="text-xs text-[var(--cyber-yellow)]/70">UBC_GAME_DEV_OS v2.0.0</span>
               <span className="animate-pulse text-xs text-[var(--cyber-red)]">STATUS: BOOTING</span>
             </div>
 

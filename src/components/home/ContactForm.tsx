@@ -66,7 +66,7 @@ export default function ContactForm({
 
       <div className="container-page relative z-10">
         <h2 className="font-pixel text-neon text-center text-3xl tracking-widest uppercase md:text-4xl">{title}</h2>
-        <p className="mt-3 text-center font-mono text-sm text-[var(--text-muted)] md:text-base">{subtitle}</p>
+        <p className="font-tech mt-3 text-center text-sm text-[var(--text-muted)] md:text-base">{subtitle}</p>
 
         <form
           onSubmit={handleSubmit}
@@ -209,7 +209,7 @@ export default function ContactForm({
           <div className="absolute right-0 bottom-0 h-6 w-6 border-r border-b border-[var(--brand)]/50"></div>
         </form>
 
-        <p className="mt-6 text-center font-mono text-xs text-[var(--text-muted)] opacity-60">
+        <p className="font-tech mt-6 text-center text-xs text-[var(--text-muted)] opacity-60">
           // Response time: 24-48 hours
         </p>
       </div>

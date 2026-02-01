@@ -1,5 +1,6 @@
 ---
 import GlitchText from "../effects/GlitchText";
+import MissionCodeIO from "./MissionCodeIO";
 import BackgroundText from "../effects/BackgroundText.astro";
 ---
 
@@ -47,17 +48,7 @@ import BackgroundText from "../effects/BackgroundText.astro";
 
       <div class="hud-card holo-panel relative flex h-full items-center justify-center p-6">
         <div class="font-tech text-base leading-relaxed text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
-          <pre
-            class="bg-transparent"><span class="text-[var(--cyber-blue)]">class</span> <span class="text-white">GameDev</span> <span class="text-[var(--cyber-blue)]">extends</span> <span class="text-white">Society</span> &#123;
-  <span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) &#123;
-    <span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;
-    <span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;
-  &#125;
-
-  <span class="text-[var(--cyber-yellow)]">deploy</span>() &#123;
-    build(); learn(); repeat();
-  &#125;
-&#125;</pre>
+          <pre class="bg-transparent"><MissionCodeIO client:visible /></pre>
         </div>
       </div>
     </div>

@@ -6,14 +6,46 @@ import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import TimelineSidebar from "../components/games/TimelineSidebar.astro";
 import GameArticle from "../components/games/GameArticle.astro";
+import CyberBadge from "../components/common/CyberBadge.astro";
 
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
 <Layout title="Club Timeline // Games" immersive>
-  <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" direction="left" className="top-32 left-0 fixed opacity-[0.02]" />
+  <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" speed={120} direction="left"  className="top-32 left-0 fixed opacity-[0.02]" />
+
+  <!-- Header Section -->
+  <section class="relative overflow-hidden pt-36 pb-12">
+    <!-- Ambient Glow -->
+    <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
+      <div class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_60%)] opacity-[0.08]"></div>
+      
+      <!-- Grid Overlay -->
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]"></div>
+    </div>
+
+    <div class="container-page relative z-10 mx-auto px-4 text-center">
+      <div class="mb-6 inline-flex justify-center">
+        <CyberBadge
+          label="Archive Access // Granted"
+          variant="blue"
+        />
+      </div>
+
+      <h1 class="mb-6 flex flex-col items-center justify-center gap-2 md:gap-4">
+        <span class="font-tech text-sm font-bold tracking-[0.5em] text-[var(--text-muted)] uppercase md:text-base">Project Database</span>
+        <span class="font-display text-5xl font-black tracking-tight text-white uppercase md:text-7xl lg:text-8xl">
+          Dev <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--cyber-blue)] to-[var(--brand)]">Archives</span>
+        </span>
+      </h1>
+      
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[var(--text-muted)] border-l-2 border-[var(--cyber-blue)] pl-6 text-left md:text-center md:border-l-0 md:pl-0">
+        Trace the history of our digital creations. From game jam prototypes to polished releases, explore the legacy of UBC Game Dev code.
+      </p>
+    </div>
+  </section>
   
-  <div class="container-page mx-auto px-4 pt-32 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
+  <div class="container-page mx-auto px-4 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
     <TimelineSidebar years={years} />
 
     <!-- Main Content: Games Stream -->

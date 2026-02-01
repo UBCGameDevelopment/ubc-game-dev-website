@@ -42,10 +42,10 @@ const GlitchText: React.FC<GlitchTextProps> = ({
     intervalRef.current = setInterval(() => {
       // Decode Effect
       if (mode === "decode" || mode === "both") {
-        setDisplayText((prev) =>
+        setDisplayText(() =>
           text
             .split("")
-            .map((char, index) => {
+            .map((_, index) => {
               if (index < iteration) {
                 return text[index];
               }

@@ -36,7 +36,7 @@ export default function CyberSettingsMenu() {
       {/* Sidebar Navigation */}
       <aside className="font-tech h-fit border border-[var(--border-dim)] bg-[var(--bg-panel)]/90 pb-8 text-sm shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur">
         <div className="border-b border-[var(--border-dim)] bg-[var(--bg-deep)] p-4">
-          <h2 className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)]">SETTINGS_MENU // v2.0.77</h2>
+          <h2 className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)]">SETTINGS_MENU // v2.0.0</h2>
         </div>
         <div className="mt-4 flex flex-col gap-1">
           <TabButton
@@ -67,7 +67,7 @@ export default function CyberSettingsMenu() {
       {/* Main Content Area */}
       <div className="relative min-h-[500px] border border-[var(--border-dim)] bg-[var(--bg-panel)]/50 backdrop-blur-md">
         {/* CRT Scanline Overlay */}
-        <div className="pointer-events-none absolute inset-0 z-0 scanline-rgb opacity-10"></div>
+        <div className="scanline-rgb pointer-events-none absolute inset-0 z-0 opacity-10"></div>
 
         <div className="relative z-10 p-8 md:p-12">
           <AnimatePresence mode="wait">
@@ -86,7 +86,7 @@ export default function CyberSettingsMenu() {
                   </h3>
                 </div>
                 <div className="prose prose-invert max-w-none">
-                  <p className="font-mono text-xl leading-relaxed text-[var(--text-muted)] md:text-2xl">
+                  <p className="font-tech text-xl leading-relaxed text-[var(--text-muted)] md:text-2xl">
                     "Arm every student with the tools, know-how, and squadmates to forge their own{" "}
                     <span className="font-bold text-white">legendary games</span>."
                   </p>
@@ -147,8 +147,8 @@ export default function CyberSettingsMenu() {
                       <span className="rounded-sm bg-[var(--accent)] px-2 py-0.5 text-xs text-black">LVL 1+</span>
                     </div>
                     <p className="mb-4 text-[var(--text-muted)]">
-                      The training ring. A flexible environment to level skills through workshops, game jams, and
-                      social ops. No prior experience required.
+                      The training ring. A flexible environment to level skills through workshops, game jams, and social
+                      ops. No prior experience required.
                     </p>
                     <div className="flex gap-2">
                       <span className="border border-[var(--border-dim)] px-2 py-1 text-[10px] text-[var(--text-muted)] uppercase">

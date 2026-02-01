@@ -9,90 +9,124 @@ import { LINKS } from "../config/links";
 const events = EventService.getAll();
 const eventsForModal = EventService.prepareForModal(events);
 
-import PixelBadge from "../components/common/PixelBadge.astro";
+import CyberBadge from "../components/common/CyberBadge.astro";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 ---
 
 <Layout>
   <main>
     <!-- Header Section -->
-    <section class="relative overflow-hidden pt-32 pb-16 md:pb-24">
+    <section class="relative overflow-hidden pt-36 pb-20 md:pb-32">
       <!-- Enhanced Ambient Glow - Space Vibes -->
       <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
-          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_50%)] opacity-[0.15]">
+          class="h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_50%)] opacity-[0.1]"
+        >
         </div>
         <div
-          class="absolute -left-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--accent)_0%,transparent_70%)] opacity-[0.12]">
+          class="absolute -left-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--accent)_0%,transparent_70%)] opacity-[0.08]"
+        >
         </div>
         <div
-          class="absolute -right-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.10]">
+          class="absolute -right-32 h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.06]"
+        >
         </div>
-      </div>
 
-      <!-- Floating Particles -->
-      <div class="pointer-events-none absolute inset-0 z-5 overflow-hidden">
+        <!-- Grid Overlay -->
         <div
-          class="float-anim absolute top-[20%] left-[8%] h-1.5 w-1.5 rotate-45 bg-[var(--brand)] opacity-40"
-          style="animation-delay: 0.2s;">
-        </div>
-        <div
-          class="float-anim absolute top-[30%] right-[10%] h-2 w-2 rotate-45 bg-[var(--accent)] opacity-30"
-          style="animation-delay: 0.8s;">
-        </div>
-        <div
-          class="float-anim absolute top-[70%] left-[15%] h-1 w-1 rounded-full bg-[var(--cyber-magenta)] opacity-50"
-          style="animation-delay: 1.5s;">
-        </div>
-        <div
-          class="float-anim absolute top-[60%] right-[20%] h-1.5 w-1.5 rounded-full bg-[var(--brand)] opacity-35"
-          style="animation-delay: 2s;">
+          class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
+        >
         </div>
       </div>
 
       <div class="container-page relative z-10 mx-auto px-4 text-center">
         <BackgroundText
           text="CHAPTERS"
-          className="top-10 left-1/2 -translate-x-1/2 text-8xl opacity-[0.05] md:text-[10rem]"
+          className="top-0 left-1/2 -translate-x-1/2 text-9xl font-black tracking-tighter opacity-[0.03] md:text-[12rem]"
         />
-        <div class="mb-4 inline-flex justify-center">
-          <PixelBadge
-            label="Season 2025-2026"
+
+        <div class="mb-6 inline-flex justify-center">
+          <CyberBadge
+            label="Season 2025-2026 // Active"
             variant="brand"
           />
         </div>
 
-        <h1
-          class="font-pixel text-4xl font-extrabold tracking-tight text-[var(--text)] uppercase md:text-5xl lg:text-6xl">
-          <span class="text-[var(--cyber-yellow)]">Event</span> Chapters
+        <h1 class="mb-6 flex flex-col items-center justify-center gap-2 md:gap-4">
+          <span class="font-tech text-sm font-bold tracking-[0.5em] text-[var(--cyber-magenta)] uppercase md:text-base">
+            Mission Log
+          </span>
+          <span class="font-display text-5xl font-black tracking-tight text-white uppercase md:text-7xl lg:text-8xl">
+            Event <span
+              class="bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent"
+            >
+              Chapters
+            </span>
+          </span>
         </h1>
-        <p class="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-muted)]">
+
+        <p
+          class="mx-auto mt-6 max-w-2xl border-l-2 border-[var(--cyber-yellow)] pl-6 text-left text-lg leading-relaxed text-[var(--text-muted)] md:border-l-0 md:pl-0 md:text-center"
+        >
           Journey through our club events like levels in a game. Complete challenges, unlock achievements, and level up
           your game dev skills!
         </p>
 
         <!-- Progress Bar - Cyberpunk Style -->
-        <div class="mx-auto mt-10 max-w-md">
-          <div class="font-pixel mb-2 flex items-center justify-between text-sm tracking-wider">
-            <span class="text-[var(--text)] uppercase">Season Progress</span>
-            <span class="text-[var(--cyber-yellow)]">
-              {EventService.getCompletedCount()} / {events.length} Completed
-            </span>
-          </div>
-          <div
-            class="h-4 w-full bg-[var(--surface-3)] p-0.5"
-            style="clip-path: polygon(0 0, 100% 0, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
-            <div
-              class="relative h-full overflow-hidden bg-[var(--cyber-magenta)] transition-all duration-500"
-              style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}>
-              <div
-                class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.2)_50%,transparent_75%)] bg-[length:10px_10px]">
+        <!-- Progress Bar - Futuristic Loading Style -->
+        <!-- Progress Bar - Event Chapters Style -->
+        <div class="mx-auto mt-12 max-w-xl">
+          <div class="relative flex flex-col items-center">
+            <!-- Progress Labels -->
+            <div class="font-tech mb-2 flex w-full justify-between text-xs tracking-wider uppercase">
+              <span class="flex items-center gap-2 font-bold text-[var(--cyber-yellow)]">
+                <span class="h-1.5 w-1.5 animate-pulse bg-[var(--cyber-yellow)]"></span>
+                Season Progress
+              </span>
+              <span class="text-[var(--text-muted)]">
+                {Math.round((EventService.getCompletedCount() / events.length) * 100)}% COMPLETE
+              </span>
+            </div>
+
+            <div class="flex w-full items-center gap-4">
+              <!-- Left Bracket -->
+              <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
+                <div class="absolute top-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
+                <div class="absolute bottom-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
               </div>
+
+              <!-- Bar Container -->
+              <div class="relative h-4 flex-1 border-y border-[var(--border-dim)] bg-[var(--bg-deep)]">
+                <!-- Glitchy Progress Fill -->
+                <div
+                  class="relative h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                  style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}
+                >
+                  <div
+                    class="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent opacity-50"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Bracket -->
+              <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
+                <div class="absolute top-0 right-0 h-px w-3 bg-[var(--text-muted)]"></div>
+                <div class="absolute right-0 bottom-0 h-px w-3 bg-[var(--text-muted)]"></div>
+              </div>
+            </div>
+
+            <!-- Stats underneath -->
+            <div
+              class="font-tech mt-2 flex w-full justify-between px-1 text-[10px] text-[var(--text-muted)] uppercase opacity-60"
+            >
+              <span>Start_Point</span>
+              <span>Objective: {events.length} Events</span>
             </div>
           </div>
         </div>
 
-        <div class="mt-10">
+        <div class="mt-12">
           <CtaButton
             client:load
             label="Join the Adventure"

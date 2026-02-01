@@ -67,7 +67,7 @@ export default function MerchPurchaseModal() {
               <div className="mb-6 border-l-2 border-[var(--cyber-yellow)] bg-[var(--bg-deep)] p-4">
                 <p className="text-xs font-bold tracking-widest text-[var(--text-muted)] uppercase">Target Item</p>
                 <p className="text-xl font-bold text-white">{data.itemName}</p>
-                <p className="font-mono text-[var(--cyber-yellow)]">${data.price.toFixed(2)} CAD</p>
+                <p className="font-tech text-[var(--cyber-yellow)]">${data.price.toFixed(2)} CAD</p>
               </div>
 
               <div className="space-y-4 text-sm text-[var(--text-muted)]">
@@ -114,7 +114,7 @@ export default function MerchPurchaseModal() {
             </div>
 
             {/* Scanlines */}
-            <div className="pointer-events-none absolute inset-0 z-0 scanline-rgb opacity-10"></div>
+            <div className="scanline-rgb pointer-events-none absolute inset-0 z-0 opacity-10"></div>
           </motion.div>
         </div>
       )}
