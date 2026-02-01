@@ -1,5 +1,5 @@
 ---
-import ImmersiveLayout from "../layouts/ImmersiveLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import CtaButton from "../components/common/CtaButton";
 import MerchCard from "../components/merch/MerchCard.astro";
@@ -12,7 +12,10 @@ import MerchPurchaseModal from "../components/merch/MerchPurchaseModal.tsx";
 const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ?? merchItems[0];
 ---
 
-<ImmersiveLayout title="UBC Game Dev // Loadout Terminal">
+<Layout
+  title="UBC Game Dev // Loadout Terminal"
+  immersive
+>
   <MerchPurchaseModal client:load />
   <main>
     <!-- Loadout Header -->
@@ -357,7 +360,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
       </div>
     </section>
   </main>
-</ImmersiveLayout>
+</Layout>
 
 <style>
   .loadout-btn {

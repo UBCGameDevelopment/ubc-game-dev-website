@@ -1,5 +1,5 @@
 ---
-import ImmersiveLayout from "../layouts/ImmersiveLayout.astro";
+import Layout from "../layouts/Layout.astro";
 
 import { GameService } from "../services";
 import { EventService } from "../services/EventService";
@@ -30,7 +30,7 @@ const faqs = [
 ];
 ---
 
-<ImmersiveLayout title="UBC Game Dev // Neon Operator">
+<Layout title="UBC Game Dev // Neon Operator" immersive>
   <!-- Hero Section -->
   <section class="section-block relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
     <!-- Background Marquees (Behind Content) -->
@@ -331,4 +331,4 @@ const faqs = [
       100% { transform: translateY(10%) rotate(0deg); }
     }
   </style>
-</ImmersiveLayout>
+</Layout>

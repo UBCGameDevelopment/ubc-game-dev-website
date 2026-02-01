@@ -1,5 +1,5 @@
 ---
-import ImmersiveLayout from "../layouts/ImmersiveLayout.astro";
+import Layout from "../layouts/Layout.astro";
 import { GameService } from "../services";
 
 import CyberMarquee from "../components/effects/CyberMarquee.astro";
@@ -9,7 +9,7 @@ import BackgroundText from "../components/effects/BackgroundText.astro";
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
-<ImmersiveLayout title="Club Timeline // Games">
+<Layout title="Club Timeline // Games" immersive>
   <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" direction="left" className="top-32 left-0 fixed opacity-[0.02]" />
   <div class="container-page mx-auto px-4 pt-32 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
     
@@ -159,4 +159,4 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
       100% { transform: skew(0deg); }
     }
   </style>
-</ImmersiveLayout>
+</Layout>
