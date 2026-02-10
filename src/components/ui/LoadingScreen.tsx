@@ -3,12 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 
 export default function LoadingScreen() {
-  const [isLoaded, setIsLoaded] = useState(() => {
-    if (typeof window !== "undefined") {
-      return sessionStorage.getItem("cyber_boot_custom") === "true";
-    }
-    return false;
-  });
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // You can adjust this timing or make it dependent on actual asset loading if you want true loading
   // For now, it's a cinematic boot sequence.
