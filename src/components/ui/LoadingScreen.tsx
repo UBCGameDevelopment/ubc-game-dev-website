@@ -3,22 +3,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 
 export default function LoadingScreen() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // You can adjust this timing or make it dependent on actual asset loading if you want true loading
-  // For now, it's a cinematic boot sequence.
-  useEffect(() => {
-    // Check if already booted in this session
-    const hasBooted = sessionStorage.getItem("cyber_boot_custom");
-    if (hasBooted) {
-      setIsLoaded(true);
-      return;
+  // Initialize from session storage to prevent flash on reload
+  const [isLoaded, setIsLoaded] = useState(() => {
+    if (typeof window !== "undefined") {
+      return sessionStorage.getItem("cyber_boot_custom") === "true";
     }
+    return false;
+  });
 
-    // Mark as booted immediately so refreshes/navs don't trigger it again
+  useEffect(() => {
+    // If already loaded (from lazy init), nothing to do
+    if (isLoaded) return;
+
+    // Mark as booted so future refreshes skip this
     sessionStorage.setItem("cyber_boot_custom", "true");
 
-    // Prevent scrolling and remove scrollbar while loading
+    // Prevent scrolling
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
@@ -26,7 +26,7 @@ export default function LoadingScreen() {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
     };
-  }, []);
+  }, [isLoaded]);
 
   const handleEnter = () => {
     setIsLoaded(true);

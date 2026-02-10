@@ -7,8 +7,10 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
 ---
 
 <div
+  data-merch-data={JSON.stringify(Astro.props)}
+  onclick="window.dispatchEvent(new CustomEvent('open-merch-modal', { detail: JSON.parse(this.dataset.merchData) }))"
   class:list={[
-    "group merch-hud-card relative flex h-full flex-col overflow-hidden transition-all duration-300",
+    "group merch-hud-card relative flex h-full cursor-pointer flex-col overflow-hidden transition-all duration-300",
     isSoldOut ? "opacity-70 grayscale" : "hover:shadow-[0_0_35px_rgba(0,240,255,0.2)]",
   ]}
 >
@@ -119,14 +121,11 @@ const { name, description, price, category, isNew, isSoldOut, colors, sizes } = 
     <!-- Price & Action -->
     <div class="mt-auto flex items-center justify-between pt-6">
       <span class="font-pixel text-2xl text-[var(--cyber-yellow)] transition-colors group-hover:text-white">
-        ${price}
+        ${price} CAD
       </span>
       {
         !isSoldOut && (
-          <button
-            onclick={`window.dispatchEvent(new CustomEvent('open-merch-modal', { detail: { itemName: '${name}', price: ${price} } }))`}
-            class="clip-angled group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-[10px] font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
-          >
+          <button class="clip-angled group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-4 py-2 text-[10px] font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]">
             <span class="relative z-10">Buy Now</span>
             <svg
               class="relative z-10 h-3 w-3"

@@ -55,7 +55,7 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
   </head>
   <body
     class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white">
-    {immersive && <LoadingScreen client:load />}
+    {immersive && <LoadingScreen client:only="react" />}
 
     {immersive && (
       <>

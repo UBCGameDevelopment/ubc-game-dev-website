@@ -201,12 +201,13 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
                     id="featured-price"
                     class="text-3xl font-black text-[var(--cyber-yellow)]"
                   >
-                    ${featuredItem?.price}
+                    ${featuredItem?.price} CAD
                   </span>
                   <button
                     id="featured-cta"
                     data-item-name={featuredItem?.name ?? ""}
                     data-item-price={featuredItem?.price ?? 0}
+                    data-item-json={JSON.stringify(featuredItem)}
                     class="clip-angled relative inline-flex items-center gap-2 bg-[var(--cyber-blue)] px-5 py-2 text-xs font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_18px_var(--cyber-blue)]"
                   >
                     Equip / Purchase
@@ -253,6 +254,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
                       data-item-sizes={item.sizes?.join(" / ") ?? ""}
                       data-item-is-new={item.isNew ? "true" : "false"}
                       data-featured-default={item.id === featuredItem?.id ? "true" : "false"}
+                      data-item-json={JSON.stringify(item)}
                       class="h-full"
                     >
                       <MerchCard {...item} />
@@ -418,7 +420,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
 
     if (dom.featured.title) dom.featured.title.textContent = name;
     if (dom.featured.description) dom.featured.description.textContent = description;
-    if (dom.featured.price) dom.featured.price.textContent = `$${price}`;
+    if (dom.featured.price) dom.featured.price.textContent = `$${price} CAD`;
     if (dom.featured.previewName) dom.featured.previewName.textContent = name;
     if (dom.featured.previewCategory) dom.featured.previewCategory.textContent = category.toUpperCase();
     if (dom.featured.previewDrop) dom.featured.previewDrop.textContent = isNew ? "New" : "Standard";
@@ -436,6 +438,8 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
     if (dom.featured.cta) {
       dom.featured.cta.setAttribute("data-item-name", name);
       dom.featured.cta.setAttribute("data-item-price", price);
+      const json = data.itemJson || "{}";
+      dom.featured.cta.setAttribute("data-item-json", json);
     }
 
     dom.previewIcons.forEach((icon) => {
@@ -446,9 +450,13 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
 
   if (dom.featured.cta) {
     dom.featured.cta.addEventListener("click", () => {
-      const itemName = dom.featured.cta!.getAttribute("data-item-name") || "";
-      const itemPrice = parseFloat(dom.featured.cta!.getAttribute("data-item-price") || "0");
-      window.dispatchEvent(new CustomEvent("open-merch-modal", { detail: { itemName, price: itemPrice } }));
+      const json = dom.featured.cta!.getAttribute("data-item-json") || "{}";
+      try {
+        const itemData = JSON.parse(json);
+        window.dispatchEvent(new CustomEvent("open-merch-modal", { detail: itemData }));
+      } catch (e) {
+        console.error("Failed to parse item data", e);
+      }
     });
   }
 
