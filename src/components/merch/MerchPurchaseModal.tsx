@@ -10,6 +10,11 @@ export default function MerchPurchaseModal() {
   // When 'size-chart' is active, it's an overlay on top of 'details'
   const [showSizeChartOverlay, setShowSizeChartOverlay] = useState(false);
   const [view, setView] = useState<"details" | "purchase">("details");
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const itemImages = data?.images && data.images.length > 0 ? data.images : data?.image ? [data.image] : [];
+  const activeImageSrc = itemImages[activeImageIndex] ?? "";
+  const hasMultipleImages = itemImages.length > 1;
 
   useEffect(() => {
     const handleOpen = (event: CustomEvent<MerchModalData>) => {
@@ -17,6 +22,7 @@ export default function MerchPurchaseModal() {
       setIsOpen(true);
       setShowSizeChartOverlay(false);
       setView("details");
+      setActiveImageIndex(0);
     };
 
     window.addEventListener("open-merch-modal", handleOpen as EventListener);
@@ -36,6 +42,29 @@ export default function MerchPurchaseModal() {
       document.body.style.overflow = "unset";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    if (activeImageIndex < itemImages.length) return;
+    setActiveImageIndex(0);
+  }, [activeImageIndex, itemImages.length]);
+
+  useEffect(() => {
+    if (!isOpen || itemImages.length < 2) return;
+    const timer = window.setInterval(() => {
+      setActiveImageIndex((current) => (current + 1) % itemImages.length);
+    }, 3200);
+    return () => window.clearInterval(timer);
+  }, [isOpen, itemImages.length, data?.id]);
+
+  const showPreviousImage = () => {
+    if (itemImages.length < 2) return;
+    setActiveImageIndex((current) => (current - 1 + itemImages.length) % itemImages.length);
+  };
+
+  const showNextImage = () => {
+    if (itemImages.length < 2) return;
+    setActiveImageIndex((current) => (current + 1) % itemImages.length);
+  };
 
   return (
     <AnimatePresence>
@@ -90,11 +119,80 @@ export default function MerchPurchaseModal() {
 
                 {/* Left: Image / Visual */}
                 <div className="relative h-[40vh] w-full bg-[radial-gradient(circle_at_40%_40%,rgba(0,240,255,0.1)_0%,rgba(0,0,0,0.8)_60%)] md:h-auto md:w-[65%]">
-                  <div className="flex h-full w-full items-center justify-center p-12">
-                    <div className="font-pixel text-6xl tracking-widest text-[var(--cyber-blue)] opacity-50 drop-shadow-[0_0_20px_rgba(0,240,255,0.3)]">
-                      IMG
+                  {activeImageSrc ? (
+                    <>
+                      <img
+                        src={activeImageSrc}
+                        alt={`${data.name} image ${activeImageIndex + 1}`}
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                    </>
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center p-12">
+                      <div className="font-pixel text-6xl tracking-widest text-[var(--cyber-blue)] opacity-50 drop-shadow-[0_0_20px_rgba(0,240,255,0.3)]">
+                        IMG
+                      </div>
                     </div>
-                  </div>
+                  )}
+
+                  {hasMultipleImages && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={showPreviousImage}
+                        className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white transition-colors hover:border-white hover:bg-black/60"
+                        aria-label="Previous image"
+                      >
+                        <svg
+                          className="h-4 w-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M15 18l-6-6 6-6"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={showNextImage}
+                        className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white transition-colors hover:border-white hover:bg-black/60"
+                        aria-label="Next image"
+                      >
+                        <svg
+                          className="h-4 w-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 6l6 6-6 6"
+                          />
+                        </svg>
+                      </button>
+                      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/45 px-3 py-1.5 backdrop-blur-sm">
+                        {itemImages.map((_, index) => (
+                          <button
+                            key={index}
+                            type="button"
+                            onClick={() => setActiveImageIndex(index)}
+                            aria-label={`Show image ${index + 1}`}
+                            className={`h-2 rounded-full transition-all ${
+                              index === activeImageIndex ? "w-5 bg-white" : "w-2 bg-white/45 hover:bg-white/70"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Right: Info */}
@@ -145,11 +243,13 @@ export default function MerchPurchaseModal() {
                   </div>
 
                   {/* Footer / CTA */}
-                  <div className="mt-12 flex items-center justify-between border-t border-[var(--border-dim)] pt-8">
-                    <span className="font-pixel text-4xl text-[var(--cyber-yellow)]">${data.price} CAD</span>
+                  <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-[var(--border-dim)] pt-8 md:flex-nowrap md:gap-8">
+                    <span className="font-pixel shrink-0 text-4xl leading-none text-[var(--cyber-yellow)]">
+                      ${data.price} CAD
+                    </span>
                     <button
                       onClick={() => setView("purchase")}
-                      className="clip-angled group relative inline-flex items-center gap-3 overflow-hidden bg-[var(--cyber-blue)] px-8 py-4 text-xs font-bold tracking-[0.2em] text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                      className="clip-angled group relative ml-auto inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
                     >
                       <span className="relative z-10">BUY NOW</span>
                       <svg
@@ -188,13 +288,34 @@ export default function MerchPurchaseModal() {
 
                 {/* Content */}
                 <div className="max-h-[80vh] overflow-y-auto p-4 md:p-8">
-                  <div className="mb-6 flex flex-col gap-6 md:flex-row">
+                  <div className="mb-6 flex flex-col items-start gap-6 md:flex-row">
                     {/* Image Placeholder */}
                     <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded border border-[var(--border-dim)] bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] md:w-1/3">
-                      <div className="text-4xl text-[var(--cyber-blue)] opacity-50">
-                        {/* Icon or Image would go here */}
-                        IMG
-                      </div>
+                      {activeImageSrc ? (
+                        <img
+                          src={activeImageSrc}
+                          alt={`${data.name} image ${activeImageIndex + 1}`}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="text-4xl text-[var(--cyber-blue)] opacity-50">IMG</div>
+                      )}
+
+                      {hasMultipleImages && (
+                        <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full bg-black/45 px-2.5 py-1 backdrop-blur-sm">
+                          {itemImages.map((_, index) => (
+                            <button
+                              key={index}
+                              type="button"
+                              onClick={() => setActiveImageIndex(index)}
+                              aria-label={`Show image ${index + 1}`}
+                              className={`h-1.5 rounded-full transition-all ${
+                                index === activeImageIndex ? "w-4 bg-white" : "w-1.5 bg-white/45 hover:bg-white/70"
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     {/* Details */}
@@ -206,7 +327,6 @@ export default function MerchPurchaseModal() {
                         <h3 className="text-2xl font-bold text-white uppercase">{data.name}</h3>
                         <p className="font-tech text-xl text-[var(--cyber-blue)]">${data.price} CAD</p>
                       </div>
-                      <p className="text-sm text-[var(--text-muted)]">{data.description}</p>
 
                       {data.colors && (
                         <div className="text-xs">
@@ -244,6 +364,8 @@ export default function MerchPurchaseModal() {
                       )}
                     </div>
                   </div>
+
+                  <p className="mb-6 text-sm text-[var(--text-muted)]">{data.description}</p>
 
                   <div className="space-y-4 border-t border-[var(--border-dim)] pt-6 text-sm text-[var(--text-muted)]">
                     <p>To acquire this item, complete the credit transfer protocol:</p>

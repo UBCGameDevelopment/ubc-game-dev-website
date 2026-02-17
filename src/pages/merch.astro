@@ -7,7 +7,15 @@ import MerchCard from "../components/merch/MerchCard.astro";
 import MerchPurchaseModal from "../components/merch/MerchPurchaseModal";
 import { merchItems, categories } from "../data/merch";
 
+// Filter out placeholder images
+const isPlaceholder = (src: string) => src.includes("/placeholder-") || src.includes("placeholder.");
+
 const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ?? merchItems[0];
+
+// Get featured image, filtering out placeholders
+const rawFeaturedImages = featuredItem?.images || (featuredItem?.image ? [featuredItem.image] : []);
+const validFeaturedImages = rawFeaturedImages.filter((src) => !isPlaceholder(src));
+const featuredImage = validFeaturedImages[0] ?? "";
 ---
 
 <Layout
@@ -44,25 +52,35 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
 
             <div
               id="featured-section"
-              class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]"
+              class="group relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)]/60 transition-all hover:border-[var(--cyber-blue)]"
             >
-              <div class="hud-card border border-[var(--border-dim)] bg-[var(--bg-deep)]/60 p-6">
-                <div class="flex items-center justify-between">
-                  <p class="font-tech text-xs tracking-widest text-[var(--cyber-blue)] uppercase">Preview Bay</p>
-                  <span class="text-[10px] text-[var(--text-muted)]">LIVE FEED</span>
-                </div>
-                <div class="preview-frame mt-6">
+              <div class="flex flex-col md:flex-row">
+                <!-- Left: Image (Square) -->
+                <div
+                  class="relative aspect-square w-full shrink-0 overflow-hidden border-b border-[var(--border-dim)] md:w-[55%] md:border-r md:border-b-0"
+                >
                   <div
-                    id="featured-preview-image"
-                    class="preview-image"
-                    style={`background-image: url('${featuredItem?.image ?? ""}');`}
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,240,255,0.1),transparent_70%)]"
                   >
                   </div>
-                  <div class="preview-icon">
+
+                  <!-- Preview Image -->
+                  <img
+                    id="featured-preview-image"
+                    src={featuredImage}
+                    alt={featuredItem?.name ?? "Featured item"}
+                    class:list={["absolute inset-0 h-full w-full object-contain", !featuredImage && "hidden"]}
+                  />
+
+                  <!-- Fallback Icons -->
+                  <div
+                    id="featured-preview-icon-container"
+                    class:list={["absolute inset-0 flex items-center justify-center", featuredImage && "hidden"]}
+                  >
                     <svg
                       data-preview-icon="apparel"
                       class:list={[
-                        "h-20 w-20 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
+                        "h-32 w-32 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
                         featuredItem?.category !== "apparel" && "hidden",
                       ]}
                       fill="currentColor"
@@ -76,7 +94,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
                     <svg
                       data-preview-icon="accessories"
                       class:list={[
-                        "h-20 w-20 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
+                        "h-32 w-32 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
                         featuredItem?.category !== "accessories" && "hidden",
                       ]}
                       fill="currentColor"
@@ -90,7 +108,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
                     <svg
                       data-preview-icon="stickers"
                       class:list={[
-                        "h-20 w-20 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
+                        "h-32 w-32 text-[var(--cyber-blue)] drop-shadow-[0_0_18px_rgba(0,240,255,0.5)]",
                         featuredItem?.category !== "stickers" && "hidden",
                       ]}
                       fill="currentColor"
@@ -102,116 +120,146 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
                       </path>
                     </svg>
                   </div>
-                  <div class="preview-label">
-                    <span class="text-[10px] tracking-widest text-[var(--text-muted)] uppercase">Featured Slot</span>
+
+                  <!-- Overlay Labels -->
+                  <div class="absolute top-4 left-4">
+                    <span
+                      class="font-tech bg-black/60 px-2 py-1 text-[10px] tracking-widest text-[var(--cyber-blue)] uppercase backdrop-blur-sm"
+                    >
+                      Preview Bay
+                    </span>
+                  </div>
+                  <div class="absolute bottom-4 left-4">
+                    <span class="font-tech block text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+                      Featured Slot
+                    </span>
                     <span
                       id="featured-preview-name"
-                      class="text-sm font-bold text-white"
+                      class="block text-sm font-bold text-white drop-shadow-md"
                     >
                       {featuredItem?.name}
                     </span>
                   </div>
                 </div>
-                <div class="mt-5 grid gap-2 text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+
+                <!-- Right: Details -->
+                <div class="flex flex-1 flex-col p-6 md:p-8">
                   <div class="flex items-center justify-between">
-                    <span>Category</span>
+                    <div class="flex items-center gap-3">
+                      <span class="h-2 w-2 bg-[var(--cyber-magenta)] shadow-[0_0_12px_var(--cyber-magenta)]"></span>
+                      <p class="font-tech text-xs tracking-widest text-[var(--cyber-magenta)] uppercase">
+                        Featured Drop
+                      </p>
+                    </div>
                     <span
-                      id="featured-preview-category"
-                      class="text-white"
+                      id="featured-new-badge"
+                      class:list={[
+                        "rounded-sm bg-[var(--cyber-yellow)] px-2 py-0.5 text-[10px] font-bold text-black",
+                        !featuredItem?.isNew && "hidden",
+                      ]}
                     >
-                      {featuredItem?.category?.toUpperCase()}
+                      NEW
                     </span>
                   </div>
-                  <div class="flex items-center justify-between">
-                    <span>Drop</span>
-                    <span
-                      id="featured-preview-drop"
-                      class="text-[var(--cyber-yellow)]"
-                    >
-                      {featuredItem?.isNew ? "New" : "Standard"}
-                    </span>
-                  </div>
-                </div>
-              </div>
 
-              <div class="hud-card border border-[var(--border-dim)] bg-[var(--bg-deep)]/60 p-6">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <span class="h-2 w-2 bg-[var(--cyber-magenta)] shadow-[0_0_12px_var(--cyber-magenta)]"></span>
-                    <p class="font-tech text-xs tracking-widest text-[var(--cyber-magenta)] uppercase">Featured Drop</p>
-                  </div>
-                  <span
-                    id="featured-new-badge"
-                    class:list={[
-                      "rounded-sm bg-[var(--cyber-yellow)] px-2 py-0.5 text-[10px] font-bold text-black",
-                      !featuredItem?.isNew && "hidden",
-                    ]}
+                  <h3
+                    id="featured-title"
+                    class="mt-4 text-3xl font-bold text-white uppercase md:text-4xl"
                   >
-                    NEW
-                  </span>
-                </div>
-                <h3
-                  id="featured-title"
-                  class="mt-3 text-2xl font-bold text-white md:text-3xl"
-                >
-                  {featuredItem?.name}
-                </h3>
-                <p
-                  id="featured-description"
-                  class="mt-3 text-sm text-[var(--text-muted)]"
-                >
-                  {featuredItem?.description}
-                </p>
+                    {featuredItem?.name}
+                  </h3>
 
-                <div class="mt-5 space-y-2 text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+                  <p
+                    id="featured-description"
+                    class="mt-4 line-clamp-4 text-lg leading-relaxed text-[var(--text-muted)]"
+                  >
+                    {featuredItem?.description}
+                  </p>
+
                   <div
-                    data-featured-colors
-                    class:list={[
-                      "flex items-center justify-between",
-                      (!featuredItem?.colors || featuredItem.colors.length === 0) && "hidden",
-                    ]}
+                    class="mt-8 space-y-3 border-t border-[var(--border-dim)] pt-6 text-[10px] tracking-widest text-[var(--text-muted)] uppercase"
                   >
-                    <span>Colors</span>
-                    <span
-                      id="featured-colors"
-                      class="text-white"
+                    <div
+                      data-featured-colors
+                      class:list={[
+                        "flex items-center justify-between",
+                        (!featuredItem?.colors || featuredItem.colors.length === 0) && "hidden",
+                      ]}
                     >
-                      {featuredItem?.colors?.join(" / ")}
-                    </span>
-                  </div>
-                  <div
-                    data-featured-sizes
-                    class:list={[
-                      "flex items-center justify-between",
-                      (!featuredItem?.sizes || featuredItem.sizes.length === 0) && "hidden",
-                    ]}
-                  >
-                    <span>Sizes</span>
-                    <span
-                      id="featured-sizes"
-                      class="text-white"
+                      <span>Colors</span>
+                      <span
+                        id="featured-colors"
+                        class="text-white"
+                      >
+                        {featuredItem?.colors?.join(" / ")}
+                      </span>
+                    </div>
+                    <div
+                      data-featured-sizes
+                      class:list={[
+                        "flex items-center justify-between",
+                        (!featuredItem?.sizes || featuredItem.sizes.length === 0) && "hidden",
+                      ]}
                     >
-                      {featuredItem?.sizes?.join(" / ")}
-                    </span>
+                      <span>Sizes</span>
+                      <span
+                        id="featured-sizes"
+                        class="text-white"
+                      >
+                        {featuredItem?.sizes?.join(" / ")}
+                      </span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span>Category</span>
+                      <span
+                        id="featured-preview-category"
+                        class="text-white"
+                      >
+                        {featuredItem?.category?.toUpperCase()}
+                      </span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <span>Drop</span>
+                      <span
+                        id="featured-preview-drop"
+                        class="text-[var(--cyber-yellow)]"
+                      >
+                        {featuredItem?.isNew ? "New" : "Standard"}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <div class="mt-6 flex items-center justify-between">
-                  <span
-                    id="featured-price"
-                    class="text-3xl font-black text-[var(--cyber-yellow)]"
-                  >
-                    ${featuredItem?.price} CAD
-                  </span>
-                  <button
-                    id="featured-cta"
-                    data-item-name={featuredItem?.name ?? ""}
-                    data-item-price={featuredItem?.price ?? 0}
-                    data-item-json={JSON.stringify(featuredItem)}
-                    class="clip-angled relative inline-flex items-center gap-2 bg-[var(--cyber-blue)] px-5 py-2 text-xs font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_18px_var(--cyber-blue)]"
-                  >
-                    Equip / Purchase
-                  </button>
+                  <div class="mt-auto flex items-center justify-between pt-8">
+                    <span
+                      id="featured-price"
+                      class="font-pixel text-4xl text-[var(--cyber-yellow)]"
+                    >
+                      ${featuredItem?.price} CAD
+                    </span>
+                    <button
+                      id="featured-cta"
+                      data-item-name={featuredItem?.name ?? ""}
+                      data-item-price={featuredItem?.price ?? 0}
+                      data-item-json={JSON.stringify(featuredItem)}
+                      class="clip-angled group relative inline-flex items-center gap-3 bg-[var(--cyber-blue)] px-6 py-3 text-xs font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_20px_var(--cyber-blue)]"
+                    >
+                      <span>Equip Note</span>
+                      <svg
+                        class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        >
+                        </path>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -242,24 +290,31 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
 
               <div class="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {
-                  merchItems.map((item) => (
-                    <div
-                      data-merch-item
-                      data-item-category={item.category}
-                      data-item-name={item.name}
-                      data-item-description={item.description}
-                      data-item-price={item.price}
-                      data-item-image={item.image}
-                      data-item-colors={item.colors?.join(" / ") ?? ""}
-                      data-item-sizes={item.sizes?.join(" / ") ?? ""}
-                      data-item-is-new={item.isNew ? "true" : "false"}
-                      data-featured-default={item.id === featuredItem?.id ? "true" : "false"}
-                      data-item-json={JSON.stringify(item)}
-                      class="h-full"
-                    >
-                      <MerchCard {...item} />
-                    </div>
-                  ))
+                  merchItems.map((item) => {
+                    // Filter placeholders from this item's images
+                    const itemRawImages = item.images || (item.image ? [item.image] : []);
+                    const itemValidImages = itemRawImages.filter((src) => !isPlaceholder(src));
+                    const itemImage = itemValidImages[0] ?? "";
+
+                    return (
+                      <div
+                        data-merch-item
+                        data-item-category={item.category}
+                        data-item-name={item.name}
+                        data-item-description={item.description}
+                        data-item-price={item.price}
+                        data-item-image={itemImage}
+                        data-item-colors={item.colors?.join(" / ") ?? ""}
+                        data-item-sizes={item.sizes?.join(" / ") ?? ""}
+                        data-item-is-new={item.isNew ? "true" : "false"}
+                        data-featured-default={item.id === featuredItem?.id ? "true" : "false"}
+                        data-item-json={JSON.stringify(item)}
+                        class="h-full"
+                      >
+                        <MerchCard {...item} />
+                      </div>
+                    );
+                  })
                 }
               </div>
 
@@ -324,7 +379,8 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
 
   .preview-frame {
     position: relative;
-    height: 260px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     border: 1px solid rgba(120, 230, 255, 0.25);
     background:
       radial-gradient(circle at 50% 15%, rgba(120, 230, 255, 0.18), transparent 55%),
@@ -350,13 +406,13 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
     pointer-events: none;
   }
 
-  .preview-image {
+  .preview-image-element {
     position: absolute;
     inset: 0;
-    background-position: center;
-    background-size: cover;
-    opacity: 0.45;
-    filter: saturate(120%) contrast(1.05);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
 
   .preview-icon {
@@ -398,6 +454,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
       newBadge: document.getElementById("featured-new-badge"),
       cta: document.getElementById("featured-cta"),
       previewImage: document.getElementById("featured-preview-image"),
+      previewIconContainer: document.getElementById("featured-preview-icon-container"),
       previewName: document.getElementById("featured-preview-name"),
       previewCategory: document.getElementById("featured-preview-category"),
       previewDrop: document.getElementById("featured-preview-drop"),
@@ -415,8 +472,9 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
     const category = data.itemCategory || "";
     const colors = data.itemColors || "";
     const sizes = data.itemSizes || "";
-    const image = data.itemImage || "";
+    const image = data.itemImage || ""; // Already filtered on server-side (placeholders removed)
     const isNew = data.itemIsNew === "true";
+    const hasImage = image.length > 0;
 
     if (dom.featured.title) dom.featured.title.textContent = name;
     if (dom.featured.description) dom.featured.description.textContent = description;
@@ -425,8 +483,21 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
     if (dom.featured.previewCategory) dom.featured.previewCategory.textContent = category.toUpperCase();
     if (dom.featured.previewDrop) dom.featured.previewDrop.textContent = isNew ? "New" : "Standard";
 
-    if (dom.featured.previewImage) {
-      dom.featured.previewImage.style.backgroundImage = image ? `url('${image}')` : "none";
+    // Toggle between image and icon container based on whether item has an image
+    if (dom.featured.previewImage && dom.featured.previewIconContainer) {
+      if (hasImage) {
+        // Show image, hide icon
+        if (dom.featured.previewImage instanceof HTMLImageElement) {
+          dom.featured.previewImage.src = image;
+          dom.featured.previewImage.alt = name;
+        }
+        dom.featured.previewImage.classList.remove("hidden");
+        dom.featured.previewIconContainer.classList.add("hidden");
+      } else {
+        // Hide image, show icon
+        dom.featured.previewImage.classList.add("hidden");
+        dom.featured.previewIconContainer.classList.remove("hidden");
+      }
     }
 
     if (dom.featured.colors) dom.featured.colors.textContent = colors;
@@ -461,6 +532,7 @@ const featuredItem = merchItems.find((item) => item.isNew && !item.isSoldOut) ??
   }
 
   const getCarouselItems = () => {
+    // Include all items - fallback icons will show for items without real images
     const featured = dom.merchItems.filter((item) => (item as HTMLElement).dataset.itemIsNew === "true");
     return featured.length > 0 ? featured : dom.merchItems.slice(0, 3);
   };
