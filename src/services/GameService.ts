@@ -69,7 +69,7 @@ export class GameService {
    */
   static search(query: string): Game[] {
     const lowerQuery = query.toLowerCase();
-    return staticGames.filter(game => 
+    return staticGames.filter(game =>
       game.name.toLowerCase().includes(lowerQuery) ||
       game.description?.toLowerCase().includes(lowerQuery)
     );
@@ -82,5 +82,68 @@ export class GameService {
    */
   static getCount(): number {
     return staticGames.length;
+  }
+
+  /**
+   * Get all games sorted by year (newest first)
+   * 
+   * @returns       Array of games sorted by year descending
+   */
+  static getAllSorted(): Game[] {
+    return [...staticGames].sort((a, b) => parseInt(b.year) - parseInt(a.year));
+  }
+
+  /**
+   * Group games by year
+   * 
+   * @returns       Object with years as keys and arrays of games as values
+   */
+  static getGroupedByYear(): Record<string, Game[]> {
+    return staticGames.reduce((acc, game) => {
+      const year = game.year;
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(game);
+      return acc;
+    }, {} as Record<string, Game[]>);
+  }
+
+  /**
+   * Get games grouped by year with years sorted (newest first)
+   * 
+   * @returns       Object with sorted years and their games
+   */
+  static getGroupedByYearSorted(): { years: string[]; gamesByYear: Record<string, Game[]> } {
+    const gamesByYear = this.getGroupedByYear();
+    const years = Object.keys(gamesByYear).sort((a, b) => parseInt(b) - parseInt(a));
+    return { years, gamesByYear };
+  }
+
+  /**
+   * Get the featured/latest games
+   * 
+   * @param count   Number of games to return
+   * @returns       Array of the most recent games
+   */
+  static getFeatured(count: number): Game[] {
+    return this.getAllSorted().slice(0, count);
+  }
+
+  /**
+   * Get image source from a game's media
+   * Returns the first available image from media (image or images array)
+   * 
+   * @param game    Game object to extract image from
+   * @returns       Image source string or fallback placeholder
+   */
+  static getGameImageSrc(game: Game): string {
+    if (game.media?.image) {
+      return game.media.image.src;
+    }
+    if (game.media?.images && game.media.images.length > 0) {
+      return game.media.images[0].src;
+    }
+    return '/assets/placeholder-game.png';
   }
 }

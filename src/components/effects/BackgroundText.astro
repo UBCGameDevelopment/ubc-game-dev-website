@@ -1,0 +1,18 @@
+---
+interface Props {
+  text: string;
+  className?: string;
+}
+
+const { text, className = "" } = Astro.props;
+---
+
+<span
+  class:list={[
+    "pointer-events-none absolute z-0 font-black whitespace-nowrap text-[var(--border-dim)] opacity-10 select-none",
+    className,
+  ]}
+  aria-hidden="true"
+>
+  {text}
+</span>

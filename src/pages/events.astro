@@ -1,66 +1,123 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import EventCard from "../components/events/EventCard.astro";
-import EventTimeline from "../components/events/EventTimeline.astro";
+import CtaButton from "../components/common/CtaButton";
+import LevelCard from "../components/events/LevelCard.astro";
+import EventModal from "../components/events/EventModal";
 import { EventService } from "../services";
 import { LINKS } from "../config/links";
 
 const events = EventService.getAll();
+const eventsForModal = EventService.prepareForModal(events);
+
+import CyberBadge from "../components/common/CyberBadge.astro";
+import PageHeader from "../components/common/PageHeader.astro";
 ---
 
 <Layout>
-    <!-- Header -->
-    <div class="mb-8 flex w-full justify-center px-4">
-        <div
-            class="mt-20 mb-8 flex w-full max-w-6xl flex-col gap-4 md:my-16 md:flex-row md:items-center md:justify-between">
-            <p class="text-3xl font-extrabold sm:text-4xl md:text-5xl">Upcoming Events (2025-2026)</p>
-            <a
-                href={LINKS.discord}
-                class="self-start rounded-4xl border border-[#E4E4E4] px-4 py-2 whitespace-nowrap text-white transition-colors duration-1000 ease-in-out hover:border-[#BEA9FF] hover:bg-[#BEA9FF] hover:text-black md:self-auto">
-                Join our Discord
-            </a>
+  <main>
+    <!-- Header Section -->
+    <PageHeader
+      backgroundText="CHAPTERS"
+      badge={{ label: "Season 2025-2026 // Active", variant: "brand" }}
+      subtitle="Mission Log"
+      subtitleColor="text-[var(--cyber-magenta)]"
+      title={{ normal: "Event ", highlight: "Chapters" }}
+      gradientClass="from-[var(--cyber-yellow)] to-[var(--brand)]"
+      description="Journey through our club events like levels in a game. Complete challenges, unlock achievements, and level up your game dev skills!"
+      descriptionBorderColor="border-[var(--cyber-yellow)]"
+      glowColor="var(--brand)"
+    >
+      <!-- Progress Bar - Cyberpunk Style -->
+      <!-- Progress Bar - Futuristic Loading Style -->
+      <!-- Progress Bar - Event Chapters Style -->
+      <div class="mx-auto mt-12 max-w-xl">
+        <div class="relative flex flex-col items-center">
+          <!-- Progress Labels -->
+          <div class="font-tech mb-2 flex w-full justify-between text-xs tracking-wider uppercase">
+            <span class="flex items-center gap-2 font-bold text-[var(--cyber-yellow)]">
+              <span class="h-1.5 w-1.5 animate-pulse bg-[var(--cyber-yellow)]"></span>
+              Season Progress
+            </span>
+            <span class="text-[var(--text-muted)]">
+              {Math.round((EventService.getCompletedCount() / events.length) * 100)}% COMPLETE
+            </span>
+          </div>
+
+          <div class="flex w-full items-center gap-4">
+            <!-- Left Bracket -->
+            <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
+              <div class="absolute top-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
+              <div class="absolute bottom-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
+            </div>
+
+            <!-- Bar Container -->
+            <div class="relative h-4 flex-1 border-y border-[var(--border-dim)] bg-[var(--bg-deep)]">
+              <!-- Glitchy Progress Fill -->
+              <div
+                class="relative h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}
+              >
+                <div class="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent opacity-50">
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Bracket -->
+            <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
+              <div class="absolute top-0 right-0 h-px w-3 bg-[var(--text-muted)]"></div>
+              <div class="absolute right-0 bottom-0 h-px w-3 bg-[var(--text-muted)]"></div>
+            </div>
+          </div>
+
+          <!-- Stats underneath -->
+          <div
+            class="font-tech mt-2 flex w-full justify-between px-1 text-[10px] text-[var(--text-muted)] uppercase opacity-60"
+          >
+            <span>Start_Point</span>
+            <span>Objective: {events.length} Events</span>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Events with vertical timeline -->
-    <div class="flex w-full justify-center px-4 pb-16">
-        <div class="w-full max-w-7xl">
-            {
-                events.map((event, index) => {
-                    const isEven = index % 2 === 0;
-                    return (
-                        <div
-                            class="relative mb-8 last:mb-0 md:mb-12"
-                            data-timeline-row>
-                            {/* Desktop layout - alternating sides */}
-                            <div class="hidden md:grid md:grid-cols-[1fr_80px_1fr] md:gap-8">
-                                {/* Left side - shows card on even indices */}
-                                <div class={`flex ${isEven ? "justify-end" : "justify-start"}`}>
-                                    {isEven && <EventCard {...event} />}
-                                </div>
+      <div class="mt-12">
+        <CtaButton
+          client:load
+          label="Join the Adventure"
+          href={LINKS.discord}
+          variant="yellow"
+        />
+      </div>
+    </PageHeader>
 
-                                {/* Timeline column (center) */}
-                                <div class="timeline-container flex h-full justify-center">
-                                    <EventTimeline
-                                        index={index}
-                                        isLast={index === events.length - 1}
-                                    />
-                                </div>
+    <!-- Level Grid -->
+    <section class="container-page mx-auto px-4 pb-20">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          events.map((event, index) => (
+            <LevelCard
+              {...event}
+              chapterNumber={index + 1}
+            />
+          ))
+        }
+      </div>
+    </section>
 
-                                {/* Right side - shows card on odd indices */}
-                                <div class={`flex ${isEven ? "justify-start" : "justify-end"}`}>
-                                    {!isEven && <EventCard {...event} />}
-                                </div>
-                            </div>
-
-                            {/* Mobile layout - simple vertical stack */}
-                            <div class="flex justify-center md:hidden">
-                                <EventCard {...event} />
-                            </div>
-                        </div>
-                    );
-                })
-            }
-        </div>
-    </div>
+    <!-- Event Modal -->
+    <EventModal
+      client:load
+      events={eventsForModal}
+    />
+  </main>
 </Layout>
+
+<script>
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const button = target.closest("[data-open-modal]");
+    if (button) {
+      const index = parseInt(button.getAttribute("data-open-modal") || "0", 10);
+      window.dispatchEvent(new CustomEvent("openEventModal", { detail: { index } }));
+    }
+  });
+</script>

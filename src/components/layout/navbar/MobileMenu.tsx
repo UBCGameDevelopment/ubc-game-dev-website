@@ -1,5 +1,5 @@
-import GlowEffect from './GlowEffect';
-import DecorativeOrbs from './DecorativeOrbs';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavLink {
   href: string;
@@ -13,47 +13,74 @@ interface MobileMenuProps {
 }
 
 export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) {
-  if (!isOpen) return null;
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <>
-      {/* Backdrop */}
-      <div 
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[90] lg:hidden"
-        onClick={onClose}
-      />
-      
-      {/* Menu */}
-      <div className="fixed left-4 right-4 top-32 z-[95] lg:hidden">
-        <div className="group relative">
-          <GlowEffect />
-          
-          {/* Menu content */}
-          <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl shadow-2xl shadow-black/40 ring-1 ring-white/10 overflow-hidden">
-            <DecorativeOrbs />
-            
-            <div className="relative z-10 flex flex-col gap-2 p-6 font-semibold">
-              {links.map((link) => {
-                const isContact = link.label === 'Contact Us';
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm lg:hidden"
+          />
+
+          {/* Floating Menu Card */}
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed top-24 right-0 left-0 z-[95] mx-auto w-[95%] max-w-5xl overflow-hidden border border-[var(--brand)]/40 bg-[var(--surface-2)]/95 p-2 shadow-[0_0_30px_rgba(168,85,247,0.15)] backdrop-blur-xl lg:hidden"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%)" }}
+          >
+            <nav
+              className="flex flex-col gap-1"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {links.map((link, index) => {
+                const isContact = link.label === "Contact Us";
+                if (isContact) return null; // We'll render contact separately if strictly needed, or just let navbar handle it.
+
                 return (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={onClose}
-                    className={`${
-                      isContact
-                        ? 'mt-3 rounded-4xl border border-white/30 px-4 py-3 text-center text-white hover:border-brand-500 hover:bg-brand-500 hover:text-black transition-all duration-300'
-                        : 'rounded-2xl px-4 py-3 text-white hover:bg-white/10 transition-colors duration-300'
-                    }`}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    className="relative flex items-center justify-between px-4 py-3 text-[var(--text-muted)] transition-colors hover:text-[var(--brand)]"
                   >
-                    {link.label}
+                    {hoveredIndex === index && (
+                      <motion.div
+                        layoutId="mobile-navbar-pill"
+                        className="absolute inset-0 border-l-2 border-[var(--brand)] bg-[var(--brand)]/10"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10 text-lg font-bold tracking-wide">{link.label}</span>
+                    <svg
+                      className="relative z-10 h-4 w-4 opacity-50"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
                   </a>
                 );
               })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+            </nav>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 }

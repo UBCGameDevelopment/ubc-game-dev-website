@@ -1,20 +1,20 @@
 ---
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo/logo.png";
 import NavbarReact from "./NavbarReact";
 
 const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/events", label: "Events" },
-    { href: "/partners", label: "Partners" },
-    { href: "/games", label: "Games Gallery" },
-    { href: "/team", label: "Our Team" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact Us" },
+  { href: "/", label: "Home" },
+  { href: "/events", label: "Events" },
+  { href: "/merch", label: "Merch" },
+  { href: "/games", label: "Games Gallery" },
+  { href: "/team", label: "Our Team" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact Us" },
 ];
 ---
 
 <NavbarReact
-    client:load
-    logo={logo.src}
-    links={navLinks}
+  client:load
+  logo={logo.src}
+  links={navLinks}
 />

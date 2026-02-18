@@ -1,63 +1,57 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Timeline from "../components/games/Timeline/Timeline.astro";
-import GameCard from "../components/games/GameCard/GameCard.astro";
-import GameGrid from "../components/games/GameGrid";
 import { GameService } from "../services";
+import CyberMarquee from "../components/effects/CyberMarquee.astro";
+import GlitchText from "../components/effects/GlitchText";
+import BackgroundText from "../components/effects/BackgroundText.astro";
+import TimelineSidebar from "../components/games/TimelineSidebar.astro";
+import GameArticle from "../components/games/GameArticle.astro";
+import CyberBadge from "../components/common/CyberBadge.astro";
+import PageHeader from "../components/common/PageHeader.astro";
 
-const games = GameService.getAll();
+const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
-<Layout>
-    <main class="container-page">
-        <!-- Page Header -->
-        <section class="my-12 text-center md:my-16">
-            <div
-                class="bg-brand-500/20 border-brand-500/30 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5">
-                <span class="text-brand-400 text-sm font-semibold">Our Projects</span>
-            </div>
+<Layout title="Club Timeline // Games" immersive>
+  <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" speed={120} direction="left"  className="top-32 left-0 fixed opacity-[0.02]" />
 
-            <h1
-                class="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent md:text-6xl">
-                Game Showcase
-            </h1>
-            <p class="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-gray-50/80">
-                Explore the amazing games created by our talented teams. Each project represents countless hours of
-                creativity, collaboration, and passion for game development.
-            </p>
-        </section>
+  <!-- Header Section -->
+  <PageHeader
+    backgroundText="DATABASE"
+    badge={{ label: "Archive Access // Granted", variant: "blue" }}
+    subtitle="Project Database"
+    subtitleColor="text-[var(--text-muted)]"
+    title={{ normal: "Dev ", highlight: "Archives" }}
+    gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
+    description="Trace the history of our digital creations. From game jam prototypes to polished releases, explore the legacy of UBC Game Dev code."
+    descriptionBorderColor="border-[var(--cyber-blue)]"
+    glowColor="var(--brand)"
+  />
+  
+  <div class="container-page mx-auto px-4 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
+    <TimelineSidebar years={years} />
 
-        <!-- Timeline + Games -->
-        <section class="my-12 md:my-16">
-            <div class="items-start gap-8 md:grid md:grid-cols-[minmax(180px,220px)_minmax(0,1fr)] lg:gap-14">
-                <aside class="order-2 mb-8 md:sticky md:top-24 md:order-1 md:mb-0">
-                    <div
-                        class="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-xl ring-1 shadow-black/30 ring-white/10 backdrop-blur-xl">
-                        <h2 class="mb-3 text-lg font-bold tracking-wide">Club Timeline</h2>
-                        <Timeline />
-                    </div>
-                </aside>
+    <!-- Main Content: Games Stream -->
+    <div class="flex-1 space-y-32">
+      {years.map(year => (
+        <div id={`year-${year}`} class="scroll-mt-32 relative">
+          <!-- Year Marker -->
+          <div class="flex items-center gap-4 mb-12">
+            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-20" />
+            <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
+              <GlitchText client:visible text={year} tag="span" /> 
+              <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>
+            </h3>
+            <div class="h-px bg-[var(--border-dim)] flex-1 ml-4"></div>
+          </div>
 
-                <div class="order-1 md:order-2">
-                    <!-- React component to manage filtering state -->
-                    <GameGrid client:load />
-
-                    <!-- Game cards -->
-                    <div class="game-cards-container space-y-8 md:space-y-12">
-                        {
-                            games.map((game) => (
-                                <div
-                                    class="game-card-wrapper"
-                                    data-game-card
-                                    data-year={game.year}
-                                    style="opacity: 0; transform: scale(0.9); filter: blur(8px);">
-                                    <GameCard {...game} />
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+          <div class="space-y-16">
+            {gamesByYear[year].map((game) => (
+              <GameArticle game={game} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
 </Layout>

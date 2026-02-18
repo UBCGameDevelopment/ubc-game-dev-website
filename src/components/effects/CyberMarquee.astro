@@ -1,0 +1,54 @@
+---
+interface Props {
+  text: string;
+  speed?: number; // seconds per loop
+  direction?: "left" | "right";
+  color?: string; // CSS variable or class
+  className?: string;
+  opacity?: string;
+}
+
+const {
+  text,
+  speed = 40,
+  direction = "left",
+  color = "var(--text-muted)",
+  className = "",
+  opacity = "0.05",
+} = Astro.props;
+
+// Repeat text to ensure full coverage
+const content = `${text} /// ${text} /// ${text} /// ${text} /// ${text} /// ${text} /// `;
+---
+
+<div class={`pointer-events-none opacity-[${opacity}] mix-blend-overlay select-none overflow-hidden ${className}`}>
+  <div
+    class="flex whitespace-nowrap"
+    style={{
+      animation: `scroll-${direction} ${speed}s linear infinite`,
+      color: color,
+    }}
+  >
+    <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
+    <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
+  </div>
+</div>
+
+<style>
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes scroll-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+</style>

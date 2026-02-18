@@ -1,0 +1,63 @@
+---
+interface Props {
+  label: string;
+  variant?: "brand" | "accent" | "yellow" | "magenta" | "blue";
+  class?: string;
+  icon?: string; // Optional icon slot or name
+}
+
+const { label, variant = "brand", class: className } = Astro.props;
+
+const variants = {
+  brand: {
+    bg: "bg-[var(--brand)]/5",
+    text: "text-[var(--brand)]",
+    border: "border-[var(--brand)]/30",
+    pulse: "bg-[var(--brand)]",
+  },
+  accent: {
+    bg: "bg-[var(--accent)]/5",
+    text: "text-[var(--accent)]",
+    border: "border-[var(--accent)]/30",
+    pulse: "bg-[var(--accent)]",
+  },
+  yellow: {
+    bg: "bg-[var(--cyber-yellow)]/5",
+    text: "text-[var(--cyber-yellow)]",
+    border: "border-[var(--cyber-yellow)]/30",
+    pulse: "bg-[var(--cyber-yellow)]",
+  },
+  magenta: {
+    bg: "bg-[var(--cyber-magenta)]/5",
+    text: "text-[var(--cyber-magenta)]",
+    border: "border-[var(--cyber-magenta)]/30",
+    pulse: "bg-[var(--cyber-magenta)]",
+  },
+  blue: {
+    bg: "bg-[var(--cyber-blue)]/5",
+    text: "text-[var(--cyber-blue)]",
+    border: "border-[var(--cyber-blue)]/30",
+    pulse: "bg-[var(--cyber-blue)]",
+  },
+};
+
+const style = variants[variant] || variants.brand;
+---
+
+<div
+  class:list={[
+    "relative flex shrink-0 items-center gap-3 border px-4 py-1.5 whitespace-nowrap backdrop-blur-sm",
+    style.border,
+    style.bg,
+    className,
+  ]}
+  style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);"
+>
+  <div class:list={["h-1.5 w-1.5 animate-pulse", style.pulse]}></div>
+
+  <slot name="icon" />
+
+  <span class:list={["font-tech text-xs font-bold tracking-[0.2em] uppercase", style.text]}>
+    {label}
+  </span>
+</div>
