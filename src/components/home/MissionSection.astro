@@ -1,0 +1,124 @@
+---
+import GlitchText from "../effects/GlitchText";
+import MissionCodeIO from "./MissionCodeIO";
+import BackgroundText from "../effects/BackgroundText.astro";
+
+// Data for stats to keep template clean
+const stats = [
+  { label: "Active Agents", value: "500+", color: "var(--cyber-blue)" },
+  { label: "Shipped Titles", value: "50+", color: "var(--cyber-red)" },
+];
+---
+
+<section class="section-block relative z-10 overflow-hidden py-24">
+  <!-- Grid Background Overlay -->
+  <div class="pointer-events-none absolute inset-0 z-0 opacity-20"
+       style="background-image: linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
+
+  <div class="container-page relative z-10 mx-auto px-4">
+    <!-- Section Header -->
+    <div class="relative mb-16 flex items-end justify-between border-b border-[var(--border-dim)] pb-6">
+      <BackgroundText
+        text="MISSION"
+        className="-top-16 -left-8 text-[8rem] opacity-[0.08] md:-top-24 md:text-[12rem]"
+      />
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-3">
+          <span class="h-2 w-2 animate-pulse rounded-full bg-[var(--cyber-green)] shadow-[0_0_8px_var(--cyber-green)]"></span>
+          <span class="font-tech text-xs font-bold tracking-[0.2em] text-[var(--cyber-green)] uppercase">System :: Online</span>
+        </div>
+        <h2 class="flex items-center gap-3 text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
+          <span class="text-[var(--cyber-yellow)]">//</span>
+          <GlitchText
+            client:visible
+            text="MISSION_BRIEFING"
+            tag="span"
+            options={{ speed: 30, cycles: 3, mode: "decode" }}
+          />
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr]">
+      <!-- Left Column: Content & Stats -->
+      <div class="flex flex-col gap-8">
+        <!-- Glass Panel Content -->
+        <div class="hud-card relative overflow-hidden border-l-4 border-[var(--cyber-blue)] bg-[var(--bg-panel)]/80 p-8 backdrop-blur-sm">
+          <div class="absolute top-0 right-0 h-16 w-16 border-t-2 border-r-2 border-[var(--cyber-blue)]/30"></div>
+          
+          <p class="text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
+            We are the <span class="font-bold text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">UBC Game Development Association</span>. 
+            An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
+          </p>
+          <p class="mt-6 text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
+            Our objective is simple: equip students with the skills to survive and thrive in the game industry. From
+            48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
+          </p>
+        </div>
+
+        <!-- Data Module Stats -->
+        <div class="grid grid-cols-2 gap-4">
+          {stats.map((stat) => (
+            <div class="group relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)] p-5 transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_15px_rgba(0,240,255,0.15)]">
+              <!-- Corner Accent -->
+              <div class="absolute top-0 left-0 h-1 w-full scale-x-0 bg-gradient-to-r from-transparent via-[var(--cyber-blue)] to-transparent transition-transform duration-500 group-hover:scale-x-100"></div>
+              
+              <div class="flex flex-col">
+                <span 
+                  class="font-display text-4xl font-black tracking-tighter text-white md:text-5xl"
+                  style={`text-shadow: 0 0 10px ${stat.color}40;`}
+                >
+                  {stat.value}
+                </span>
+                <span class="mt-2 font-tech text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase group-hover:text-[var(--cyber-blue)] transition-colors">
+                  {stat.label}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Terminal Window -->
+      <div class="relative mt-8 lg:mt-0">
+        <!-- Window Frame -->
+        <div class="relative overflow-hidden border border-[var(--border-dim)] bg-[#0c0c0c] shadow-[0_0_40px_rgba(0,0,0,0.6)]" 
+             style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+          
+          <!-- Title Bar -->
+          <div class="flex items-center justify-between border-b border-[var(--border-dim)] bg-[#1a1a1a] px-4 py-2">
+            <div class="flex items-center gap-2">
+              <div class="h-2 w-2 bg-[var(--cyber-red)]"></div>
+              <div class="h-2 w-2 bg-[var(--cyber-blue)]/50"></div>
+              <div class="h-2 w-2 bg-[var(--cyber-blue)]/20"></div>
+            </div>
+            <div class="font-tech text-xs tracking-[0.2em] text-[var(--cyber-blue)] opacity-80 uppercase">
+              NET//UPLINK :: MISSION_Briefing.sh
+            </div>
+            <div class="flex gap-1">
+              <div class="h-1 w-4 bg-[var(--text-muted)]/20"></div>
+              <div class="h-1 w-1 bg-[var(--text-muted)]/20"></div>
+            </div>
+          </div>
+
+          <!-- Terminal Content Area -->
+          <div class="relative p-6 md:p-8 min-h-[400px]">
+            <!-- Scanline Overlay -->
+            <div class="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
+            <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-transparent to-black/40"></div>
+
+            <!-- Code Block -->
+            <div class="font-mono relative z-0 text-sm md:text-base leading-relaxed text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]">
+              <MissionCodeIO client:visible />
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative Elements behind terminal -->
+        <div class="absolute -top-4 -right-4 -z-10 h-full w-full rounded-lg border border-[var(--cyber-yellow)]/20 bg-transparent"></div>
+        <div class="absolute -bottom-4 -left-4 -z-10 h-full w-full rounded-lg border border-[var(--cyber-red)]/20 bg-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>

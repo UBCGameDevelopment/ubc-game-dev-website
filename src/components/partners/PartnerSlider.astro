@@ -12,7 +12,11 @@
  *   speed?: "slow" | "normal" | "fast"
  *   gap?: number       // gap between logos in px (default 72)
  */
- export interface Logo { src: ImageMetadata; alt: string; href?: string }
+export interface Logo {
+  src: ImageMetadata;
+  alt: string;
+  href?: string;
+}
 export interface Props {
   logos: Logo[];
   height?: number;
@@ -21,117 +25,197 @@ export interface Props {
   gap?: number;
 }
 
-const {
-  logos,
-  height = 80,
-  maxWidth = 200,
-  speed = "normal",
-  gap = 72,
-} = Astro.props;
+const { logos, height = 80, maxWidth = 200, speed = "normal", gap = 72 } = Astro.props;
 
 const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
 ---
 
-<section class="logo-slider" style={`--h:${height}px; --w:${maxWidth}px; --gap:${gap}px; --dur:${speedMs}ms`}>
-  <div class="slider-outer">
-    <div class="slider-track">
-      {logos.map((l) => (
-        l.href ? (
-          <a class="logo" href={l.href} target="_blank" rel="noreferrer noopener">
-            <img src={l.src.src} alt={l.alt} height={height} loading="lazy" />
-          </a>
-        ) : (
-          <div class="logo">
-            <img src={l.src.src} alt={l.alt} height={height} loading="lazy" />
-          </div>
-        )
-      ))}
-      {logos.map((l) => (
-        l.href ? (
-          <a class="logo" href={l.href} target="_blank" rel="noreferrer noopener" aria-hidden="true" tabindex="-1">
-            <img src={l.src.src} alt="" height={height} loading="lazy" />
-          </a>
-        ) : (
-          <div class="logo" aria-hidden="true">
-            <img src={l.src.src} alt="" height={height} loading="lazy" />
-          </div>
-        )
-      ))}
-    </div>
+<section class="container-page mx-auto px-6 py-12">
+  <!-- Hex Divider -->
+  <div class="hex-divider mx-auto mb-12 max-w-4xl opacity-50"></div>
 
-    <!-- transparent edge fades that blend with page bg -->
-    <div class="fade left" aria-hidden="true"></div>
-    <div class="fade right" aria-hidden="true"></div>
+  <div class="mb-8 text-center">
+    <span class="font-pixel text-sm tracking-widest text-[var(--cyber-yellow)] uppercase">Trusted by</span>
+  </div>
+
+  <div class="angular-card p-1">
+    <div
+      class="logo-slider bg-[var(--surface)]"
+      style={`--h:${height}px; --w:${maxWidth}px; --gap:${gap}px; --dur:${speedMs}ms`}
+    >
+      <div class="slider-outer">
+        <div class="slider-track">
+          {
+            logos.map((l) =>
+              l.href ? (
+                <a
+                  class="logo"
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <img
+                    src={l.src.src}
+                    alt={l.alt}
+                    height={height}
+                    loading="lazy"
+                    class="grayscale transition-all duration-300 hover:grayscale-0"
+                  />
+                </a>
+              ) : (
+                <div class="logo">
+                  <img
+                    src={l.src.src}
+                    alt={l.alt}
+                    height={height}
+                    loading="lazy"
+                    class="grayscale transition-all duration-300 hover:grayscale-0"
+                  />
+                </div>
+              ),
+            )
+          }
+          {
+            logos.map((l) =>
+              l.href ? (
+                <a
+                  class="logo"
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-hidden="true"
+                  tabindex="-1"
+                >
+                  <img
+                    src={l.src.src}
+                    alt=""
+                    height={height}
+                    loading="lazy"
+                    class="grayscale transition-all duration-300 hover:grayscale-0"
+                  />
+                </a>
+              ) : (
+                <div
+                  class="logo"
+                  aria-hidden="true"
+                >
+                  <img
+                    src={l.src.src}
+                    alt=""
+                    height={height}
+                    loading="lazy"
+                    class="grayscale transition-all duration-300 hover:grayscale-0"
+                  />
+                </div>
+              ),
+            )
+          }
+        </div>
+
+        <!-- transparent edge fades that blend with page bg -->
+        <div
+          class="fade left"
+          aria-hidden="true"
+        >
+        </div>
+        <div
+          class="fade right"
+          aria-hidden="true"
+        >
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
-.logo-slider {
-  /* use your site's surface token so fades blend with the gradient */
-  --surface: var(--surface, rgba(0,0,0,0)); /* from global.css if present */
-  position: relative;
-  padding-block: 18px; /* space above/below logos */
-  background: transparent; 
-}
+  .logo-slider {
+    /* use your site's surface token so fades blend with the gradient */
+    --surface: var(--surface, rgba(0, 0, 0, 0)); /* from global.css if present */
+    position: relative;
+    padding-block: 18px; /* space above/below logos */
+    background: transparent;
+  }
 
-/* mask + overflow to keep it tidy */
-.slider-outer {
-  position: relative;
-  overflow: hidden;
-  height: calc(var(--h) + 6px);
-  /* soften edges without a visible band */
-  mask-image: linear-gradient(to right,
-      transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right,
-      transparent, black 10%, black 90%, transparent);
-}
+  /* mask + overflow to keep it tidy */
+  .slider-outer {
+    position: relative;
+    overflow: hidden;
+    height: calc(var(--h) + 6px);
+    /* soften edges without a visible band */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
 
-.slider-track {
-  display: flex;
-  align-items: center;
-  gap: var(--gap);
-  width: max-content;
-  animation: scroll var(--dur) linear infinite;
-}
-.slider-outer:hover .slider-track { animation-play-state: paused; }
+  .slider-track {
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    width: max-content;
+    animation: scroll var(--dur) linear infinite;
+  }
+  .slider-outer:hover .slider-track {
+    animation-play-state: paused;
+  }
 
-.logo {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  height: var(--h);
-  max-width: var(--w);   /* ✅ cap wide logos */
-  width: var(--w);       /* fixed box so rows look even */
-}
+  .logo {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    height: var(--h);
+    max-width: var(--w); /* ✅ cap wide logos */
+    width: var(--w); /* fixed box so rows look even */
+  }
 
-/* normalize all logos */
-.logo img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;   /* ✅ square/rect scale correctly */
-  transition: transform .2s ease, opacity .2s ease;
-  opacity: .95;
-}
-.logo:hover img { transform: translateY(-2px); opacity: 1; }
+  /* normalize all logos */
+  .logo img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* ✅ square/rect scale correctly */
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+    opacity: 0.95;
+  }
+  .logo:hover img {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
 
-/* transparent edge fades (blend to page background) */
-.fade {
-  pointer-events: none;
-  position: absolute; inset-block: 0; width: 8%;
-}
-.fade.left  { left: 0;  background: linear-gradient(to right, var(--surface), transparent); }
-.fade.right { right: 0; background: linear-gradient(to left,  var(--surface), transparent); }
+  /* transparent edge fades (blend to page background) */
+  .fade {
+    pointer-events: none;
+    position: absolute;
+    inset-block: 0;
+    width: 8%;
+  }
+  .fade.left {
+    left: 0;
+    background: linear-gradient(to right, var(--surface), transparent);
+  }
+  .fade.right {
+    right: 0;
+    background: linear-gradient(to left, var(--surface), transparent);
+  }
 
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); } /* track is duplicated */
-}
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    } /* track is duplicated */
+  }
 
-/* small screens */
-@media (max-width: 480px) {
-  .logo-slider { padding-block: 12px; }
-  .slider-track { gap: 40px; }
-}
+  /* small screens */
+  @media (max-width: 480px) {
+    .logo-slider {
+      padding-block: 12px;
+    }
+    .slider-track {
+      gap: 40px;
+    }
+  }
 </style>

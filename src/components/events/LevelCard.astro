@@ -1,0 +1,200 @@
+---
+import { Image } from "astro:assets";
+import type { Event } from "../../types";
+
+export interface Props extends Event {
+  chapterNumber: number;
+}
+
+const { title, date, description, location, mapLink, image, isActive, chapterNumber } = Astro.props;
+---
+
+<div
+  class:list={[
+    "group angular-card relative overflow-hidden transition-all duration-300",
+    isActive
+      ? "bg-[var(--surface-2)] shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)]"
+      : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
+  ]}
+>
+  <!-- Chapter Number Badge -->
+  <div
+    class:list={[
+      "font-pixel absolute top-0 left-0 z-20 flex h-14 w-14 items-center justify-center text-xl font-bold shadow-lg",
+      isActive ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
+    ]}
+    style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 15px));"
+  >
+    {chapterNumber}
+  </div>
+
+  <!-- Status Badge with angular cut -->
+  {
+    !isActive && (
+      <div
+        class="absolute top-0 right-0 z-20 bg-[var(--surface-3)] px-4 py-2 text-xs font-semibold tracking-wide text-[var(--text-muted)] uppercase"
+        style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
+      >
+        LOCKED // EXPIRED
+      </div>
+    )
+  }
+  {
+    isActive && (
+      <div
+        class="absolute top-0 right-0 z-20 flex items-center gap-2 bg-[var(--cyber-magenta)] px-4 py-2 text-xs font-bold text-white shadow-lg"
+        style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
+      >
+        <span
+          class="h-2 w-2 animate-pulse bg-white"
+          style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"
+        />
+        ACTIVE MISSION
+      </div>
+    )
+  }
+
+  <!-- Image Section -->
+  <div class="relative aspect-[16/9] overflow-hidden">
+    <Image
+      src={image}
+      alt={title}
+      class:list={["h-full w-full object-cover transition-all duration-500", isActive ? "group-hover:scale-105" : ""]}
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-transparent to-transparent"></div>
+
+    {/* Decorative corner accent */}
+    {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
+  </div>
+
+  <!-- Content Section -->
+  <div class="relative p-6">
+    <!-- Title -->
+    <h3
+      class="font-pixel text-xl text-[var(--text)] transition-colors group-hover:text-[var(--cyber-yellow)] md:text-2xl"
+    >
+      {title}
+    </h3>
+
+    <!-- Date & Location -->
+    <div class="font-tech mt-3 flex flex-col gap-2 text-sm text-[var(--text-muted)]">
+      <div class="flex items-center gap-2 text-[var(--brand)]">
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <rect
+            x="3"
+            y="4"
+            width="18"
+            height="18"
+            rx="2"
+            ry="2"
+            stroke-width="2"
+          >
+          </rect>
+          <line
+            x1="16"
+            y1="2"
+            x2="16"
+            y2="6"
+            stroke-width="2"
+          >
+          </line>
+          <line
+            x1="8"
+            y1="2"
+            x2="8"
+            y2="6"
+            stroke-width="2"
+          >
+          </line>
+          <line
+            x1="3"
+            y1="10"
+            x2="21"
+            y2="10"
+            stroke-width="2"
+          >
+          </line>
+        </svg>
+        <span class="font-bold">{date}</span>
+      </div>
+      {
+        location && (
+          <div class="flex items-center gap-2">
+            <svg
+              class="h-4 w-4 text-[var(--cyber-magenta)]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+            {mapLink && isActive ? (
+              <a
+                href={mapLink}
+                target="_blank"
+                class="font-medium text-[var(--text)] underline decoration-dotted transition-colors hover:text-[var(--cyber-magenta)] hover:decoration-solid"
+              >
+                {location}
+              </a>
+            ) : (
+              <span class="font-medium text-[var(--text)]">{location}</span>
+            )}
+          </div>
+        )
+      }
+    </div>
+
+    <!-- Description -->
+    <p
+      class="mt-4 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)]"
+      set:html={description}
+    />
+
+    <!-- Action Button -->
+    {
+      isActive && (
+        <div class="mt-6">
+          <button
+            type="button"
+            data-open-modal={chapterNumber - 1}
+            class="clip-angled group/btn relative w-full overflow-hidden bg-[var(--cyber-yellow)] px-6 py-3 font-bold tracking-widest text-black uppercase transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
+          >
+            <span class="font-pixel relative z-10 flex items-center justify-center gap-2 text-sm">
+              ACCESS_DATA
+              <svg
+                class="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </span>
+          </button>
+        </div>
+      )
+    }
+  </div>
+</div>

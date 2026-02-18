@@ -1,14 +1,46 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { ExecService } from "../services";
-import ExecGrid from "../components/team/ExecGrid.astro";
+import ExecRoster from "../components/about/ExecRoster";
+import PageHeader from "../components/common/PageHeader.astro";
+
+import "../styles/global.css";
 
 const execs = ExecService.getAll();
-import "../styles/global.css";
+
+// Serialize Astro image metadata to plain src strings for the React component
+const serializedExecs = execs.map((exec) => ({
+  name: exec.name,
+  role: exec.role,
+  execClass: exec.execClass,
+  season: exec.season,
+  linkedin: exec.linkedin,
+  github: exec.github,
+  portfolio: exec.portfolio,
+  imageSrc: exec.image.src,
+}));
 ---
 
-<Layout>
+<Layout
+  title="UBC Game Dev // Crew Roster"
+  immersive
+>
   <main>
-    <ExecGrid execs={execs} />
+    <PageHeader
+      backgroundText="ROSTER"
+      badge={{ label: "Crew Manifest // Classified", variant: "brand" }}
+      subtitle="Select Your Operator"
+      subtitleColor="text-[var(--text-muted)]"
+      title={{ normal: "Crew ", highlight: "Roster" }}
+      gradientClass="from-[var(--cyber-yellow)] to-[var(--brand)]"
+      description="Meet the operatives who keep UBC Game Dev running—events, workshops, and community."
+      descriptionBorderColor="border-[var(--cyber-yellow)]"
+      glowColor="var(--cyber-yellow)"
+    />
+
+    <ExecRoster
+      client:load
+      execs={serializedExecs}
+    />
   </main>
 </Layout>

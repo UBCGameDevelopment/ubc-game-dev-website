@@ -1,0 +1,139 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/common/PageHeader.astro";
+import { legacyExecs } from "../../data/legacyExecs";
+
+import "../../styles/global.css";
+
+// Group execs by season
+const seasons = [...new Set(legacyExecs.map((e) => e.season))];
+const execsBySeason = seasons.map((season) => ({
+  season,
+  members: legacyExecs.filter((e) => e.season === season),
+}));
+---
+
+<Layout title="UBC Game Dev // Legacy Leaders" immersive>
+  <main>
+    <PageHeader
+      backgroundText="LEGACY"
+      badge={{ label: "Historical Archive // Declassified", variant: "brand" }}
+      subtitle="Past Operatives"
+      subtitleColor="text-[var(--text-muted)]"
+      title={{ normal: "Legacy ", highlight: "Leaders" }}
+      gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
+      description="Honoring the past operatives who built UBC Game Dev into the community it is today."
+      descriptionBorderColor="border-[var(--cyber-blue)]"
+      glowColor="var(--cyber-blue)"
+    />
+
+    <section class="mx-auto max-w-5xl px-4 pb-16">
+      <!-- Back link -->
+      <div class="mb-10 flex items-center gap-3">
+        <a
+          href="/team"
+          class="group inline-flex items-center gap-2 border border-[var(--border-dim)] bg-[var(--bg-deep)] px-5 py-3 font-tech text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase transition-all hover:border-[var(--cyber-yellow)] hover:text-[var(--cyber-yellow)] hover:shadow-[0_0_12px_rgba(252,238,10,0.15)]"
+        >
+          <svg class="h-3 w-3 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <span>Back to Current Roster</span>
+        </a>
+      </div>
+
+      <!-- Seasons -->
+      {execsBySeason.map(({ season, members }) => (
+        <div class="mb-14">
+          <!-- Season header -->
+          <div class="mb-6 flex items-center gap-4">
+            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-[var(--cyber-blue)]/30 to-transparent" />
+            <div class="flex items-center gap-3">
+              <svg class="h-4 w-4 text-[var(--cyber-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <h2 class="font-tech text-sm font-bold tracking-[0.25em] text-[var(--cyber-blue)] uppercase">
+                Season {season}
+              </h2>
+            </div>
+            <div class="h-px flex-1 bg-gradient-to-r from-[var(--cyber-blue)]/30 via-transparent to-transparent" />
+          </div>
+
+          <!-- Exec cards grid -->
+          <div class="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
+            {members.map((exec) => (
+              <div class="group relative border border-[var(--border-dim)] bg-[var(--bg-panel)] transition-all hover:border-[var(--cyber-blue)]/50 hover:shadow-[0_0_15px_rgba(0,240,255,0.08)]">
+                <!-- Image -->
+                <div class="relative aspect-square overflow-hidden bg-[var(--bg-deep)]">
+                  <img
+                    src={exec.image.src}
+                    alt={exec.name}
+                    class="h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-100"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-panel)] via-transparent to-transparent" />
+                  <!-- Class badge -->
+                  <span class="absolute top-2 right-2 border border-[var(--cyber-blue)]/30 bg-[var(--bg-deep)]/80 px-2 py-0.5 font-tech text-[8px] font-bold tracking-wider text-[var(--cyber-blue)] uppercase backdrop-blur-sm">
+                    {exec.execClass}
+                  </span>
+                </div>
+                <!-- Info -->
+                <div class="p-2">
+                  <h3 class="font-display text-xs font-bold text-white">{exec.name}</h3>
+                  <p class="font-tech mt-0.5 text-[9px] tracking-wider text-[var(--text-muted)]">{exec.role}</p>
+                  <div class="mt-2 flex items-center gap-2">
+                    <a
+                      href={exec.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-[var(--text-muted)] transition-colors hover:text-[var(--cyber-blue)]"
+                    >
+                      <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    </a>
+                    {exec.github && (
+                      <a
+                        href={exec.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-[var(--text-muted)] transition-colors hover:text-white"
+                      >
+                        <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                      </a>
+                    )}
+                    {exec.portfolio && (
+                      <a
+                        href={exec.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-[var(--text-muted)] transition-colors hover:text-[var(--brand)]"
+                      >
+                        <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <!-- Status indicator -->
+                <div class="absolute top-2 left-2">
+                  <span class="font-tech text-[8px] font-bold tracking-widest text-[var(--text-muted)]/50 uppercase">
+                    Archived
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Archive footer -->
+      <div class="mt-8 border-t border-[var(--border-dim)] pt-6 text-center">
+        <p class="font-tech text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+          [SYS] Archive complete — {legacyExecs.length} legacy operators on record.
+        </p>
+      </div>
+    </section>
+  </main>
+</Layout>

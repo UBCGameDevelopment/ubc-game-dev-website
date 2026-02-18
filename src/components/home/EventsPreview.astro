@@ -1,0 +1,74 @@
+---
+import { EventService } from "../../services/EventService";
+import GlitchText from "../effects/GlitchText";
+import BackgroundText from "../effects/BackgroundText.astro";
+
+const latestEvents = EventService.getLatest(2);
+---
+
+<section class="section-block relative z-10 overflow-hidden bg-[var(--bg-panel)]/50 py-24">
+  <div class="container-page relative z-10 mx-auto px-4">
+    <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
+      <BackgroundText
+        text="EVENTS"
+        className="-top-12 -left-4 text-6xl opacity-[0.1] md:-top-20 md:text-8xl lg:text-[10rem]"
+      />
+      <h2 class="flex items-center gap-2 text-2xl font-bold tracking-wide text-white uppercase md:text-3xl">
+        <span class="text-[var(--cyber-red)]">//</span>
+        <GlitchText
+          client:visible
+          text="Tactical_Ops"
+          tag="span"
+        />
+      </h2>
+      <a
+        href="/events"
+        class="font-tech text-xs text-[var(--accent)] transition-colors hover:text-white"
+      >
+        FULL_SCHEDULE >>
+      </a>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        latestEvents.length > 0 ? (
+          latestEvents.map((event) => (
+            <div class="hud-card group p-6 transition-all hover:border-[var(--cyber-red)] hover:bg-[var(--bg-panel)]">
+              <div class="flex flex-col gap-6 md:flex-row">
+                <div
+                  class="aspect-square w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center grayscale transition-all group-hover:grayscale-0 md:w-48"
+                  style={`background-image: url('${event.image.src}');`}
+                />
+
+                <div class="flex-1">
+                  <div class="mb-2 flex items-center justify-between">
+                    <span
+                      class={`px-2 py-0.5 text-xs font-bold tracking-wider text-black uppercase ${event.isActive ? "bg-[var(--cyber-red)]" : "bg-[var(--text-muted)]"}`}
+                    >
+                      {event.isActive ? "Active" : "Completed"}
+                    </span>
+                    <span class="font-tech text-base text-[var(--cyber-yellow)]">
+                      {new Date(event.isoDate).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h3 class="mb-2 text-2xl font-bold text-white">{event.title}</h3>
+                  <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">{event.description}</p>
+                  <div class="font-tech flex items-center gap-2 text-sm text-[var(--text-muted)]">
+                    <span
+                      class={`h-2 w-2 rounded-full ${event.isActive ? "animate-pulse bg-[var(--cyber-blue)]" : "bg-[var(--text-muted)]"}`}
+                    />
+                    {event.location}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div class="font-tech col-span-2 border border-dashed border-[var(--border-dim)] p-8 text-center text-[var(--text-muted)]">
+            [NO OPERATIONS DETECTED] <br /> Check back later for mission updates.
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

@@ -15,7 +15,8 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
   <div class="relative">
     <!-- Glow effect on hover -->
     <div
-      class="from-brand-500 to-accent-500 absolute -inset-2 rounded-full bg-gradient-to-r opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-50">
+      class="from-brand-500 to-accent-500 absolute -inset-2 rounded-full bg-gradient-to-r opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-50"
+    >
     </div>
 
     <div class="relative">
@@ -26,20 +27,22 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
         height={512}
         quality={99}
         format="webp"
-        class="group-hover:ring-brand-400/60 group-hover:shadow-brand-500/20 h-32 w-32 rounded-full object-cover shadow-xl ring-2 ring-white/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl md:h-36 md:w-36"
+        class="h-32 w-32 rounded-full object-cover shadow-xl ring-2 ring-[var(--border)] transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--brand)]/20 group-hover:shadow-2xl group-hover:ring-[var(--brand)]/60 md:h-36 md:w-36"
         loading="lazy"
       />
 
       {/* LinkedIn badge overlay */}
       <div
-        class="from-brand-500 to-brand-700 absolute -right-2 -bottom-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br opacity-0 ring-2 ring-black/50 transition-opacity duration-300 group-hover:opacity-100">
+        class="absolute -right-2 -bottom-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--brand)] opacity-0 ring-2 ring-[var(--surface-2)] transition-opacity duration-300 group-hover:opacity-100"
+      >
         <a
           href={linkedin}
           target="_blank"
           rel="noreferrer noopener"
-          class="flex h-full w-full items-center justify-center"
+          class="flex h-full w-full items-center justify-center text-white"
           aria-label={`LinkedIn profile for ${name}`}
-          title="LinkedIn">
+          title="LinkedIn"
+        >
           <LinkedInIcon />
         </a>
       </div>
@@ -47,14 +50,15 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
       {/* GitHub badge overlay */}
       {
         github && (
-          <div class="absolute -bottom-2 -left-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gray-800 to-gray-900 opacity-0 ring-2 ring-black/50 transition-opacity duration-300 group-hover:opacity-100">
+          <div class="absolute -bottom-2 -left-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-900 opacity-0 ring-2 ring-[var(--surface-2)] transition-opacity duration-300 group-hover:opacity-100">
             <a
               href={github}
               target="_blank"
               rel="noreferrer noopener"
-              class="flex h-full w-full items-center justify-center"
+              class="flex h-full w-full items-center justify-center text-white"
               aria-label={`GitHub profile for ${name}`}
-              title="GitHub">
+              title="GitHub"
+            >
               <GitHubIcon />
             </a>
           </div>
@@ -64,14 +68,15 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
       {/* Portfolio links */}
       {
         portfolio && (
-          <div class="from-accent-500 to-accent-700 absolute -top-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br opacity-0 ring-2 ring-black/50 transition-opacity duration-300 group-hover:opacity-100">
+          <div class="absolute -top-2 -right-2 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent)] opacity-0 ring-2 ring-[var(--surface-2)] transition-opacity duration-300 group-hover:opacity-100">
             <a
               href={portfolio}
               target="_blank"
               rel="noreferrer noopener"
-              class="flex h-full w-full items-center justify-center"
+              class="flex h-full w-full items-center justify-center text-white"
               aria-label={`Portfolio website for ${name}`}
-              title="Portfolio">
+              title="Portfolio"
+            >
               <PortfolioIcon variant={name === "Chloe Cheng" ? "robot" : "default"} />
             </a>
           </div>
@@ -83,9 +88,10 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
   <!-- Name / Role -->
   <div class="mt-5">
     <div
-      class="group-hover:text-brand-400 text-lg font-extrabold tracking-wide transition-colors duration-300 md:text-xl">
+      class="text-lg font-extrabold tracking-wide text-[var(--text)] transition-colors duration-300 group-hover:text-[var(--brand)] md:text-xl"
+    >
       {name}
     </div>
-    <div class="mt-1 text-sm font-medium text-gray-300 md:text-base">{role}</div>
+    <div class="mt-1 text-sm font-medium text-[var(--text-muted)] md:text-base">{role}</div>
   </div>
 </div>

@@ -11,4 +11,5 @@ export interface Event {
   mapLink?: string;
   image: ImageMetadata;
   isActive: boolean;
+  isoDate: string; // ISO 8601 format for sorting/parsing
 }

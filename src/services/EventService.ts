@@ -58,7 +58,7 @@ export class EventService {
    * @returns               Filtered array of events
    */
   static getByLocation(location: string): Event[] {
-    return staticEvents.filter(event => 
+    return staticEvents.filter(event =>
       event.location.toLowerCase().includes(location.toLowerCase())
     );
   }
@@ -71,7 +71,7 @@ export class EventService {
    */
   static search(query: string): Event[] {
     const lowerQuery = query.toLowerCase();
-    return staticEvents.filter(event => 
+    return staticEvents.filter(event =>
       event.title.toLowerCase().includes(lowerQuery) ||
       event.description.toLowerCase().includes(lowerQuery)
     );
@@ -84,5 +84,64 @@ export class EventService {
    */
   static getCount(): number {
     return staticEvents.length;
+  }
+
+  /**
+   * Get events sorted by date (newest first)
+   * 
+   * @returns               Array of events sorted by isoDate descending
+   */
+  static getSortedByDate(): Event[] {
+    return [...staticEvents].sort((a, b) =>
+      new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime()
+    );
+  }
+
+  /**
+   * Get the latest N events sorted by date
+   * 
+   * @param count           Number of events to return
+   * @returns               Array of the latest events
+   */
+  static getLatest(count: number): Event[] {
+    return this.getSortedByDate().slice(0, count);
+  }
+
+  /**
+   * Prepare events data for modal display
+   * Transforms event data into a format suitable for EventModal component
+   * 
+   * @param events          Array of events to transform
+   * @returns               Array of event objects formatted for modal
+   */
+  static prepareForModal(events: Event[]): Array<{
+    title: string;
+    date: string;
+    description: string;
+    location: string;
+    mapLink: string;
+    imageSrc: string;
+    isActive: boolean;
+    chapterNumber: number;
+  }> {
+    return events.map((event, index) => ({
+      title: event.title,
+      date: event.date,
+      description: event.description,
+      location: event.location,
+      mapLink: event.mapLink || "",
+      imageSrc: event.image.src,
+      isActive: event.isActive,
+      chapterNumber: index + 1,
+    }));
+  }
+
+  /**
+   * Get count of completed (inactive) events
+   * 
+   * @returns               Number of completed events
+   */
+  static getCompletedCount(): number {
+    return staticEvents.filter(e => !e.isActive).length;
   }
 }
