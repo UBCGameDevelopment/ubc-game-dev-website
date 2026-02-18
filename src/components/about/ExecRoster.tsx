@@ -293,22 +293,32 @@ export default function ExecRoster({ execs }: Props) {
                 </div>
 
                 {/* Terminal log */}
-                <div className="mb-4 flex-1 overflow-hidden border border-[var(--cyber-blue)]/30 bg-[#060a10]">
+                <div
+                  className="relative mb-4 flex-1 overflow-hidden border border-[var(--border-dim)] bg-[#0c0c0c] shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}
+                >
+                  {/* Scanline overlay */}
+                  <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-20" />
+
                   {/* Terminal header */}
-                  <div className="flex items-center justify-between border-b border-[var(--cyber-blue)]/20 bg-[var(--cyber-blue)]/5 px-3 py-1.5">
+                  <div className="relative z-10 flex items-center justify-between border-b border-[var(--border-dim)] bg-[#1a1a1a] px-3 py-2">
                     <div className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--cyber-blue)] shadow-[0_0_6px_var(--cyber-blue)]" />
-                      <span className="font-tech text-[9px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
-                        sys://terminal
-                      </span>
+                      <div className="h-1.5 w-1.5 bg-[var(--cyber-red)]" />
+                      <div className="h-1.5 w-1.5 bg-[var(--cyber-blue)]/50" />
+                      <div className="h-1.5 w-1.5 bg-[var(--cyber-blue)]/20" />
                     </div>
-                    <span className="font-tech text-[8px] tracking-wider text-[var(--cyber-blue)]/40">
-                      ■ operator_dossier.sh
+                    <span className="font-tech text-[9px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase opacity-80">
+                      NET//UPLINK :: OPERATOR_LOG
                     </span>
+                    <div className="flex gap-0.5">
+                      <div className="h-1 w-3 bg-[var(--text-muted)]/20" />
+                      <div className="h-1 w-1 bg-[var(--text-muted)]/20" />
+                    </div>
                   </div>
+
                   {/* Terminal content */}
                   <div
-                    className="font-tech relative p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
+                    className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
                     style={{
                       backgroundImage:
                         "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px)",

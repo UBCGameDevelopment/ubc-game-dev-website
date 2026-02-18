@@ -15,23 +15,23 @@ export default function MissionCodeIO() {
             '<span class="text-[var(--cyber-blue)]">class</span> <span class="text-white">GameDev</span> <span class="text-[var(--cyber-blue)]">extends</span> <span class="text-white">Society</span> {',
           )
           .pauseFor(300)
-          .typeString('<br/>  <span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) {')
+          .typeString('<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) {')
           .pauseFor(300)
           .typeString(
-            '<br/>    <span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;',
+            '<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;',
           )
           .pauseFor(100)
           .typeString(
-            '<br/>    <span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;',
+            '<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;',
           )
           .pauseFor(300)
-          .typeString("<br/>  }")
+          .typeString("<br/>&nbsp;&nbsp;}")
           .pauseFor(500)
           .typeString("<br/>")
-          .typeString('<br/>  <span class="text-[var(--cyber-yellow)]">deploy</span>() {')
+          .typeString('<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">deploy</span>() {')
           .pauseFor(300)
-          .typeString("<br/>    build(); learn(); repeat();")
-          .typeString("<br/>  }")
+          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;build(); learn(); repeat();")
+          .typeString("<br/>&nbsp;&nbsp;}")
           .typeString("<br/>}")
           .start();
       }}
