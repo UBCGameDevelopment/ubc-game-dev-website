@@ -11,7 +11,11 @@ export default function LoadingScreen() {
   });
 
   useEffect(() => {
-    if (isLoaded) return;
+    if (isLoaded) {
+      document.documentElement.removeAttribute("data-loading");
+      document.documentElement.classList.remove("app-loading");
+      return;
+    }
 
     sessionStorage.setItem("cyber_boot_custom", "true");
 
@@ -28,6 +32,8 @@ export default function LoadingScreen() {
     setIsLoaded(true);
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
+    document.documentElement.removeAttribute("data-loading");
+    document.documentElement.classList.remove("app-loading"); // Cleanup old class just in case
   };
 
   return (

@@ -22,6 +22,25 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       name="viewport"
       content="width=device-width"
     />
+    <script is:inline>
+      // BLOCKING SCRIPT: Must run before checking other things to prevent FOUC
+      (function () {
+        const isImmersive = true; // We can't check meta tag yet as it might be below, assuming true for layout or checking path if possible.
+        // Actually, we can just check if we are in a context that requires it.
+        // For safety, let's just check the session storage.
+
+        // Improve: The meta tag for 'immersive-mode' is rendered by the component, so it might not be available yet if we run this very top.
+        // We will rely on checking if the `LoadingScreen` component is about to be rendered.
+        // However, Astro yields static HTML.
+
+        // Let's use a more robust check:
+        // If we are on the home page (most likely place for immersive), or just check the storage.
+        const hasVisited = sessionStorage.getItem("cyber_boot_custom");
+        if (!hasVisited && window.location.pathname === "/") {
+          document.documentElement.setAttribute("data-loading", "true");
+        }
+      })();
+    </script>
     <meta
       name="color-scheme"
       content="dark light"
@@ -52,6 +71,14 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
 
     <SpeedInsights />
     <Analytics />
+    {
+      immersive && (
+        <meta
+          name="immersive-mode"
+          content="true"
+        />
+      )
+    }
   </head>
   <body
     class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white"
@@ -62,7 +89,7 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       immersive && (
         <>
           <div class="fixed inset-0 z-0 bg-[var(--bg-deep)]">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40" />
           </div>
 
           <div class="fixed top-0 left-0 z-50 h-1 w-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]" />
@@ -70,7 +97,10 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       )
     }
 
-    <div class="relative z-10 flex min-h-screen flex-col">
+    <div
+      id="app-content"
+      class="relative z-10 flex min-h-screen flex-col transition-opacity duration-500"
+    >
       <Navbar />
 
       <main class="flex-grow">
@@ -86,5 +116,16 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
   html,
   body {
     margin: 0;
+  }
+
+  /* Hide main content initially when loading */
+  html[data-loading="true"] #app-content {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Ensure loading screen is visible */
+  html[data-loading="true"] {
+    overflow: hidden;
   }
 </style>
