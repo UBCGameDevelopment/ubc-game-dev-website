@@ -12,7 +12,7 @@ export default function MerchPurchaseModal() {
   const [view, setView] = useState<"details" | "purchase">("details");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-  const itemImages = data?.images && data.images.length > 0 ? data.images : data?.image ? [data.image] : [];
+  const itemImages = data?.images ?? [];
   const activeImageSrc = itemImages[activeImageIndex] ?? "";
   const hasMultipleImages = itemImages.length > 1;
 
@@ -127,6 +127,9 @@ export default function MerchPurchaseModal() {
                         className="h-full w-full object-cover"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                      <span className="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-[8px] tracking-wider text-white/40 backdrop-blur-sm">
+                        AI Generated Image
+                      </span>
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center p-12">
@@ -372,10 +375,11 @@ export default function MerchPurchaseModal() {
 
                     <ol className="list-decimal space-y-3 pl-5 marker:text-[var(--brand)]">
                       <li>
-                        Initiate an e-Transfer to:
+                        Initiate an e-Transfer of{" "}
+                        <span className="font-bold text-[var(--cyber-yellow)]">${data.price}</span> (per item) to:
                         <br />
                         <span className="mt-1 inline-block rounded border border-[var(--border-dim)] bg-[var(--bg-deep)] px-2 py-1 font-mono text-white select-all">
-                          ubcgame.treasurer@gmail.com
+                          ubcgamedevelopment.treasurer@gmail.com
                         </span>
                       </li>
                       <li>
@@ -391,11 +395,23 @@ export default function MerchPurchaseModal() {
                       </li>
                     </ol>
 
+                    <div className="mt-4 text-xs text-[var(--text-muted)]">
+                      <p>
+                        <span className="mr-2 font-bold text-[var(--cyber-blue)]">ACCOMMODATIONS:</span>
+                        Need help? Contact{" "}
+                        <span className="inline-block rounded border border-[var(--border-dim)] bg-[var(--bg-deep)] px-1.5 py-0.5 font-mono text-white">
+                          @gigamat
+                        </span>{" "}
+                        on Discord.
+                      </p>
+                    </div>
+
                     <div className="mt-6 rounded border border-[var(--border-dim)] bg-[var(--bg-deep)]/50 p-4 text-xs">
                       <p className="mb-1 font-bold text-[var(--brand)] uppercase">System Note:</p>
                       <p>
-                        A Guild Officer will verify your transaction and coordinate equipment handover. Verification
-                        typically takes 1-2 business cycles.
+                        A Guild Officer will verify your transaction. You will receive your gear{" "}
+                        <span className="font-bold text-white">at the specified in-person pickup time</span> during the
+                        term.
                       </p>
                     </div>
                   </div>

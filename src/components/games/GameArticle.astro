@@ -15,12 +15,12 @@ const imageSrc = GameService.getGameImageSrc(game);
   <div class="flex flex-col justify-center order-2 lg:order-1">
     <div class="mb-4">
       <span class="bg-[var(--cyber-yellow)] text-black text-xs font-bold px-2 py-1 uppercase tracking-wider inline-block mb-2">Project</span>
-      <h4 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 glitch-hover" data-text={game.name}>{game.name}</h4>
+      <h4 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4 glitch-hover hover:text-neon-blue" data-text={game.name}>{game.name}</h4>
       
       {game.award && (
         <div class="inline-flex items-center gap-2 border border-[var(--cyber-yellow)] px-3 py-2 mb-6 bg-[var(--cyber-yellow)]/10">
           <span class="text-[var(--cyber-yellow)]">★</span>
-          <span class="font-bold text-[var(--cyber-yellow)] text-sm uppercase tracking-wide">{game.award}</span>
+          <span class="font-bold text-[var(--cyber-yellow)] text-neon-yellow text-sm uppercase tracking-wide">{game.award}</span>
         </div>
       )}
 
@@ -90,15 +90,6 @@ const imageSrc = GameService.getGameImageSrc(game);
 
 <style>
   .glitch-hover:hover {
-    animation: glitch-skew 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
     color: var(--cyber-blue);
-  }
-  @keyframes glitch-skew {
-    0% { transform: skew(0deg); }
-    20% { transform: skew(-2deg); }
-    40% { transform: skew(2deg); }
-    60% { transform: skew(0deg); }
-    80% { transform: skew(-1deg); }
-    100% { transform: skew(0deg); }
   }
 </style>

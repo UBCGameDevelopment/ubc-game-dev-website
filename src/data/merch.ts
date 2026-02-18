@@ -3,8 +3,7 @@ export interface MerchItem {
   name: string;
   description: string;
   price: number;
-  image: string;
-  images?: string[];
+  images: string[];
   category: "apparel" | "accessories" | "stickers";
   isNew?: boolean;
   isSoldOut?: boolean;
@@ -59,7 +58,6 @@ export const merchItems: MerchItem[] = [
     description:
       'Level up your everyday look with this soft cream tee, packed with nostalgic 8-bit vibes. It features subtle, pixel-perfect "UBC GAME DEV" text on the chest in striking purple. The back steals the show with a bold, detailed four-panel retro grid celebrating vintage gaming hardware, the perfect statement piece for any enthusiast.',
     price: 30,
-    image: "/assets/merch/ubc_tee_cream/ubc_tee_cream_front.png",
     images: [
       "/assets/merch/ubc_tee_cream/ubc_tee_cream_front.png",
       "/assets/merch/ubc_tee_cream/ubc_tee_cream_back.png",
@@ -80,7 +78,6 @@ export const merchItems: MerchItem[] = [
     description:
       'Level up your everyday look with this soft black tee, packed with nostalgic 8-bit vibes. It features subtle, pixel-perfect "UBC GAME DEV" text on the chest in striking purple. The back steals the show with a bold, detailed four-panel retro grid celebrating vintage gaming hardware, the perfect statement piece for any enthusiast.',
     price: 30,
-    image: "/assets/merch/ubc_tee_black/ubc_tee_black_front.png",
     images: [
       "/assets/merch/ubc_tee_black/ubc_tee_black_front.png",
       "/assets/merch/ubc_tee_black/ubc_tee_black_back.png",
@@ -100,8 +97,7 @@ export const merchItems: MerchItem[] = [
     name: "UBC Game Dev Tote Bag",
     description:
       "Limestone white canvas tote featuring a bold black UBC Game Dev graphic in a clean, panel-style print. Designed with long shoulder straps and a roomy main compartment, perfect for carrying books, groceries, or everyday essentials.",
-    price: 30,
-    image: "/assets/merch/ubc_white_tote_bag/ubc_tote_bag_front.png",
+    price: 3,
     images: [
       "/assets/merch/ubc_white_tote_bag/ubc_tote_bag_front.png",
       "/assets/merch/ubc_white_tote_bag/ubc_tote_bag_back.png",

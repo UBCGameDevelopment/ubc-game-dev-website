@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
-import LoadingScreen from "../components/ui/LoadingScreen";
+import LoadingScreen from "../components/common/LoadingScreen";
 
 interface Props {
   title?: string;
@@ -40,7 +40,7 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       content={Astro.generator}
     />
     <title>{title}</title>
-    <!-- Theme initialization (prevents flash) -->
+
     <script is:inline>
       (function () {
         const theme = localStorage.getItem("theme");
@@ -54,22 +54,21 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
     <Analytics />
   </head>
   <body
-    class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white">
+    class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white"
+  >
     {immersive && <LoadingScreen client:only="react" />}
 
-    {immersive && (
-      <>
-        <!-- Background Base -->
-        <div class="fixed inset-0 z-0 bg-[var(--bg-deep)]">
-          <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40">
+    {
+      immersive && (
+        <>
+          <div class="fixed inset-0 z-0 bg-[var(--bg-deep)]">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40"></div>
           </div>
-        </div>
 
-        <!-- HUD Overlay Top -->
-        <div class="fixed top-0 left-0 z-50 h-1 w-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]"></div>
-      </>
-    )}
+          <div class="fixed top-0 left-0 z-50 h-1 w-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]" />
+        </>
+      )
+    }
 
     <div class="relative z-10 flex min-h-screen flex-col">
       <Navbar />

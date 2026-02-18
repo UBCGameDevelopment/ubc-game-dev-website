@@ -3,12 +3,11 @@ import type { MerchItem } from "../../data/merch";
 
 export interface Props extends MerchItem {}
 
-const { name, description, price, category, isNew, isSoldOut, colors, sizes, image, images } = Astro.props;
+const { name, description, price, category, isNew, isSoldOut, colors, sizes, images } = Astro.props;
 
 // Filter out placeholder images
 const isPlaceholder = (src: string) => src.includes("/placeholder-") || src.includes("placeholder.");
-const rawImageList = images && images.length > 0 ? images : image ? [image] : [];
-const imageList = rawImageList.filter((src) => !isPlaceholder(src));
+const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 ---
 
 <div
@@ -125,6 +124,9 @@ const imageList = rawImageList.filter((src) => !isPlaceholder(src));
             )}
           </div>
           <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <span class="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-[8px] tracking-wider text-white/40 backdrop-blur-sm">
+            AI Generated Image
+          </span>
         </>
       ) : (
         <div class="flex h-full w-full items-center justify-center p-8">

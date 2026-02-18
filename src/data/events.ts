@@ -8,20 +8,8 @@ import unityImage from "../assets/timeline/unity.png";
 import nwhacks from "../assets/timeline/nwhacks2026.webp";
 import triviaNight from "../assets/timeline/Trivia_Night.webp";
 
-
 // Event data add from top (most recent) to bottom (oldest)
 export const events: Event[] = [
-  {
-    title: "Spring Quarter Kickoff",
-    date: "Mon, Mar. 2, 2026: 6pm",
-    isoDate: "2026-03-02T18:00:00",
-    description:
-      "New semester, new mission. innovative workshops, guest speakers from the industry, and team formation for the spring projects. Don't miss the briefing.",
-    location: "MacLeod Building",
-    mapLink: "https://maps.google.com",
-    image: unityImage,
-    isActive: true,
-  },
   {
     title: "UBC x UVic Game Jam",
     date: "Feb. 11-20, 2026: 2-6pm",

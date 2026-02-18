@@ -1,0 +1,135 @@
+// src/data/legacyExecs.ts
+import type { Exec } from "../types";
+import placeholder from "../assets/exec_photos/logo.png";
+
+export const legacyExecs: Exec[] = [
+  // ── 2023-2024 ──
+  {
+    name: "Alex Chen",
+    role: "President",
+    execClass: "President",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Maya Patel",
+    role: "VP External",
+    execClass: "Leadership",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Jordan Kim",
+    role: "Treasurer",
+    execClass: "Operations",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Sophia Wang",
+    role: "Marketing Director",
+    execClass: "Operations",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Ethan Nakamura",
+    role: "Web Developer",
+    execClass: "Tech & Design",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    github: "https://github.com/placeholder",
+    image: placeholder,
+  },
+  {
+    name: "Lily Zhang",
+    role: "Graphic Designer",
+    execClass: "Tech & Design",
+    season: "2023-2024",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    portfolio: "https://example.com",
+    image: placeholder,
+  },
+
+  // ── 2022-2023 ──
+  {
+    name: "Ryan Okonkwo",
+    role: "President",
+    execClass: "President",
+    season: "2022-2023",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Hana Suzuki",
+    role: "VP External",
+    execClass: "Leadership",
+    season: "2022-2023",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Derek Lam",
+    role: "Community Director",
+    execClass: "Operations",
+    season: "2022-2023",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Priya Sharma",
+    role: "Treasurer",
+    execClass: "Operations",
+    season: "2022-2023",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Marcus Lee",
+    role: "Web Developer",
+    execClass: "Tech & Design",
+    season: "2022-2023",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    github: "https://github.com/placeholder",
+    image: placeholder,
+  },
+
+  // ── 2021-2022 ──
+  {
+    name: "Jasmine Tran",
+    role: "President",
+    execClass: "President",
+    season: "2021-2022",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Noah Williams",
+    role: "VP Project Teams",
+    execClass: "Leadership",
+    season: "2021-2022",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Aisha Mohammed",
+    role: "Social Media Director",
+    execClass: "Operations",
+    season: "2021-2022",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    image: placeholder,
+  },
+  {
+    name: "Kevin Park",
+    role: "3D Graphic Designer",
+    execClass: "Tech & Design",
+    season: "2021-2022",
+    linkedin: "https://www.linkedin.com/in/placeholder/",
+    portfolio: "https://example.com",
+    image: placeholder,
+  },
+];

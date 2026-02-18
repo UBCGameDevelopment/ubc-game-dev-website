@@ -1,57 +1,15 @@
 ---
-import BackgroundText from "../effects/BackgroundText.astro";
-import CyberBadge from "../common/CyberBadge.astro";
+import PageHeader from "../common/PageHeader.astro";
 ---
 
-<section class="relative overflow-hidden pt-36 pb-16 md:pb-24">
-  <!-- Enhanced Ambient Glow -->
-  <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-    <div
-      class="h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,var(--cyber-blue)_0%,transparent_60%)] opacity-[0.1]"
-    >
-    </div>
-    <div
-      class="absolute top-0 right-0 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--cyber-magenta)_0%,transparent_70%)] opacity-[0.05]"
-    >
-    </div>
-
-    <!-- Grid Overlay -->
-    <div
-      class="absolute inset-0 bg-[linear-gradient(rgba(var(--cyber-blue-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--cyber-blue-rgb),0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
-    >
-    </div>
-  </div>
-
-  <div class="container-page relative z-10 mx-auto px-4 text-center">
-    <BackgroundText
-      text="ARMORY"
-      className="top-0 left-1/2 -translate-x-1/2 text-9xl font-black tracking-tighter opacity-[0.04] md:text-[13rem]"
-    />
-
-    <div class="mb-6 inline-flex justify-center">
-      <CyberBadge
-        label="Supply Drop // Online"
-        variant="blue"
-      />
-    </div>
-
-    <h1 class="mb-6 flex flex-col items-center justify-center gap-2 md:gap-4">
-      <span class="font-tech text-sm font-bold tracking-[0.5em] text-[var(--text-muted)] uppercase md:text-base">
-        Equipment Center
-      </span>
-      <span class="font-display text-5xl font-black tracking-tight text-white uppercase md:text-7xl lg:text-8xl">
-        Merch <span
-          class="bg-gradient-to-r from-[var(--cyber-blue)] to-[var(--cyber-magenta)] bg-clip-text text-transparent"
-        >
-          Armory
-        </span>
-      </span>
-    </h1>
-
-    <p
-      class="mx-auto mt-6 max-w-2xl border-l-2 border-[var(--cyber-blue)] pl-6 text-left text-lg leading-relaxed text-[var(--text-muted)] md:border-l-0 md:pl-0 md:text-center"
-    >
-      Configure your operator look. Every purchase supports club operations, workshops, and student showcases.
-    </p>
-  </div>
-</section>
+<PageHeader
+  backgroundText="ARMORY"
+  badge={{ label: "Supply Drop // Online", variant: "blue" }}
+  subtitle="Equipment Center"
+  subtitleColor="text-[var(--text-muted)]"
+  title={{ normal: "Merch ", highlight: "Armory" }}
+  gradientClass="from-[var(--cyber-blue)] to-[var(--cyber-magenta)]"
+  description="Configure your operator look. Every purchase supports club operations, workshops, and student showcases."
+  descriptionBorderColor="border-[var(--cyber-blue)]"
+  glowColor="var(--cyber-blue)"
+/>
