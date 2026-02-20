@@ -97,7 +97,7 @@ export const merchItems: MerchItem[] = [
     name: "UBC Game Dev Tote Bag",
     description:
       "Limestone white canvas tote featuring a bold black UBC Game Dev graphic in a clean, panel-style print. Designed with long shoulder straps and a roomy main compartment, perfect for carrying books, groceries, or everyday essentials.",
-    price: 3,
+    price: 30,
     images: [
       "/assets/merch/ubc_white_tote_bag/ubc_tote_bag_front.png",
       "/assets/merch/ubc_white_tote_bag/ubc_tote_bag_back.png",
