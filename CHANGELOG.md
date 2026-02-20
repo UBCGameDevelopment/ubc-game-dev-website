@@ -15,6 +15,7 @@ ENHANCEMENTS:
 * Fixed spelling and copy typos in visible UI text.
 * Fixed small display misalignment issues for better visual consistency.
 * Ongoing attempts to fix forced dark mode behavior on some mobile devices so intended colors render correctly.
+* Planned visual enhancements to improve background/text contrast so content remains clearly readable.
 
 FIXES:
 
