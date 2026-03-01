@@ -5,12 +5,10 @@ import LevelCard from "../components/events/LevelCard.astro";
 import EventModal from "../components/events/EventModal";
 import { EventService } from "../services";
 import { LINKS } from "../config/links";
+import PageHeader from "../components/common/PageHeader.astro";
 
 const events = EventService.getAll();
 const eventsForModal = EventService.prepareForModal(events);
-
-import CyberBadge from "../components/common/CyberBadge.astro";
-import PageHeader from "../components/common/PageHeader.astro";
 ---
 
 <Layout>

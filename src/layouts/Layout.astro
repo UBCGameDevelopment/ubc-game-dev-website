@@ -23,18 +23,7 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       content="width=device-width"
     />
     <script is:inline>
-      // BLOCKING SCRIPT: Must run before checking other things to prevent FOUC
       (function () {
-        const isImmersive = true; // We can't check meta tag yet as it might be below, assuming true for layout or checking path if possible.
-        // Actually, we can just check if we are in a context that requires it.
-        // For safety, let's just check the session storage.
-
-        // Improve: The meta tag for 'immersive-mode' is rendered by the component, so it might not be available yet if we run this very top.
-        // We will rely on checking if the `LoadingScreen` component is about to be rendered.
-        // However, Astro yields static HTML.
-
-        // Let's use a more robust check:
-        // If we are on the home page (most likely place for immersive), or just check the storage.
         const hasVisited = sessionStorage.getItem("cyber_boot_custom");
         if (!hasVisited && window.location.pathname === "/") {
           document.documentElement.setAttribute("data-loading", "true");
@@ -43,7 +32,7 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
     </script>
     <meta
       name="color-scheme"
-      content="dark light"
+      content="only light"
     />
     <meta
       name="theme-color"
@@ -59,16 +48,6 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       content={Astro.generator}
     />
     <title>{title}</title>
-
-    <script is:inline>
-      (function () {
-        const theme = localStorage.getItem("theme");
-        if (theme) {
-          document.documentElement.setAttribute("data-theme", theme);
-        }
-      })();
-    </script>
-
     <SpeedInsights />
     <Analytics />
     {

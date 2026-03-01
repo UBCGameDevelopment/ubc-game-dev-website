@@ -6,7 +6,6 @@ import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import TimelineSidebar from "../components/games/TimelineSidebar.astro";
 import GameArticle from "../components/games/GameArticle.astro";
-import CyberBadge from "../components/common/CyberBadge.astro";
 import PageHeader from "../components/common/PageHeader.astro";
 
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
@@ -37,7 +36,7 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
         <div id={`year-${year}`} class="scroll-mt-32 relative">
           <!-- Year Marker -->
           <div class="flex items-center gap-4 mb-12">
-            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-20" />
+            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-40" />
             <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
               <GlitchText client:visible text={year} tag="span" /> 
               <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>

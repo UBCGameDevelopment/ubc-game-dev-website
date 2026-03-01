@@ -11,7 +11,7 @@ const latestEvents = EventService.getLatest(2);
     <div class="relative mb-12 flex items-end justify-between border-b border-[var(--border-dim)] pb-4">
       <BackgroundText
         text="EVENTS"
-        className="-top-12 -left-4 text-6xl opacity-[0.1] md:-top-20 md:text-8xl lg:text-[10rem]"
+        className="-top-12 -left-4 text-6xl opacity-[0.2] md:-top-20 md:text-8xl lg:text-[10rem]"
       />
       <h2 class="flex items-center gap-2 text-2xl font-bold tracking-wide text-white uppercase md:text-3xl">
         <span class="text-[var(--cyber-red)]">//</span>
@@ -23,8 +23,7 @@ const latestEvents = EventService.getLatest(2);
       </h2>
       <a
         href="/events"
-        class="font-tech text-xs text-[var(--accent)] transition-colors hover:text-white"
-      >
+        class="font-tech text-xs text-[var(--accent)] transition-colors hover:text-white">
         FULL_SCHEDULE >>
       </a>
     </div>
@@ -43,8 +42,7 @@ const latestEvents = EventService.getLatest(2);
                 <div class="flex-1">
                   <div class="mb-2 flex items-center justify-between">
                     <span
-                      class={`px-2 py-0.5 text-xs font-bold tracking-wider text-black uppercase ${event.isActive ? "bg-[var(--cyber-red)]" : "bg-[var(--text-muted)]"}`}
-                    >
+                      class={`px-2 py-0.5 text-xs font-bold tracking-wider text-black uppercase ${event.isActive ? "bg-[var(--cyber-red)]" : "bg-[var(--text-muted)]"}`}>
                       {event.isActive ? "Active" : "Completed"}
                     </span>
                     <span class="font-tech text-base text-[var(--cyber-yellow)]">

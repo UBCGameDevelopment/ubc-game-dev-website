@@ -2,6 +2,7 @@
 import GlitchText from "../effects/GlitchText";
 import MissionCodeIO from "./MissionCodeIO";
 import BackgroundText from "../effects/BackgroundText.astro";
+import AnimatedStatValue from "./AnimatedStatValue";
 
 // Data for stats to keep template clean
 const stats = [
@@ -21,7 +22,7 @@ const stats = [
     <div class="relative mb-16 flex items-end justify-between border-b border-[var(--border-dim)] pb-6">
       <BackgroundText
         text="MISSION"
-        className="-top-16 -left-8 text-[8rem] opacity-[0.08] md:-top-24 md:text-[12rem]"
+        className="-top-16 -left-8 text-[8rem] opacity-[0.2] md:-top-24 md:text-[12rem]"
       />
       <div class="flex flex-col gap-2">
         <div class="flex items-center gap-3">
@@ -48,7 +49,7 @@ const stats = [
           <div class="absolute top-0 right-0 h-16 w-16 border-t-2 border-r-2 border-[var(--cyber-blue)]/30"></div>
           
           <p class="text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            We are the <span class="font-bold text-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">UBC Game Development Association</span>. 
+            We are the <span class="font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)]">UBC Game Development Association</span>. 
             An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
           </p>
           <p class="mt-6 text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
@@ -59,18 +60,19 @@ const stats = [
 
         <!-- Data Module Stats -->
         <div class="grid grid-cols-2 gap-4">
-          {stats.map((stat) => (
+          {stats.map((stat, index) => (
             <div class="group relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)] p-5 transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_15px_rgba(0,240,255,0.15)]">
               <!-- Corner Accent -->
               <div class="absolute top-0 left-0 h-1 w-full scale-x-0 bg-gradient-to-r from-transparent via-[var(--cyber-blue)] to-transparent transition-transform duration-500 group-hover:scale-x-100"></div>
               
               <div class="flex flex-col">
-                <span 
-                  class="font-display text-4xl font-black tracking-tighter text-white md:text-5xl"
-                  style={`text-shadow: 0 0 10px ${stat.color}40;`}
-                >
-                  {stat.value}
-                </span>
+                <AnimatedStatValue
+                  client:visible
+                  value={stat.value}
+                  accentColor={stat.color}
+                  delay={index * 0.18}
+                  className="font-display text-4xl font-black tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] md:text-5xl"
+                />
                 <span class="mt-2 font-tech text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase group-hover:text-[var(--cyber-blue)] transition-colors">
                   {stat.label}
                 </span>

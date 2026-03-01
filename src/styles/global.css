@@ -28,6 +28,8 @@
 }
 
 :root {
+  color-scheme: only light;
+
   /* Functional Colors mapped to theme or custom vars */
   --brand: var(--color-brand);
   --accent: var(--color-accent);
@@ -48,12 +50,15 @@
 html {
   background-color: var(--bg-deep);
   color: var(--text-main);
+  color-scheme: only light;
   font-family: var(--font-main);
+  forced-color-adjust: none;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
+  forced-color-adjust: none;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }

@@ -5,7 +5,7 @@ export default function MissionCodeIO() {
   return (
     <Typewriter
       options={{
-        delay: 40,
+        delay: 15,
         cursor: "█",
         cursorClassName: "text-[var(--cyber-blue)] animate-pulse ml-1",
       }}
