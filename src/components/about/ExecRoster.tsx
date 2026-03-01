@@ -17,6 +17,16 @@ interface Props {
   execs: ExecData[];
 }
 
+const decodeTypewriterText = (value: string) =>
+  value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#39;", "'");
+
+const splitTypewriterText = (value: string) => decodeTypewriterText(value).split("");
+
 /* ─── Social link icon button ─── */
 const SocialLink = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (
   <a
@@ -34,20 +44,18 @@ const SocialLink = ({ href, label, children }: { href: string; label: string; ch
 /* ─── Small portrait thumbnail ─── */
 const PortraitThumbnail = ({
   exec,
-  index,
   isSelected,
   onClick,
 }: {
   exec: ExecData;
-  index: number;
   isSelected: boolean;
   onClick: () => void;
 }) => (
   <button
     onClick={onClick}
     className={`group relative aspect-square w-full overflow-hidden border-2 transition-all duration-200 ${isSelected
-        ? "z-10 scale-105 border-[var(--cyber-yellow)] shadow-[0_0_15px_rgba(252,238,10,0.3)]"
-        : "border-[var(--border-dim)] hover:border-[var(--cyber-blue)] hover:shadow-[0_0_10px_rgba(0,240,255,0.15)]"
+      ? "z-10 scale-105 border-[var(--cyber-yellow)] shadow-[0_0_15px_rgba(252,238,10,0.3)]"
+      : "border-[var(--border-dim)] hover:border-[var(--cyber-blue)] hover:shadow-[0_0_10px_rgba(0,240,255,0.15)]"
       }`}
     style={{ clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)" }}
     aria-label={`Select ${exec.name}`}
@@ -56,8 +64,8 @@ const PortraitThumbnail = ({
       src={exec.imageSrc}
       alt={exec.name}
       className={`h-full w-full object-cover transition-all duration-300 ${isSelected
-          ? "brightness-110 saturate-110"
-          : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
+        ? "brightness-110 saturate-110"
+        : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
         }`}
     />
 
@@ -167,7 +175,6 @@ export default function ExecRoster({ execs }: Props) {
                   <PortraitThumbnail
                     key={exec.name}
                     exec={exec}
-                    index={originalIndex}
                     isSelected={originalIndex === selectedIndex}
                     onClick={() => setSelectedIndex(originalIndex)}
                   />
@@ -316,28 +323,24 @@ export default function ExecRoster({ execs }: Props) {
                   {/* Terminal content */}
                   <div
                     className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px)",
-                    }}
                   >
                     <Typewriter
                       key={selectedIndex}
                       onInit={(typewriter) => {
                         typewriter
-                          .changeDelay(90)
+                          .changeDelay(24)
                           .typeString(
                             "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
                           )
-                          .pauseFor(200)
+                          .pauseFor(100)
                           .typeString(
                             `<span style='color: var(--cyber-blue);'>[SYS]</span> Assigned role: <span style='color: white; font-weight: bold;'>${selected.role}</span><br/>`,
                           )
-                          .pauseFor(200)
+                          .pauseFor(100)
                           .typeString(
                             `<span style='color: var(--cyber-blue);'>[SYS]</span> Division: <span style='color: white; font-weight: bold;'>${selected.execClass}</span><br/>`,
                           )
-                          .pauseFor(300)
+                          .pauseFor(120)
                           .typeString(
                             "<span style='color: var(--cyber-yellow);'>[NET]</span> Social links verified. Ready for connection.",
                           )
@@ -345,7 +348,8 @@ export default function ExecRoster({ execs }: Props) {
                       }}
                       options={{
                         cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
-                        delay: 30,
+                        delay: 12,
+                        stringSplitter: splitTypewriterText,
                       }}
                     />
                   </div>
