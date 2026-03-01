@@ -45,29 +45,26 @@ const PortraitThumbnail = ({
 }) => (
   <button
     onClick={onClick}
-    className={`group relative aspect-square w-full overflow-hidden border-2 transition-all duration-200 ${
-      isSelected
+    className={`group relative aspect-square w-full overflow-hidden border-2 transition-all duration-200 ${isSelected
         ? "z-10 scale-105 border-[var(--cyber-yellow)] shadow-[0_0_15px_rgba(252,238,10,0.3)]"
         : "border-[var(--border-dim)] hover:border-[var(--cyber-blue)] hover:shadow-[0_0_10px_rgba(0,240,255,0.15)]"
-    }`}
+      }`}
     style={{ clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)" }}
     aria-label={`Select ${exec.name}`}
   >
     <img
       src={exec.imageSrc}
       alt={exec.name}
-      className={`h-full w-full object-cover transition-all duration-300 ${
-        isSelected
+      className={`h-full w-full object-cover transition-all duration-300 ${isSelected
           ? "brightness-110 saturate-110"
           : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
-      }`}
+        }`}
     />
 
     {/* Hover / selected overlay */}
     <div
-      className={`pointer-events-none absolute inset-0 transition-opacity ${
-        isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-      }`}
+      className={`pointer-events-none absolute inset-0 transition-opacity ${isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
     >
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-1 pt-6">
         <p className="font-tech truncate text-[9px] font-bold tracking-wider text-white uppercase">
@@ -328,7 +325,7 @@ export default function ExecRoster({ execs }: Props) {
                       key={selectedIndex}
                       onInit={(typewriter) => {
                         typewriter
-                          .changeDelay(30)
+                          .changeDelay(90)
                           .typeString(
                             "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
                           )
