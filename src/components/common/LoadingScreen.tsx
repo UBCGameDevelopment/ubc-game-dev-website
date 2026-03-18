@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import { splitTypewriterText } from "../../utils/typewriter";
 
 export default function LoadingScreen() {
   const [isLoaded, setIsLoaded] = useState(() => {
@@ -65,34 +66,34 @@ export default function LoadingScreen() {
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
-                    .changeDelay(30)
+                    .changeDelay(15)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> SYSTEM BOOT SEQUENCE <span style='color: var(--accent);'>INITIATED...</span><br/>",
                     )
-                    .pauseFor(300)
+                    .pauseFor(100)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> CHECKING KERNEL... <span style='color: var(--cyber-blue);'>OK</span><br/>",
                     )
-                    .pauseFor(200)
+                    .pauseFor(100)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> MOUNTING FILE SYSTEM... <span style='color: var(--cyber-blue);'>OK</span><br/>",
                     )
-                    .pauseFor(200)
+                    .pauseFor(100)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> LOADING ASSETS... <span style='color: var(--cyber-blue);'>OK</span><br/>",
                     )
-                    .pauseFor(400)
+                    .pauseFor(100)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> ESTABLISHING CONNECTION TO NEURAL NET... <span style='color: var(--cyber-blue);'>OK</span><br/>",
                     )
-                    .pauseFor(500)
+                    .pauseFor(100)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> ACCESS <span style='color: var(--cyber-red);'>GRANTED.</span><br/>",
                     )
                     .typeString(
                       "<br/><span style='color: var(--cyber-yellow);'>></span> WELCOME, <span style='color: var(--accent);'>OPERATOR.</span>",
                     )
-                    .pauseFor(1000)
+                    .pauseFor(300)
                     .callFunction(() => {
                       handleEnter();
                     })
@@ -101,6 +102,7 @@ export default function LoadingScreen() {
                 options={{
                   cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
                   delay: 40,
+                  stringSplitter: splitTypewriterText,
                 }}
               />
             </div>

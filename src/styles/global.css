@@ -1,36 +1,29 @@
-/* Cyberpunk 2.0 "Neon Operator" Global Styles */
 @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
   --color-brand: oklch(65% 0.25 290);
   --color-accent: oklch(70% 0.2 320);
   --color-cyber-yellow: #fcee0a;
   --color-cyber-blue: #00f0ff;
   --color-cyber-red: #ff003c;
 
-  /* Backgrounds */
   --color-bg-deep: #030305;
   --color-bg-panel: #0a0a0c;
 
-  /* Text */
   --color-text-main: #e0e0e0;
   --color-text-muted: #8a8a90;
 
-  /* Fonts */
   --font-main: "Rajdhani", sans-serif;
   --font-mono: "Share Tech Mono", monospace;
   --font-tech: "Share Tech Mono", monospace;
 
-  /* Border */
   --color-border-dim: rgba(255, 255, 255, 0.1);
 }
 
 :root {
   color-scheme: only light;
 
-  /* Functional Colors mapped to theme or custom vars */
   --brand: var(--color-brand);
   --accent: var(--color-accent);
   --cyber-yellow: var(--color-cyber-yellow);
@@ -75,7 +68,6 @@ body {
   margin-bottom: 0;
 }
 
-/* Content Container - constrains content with padding while allowing full-width backgrounds */
 .container-page {
   width: 100%;
   max-width: 1280px;
@@ -97,7 +89,6 @@ button,
   cursor: pointer;
 }
 
-/* Typography Overrides */
 h1,
 h2,
 h3,
@@ -109,7 +100,6 @@ h6 {
   letter-spacing: 0.05em;
 }
 
-/* Glitch Effect - Subtle (Class: .glitch-text) */
 .glitch-text {
   position: relative;
   display: inline-block;
@@ -207,7 +197,6 @@ h6 {
   }
 }
 
-/* Glitch Intense */
 .glitch-intense {
   position: relative;
   display: inline-block;
@@ -271,7 +260,6 @@ h6 {
   }
 }
 
-/* Angular Card Base */
 .hud-card {
   background: var(--glass-str);
   backdrop-filter: blur(10px);
@@ -354,7 +342,6 @@ h6 {
   opacity: 1;
 }
 
-/* Scanline Overlay (Global) */
 .scanlines {
   position: fixed;
   top: 0;
@@ -392,7 +379,6 @@ h6 {
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -410,7 +396,6 @@ h6 {
   background: var(--cyber-yellow);
 }
 
-/* Utilities for compatibility */
 .text-neon {
   text-shadow:
     0 0 5px rgba(147, 51, 234, 0.7),
@@ -441,5 +426,4 @@ h6 {
 
 .font-pixel {
   font-family: var(--font-tech);
-  /* Fallback to tech font */
 }

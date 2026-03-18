@@ -30,7 +30,9 @@ export default function MissionCodeIO() {
           .typeString("<br/>")
           .typeString('<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">deploy</span>() {')
           .pauseFor(300)
-          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;build(); learn(); repeat();")
+          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;build();")
+          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;learn();")
+          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;repeat();")
           .typeString("<br/>&nbsp;&nbsp;}")
           .typeString("<br/>}")
           .start();

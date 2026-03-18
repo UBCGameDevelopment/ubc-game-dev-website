@@ -7,13 +7,11 @@ const featuredGames = GameService.getFeatured(3);
 ---
 
 <section class="section-block relative z-10 overflow-hidden py-24">
-  <!-- Grid Background Overlay -->
   <div class="pointer-events-none absolute inset-0 z-0 opacity-20"
        style="background-image: linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
   </div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <!-- Section Header -->
     <div class="relative mb-16 flex items-end justify-between border-b border-[var(--border-dim)] pb-6">
       <BackgroundText
         text="PROJECTS"
@@ -43,7 +41,6 @@ const featuredGames = GameService.getFeatured(3);
       </a>
     </div>
 
-    <!-- Enhanced Grid -->
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         featuredGames.map((game, index) => {
@@ -62,7 +59,6 @@ const featuredGames = GameService.getFeatured(3);
               class="group relative block overflow-hidden bg-[#0c0c0c] border border-[var(--border-dim)] transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_30px_rgba(0,240,255,0.15)]"
               style={`clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); animation-delay: ${index * 0.15}s`}
             >
-              <!-- Card Header / Status -->
               <div class="flex items-center justify-between border-b border-[var(--border-dim)] bg-[#151515] px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--text-muted)] group-hover:text-[var(--cyber-blue)] transition-colors">
                 <span>FILE_ID :: 0{index + 1}</span>
                 <span class="flex items-center gap-2">
@@ -70,7 +66,6 @@ const featuredGames = GameService.getFeatured(3);
                 </span>
               </div>
 
-              <!-- Image Container -->
               <div class="relative aspect-video overflow-hidden">
                 <div
                   class="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -79,10 +74,8 @@ const featuredGames = GameService.getFeatured(3);
                   <div class="absolute inset-0 bg-[#0c0c0c]/40 group-hover:bg-transparent transition-colors duration-500"></div>
                 </div>
                 
-                 <!-- Hover Scanline -->
                 <div class="absolute inset-0 bg-[linear-gradient(rgba(0,240,255,0)_50%,rgba(0,240,255,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"></div>
                 
-                <!-- Award Badge -->
                  {game.award && (
                     <div class="absolute bottom-0 right-0 p-2 z-20">
                          <span class="bg-[var(--cyber-yellow)] text-black font-bold text-[10px] px-2 py-1 uppercase tracking-wider shadow-[0_0_10px_rgba(252,238,10,0.5)]" style="clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%);">
@@ -92,7 +85,6 @@ const featuredGames = GameService.getFeatured(3);
                  )}
               </div>
 
-              <!-- Content Body -->
               <div class="relative p-6">
                 <h3 class="flex items-center gap-2 font-display text-2xl font-black uppercase text-white transition-colors group-hover:text-[var(--cyber-blue)]">
                     <span class="text-[var(--cyber-blue)] opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">></span>
@@ -103,13 +95,11 @@ const featuredGames = GameService.getFeatured(3);
                   {game.description}
                 </p>
 
-                <!-- Footer Tech Labels -->
                 <div class="mt-6 flex flex-wrap gap-2 pt-4 border-t border-[var(--border-dim)] border-dashed opacity-60 group-hover:opacity-100 transition-opacity">
                     <span class="font-tech text-xs text-[var(--cyber-blue)] uppercase tracking-wider">STATUS: DEPLOYED</span>
                 </div>
               </div>
               
-              <!-- Corner Accent -->
                <div class="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-[var(--cyber-blue)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </a>
           );

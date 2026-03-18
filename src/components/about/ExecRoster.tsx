@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import { splitTypewriterText } from "../../utils/typewriter";
 
 interface ExecData {
   name: string;
@@ -16,16 +17,6 @@ interface ExecData {
 interface Props {
   execs: ExecData[];
 }
-
-const decodeTypewriterText = (value: string) =>
-  value
-    .replaceAll("&amp;", "&")
-    .replaceAll("&lt;", "<")
-    .replaceAll("&gt;", ">")
-    .replaceAll("&quot;", '"')
-    .replaceAll("&#39;", "'");
-
-const splitTypewriterText = (value: string) => decodeTypewriterText(value).split("");
 
 /* ─── Social link icon button ─── */
 const SocialLink = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (

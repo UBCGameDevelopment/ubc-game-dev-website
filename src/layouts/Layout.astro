@@ -97,13 +97,11 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
     margin: 0;
   }
 
-  /* Hide main content initially when loading */
   html[data-loading="true"] #app-content {
     opacity: 0;
     visibility: hidden;
   }
 
-  /* Ensure loading screen is visible */
   html[data-loading="true"] {
     overflow: hidden;
   }
