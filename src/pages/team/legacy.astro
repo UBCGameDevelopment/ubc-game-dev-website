@@ -28,7 +28,6 @@ const execsBySeason = seasons.map((season) => ({
     />
 
     <section class="mx-auto max-w-5xl px-4 pb-16">
-      <!-- Back link -->
       <div class="mb-10 flex items-center gap-3">
         <a
           href="/team"
@@ -41,10 +40,8 @@ const execsBySeason = seasons.map((season) => ({
         </a>
       </div>
 
-      <!-- Seasons -->
       {execsBySeason.map(({ season, members }) => (
         <div class="mb-14">
-          <!-- Season header -->
           <div class="mb-6 flex items-center gap-4">
             <div class="h-px flex-1 bg-gradient-to-r from-transparent via-[var(--cyber-blue)]/30 to-transparent" />
             <div class="flex items-center gap-3">
@@ -58,11 +55,9 @@ const execsBySeason = seasons.map((season) => ({
             <div class="h-px flex-1 bg-gradient-to-r from-[var(--cyber-blue)]/30 via-transparent to-transparent" />
           </div>
 
-          <!-- Exec cards grid -->
           <div class="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5">
             {members.map((exec) => (
               <div class="group relative border border-[var(--border-dim)] bg-[var(--bg-panel)] transition-all hover:border-[var(--cyber-blue)]/50 hover:shadow-[0_0_15px_rgba(0,240,255,0.08)]">
-                <!-- Image -->
                 <div class="relative aspect-square overflow-hidden bg-[var(--bg-deep)]">
                   <img
                     src={exec.image.src}
@@ -70,12 +65,10 @@ const execsBySeason = seasons.map((season) => ({
                     class="h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-100"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-panel)] via-transparent to-transparent" />
-                  <!-- Class badge -->
                   <span class="absolute top-2 right-2 border border-[var(--cyber-blue)]/30 bg-[var(--bg-deep)]/80 px-2 py-0.5 font-tech text-[8px] font-bold tracking-wider text-[var(--cyber-blue)] uppercase backdrop-blur-sm">
                     {exec.execClass}
                   </span>
                 </div>
-                <!-- Info -->
                 <div class="p-2">
                   <h3 class="font-display text-xs font-bold text-white">{exec.name}</h3>
                   <p class="font-tech mt-0.5 text-[9px] tracking-wider text-[var(--text-muted)]">{exec.role}</p>
@@ -116,7 +109,6 @@ const execsBySeason = seasons.map((season) => ({
                     )}
                   </div>
                 </div>
-                <!-- Status indicator -->
                 <div class="absolute top-2 left-2">
                   <span class="font-tech text-[8px] font-bold tracking-widest text-[var(--text-muted)]/50 uppercase">
                     Archived
@@ -128,7 +120,6 @@ const execsBySeason = seasons.map((season) => ({
         </div>
       ))}
 
-      <!-- Archive footer -->
       <div class="mt-8 border-t border-[var(--border-dim)] pt-6 text-center">
         <p class="font-tech text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
           [SYS] Archive complete — {legacyExecs.length} legacy operators on record.

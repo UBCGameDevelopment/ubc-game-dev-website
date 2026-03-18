@@ -11,6 +11,17 @@ import triviaNight from "../assets/timeline/Trivia_Night.webp";
 // Event data add from top (most recent) to bottom (oldest)
 export const events: Event[] = [
   {
+    title: "Year-End Showcase",
+    date: "Sat, Apr. 4th, 2026: -7pm",
+    isoDate: "2026-04-04T13:00:00",
+    description:
+      "Celebrate the end of an amazing year with our Year-End Showcase! Join us as we highlight the incredible projects and achievements of our members. Enjoy presentations, demos, and a chance to network with industry professionals. Let's toast to our successes and look forward to an even more exciting year ahead!",
+    location: "IBLC (IKB) 261",
+    mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261",
+    image: placeholderImage,
+    isActive: true,
+  },
+  {
     title: "UBC x UVic Game Jam",
     date: "Feb. 11-20, 2026: 2-6pm",
     isoDate: "2026-02-14T14:00:00",
@@ -19,7 +30,7 @@ export const events: Event[] = [
     location: "Remote [Discord]",
     mapLink: "https://discord.gg/m4yJFNuw",
     image: placeholderImage,
-    isActive: true,
+    isActive: false,
   },
   {
     title: "Video Game Trivia Night",
@@ -75,16 +86,5 @@ export const events: Event[] = [
     mapLink: "https://maps.app.goo.gl/kXj9mxqmohCmDsbt7",
     image: launchPartyImage,
     isActive: false,
-  },
-  // {
-  //   title: "Year-End Showcase",
-  //   date: "Sat, Apr. 4th, 2026: -7pm",
-  //   isoDate: "2026-04-04T13:00:00",
-  //   description:
-  //     "Celebrate the end of an amazing year with our Year-End Showcase! Join us as we highlight the incredible projects and achievements of our members. Enjoy presentations, demos, and a chance to network with industry professionals. Let's toast to our successes and look forward to an even more exciting year ahead!",
-  //   location: "IBLC (IKB) 261",
-  //   mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261",
-  //   image: placeholderImage,
-  //   isActive: true,
-  // }
+  }
 ];

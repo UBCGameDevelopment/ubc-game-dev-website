@@ -5,17 +5,14 @@ import LevelCard from "../components/events/LevelCard.astro";
 import EventModal from "../components/events/EventModal";
 import { EventService } from "../services";
 import { LINKS } from "../config/links";
+import PageHeader from "../components/common/PageHeader.astro";
 
 const events = EventService.getAll();
 const eventsForModal = EventService.prepareForModal(events);
-
-import CyberBadge from "../components/common/CyberBadge.astro";
-import PageHeader from "../components/common/PageHeader.astro";
 ---
 
 <Layout>
   <main>
-    <!-- Header Section -->
     <PageHeader
       backgroundText="CHAPTERS"
       badge={{ label: "Season 2025-2026 // Active", variant: "brand" }}
@@ -27,12 +24,8 @@ import PageHeader from "../components/common/PageHeader.astro";
       descriptionBorderColor="border-[var(--cyber-yellow)]"
       glowColor="var(--brand)"
     >
-      <!-- Progress Bar - Cyberpunk Style -->
-      <!-- Progress Bar - Futuristic Loading Style -->
-      <!-- Progress Bar - Event Chapters Style -->
       <div class="mx-auto mt-12 max-w-xl">
         <div class="relative flex flex-col items-center">
-          <!-- Progress Labels -->
           <div class="font-tech mb-2 flex w-full justify-between text-xs tracking-wider uppercase">
             <span class="flex items-center gap-2 font-bold text-[var(--cyber-yellow)]">
               <span class="h-1.5 w-1.5 animate-pulse bg-[var(--cyber-yellow)]"></span>
@@ -44,15 +37,12 @@ import PageHeader from "../components/common/PageHeader.astro";
           </div>
 
           <div class="flex w-full items-center gap-4">
-            <!-- Left Bracket -->
             <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
               <div class="absolute top-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
               <div class="absolute bottom-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
             </div>
 
-            <!-- Bar Container -->
             <div class="relative h-4 flex-1 border-y border-[var(--border-dim)] bg-[var(--bg-deep)]">
-              <!-- Glitchy Progress Fill -->
               <div
                 class="relative h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                 style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}
@@ -62,14 +52,12 @@ import PageHeader from "../components/common/PageHeader.astro";
               </div>
             </div>
 
-            <!-- Right Bracket -->
             <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
               <div class="absolute top-0 right-0 h-px w-3 bg-[var(--text-muted)]"></div>
               <div class="absolute right-0 bottom-0 h-px w-3 bg-[var(--text-muted)]"></div>
             </div>
           </div>
 
-          <!-- Stats underneath -->
           <div
             class="font-tech mt-2 flex w-full justify-between px-1 text-[10px] text-[var(--text-muted)] uppercase opacity-60"
           >
@@ -89,7 +77,6 @@ import PageHeader from "../components/common/PageHeader.astro";
       </div>
     </PageHeader>
 
-    <!-- Level Grid -->
     <section class="container-page mx-auto px-4 pb-20">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
@@ -103,7 +90,6 @@ import PageHeader from "../components/common/PageHeader.astro";
       </div>
     </section>
 
-    <!-- Event Modal -->
     <EventModal
       client:load
       events={eventsForModal}

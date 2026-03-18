@@ -6,7 +6,6 @@ import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import TimelineSidebar from "../components/games/TimelineSidebar.astro";
 import GameArticle from "../components/games/GameArticle.astro";
-import CyberBadge from "../components/common/CyberBadge.astro";
 import PageHeader from "../components/common/PageHeader.astro";
 
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
@@ -15,7 +14,6 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 <Layout title="Club Timeline // Games" immersive>
   <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" speed={120} direction="left"  className="top-32 left-0 fixed opacity-[0.02]" />
 
-  <!-- Header Section -->
   <PageHeader
     backgroundText="DATABASE"
     badge={{ label: "Archive Access // Granted", variant: "blue" }}
@@ -31,13 +29,11 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
   <div class="container-page mx-auto px-4 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
     <TimelineSidebar years={years} />
 
-    <!-- Main Content: Games Stream -->
     <div class="flex-1 space-y-32">
       {years.map(year => (
         <div id={`year-${year}`} class="scroll-mt-32 relative">
-          <!-- Year Marker -->
           <div class="flex items-center gap-4 mb-12">
-            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-20" />
+            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-40" />
             <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
               <GlitchText client:visible text={year} tag="span" /> 
               <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>

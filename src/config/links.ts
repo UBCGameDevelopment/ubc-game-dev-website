@@ -12,13 +12,7 @@ export const SOCIAL_LINKS = {
   // facebook: "https://facebook.com/ubcgamedev",
 } as const;
 
-export const EXTERNAL_LINKS = {
-  // Add other external links as needed
-  // github: "https://github.com/UBCGameDevelopment",
-} as const;
-
 // Export all links for convenience
 export const LINKS = {
   ...SOCIAL_LINKS,
-  ...EXTERNAL_LINKS,
 } as const;

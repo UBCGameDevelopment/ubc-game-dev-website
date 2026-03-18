@@ -19,7 +19,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
   ]}
 >
   <div class="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10"></div>
-  <!-- Badges -->
   <div class="absolute top-0 left-0 z-10 flex flex-col gap-2 p-0">
     {
       isNew && !isSoldOut && (
@@ -43,7 +42,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
     }
   </div>
 
-  <!-- Image -->
   <div
     class="relative aspect-square overflow-hidden bg-[radial-gradient(circle_at_30%_20%,rgba(0,240,255,0.15)_0%,rgba(0,0,0,0.6)_55%)]"
   >
@@ -153,7 +151,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       )
     }
 
-    <!-- Decorative corner accent -->
     {
       !isSoldOut && (
         <div class="absolute right-0 bottom-0 h-0.5 w-16 bg-[var(--cyber-yellow)] transition-all duration-300 group-hover:w-full" />
@@ -161,9 +158,7 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
     }
   </div>
 
-  <!-- Content -->
   <div class="relative z-10 flex flex-1 flex-col p-5">
-    <!-- Category -->
     <div class="flex items-start justify-between">
       <span class="text-[10px] font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
         {category}
@@ -171,17 +166,14 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       <div class="h-1 w-8 bg-[var(--border-dim)] transition-colors group-hover:bg-[var(--cyber-blue)]"></div>
     </div>
 
-    <!-- Name -->
     <h3 class="font-pixel mt-2 text-lg text-white transition-colors group-hover:text-[var(--cyber-blue)]">
       {name}
     </h3>
 
-    <!-- Description -->
     <p class="font-tech mt-2 line-clamp-2 text-sm text-[var(--text-muted)]">
       {description}
     </p>
 
-    <!-- Options -->
     {
       colors && colors.length > 0 && (
         <div class="font-tech mt-3 flex items-center gap-2 text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
@@ -199,7 +191,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       )
     }
 
-    <!-- Price & Action -->
     <div class="mt-auto flex flex-col gap-4 pt-6">
       <span class="font-pixel text-2xl text-[var(--cyber-yellow)] transition-colors group-hover:text-white">
         ${price} CAD

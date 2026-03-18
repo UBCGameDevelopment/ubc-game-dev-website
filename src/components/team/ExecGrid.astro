@@ -16,7 +16,6 @@ import CyberBadge from "../common/CyberBadge.astro";
 ---
 
 <section class="container-page relative my-16 overflow-hidden md:my-20">
-  <!-- Ambient Glow -->
   <div class="pointer-events-none absolute inset-0 z-0 flex items-start justify-center pt-20">
     <div
       class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
@@ -24,7 +23,6 @@ import CyberBadge from "../common/CyberBadge.astro";
     </div>
   </div>
 
-  <!-- Section Header -->
   <div class="relative z-10 mx-auto mb-12 max-w-3xl text-center">
     <div class="mb-4 inline-flex justify-center">
       <CyberBadge
@@ -39,7 +37,6 @@ import CyberBadge from "../common/CyberBadge.astro";
     </p>
   </div>
 
-  <!-- President row with special styling -->
   {
     president && (
       <div class="mt-12 flex justify-center">
@@ -54,7 +51,6 @@ import CyberBadge from "../common/CyberBadge.astro";
     )
   }
 
-  <!-- Rest of execs in a modern grid -->
   <div class="mx-auto mt-16 grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-3 md:gap-10 lg:grid-cols-4">
     {
       rest.map((e) => (

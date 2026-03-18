@@ -11,9 +11,7 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
 ---
 
 <div class="group flex flex-col items-center text-center">
-  <!-- Photo with hover effect -->
   <div class="relative">
-    <!-- Glow effect on hover -->
     <div
       class="from-brand-500 to-accent-500 absolute -inset-2 rounded-full bg-gradient-to-r opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-50"
     >
@@ -85,7 +83,6 @@ const { name, role, linkedin, github, portfolio, image } = Astro.props;
     </div>
   </div>
 
-  <!-- Name / Role -->
   <div class="mt-5">
     <div
       class="text-lg font-extrabold tracking-wide text-[var(--text)] transition-colors duration-300 group-hover:text-[var(--brand)] md:text-xl"

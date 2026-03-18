@@ -17,38 +17,62 @@ const {
   opacity = "0.05",
 } = Astro.props;
 
-// Repeat text to ensure full coverage
-const content = `${text} /// ${text} /// ${text} /// ${text} /// ${text} /// ${text} /// `;
+const content = `${text} /// ${text} /// ${text} /// ${text} /// `;
 ---
 
 <div class={`pointer-events-none opacity-[${opacity}] mix-blend-overlay select-none overflow-hidden ${className}`}>
   <div
-    class="flex whitespace-nowrap"
+    class={`cyber-marquee-track inline-flex w-max whitespace-nowrap ${direction === "right" ? "cyber-marquee-track-right" : ""}`}
     style={{
-      animation: `scroll-${direction} ${speed}s linear infinite`,
+      "--marquee-duration": `${speed}s`,
       color: color,
     }}
   >
-    <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
-    <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
+    <div class="flex shrink-0">
+      <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
+    </div>
+    <div
+      class="flex shrink-0"
+      aria-hidden="true"
+    >
+      <span class="px-4 text-[10rem] font-black tracking-widest uppercase">{content}</span>
+    </div>
   </div>
 </div>
 
 <style>
-  @keyframes scroll-left {
+  .cyber-marquee-track {
+    animation: cyber-marquee-left var(--marquee-duration) linear infinite;
+    will-change: transform;
+  }
+
+  .cyber-marquee-track-right {
+    animation-name: cyber-marquee-right;
+  }
+
+  @keyframes cyber-marquee-left {
     from {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
-  @keyframes scroll-right {
+
+  @keyframes cyber-marquee-right {
     from {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
     to {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cyber-marquee-track,
+    .cyber-marquee-track-right {
+      animation: none;
+      transform: none;
     }
   }
 </style>
