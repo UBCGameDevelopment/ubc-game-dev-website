@@ -34,21 +34,18 @@ const {
 ---
 
 <section class="relative overflow-hidden pt-36 pb-16 md:pb-24">
-  <!-- Enhanced Ambient Glow -->
   <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
     <div
       class="h-[600px] w-[600px] rounded-full opacity-[0.1]"
       style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 50%);`}
     >
     </div>
-    <!-- Secondary glow offset -->
     <div
       class="absolute top-0 right-0 h-[400px] w-[400px] rounded-full opacity-[0.05]"
       style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 60%);`}
     >
     </div>
 
-    <!-- Grid Overlay -->
     <div
       class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
     >
@@ -94,7 +91,6 @@ const {
       {description}
     </p>
 
-    <!-- Slot for extra content (Progress bars, menus, etc.) -->
     <slot />
   </div>
 </section>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import { splitTypewriterText } from "../../utils/typewriter";
 
 interface ExecData {
   name: string;
@@ -34,40 +35,35 @@ const SocialLink = ({ href, label, children }: { href: string; label: string; ch
 /* ─── Small portrait thumbnail ─── */
 const PortraitThumbnail = ({
   exec,
-  index,
   isSelected,
   onClick,
 }: {
   exec: ExecData;
-  index: number;
   isSelected: boolean;
   onClick: () => void;
 }) => (
   <button
     onClick={onClick}
-    className={`group relative aspect-square w-full overflow-hidden border-2 transition-all duration-200 ${
-      isSelected
-        ? "z-10 scale-105 border-[var(--cyber-yellow)] shadow-[0_0_15px_rgba(252,238,10,0.3)]"
-        : "border-[var(--border-dim)] hover:border-[var(--cyber-blue)] hover:shadow-[0_0_10px_rgba(0,240,255,0.15)]"
-    }`}
+    className={`group relative aspect-square w-full overflow-hidden border-2 transition-all duration-200 ${isSelected
+      ? "z-10 scale-105 border-[var(--cyber-yellow)] shadow-[0_0_15px_rgba(252,238,10,0.3)]"
+      : "border-[var(--border-dim)] hover:border-[var(--cyber-blue)] hover:shadow-[0_0_10px_rgba(0,240,255,0.15)]"
+      }`}
     style={{ clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)" }}
     aria-label={`Select ${exec.name}`}
   >
     <img
       src={exec.imageSrc}
       alt={exec.name}
-      className={`h-full w-full object-cover transition-all duration-300 ${
-        isSelected
-          ? "brightness-110 saturate-110"
-          : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
-      }`}
+      className={`h-full w-full object-cover transition-all duration-300 ${isSelected
+        ? "brightness-110 saturate-110"
+        : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
+        }`}
     />
 
     {/* Hover / selected overlay */}
     <div
-      className={`pointer-events-none absolute inset-0 transition-opacity ${
-        isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-      }`}
+      className={`pointer-events-none absolute inset-0 transition-opacity ${isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
     >
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-1 pt-6">
         <p className="font-tech truncate text-[9px] font-bold tracking-wider text-white uppercase">
@@ -170,7 +166,6 @@ export default function ExecRoster({ execs }: Props) {
                   <PortraitThumbnail
                     key={exec.name}
                     exec={exec}
-                    index={originalIndex}
                     isSelected={originalIndex === selectedIndex}
                     onClick={() => setSelectedIndex(originalIndex)}
                   />
@@ -319,28 +314,24 @@ export default function ExecRoster({ execs }: Props) {
                   {/* Terminal content */}
                   <div
                     className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px)",
-                    }}
                   >
                     <Typewriter
                       key={selectedIndex}
                       onInit={(typewriter) => {
                         typewriter
-                          .changeDelay(30)
+                          .changeDelay(24)
                           .typeString(
                             "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
                           )
-                          .pauseFor(200)
+                          .pauseFor(100)
                           .typeString(
                             `<span style='color: var(--cyber-blue);'>[SYS]</span> Assigned role: <span style='color: white; font-weight: bold;'>${selected.role}</span><br/>`,
                           )
-                          .pauseFor(200)
+                          .pauseFor(100)
                           .typeString(
                             `<span style='color: var(--cyber-blue);'>[SYS]</span> Division: <span style='color: white; font-weight: bold;'>${selected.execClass}</span><br/>`,
                           )
-                          .pauseFor(300)
+                          .pauseFor(120)
                           .typeString(
                             "<span style='color: var(--cyber-yellow);'>[NET]</span> Social links verified. Ready for connection.",
                           )
@@ -348,7 +339,8 @@ export default function ExecRoster({ execs }: Props) {
                       }}
                       options={{
                         cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
-                        delay: 30,
+                        delay: 12,
+                        stringSplitter: splitTypewriterText,
                       }}
                     />
                   </div>

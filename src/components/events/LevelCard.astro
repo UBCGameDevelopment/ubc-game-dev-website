@@ -17,7 +17,6 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
       : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
   ]}
 >
-  <!-- Chapter Number Badge -->
   <div
     class:list={[
       "font-pixel absolute top-0 left-0 z-20 flex h-14 w-14 items-center justify-center text-xl font-bold shadow-lg",
@@ -28,7 +27,6 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     {chapterNumber}
   </div>
 
-  <!-- Status Badge with angular cut -->
   {
     !isActive && (
       <div
@@ -54,7 +52,6 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     )
   }
 
-  <!-- Image Section -->
   <div class="relative aspect-[16/9] overflow-hidden">
     <Image
       src={image}
@@ -68,16 +65,13 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
   </div>
 
-  <!-- Content Section -->
   <div class="relative p-6">
-    <!-- Title -->
     <h3
       class="font-pixel text-xl text-[var(--text)] transition-colors group-hover:text-[var(--cyber-yellow)] md:text-2xl"
     >
       {title}
     </h3>
 
-    <!-- Date & Location -->
     <div class="font-tech mt-3 flex flex-col gap-2 text-sm text-[var(--text-muted)]">
       <div class="flex items-center gap-2 text-[var(--brand)]">
         <svg
@@ -161,13 +155,11 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
       }
     </div>
 
-    <!-- Description -->
     <p
       class="mt-4 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)]"
       set:html={description}
     />
 
-    <!-- Action Button -->
     {
       isActive && (
         <div class="mt-6">

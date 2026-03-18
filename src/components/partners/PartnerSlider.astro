@@ -31,7 +31,6 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
 ---
 
 <section class="container-page mx-auto px-6 py-12">
-  <!-- Hex Divider -->
   <div class="hex-divider mx-auto mb-12 max-w-4xl opacity-50"></div>
 
   <div class="mb-8 text-center">
@@ -112,7 +111,6 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
           }
         </div>
 
-        <!-- transparent edge fades that blend with page bg -->
         <div
           class="fade left"
           aria-hidden="true"
@@ -130,19 +128,16 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
 
 <style>
   .logo-slider {
-    /* use your site's surface token so fades blend with the gradient */
-    --surface: var(--surface, rgba(0, 0, 0, 0)); /* from global.css if present */
+    --surface: var(--surface, rgba(0, 0, 0, 0));
     position: relative;
-    padding-block: 18px; /* space above/below logos */
+    padding-block: 18px;
     background: transparent;
   }
 
-  /* mask + overflow to keep it tidy */
   .slider-outer {
     position: relative;
     overflow: hidden;
     height: calc(var(--h) + 6px);
-    /* soften edges without a visible band */
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   }
@@ -163,17 +158,16 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
     display: grid;
     place-items: center;
     height: var(--h);
-    max-width: var(--w); /* ✅ cap wide logos */
-    width: var(--w); /* fixed box so rows look even */
+    max-width: var(--w);
+    width: var(--w);
   }
 
-  /* normalize all logos */
   .logo img {
     max-height: 100%;
     max-width: 100%;
     width: auto;
     height: auto;
-    object-fit: contain; /* ✅ square/rect scale correctly */
+    object-fit: contain;
     transition:
       transform 0.2s ease,
       opacity 0.2s ease;
@@ -184,7 +178,6 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
     opacity: 1;
   }
 
-  /* transparent edge fades (blend to page background) */
   .fade {
     pointer-events: none;
     position: absolute;
@@ -206,10 +199,9 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
     }
     to {
       transform: translateX(-50%);
-    } /* track is duplicated */
+    }
   }
 
-  /* small screens */
   @media (max-width: 480px) {
     .logo-slider {
       padding-block: 12px;

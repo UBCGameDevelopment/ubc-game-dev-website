@@ -5,25 +5,33 @@ All notable changes to this project are documented in this file.
 This format is inspired by the Terraform changelog style:
 versioned sections with clear, categorized highlights.
 
-## v2.0.1 (Unreleased)
+## v2.0.1 (March 18, 2026)
 
-This release focuses on minor UI polish and performance follow-up work.
+This release focuses on polish, content refreshes, performance follow-up work, and presentation fixes across the site.
 
 ENHANCEMENTS:
 
-* Minor UI polish updates across key pages.
-* Fixed spelling and copy typos in visible UI text.
-* Fixed small display misalignment issues for better visual consistency.
-* Ongoing attempts to fix forced dark mode behavior on some mobile devices so intended colors render correctly.
-* Planned visual enhancements to improve background/text contrast so content remains clearly readable.
+* Refined homepage presentation with stronger background/text contrast, tuned marquee motion, brighter section backdrops, and animated mission stats.
+* Updated the Events page for the current season, including the Year-End Showcase and refreshed active/completed event states.
+* Replaced placeholder legacy team data with real 2024-2025 archive content and imagery.
+* Simplified theme handling to preserve the intended light color presentation across browsers and reduce forced dark mode issues.
+* Updated the site toolchain to `astro@5.18.0` and `@astrojs/check@0.9.6`.
 
 FIXES:
 
-* Corrected tote bag price typo to `$30`.
+* Corrected the tote bag price typo from `$3` to `$30`.
+* Fixed the merch purchase modal import path on the Merch page.
+* Fixed escaped typewriter characters in terminal-style UI so symbols like `&`, `<`, and `>` render correctly.
+* Removed the empty external links wrapper from the shared links config.
 
-PERFORMANCE (PLANNED):
+PERFORMANCE:
 
-* Convert all site images to `.webp` to improve load performance and reduce image payload size.
+* Converted merch image assets to `.webp` and updated merch data to use the lighter files.
+* Improved marquee rendering with a duplicated-track implementation, GPU-friendly transforms, and reduced-motion handling.
+
+INTERNAL:
+
+* Removed browser-visible HTML comments and shipped CSS comments from rendered templates and styles.
 
 ## v2.0.0 (February 17, 2026)
 
