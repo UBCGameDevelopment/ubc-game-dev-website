@@ -66,7 +66,7 @@ export default function LoadingScreen() {
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
-                    .changeDelay(15)
+                    .changeDelay(20)
                     .typeString(
                       "<span style='color: var(--cyber-yellow);'>></span> SYSTEM BOOT SEQUENCE <span style='color: var(--accent);'>INITIATED...</span><br/>",
                     )
