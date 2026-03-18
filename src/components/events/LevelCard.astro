@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import type { Event } from "../../types";
 
 export interface Props extends Event {
@@ -53,11 +52,14 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
   }
 
   <div class="relative aspect-[16/9] overflow-hidden">
-    <Image
-      src={image}
+    <img
+      src={image.src}
       alt={title}
+      width={image.width}
+      height={image.height}
       class:list={["h-full w-full object-cover transition-all duration-500", isActive ? "group-hover:scale-105" : ""]}
       loading="lazy"
+      decoding="async"
     />
     <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-transparent to-transparent"></div>
 
