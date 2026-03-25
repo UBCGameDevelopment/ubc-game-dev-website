@@ -45,9 +45,12 @@ const GlitchText: React.FC<GlitchTextProps> = ({
         setDisplayText(() =>
           text
             .split("")
-            .map((_, index) => {
+            .map((char, index) => {
               if (index < iteration) {
                 return text[index];
+              }
+              if (char === " " || char === "\n") {
+                return char;
               }
               return GLITCH_CHARS[Math.floor(Math.random() * GLITCH_CHARS.length)];
             })
@@ -87,11 +90,18 @@ const GlitchText: React.FC<GlitchTextProps> = ({
 
   return (
     <Tag
-      className={`${className} ${activeClass}`}
-      {...glitchAttr}
+      className={`${className} relative overflow-visible`}
       onMouseEnter={handleMouseEnter}
     >
-      {displayText}
+      <span className="invisible whitespace-pre-wrap">{text}</span>
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 block h-full w-full whitespace-pre-wrap ${activeClass}`}
+        {...glitchAttr}
+      >
+        {displayText}
+      </span>
+      <span className="sr-only">{text}</span>
     </Tag>
   );
 };

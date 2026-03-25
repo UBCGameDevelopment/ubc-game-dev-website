@@ -80,6 +80,7 @@ export const execs: Exec[] = [
     season: "2024-2025",
     linkedin: "https://www.linkedin.com/in/vvictort20",
     github: "https://github.com/vvictort",
+    portfolio: "https://vvictort.tech",
     image: victor,
   },
   {
