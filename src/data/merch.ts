@@ -55,8 +55,7 @@ export const merchItems: MerchItem[] = [
   {
     id: "ubc-tee-cream",
     name: "UBC Game Dev Tee - Cream",
-    description:
-      'Level up your everyday look with this soft cream tee, packed with nostalgic 8-bit vibes. It features subtle, pixel-perfect "UBC GAME DEV" text on the chest in striking purple. The back steals the show with a bold, detailed four-panel retro grid celebrating vintage gaming hardware, the perfect statement piece for any enthusiast.',
+    description: "A cream UBC Game Dev T-shirt.",
     price: 30,
     images: [
       "/assets/merch/ubc_tee_cream_webp/ubc_tee_cream_front.webp",
@@ -75,8 +74,7 @@ export const merchItems: MerchItem[] = [
   {
     id: "ubc-tee-black",
     name: "UBC Game Dev Tee - Black",
-    description:
-      'Level up your everyday look with this soft black tee, packed with nostalgic 8-bit vibes. It features subtle, pixel-perfect "UBC GAME DEV" text on the chest in striking purple. The back steals the show with a bold, detailed four-panel retro grid celebrating vintage gaming hardware, the perfect statement piece for any enthusiast.',
+    description: "A black UBC Game Dev T-shirt.",
     price: 30,
     images: [
       "/assets/merch/ubc_tee_black_webp/ubc_tee_black_front.webp",
@@ -95,8 +93,7 @@ export const merchItems: MerchItem[] = [
   {
     id: "ubc-tote-bag",
     name: "UBC Game Dev Tote Bag",
-    description:
-      "Limestone white canvas tote featuring a bold black UBC Game Dev graphic in a clean, panel-style print. Designed with long shoulder straps and a roomy main compartment, perfect for carrying books, groceries, or everyday essentials.",
+    description: "A UBC Game Dev tote bag.",
     price: 30,
     images: [
       "/assets/merch/ubc_white_tote_bag_webp/ubc_tote_bag_front.webp",

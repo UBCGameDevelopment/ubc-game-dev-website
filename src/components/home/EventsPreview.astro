@@ -2,6 +2,7 @@
 import { EventService } from "../../services/EventService";
 
 const latestEvents = EventService.getLatest(2);
+const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 ---
 
 <section class="section-block relative z-10 overflow-hidden bg-[var(--bg-panel)]/50 py-24">
@@ -22,7 +23,10 @@ const latestEvents = EventService.getLatest(2);
             <div class="hud-card group p-6 transition-all hover:border-[var(--cyber-red)] hover:bg-[var(--bg-panel)]">
               <div class="flex flex-col gap-6 md:flex-row">
                 <div
-                  class="aspect-square w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center grayscale transition-all group-hover:grayscale-0 md:w-48"
+                  class:list={[
+                    "aspect-square w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center transition-all md:w-48",
+                    event.isActive ? "" : "grayscale group-hover:grayscale-0",
+                  ]}
                   style={`background-image: url('${event.image.src}');`}
                 />
 
@@ -37,7 +41,7 @@ const latestEvents = EventService.getLatest(2);
                     </span>
                   </div>
                   <h3 class="mb-2 text-2xl font-bold text-white">{event.title}</h3>
-                  <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">{event.description}</p>
+                  <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">{getPreviewText(event.description)}</p>
                   <div class="font-tech flex items-center gap-2 text-sm text-[var(--text-muted)]">
                     <span
                       class={`h-2 w-2 rounded-full ${event.isActive ? "animate-pulse bg-[var(--cyber-blue)]" : "bg-[var(--text-muted)]"}`}
