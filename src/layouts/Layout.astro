@@ -4,7 +4,6 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
-import LoadingScreen from "../components/common/LoadingScreen";
 
 interface Props {
   title?: string;
@@ -22,14 +21,6 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       name="viewport"
       content="width=device-width"
     />
-    <script is:inline>
-      (function () {
-        const hasVisited = sessionStorage.getItem("cyber_boot_custom");
-        if (!hasVisited && window.location.pathname === "/") {
-          document.documentElement.setAttribute("data-loading", "true");
-        }
-      })();
-    </script>
     <meta
       name="color-scheme"
       content="only light"
@@ -62,8 +53,6 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
   <body
     class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white"
   >
-    {immersive && <LoadingScreen client:only="react" />}
-
     {
       immersive && (
         <>
@@ -95,14 +84,5 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
   html,
   body {
     margin: 0;
-  }
-
-  html[data-loading="true"] #app-content {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  html[data-loading="true"] {
-    overflow: hidden;
   }
 </style>

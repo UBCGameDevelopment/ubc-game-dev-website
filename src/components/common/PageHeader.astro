@@ -36,18 +36,18 @@ const {
 <section class="relative overflow-hidden pt-36 pb-16 md:pb-24">
   <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
     <div
-      class="h-[600px] w-[600px] rounded-full opacity-[0.1]"
+      class="h-[560px] w-[560px] rounded-full opacity-[0.06]"
       style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 50%);`}
     >
     </div>
     <div
-      class="absolute top-0 right-0 h-[400px] w-[400px] rounded-full opacity-[0.05]"
+      class="absolute top-0 right-0 h-[320px] w-[320px] rounded-full opacity-[0.03]"
       style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 60%);`}
     >
     </div>
 
     <div
-      class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.03)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
+      class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.02)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
     >
     </div>
   </div>
@@ -55,25 +55,25 @@ const {
   <div class="container-page relative z-10 mx-auto px-4 text-center">
     <BackgroundText
       text={backgroundText}
-      className="top-0 left-1/2 -translate-x-1/2 text-9xl font-black tracking-tighter opacity-[0.04] md:text-[13rem]"
+      className="top-2 left-1/2 -translate-x-1/2 text-8xl font-black tracking-tighter opacity-[0.025] md:text-[11rem]"
     />
 
-    <div class="mb-6 inline-flex justify-center">
+    <div class="mb-4 inline-flex justify-center opacity-85">
       <CyberBadge
         label={badge.label}
         variant={badge.variant}
       />
     </div>
 
-    <h1 class="mb-6 flex flex-col items-center justify-center gap-2 md:gap-4">
-      <span class:list={["font-tech text-sm font-bold tracking-[0.5em] uppercase md:text-base", subtitleColor]}>
+    <h1 class="mb-5 flex flex-col items-center justify-center gap-2">
+      <span class:list={["font-tech text-[11px] font-semibold tracking-[0.32em] uppercase md:text-xs", subtitleColor]}>
         {subtitle}
       </span>
       <span class="font-display text-5xl font-black tracking-tight text-white uppercase md:text-7xl lg:text-8xl">
         {title.normal}
         <span
           class:list={[
-            "bg-gradient-to-r bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] filter",
+            "bg-gradient-to-r bg-clip-text text-transparent opacity-90",
             gradientClass,
           ]}
         >
@@ -84,7 +84,7 @@ const {
 
     <p
       class:list={[
-        "mx-auto mt-6 max-w-2xl border-l-2 pl-6 text-left text-lg leading-relaxed text-[var(--text-muted)] md:border-l-0 md:pl-0 md:text-center",
+        "mx-auto mt-4 max-w-xl text-base leading-relaxed text-[var(--text-muted)] md:text-center md:text-lg",
         descriptionBorderColor,
       ]}
     >

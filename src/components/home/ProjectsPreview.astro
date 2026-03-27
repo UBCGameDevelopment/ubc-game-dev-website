@@ -1,7 +1,5 @@
 ---
 import { GameService } from "../../services";
-import GlitchText from "../effects/GlitchText";
-import BackgroundText from "../effects/BackgroundText.astro";
 
 const featuredGames = GameService.getFeatured(3);
 ---
@@ -12,32 +10,13 @@ const featuredGames = GameService.getFeatured(3);
   </div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <div class="relative mb-16 flex items-end justify-between border-b border-[var(--border-dim)] pb-6">
-      <BackgroundText
-        text="PROJECTS"
-        className="-top-16 -left-8 text-[8rem] opacity-[0.2] md:-top-24 md:text-[12rem]"
-      />
-      <div class="flex flex-col gap-2">
-         <div class="flex items-center gap-3">
-          <span class="h-2 w-2 animate-pulse rounded-full bg-[var(--cyber-blue)] shadow-[0_0_8px_var(--cyber-blue)]"></span>
-          <span class="font-tech text-xs font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">Archive :: Online</span>
-        </div>
-        <h2 class="flex items-center gap-3 text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
-          <span class="text-[var(--cyber-yellow)]">//</span>
-          <GlitchText
-            client:visible
-            text="Selected_Works"
-            tag="span"
-             options={{ speed: 40, cycles: 4, mode: "decode" }}
-          />
-        </h2>
-      </div>
-       <a
+    <div class="mb-16 flex items-end justify-between gap-4 border-b border-[var(--border-dim)] pb-6">
+      <h2 class="text-3xl font-black tracking-tight text-white uppercase md:text-5xl">Featured Projects</h2>
+      <a
         href="/games"
-        class="font-tech text-xs text-[var(--text-muted)] transition-colors hover:text-[var(--cyber-blue)] flex items-center gap-2"
+        class="font-tech flex items-center gap-2 text-xs tracking-[0.2em] text-[var(--text-muted)] uppercase transition-colors hover:text-white"
       >
-        <span>VIEW_ALL_LOGS</span>
-        <span class="text-[var(--cyber-blue)]">>></span>
+        <span>View All</span>
       </a>
     </div>
 

@@ -1,7 +1,5 @@
 ---
-import GlitchText from "../effects/GlitchText";
 import MissionCodeIO from "./MissionCodeIO";
-import BackgroundText from "../effects/BackgroundText.astro";
 import AnimatedStatValue from "./AnimatedStatValue";
 
 // Data for stats to keep template clean
@@ -17,26 +15,8 @@ const stats = [
   </div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <div class="relative mb-16 flex items-end justify-between border-b border-[var(--border-dim)] pb-6">
-      <BackgroundText
-        text="MISSION"
-        className="-top-16 -left-8 text-[8rem] opacity-[0.2] md:-top-24 md:text-[12rem]"
-      />
-      <div class="flex flex-col gap-2">
-        <div class="flex items-center gap-3">
-          <span class="h-2 w-2 animate-pulse rounded-full bg-[var(--cyber-green)] shadow-[0_0_8px_var(--cyber-green)]"></span>
-          <span class="font-tech text-xs font-bold tracking-[0.2em] text-[var(--cyber-green)] uppercase">System :: Online</span>
-        </div>
-        <h2 class="flex items-center gap-3 text-3xl font-black tracking-tight text-white uppercase md:text-5xl">
-          <span class="text-[var(--cyber-yellow)]">//</span>
-          <GlitchText
-            client:visible
-            text="MISSION_BRIEFING"
-            tag="span"
-            options={{ speed: 30, cycles: 3, mode: "decode" }}
-          />
-        </h2>
-      </div>
+    <div class="mb-16 flex items-end justify-between gap-4 border-b border-[var(--border-dim)] pb-6">
+      <h2 class="text-3xl font-black tracking-tight text-white uppercase md:text-5xl">About Us</h2>
     </div>
 
     <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr]">
@@ -45,12 +25,13 @@ const stats = [
           <div class="absolute top-0 right-0 h-16 w-16 border-t-2 border-r-2 border-[var(--cyber-blue)]/30"></div>
           
           <p class="text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            We are the <span class="font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)]">UBC Game Development Association</span>. 
-            An elite unit of developers, artists, and designers dedicated to the craft of interactive entertainment.
+            We are a <span class="font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)]">student-run game development club</span>
+            comprised of programmers, artists, writers, designers, and musicians. Through UBC Game Dev, you can
+            meet collaborators from different disciplines and start planning your own projects.
           </p>
           <p class="mt-6 text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            Our objective is simple: equip students with the skills to survive and thrive in the game industry. From
-            48-hour game jams to long-term projects, we provide the platform for you to deploy your creativity.
+            We are open to both UBC and non-UBC members. Whether you want to learn, join a team, or build something
+            from scratch, the club gives you a place to create alongside other people who care about games.
           </p>
         </div>
 
@@ -87,7 +68,7 @@ const stats = [
               <div class="h-2 w-2 bg-[var(--cyber-blue)]/20"></div>
             </div>
             <div class="font-tech text-xs tracking-[0.2em] text-[var(--cyber-blue)] opacity-80 uppercase">
-              NET//UPLINK :: MISSION_Briefing.sh
+              NET//UPLINK :: club_overview.ts
             </div>
             <div class="flex gap-1">
               <div class="h-1 w-4 bg-[var(--text-muted)]/20"></div>

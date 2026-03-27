@@ -12,12 +12,12 @@ import triviaNight from "../assets/timeline/Trivia_Night.webp";
 export const events: Event[] = [
   {
     title: "Year-End Showcase",
-    date: "Sat, Apr. 4th, 2026: -7pm",
-    isoDate: "2026-04-04T13:00:00",
+    date: "Saturday, April 4, 2026: 2:00-6:00pm",
+    isoDate: "2026-04-04T14:00:00",
     description:
-      "Celebrate the end of an amazing year with our Year-End Showcase! Join us as we highlight the incredible projects and achievements of our members. Enjoy presentations, demos, and a chance to network with industry professionals. Let's toast to our successes and look forward to an even more exciting year ahead!",
-    location: "IBLC (IKB) 261",
-    mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261",
+      "The UBC Game Development Club Year-End Showcase is almost here, and you won't want to miss it! 🎮<br/><br/>🗓 When? Saturday, April 4th | 2:00 – 6:00 PM<br/>📍 Where? IBLC 261 (Irving K. Barber Learning Centre)<br/>🌟 Who? Everyone is welcome! This is an open-floor event.<br/><br/>This is your chance to celebrate all the incredible games developed this year, connect with industry professionals, and get hands-on feedback from fellow developers and gamers alike! 🔥",
+    location: "IBLC 261 (Irving K. Barber Learning Centre)",
+    mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261/",
     image: placeholderImage,
     isActive: true,
   },

@@ -1,26 +1,9 @@
 ---
-import CyberMarquee from "../effects/CyberMarquee.astro";
 import GlitchText from "../effects/GlitchText";
 import CyberBadge from "../common/CyberBadge.astro";
 ---
 
 <section class="section-block relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
-  <div class="pointer-events-none absolute inset-0 z-0 flex flex-col justify-between overflow-hidden py-32 select-none">
-    <CyberMarquee
-      text="UBC GAME DEV /// EST. 2017 /// VANCOUVER"
-      speed={40}
-      opacity="0.05"
-      color="var(--text-muted)"
-    />
-    <CyberMarquee
-      text="BUILD /// BREAK /// DEPLOY ///"
-      direction="right"
-      speed={44}
-      opacity="0.05"
-      color="var(--text-muted)"
-    />
-  </div>
-
   <div class="container-page relative z-20 text-center">
     <div class="mb-6 flex w-full justify-center">
       <CyberBadge
@@ -37,21 +20,21 @@ import CyberBadge from "../common/CyberBadge.astro";
       options={{ speed: 70 }}
     />
 
-    <p class="mx-auto max-w-xl text-lg font-medium tracking-widest text-[var(--text-muted)] uppercase md:text-xl">
-      Build. <span class="text-[var(--cyber-yellow)]">Break.</span> Deploy.
+    <p class="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-[var(--text-muted)] md:text-2xl">
+      A student-run game development club for programmers, artists, writers, designers, and musicians.
     </p>
 
     <div class="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
       <a
         href="/games"
         class="clip-angled relative overflow-hidden bg-[var(--brand)] px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-[var(--accent)] hover:shadow-[0_0_30px_var(--accent)]">
-        <span class="relative z-10">Initialize / Projects</span>
+        <span class="relative z-10">View Club Projects</span>
       </a>
 
       <a
         href="/about"
         class="group relative flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase transition-colors hover:text-white">
-        <span>System Info</span>
+        <span>About Us</span>
         <span class="block h-1 w-1 bg-[var(--cyber-yellow)] transition-transform group-hover:scale-150"></span>
       </a>
     </div>
