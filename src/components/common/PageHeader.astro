@@ -8,8 +8,6 @@ interface Props {
     label: string;
     variant: "brand" | "accent" | "yellow" | "magenta" | "blue";
   };
-  subtitle: string;
-  subtitleColor?: string; // e.g. "text-[var(--text-muted)]"
   title: {
     normal: string;
     highlight: string;
@@ -17,35 +15,21 @@ interface Props {
   gradientClass: string; // e.g. "from-[var(--brand)] to-[var(--cyber-yellow)]"
   description: string;
   descriptionBorderColor?: string; // e.g. "border-[var(--brand)]"
-  glowColor?: string; // e.g. "var(--brand)" - used for ambient glow
+  glowColor?: string;
 }
 
 const {
   backgroundText,
   badge,
-  subtitle,
-  subtitleColor = "text-[var(--text-muted)]",
   title,
   gradientClass,
   description,
   descriptionBorderColor = "border-[var(--brand)]",
-  glowColor = "var(--brand)",
 } = Astro.props;
 ---
 
 <section class="relative overflow-hidden pt-36 pb-16 md:pb-24">
   <div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-    <div
-      class="h-[560px] w-[560px] rounded-full opacity-[0.06]"
-      style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 50%);`}
-    >
-    </div>
-    <div
-      class="absolute top-0 right-0 h-[320px] w-[320px] rounded-full opacity-[0.03]"
-      style={`background: radial-gradient(circle, ${glowColor} 0%, transparent 60%);`}
-    >
-    </div>
-
     <div
       class="absolute inset-0 bg-[linear-gradient(rgba(var(--brand-rgb),0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--brand-rgb),0.02)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] bg-[size:4rem_4rem]"
     >
@@ -65,20 +49,10 @@ const {
       />
     </div>
 
-    <h1 class="mb-5 flex flex-col items-center justify-center gap-2">
-      <span class:list={["font-tech text-[11px] font-semibold tracking-[0.32em] uppercase md:text-xs", subtitleColor]}>
-        {subtitle}
-      </span>
+    <h1 class="mb-5 flex items-center justify-center">
       <span class="font-display text-5xl font-black tracking-tight text-white uppercase md:text-7xl lg:text-8xl">
         {title.normal}
-        <span
-          class:list={[
-            "bg-gradient-to-r bg-clip-text text-transparent opacity-90",
-            gradientClass,
-          ]}
-        >
-          {title.highlight}
-        </span>
+        <span class="text-white">{title.highlight}</span>
       </span>
     </h1>
 

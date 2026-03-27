@@ -1,22 +1,15 @@
 ---
-/** Static "About" content with three parts:
- *  - Our Mission -> MAIN QUEST
- *  - How It Works -> GUILD STRUCTURE
- *  - Join Us -> JOIN THE PARTY
- */
 import CyberSettingsMenu from "./CyberSettingsMenu";
 import PageHeader from "../common/PageHeader.astro";
 ---
 
 <section>
   <PageHeader
-    backgroundText="MISSION"
-    badge={{ label: "Club Directive // Classified", variant: "brand" }}
-    subtitle="About The Guild"
-    subtitleColor="text-[var(--text-muted)]"
-    title={{ normal: "Mission ", highlight: "Briefing" }}
+    backgroundText="ABOUT"
+    badge={{ label: "Student-Run Club", variant: "brand" }}
+    title={{ normal: "About ", highlight: "US" }}
     gradientClass="from-[var(--brand)] to-[var(--cyber-yellow)]"
-    description="Our primary objective: equipping students with the skills to survive and thrive in the game industry."
+    description="Learn what the club does, how members get involved, and how we help students build games together."
     descriptionBorderColor="border-[var(--brand)]"
     glowColor="var(--brand)"
   />

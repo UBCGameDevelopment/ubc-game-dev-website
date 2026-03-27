@@ -31,14 +31,10 @@ export default function Navbar({ logo, links }: NavbarProps) {
     <>
       <header className="fixed top-3 right-0 left-0 z-[100] mx-auto w-[92%] max-w-5xl">
         <div className="clip-angled relative flex items-center justify-between border-b border-[var(--brand)]/60 bg-[var(--surface)]/95 px-6 py-2 shadow-[0_0_20px_rgba(168,85,247,0.2)] backdrop-blur-xl md:px-8">
-          {/* Decorative Corner Lines */}
           <div className="absolute top-0 left-0 h-5 w-5 border-t-2 border-l-2 border-[var(--brand)] shadow-[0_0_10px_var(--brand)]"></div>
           <div className="absolute right-0 bottom-0 h-5 w-5 border-r-2 border-b-2 border-[var(--brand)] shadow-[0_0_10px_var(--brand)]"></div>
-
-          {/* Animated Top Border Accent */}
           <div className="absolute top-0 right-0 left-0 h-[2px] animate-pulse bg-gradient-to-r from-transparent via-[var(--brand)] to-transparent opacity-50"></div>
 
-          {/* Logo */}
           <a
             href="/"
             className="group relative flex items-center gap-2 transition-colors hover:text-[var(--brand)]"
@@ -51,12 +47,11 @@ export default function Navbar({ logo, links }: NavbarProps) {
                 className="relative h-6 w-6 transition-transform duration-300 group-hover:scale-110 md:h-8 md:w-8"
               />
             </div>
-            <span className="text-neon group-hover:text-neon hidden text-sm font-bold tracking-widest text-[var(--brand)] drop-shadow-[0_0_10px_var(--brand)] sm:block">
+            <span className="text-neon group-hover:text-neon hidden text-sm font-bold tracking-widest text-[var(--brand)] sm:block">
               UBC GAME DEV
             </span>
           </a>
 
-          {/* Desktop Nav Links - Cyber Style */}
           <nav
             className="hidden items-center gap-4 lg:flex"
             onMouseLeave={() => setHoveredIndex(null)}
@@ -80,9 +75,7 @@ export default function Navbar({ logo, links }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            {/* CTA Button */}
             <a
               href={contactLink.href}
               className="clip-angled group relative hidden overflow-hidden border border-[var(--brand)] bg-[var(--brand)]/10 px-6 py-2 text-sm font-bold text-[var(--brand)] transition-all duration-300 hover:bg-[var(--brand)] hover:text-white hover:shadow-[0_0_20px_var(--brand)] md:block"

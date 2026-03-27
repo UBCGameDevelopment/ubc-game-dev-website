@@ -9,16 +9,14 @@ const events = EventService.getAll();
 const eventsForModal = EventService.prepareForModal(events);
 ---
 
-<Layout>
+<Layout title="UBC Game Dev | Events">
   <main>
     <PageHeader
       backgroundText="CHAPTERS"
       badge={{ label: "Season 2025-2026 // Active", variant: "brand" }}
-      subtitle="Mission Log"
-      subtitleColor="text-[var(--cyber-magenta)]"
       title={{ normal: "Event ", highlight: "Chapters" }}
       gradientClass="from-[var(--cyber-yellow)] to-[var(--brand)]"
-      description="Journey through our club events like levels in a game. Complete challenges, unlock achievements, and level up your game dev skills!"
+      description="Explore workshops, showcases, socials, and other club events happening throughout the year at UBC Game Dev."
       descriptionBorderColor="border-[var(--cyber-yellow)]"
       glowColor="var(--brand)"
     />
