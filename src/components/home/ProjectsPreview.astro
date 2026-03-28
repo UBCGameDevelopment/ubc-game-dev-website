@@ -18,7 +18,7 @@ const featuredGames = GameService.getFeatured(3);
       actionLabel="View All"
     />
 
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid justify-items-center gap-8 md:grid-cols-2 md:justify-items-stretch lg:grid-cols-3">
       {
         featuredGames.map((game, index) => {
           let imageSrc = "/assets/placeholder-game.png";
@@ -33,7 +33,7 @@ const featuredGames = GameService.getFeatured(3);
               href={game.gameLink || "#"}
               target="_blank"
               rel="noopener noreferrer"
-              class="group relative block overflow-hidden bg-[#0c0c0c] border border-[var(--border-dim)] transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_30px_rgba(0,240,255,0.15)]"
+              class="group relative block w-full max-w-[26rem] overflow-hidden border border-[var(--border-dim)] bg-[#0c0c0c] transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] md:max-w-none"
               style={`clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); animation-delay: ${index * 0.15}s`}
             >
               <div class="flex items-center justify-between border-b border-[var(--border-dim)] bg-[#151515] px-4 py-2 text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--text-muted)] group-hover:text-[var(--cyber-blue)] transition-colors">

@@ -15,15 +15,15 @@ const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").repla
       actionLabel="View All"
     />
 
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="grid justify-items-center gap-6 md:grid-cols-2 md:justify-items-stretch">
       {
         latestEvents.length > 0 ? (
           latestEvents.map((event) => (
-            <div class="hud-card group p-6 transition-all hover:border-[var(--cyber-red)] hover:bg-[var(--bg-panel)]">
-              <div class="flex flex-col gap-6 md:flex-row">
+            <div class="hud-card group w-full max-w-[24rem] p-5 transition-all hover:border-[var(--cyber-red)] hover:bg-[var(--bg-panel)] md:max-w-none md:p-6">
+              <div class="flex flex-col gap-5 md:flex-row md:gap-6">
                 <div
                   class:list={[
-                    "aspect-square w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center transition-all md:w-48",
+                    "h-44 w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center transition-all md:h-auto md:w-48 md:aspect-square",
                     event.isActive ? "" : "grayscale group-hover:grayscale-0",
                   ]}
                   style={`background-image: url('${event.image.src}');`}
