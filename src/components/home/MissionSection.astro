@@ -1,93 +1,85 @@
 ---
-import MissionCodeIO from "./MissionCodeIO";
 import AnimatedStatValue from "./AnimatedStatValue";
+import HomeSectionHeader from "./HomeSectionHeader.astro";
+import infoPhoto from "../../assets/info.jpg";
 
-// Data for stats to keep template clean
 const stats = [
   { label: "Active Agents", value: "500+", color: "var(--cyber-blue)" },
-  { label: "Shipped Titles", value: "50+", color: "var(--cyber-red)" },
+  { label: "Shipped Titles", value: "50+", color: "var(--cyber-yellow)" },
 ];
 ---
 
 <section class="section-block relative z-10 overflow-hidden py-24">
-  <div class="pointer-events-none absolute inset-0 z-0 opacity-20"
-       style="background-image: linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px); background-size: 40px 40px;">
-  </div>
+  <div
+    class="pointer-events-none absolute inset-0 z-0 opacity-15"
+    style="background-image: linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px); background-size: 40px 40px;"
+  ></div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <div class="mb-16 flex items-end justify-between gap-4 border-b border-[var(--border-dim)] pb-6">
-      <h2 class="text-3xl font-black tracking-tight text-white uppercase md:text-5xl">About Us</h2>
-    </div>
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
+      <div class="space-y-8">
+        <HomeSectionHeader
+          label="About Us"
+          title="Make games with people who care about them."
+          description="UBC Game Dev is a student-run club for programmers, artists, writers, designers, and musicians to meet collaborators, build skills, and ship projects together."
+          titleClass="text-4xl md:text-6xl"
+        />
 
-    <div class="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr]">
-      <div class="flex flex-col gap-8">
-        <div class="hud-card relative overflow-hidden border-l-4 border-[var(--cyber-blue)] bg-[var(--bg-panel)]/80 p-8 backdrop-blur-sm">
-          <div class="absolute top-0 right-0 h-16 w-16 border-t-2 border-r-2 border-[var(--cyber-blue)]/30"></div>
-          
-          <p class="text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            We are a <span class="font-bold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)]">student-run game development club</span>
-            comprised of programmers, artists, writers, designers, and musicians. Through UBC Game Dev, you can
-            meet collaborators from different disciplines and start planning your own projects.
-          </p>
-          <p class="mt-6 text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
-            We are open to both UBC and non-UBC members. Whether you want to learn, join a team, or build something
-            from scratch, the club gives you a place to create alongside other people who care about games.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          {stats.map((stat, index) => (
-            <div class="group relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)] p-5 transition-all hover:border-[var(--cyber-blue)] hover:shadow-[0_0_15px_rgba(0,240,255,0.15)]">
-              <div class="absolute top-0 left-0 h-1 w-full scale-x-0 bg-gradient-to-r from-transparent via-[var(--cyber-blue)] to-transparent transition-transform duration-500 group-hover:scale-x-100"></div>
-              
-              <div class="flex flex-col">
-                <AnimatedStatValue
-                  client:visible
-                  value={stat.value}
-                  accentColor={stat.color}
-                  delay={index * 0.18}
-                  className="font-display text-4xl font-black tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] md:text-5xl"
-                />
-                <span class="mt-2 font-tech text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase group-hover:text-[var(--cyber-blue)] transition-colors">
-                  {stat.label}
-                </span>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {
+            stats.map((stat) => (
+              <div class="overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)]/90">
+                <div class="border-b border-[var(--border-dim)] px-5 py-3">
+                  <p class="font-tech text-[10px] tracking-[0.22em] text-[var(--text-muted)] uppercase">
+                    {stat.label}
+                  </p>
+                </div>
+                <div class="px-5 py-5">
+                  <AnimatedStatValue
+                    client:visible
+                    value={stat.value}
+                    accentColor={stat.color}
+                    className="text-4xl font-black tracking-[-0.05em] text-white md:text-5xl"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
 
-      <div class="relative mt-8 lg:mt-0">
-        <div class="relative overflow-hidden border border-[var(--border-dim)] bg-[#0c0c0c] shadow-[0_0_40px_rgba(0,0,0,0.6)]" 
-             style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
-          
-          <div class="flex items-center justify-between border-b border-[var(--border-dim)] bg-[#1a1a1a] px-4 py-2">
-            <div class="flex items-center gap-2">
-              <div class="h-2 w-2 bg-[var(--cyber-red)]"></div>
-              <div class="h-2 w-2 bg-[var(--cyber-blue)]/50"></div>
-              <div class="h-2 w-2 bg-[var(--cyber-blue)]/20"></div>
+      <div class="relative lg:pl-6">
+        <div
+          class="relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
+          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);"
+        >
+          <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-3 backdrop-blur-sm">
+            <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
+              Community // In Session
             </div>
-            <div class="font-tech text-xs tracking-[0.2em] text-[var(--cyber-blue)] opacity-80 uppercase">
-              NET//UPLINK :: club_overview.ts
-            </div>
-            <div class="flex gap-1">
-              <div class="h-1 w-4 bg-[var(--text-muted)]/20"></div>
-              <div class="h-1 w-1 bg-[var(--text-muted)]/20"></div>
+            <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">
+              UBC Game Dev
             </div>
           </div>
 
-          <div class="relative p-6 md:p-8 min-h-[400px]">
-            <div class="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
-            <div class="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-transparent to-black/40"></div>
+          <div class="relative aspect-[16/11]">
+            <img
+              src={infoPhoto.src}
+              alt="UBC Game Dev members attending a club session together"
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/22 via-transparent to-transparent"></div>
+            <div class="absolute left-0 top-0 h-20 w-20 border-l-2 border-t-2 border-[var(--cyber-blue)]/25"></div>
+          </div>
 
-            <div class="font-mono relative z-0 text-sm md:text-base leading-relaxed text-cyan-200 drop-shadow-[0_0_8px_rgba(0,240,255,0.6)]">
-              <MissionCodeIO client:visible />
-            </div>
+          <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-5 py-4 md:px-6">
+            <p class="font-tech text-[10px] tracking-[0.24em] text-[var(--cyber-yellow)] uppercase">
+              Workshops / Teams / Showcases
+            </p>
           </div>
         </div>
-
-        <div class="absolute -top-4 -right-4 -z-10 h-full w-full rounded-lg border border-[var(--cyber-yellow)]/20 bg-transparent"></div>
-        <div class="absolute -bottom-4 -left-4 -z-10 h-full w-full rounded-lg border border-[var(--cyber-red)]/20 bg-transparent"></div>
       </div>
     </div>
   </div>
