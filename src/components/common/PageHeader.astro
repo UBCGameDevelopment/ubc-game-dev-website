@@ -64,12 +64,12 @@ const accent = accentStyles[badge.variant] ?? accentStyles.brand;
 
       <div class="relative z-10 mx-auto max-w-5xl text-center">
         <div class="mb-6 flex items-center justify-center gap-4">
-          <span class:list={["h-px w-10 shrink-0 opacity-80", accent.line]}></span>
+          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", accent.line]}></span>
           <CyberBadge
             label={badge.label}
             variant={badge.variant}
           />
-          <span class:list={["h-px w-10 shrink-0 opacity-80", accent.line]}></span>
+          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", accent.line]}></span>
         </div>
 
         <h1 class="text-4xl font-black tracking-[-0.05em] text-white uppercase md:text-6xl lg:text-[5rem]">
