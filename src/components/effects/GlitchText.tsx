@@ -10,6 +10,7 @@ interface GlitchTextProps {
     mode?: "decode" | "offset" | "both";
   };
   onHover?: boolean;
+  respectReducedMotion?: boolean;
 }
 
 const GLITCH_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&^*!~";
@@ -20,9 +21,11 @@ const GlitchText: React.FC<GlitchTextProps> = ({
   className = "",
   options = {},
   onHover = true,
+  respectReducedMotion = true,
 }) => {
   const [displayText, setDisplayText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
+  const [allowAnimation, setAllowAnimation] = useState(!respectReducedMotion);
   const intervalRef = useRef<any>(null);
   const isAnimating = useRef(false);
 
@@ -30,9 +33,30 @@ const GlitchText: React.FC<GlitchTextProps> = ({
   const speed = options.speed || 30;
   const cycles = options.cycles || 3;
   const mode = options.mode || "both"; // Default to both decode + visual
+  const usesOffsetEffect = mode === "offset" || mode === "both";
+
+  useEffect(() => {
+    if (!respectReducedMotion || typeof window === "undefined") {
+      setAllowAnimation(true);
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setAllowAnimation(!mediaQuery.matches);
+
+    updatePreference();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updatePreference);
+      return () => mediaQuery.removeEventListener("change", updatePreference);
+    }
+
+    mediaQuery.addListener(updatePreference);
+    return () => mediaQuery.removeListener(updatePreference);
+  }, [respectReducedMotion]);
 
   const animate = useCallback(() => {
-    if (isAnimating.current) return;
+    if (!allowAnimation || isAnimating.current) return;
     isAnimating.current = true;
     setIsGlitching(true);
 
@@ -67,25 +91,31 @@ const GlitchText: React.FC<GlitchTextProps> = ({
 
       iteration += 1 / cycles;
     }, speed);
-  }, [text, speed, cycles, mode]);
+  }, [allowAnimation, text, speed, cycles, mode]);
 
   useEffect(() => {
+    if (!allowAnimation) {
+      clearInterval(intervalRef.current);
+      isAnimating.current = false;
+      setIsGlitching(false);
+      setDisplayText(text);
+      return;
+    }
+
     animate();
-    // Also trigger on loop? Maybe random?
-    // For now just on mount.
     return () => clearInterval(intervalRef.current);
-  }, [text, animate]);
+  }, [text, animate, allowAnimation]);
 
   const handleMouseEnter = () => {
-    if (onHover) {
+    if (onHover && allowAnimation) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       isAnimating.current = false;
       animate();
     }
   };
 
-  // When glitching, we append the CSS class for visual offset
-  const activeClass = isGlitching ? "glitch-intense" : "";
+  // Only apply the split/glitch overlay when the selected mode includes it.
+  const activeClass = isGlitching && usesOffsetEffect ? "glitch-intense" : "";
   const glitchAttr = isGlitching ? { "data-text": text } : {};
 
   return (

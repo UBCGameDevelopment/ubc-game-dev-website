@@ -259,6 +259,14 @@ h6 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .glitch-intense::before,
+  .glitch-intense::after {
+    animation: none !important;
+    content: none;
+  }
+}
+
 .hud-card {
   background: var(--glass-str);
   backdrop-filter: blur(10px);
