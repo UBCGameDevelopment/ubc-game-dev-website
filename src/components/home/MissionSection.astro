@@ -12,29 +12,59 @@ const stats = [
 <section class="section-block relative z-10 overflow-hidden py-24">
   <div
     class="pointer-events-none absolute inset-0 z-0 opacity-15"
-    style="background-image: linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px); background-size: 40px 40px;"
-  ></div>
+    style="background-image: linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px); background-size: 40px 40px;">
+  </div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
-      <div class="space-y-8">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)] lg:items-center lg:gap-6">
+      <div class="space-y-4">
         <HomeSectionHeader
           label="About Us"
           title="Make games with people who care about them."
           description="UBC Game Dev is a student-run club for programmers, artists, writers, designers, and musicians to meet collaborators, build skills, and ship projects together."
           titleClass="text-4xl md:text-6xl"
-        />
+          wrapperClass="mb-6"
+        >
+          <div
+            slot="after-label"
+            class="relative mx-auto w-full max-w-[22rem] overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)] lg:hidden"
+            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);"
+          >
+            <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
+              <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
+                Community // In Session
+              </div>
+              <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">UBC Game Dev</div>
+            </div>
 
-        <div class="grid gap-4 sm:grid-cols-2">
+            <div class="relative aspect-[5/4]">
+              <img
+                src={infoPhoto.src}
+                alt="UBC Game Dev members attending a club session together"
+                class="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/22 via-transparent to-transparent"></div>
+              <div class="absolute top-0 left-0 h-20 w-20 border-t-2 border-l-2 border-[var(--cyber-blue)]/25"></div>
+            </div>
+
+            <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-4 py-3.5">
+              <p class="font-tech text-[10px] tracking-[0.24em] text-[var(--cyber-yellow)] uppercase">
+                Workshops / Teams / Showcases
+              </p>
+            </div>
+          </div>
+        </HomeSectionHeader>
+
+        <div class="grid grid-cols-2 gap-3">
           {
             stats.map((stat) => (
               <div class="overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-deep)]/90">
-                <div class="border-b border-[var(--border-dim)] px-5 py-3">
-                  <p class="font-tech text-[10px] tracking-[0.22em] text-[var(--text-muted)] uppercase">
-                    {stat.label}
-                  </p>
+                <div class="border-b border-[var(--border-dim)] px-4 py-2.5">
+                  <p class="font-tech text-[10px] tracking-[0.22em] text-[var(--text-muted)] uppercase">{stat.label}</p>
                 </div>
-                <div class="px-5 py-5">
+                <div class="px-4 py-4">
                   <AnimatedStatValue
                     client:visible
                     value={stat.value}
@@ -48,21 +78,19 @@ const stats = [
         </div>
       </div>
 
-      <div class="relative lg:pl-6">
+      <div class="relative hidden lg:block lg:pl-2">
         <div
           class="relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
-          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);"
-        >
-          <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-3 backdrop-blur-sm">
+          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);">
+          <div
+            class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
             <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
               Community // In Session
             </div>
-            <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">
-              UBC Game Dev
-            </div>
+            <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">UBC Game Dev</div>
           </div>
 
-          <div class="relative aspect-[16/11]">
+          <div class="relative aspect-[5/4] sm:aspect-[16/11]">
             <img
               src={infoPhoto.src}
               alt="UBC Game Dev members attending a club session together"
@@ -71,10 +99,10 @@ const stats = [
               decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/22 via-transparent to-transparent"></div>
-            <div class="absolute left-0 top-0 h-20 w-20 border-l-2 border-t-2 border-[var(--cyber-blue)]/25"></div>
+            <div class="absolute top-0 left-0 h-20 w-20 border-t-2 border-l-2 border-[var(--cyber-blue)]/25"></div>
           </div>
 
-          <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-5 py-4 md:px-6">
+          <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-4 py-3.5 md:px-5">
             <p class="font-tech text-[10px] tracking-[0.24em] text-[var(--cyber-yellow)] uppercase">
               Workshops / Teams / Showcases
             </p>
