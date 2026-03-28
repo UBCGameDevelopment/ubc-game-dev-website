@@ -19,7 +19,6 @@ export default function CtaButton({
   const ref = useRef<HTMLAnchorElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Cyberpunk 2077 styled angular button
   const baseClassName = `
     group font-pixel inline-flex items-center gap-3 px-8 py-3 text-sm md:text-base
     font-bold uppercase tracking-wider

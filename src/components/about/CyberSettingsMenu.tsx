@@ -22,7 +22,6 @@ const TabButton = ({ active, label, onClick }: { active: boolean; label: string;
         </motion.span>
       )}
     </span>
-    {/* Glitch hover background */}
     <div className="absolute inset-0 -z-10 translate-x-full bg-[var(--brand)]/20 opacity-0 transition-transform duration-300 group-hover:translate-x-0" />
   </button>
 );
@@ -32,7 +31,6 @@ export default function CyberSettingsMenu() {
 
   return (
     <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[300px_1fr] lg:gap-8">
-      {/* Sidebar Navigation */}
       <aside className="font-tech h-fit overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)]/90 pb-6 text-sm shadow-[0_0_20px_rgba(0,0,0,0.5)] backdrop-blur sm:pb-8">
         <div className="border-b border-[var(--border-dim)] bg-[var(--bg-deep)] p-4">
           <h2 className="text-[10px] font-bold tracking-[0.18em] text-[var(--text-muted)] sm:text-xs sm:tracking-[0.2em]">
@@ -57,7 +55,6 @@ export default function CyberSettingsMenu() {
           />
         </div>
 
-        {/* Decor */}
         <div className="mt-8 px-4 text-[10px] text-[var(--border-dim)] sm:mt-12 sm:px-6">
           <p>STUDENT-RUN</p>
           <p>OPEN TO ALL SKILL LEVELS</p>
@@ -65,9 +62,7 @@ export default function CyberSettingsMenu() {
         </div>
       </aside>
 
-      {/* Main Content Area */}
       <div className="relative min-h-[420px] border border-[var(--border-dim)] bg-[var(--bg-panel)]/50 backdrop-blur-md md:min-h-[500px]">
-        {/* CRT Scanline Overlay */}
         <div className="scanline-rgb pointer-events-none absolute inset-0 z-0 opacity-10"></div>
 
         <div className="relative z-10 p-5 sm:p-6 md:p-12">

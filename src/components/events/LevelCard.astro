@@ -63,7 +63,6 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     />
     <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-transparent to-transparent"></div>
 
-    {/* Decorative corner accent */}
     {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
   </div>
 
@@ -157,10 +156,9 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
       }
     </div>
 
-    <p
-      class="mt-3 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)] md:mt-4"
-      set:html={description}
-    />
+    <p class="mt-3 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)] md:mt-4">
+      {description}
+    </p>
 
     {
       isActive && (

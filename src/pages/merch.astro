@@ -261,7 +261,6 @@ const featuredImage = validFeaturedImages[0] ?? "";
               <div class="mt-6 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
                 {
                   merchItems.map((item) => {
-                    // Filter placeholders from this item's images
                     const itemValidImages = (item.images ?? []).filter((src) => !isPlaceholder(src));
                     const itemImage = itemValidImages[0] ?? "";
 

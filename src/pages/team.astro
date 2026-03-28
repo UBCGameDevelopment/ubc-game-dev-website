@@ -8,7 +8,6 @@ import "../styles/global.css";
 
 const execs = ExecService.getAll();
 
-// Serialize Astro image metadata to plain src strings for the React component
 const serializedExecs = execs.map((exec) => ({
   name: exec.name,
   role: exec.role,

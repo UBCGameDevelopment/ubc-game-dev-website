@@ -5,7 +5,6 @@ import { legacyExecs } from "../../data/legacyExecs";
 
 import "../../styles/global.css";
 
-// Group execs by season
 const seasons = [...new Set(legacyExecs.map((e) => e.season))];
 const execsBySeason = seasons.map((season) => ({
   season,

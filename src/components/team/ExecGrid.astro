@@ -1,13 +1,10 @@
 ---
-// src/components/about/ExecGrid.astro
 import ExecCard from "./ExecCard.astro";
 import type { Exec } from "../../types";
 
 export interface Props {
   execs: Exec[];
 }
-
-// const { execs } = Astro.props;
 
 import { ExecService } from "../../services";
 const { president, rest } = ExecService.getWithPresidentSeparated();
@@ -41,7 +38,6 @@ import CyberBadge from "../common/CyberBadge.astro";
     president && (
       <div class="mt-12 flex justify-center">
         <div class="group relative">
-          {/* Glow effect for president */}
           <div class="from-brand-500 to-accent-500 absolute -inset-4 rounded-full bg-gradient-to-r opacity-20 blur-2xl transition-opacity group-hover:opacity-30" />
           <div class="relative w-[200px] md:w-[220px]">
             <ExecCard {...president} />

@@ -5,7 +5,6 @@ export interface Props extends MerchItem {}
 
 const { name, description, price, category, isNew, isSoldOut, colors, sizes, images } = Astro.props;
 
-// Filter out placeholder images
 const isPlaceholder = (src: string) => src.includes("/placeholder-") || src.includes("placeholder.");
 const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 ---
@@ -67,7 +66,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 
             {imageList.length > 1 && (
               <>
-                {/* Navigation buttons */}
                 <button
                   data-carousel-prev
                   class="absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/80"
@@ -106,7 +104,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
                     />
                   </svg>
                 </button>
-                {/* Dots indicator */}
                 <div class="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/45 px-2 py-1 backdrop-blur-sm">
                   {imageList.map((_, index) => (
                     <span
@@ -263,17 +260,16 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
         setActive(prevIndex);
       };
 
-      // Add click listeners to navigation buttons
       if (nextButton) {
         nextButton.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent triggering the card click
+          e.stopPropagation();
           goToNext();
         });
       }
 
       if (prevButton) {
         prevButton.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent triggering the card click
+          e.stopPropagation();
           goToPrev();
         });
       }

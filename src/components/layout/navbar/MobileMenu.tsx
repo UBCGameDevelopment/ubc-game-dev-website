@@ -19,7 +19,6 @@ export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) 
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -28,7 +27,6 @@ export default function MobileMenu({ links, isOpen, onClose }: MobileMenuProps) 
             className="fixed inset-0 z-[90] bg-black/60 backdrop-blur-sm lg:hidden"
           />
 
-          {/* Floating Menu Card */}
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
