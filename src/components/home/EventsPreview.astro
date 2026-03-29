@@ -3,10 +3,15 @@ import { EventService } from "../../services/EventService";
 import HomeSectionHeader from "./HomeSectionHeader.astro";
 
 const latestEvents = EventService.getLatest(2);
-const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+const getPreviewText = (html: string) =>
+  html
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 ---
 
-<section class="section-block relative z-10 overflow-hidden bg-[var(--bg-panel)]/50 py-24">
+<section class="section-block relative z-10 overflow-hidden py-24">
   <div class="container-page relative z-10 mx-auto px-4">
     <HomeSectionHeader
       label="Events"
@@ -23,7 +28,7 @@ const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").repla
               <div class="flex flex-col gap-5 md:flex-row md:gap-6">
                 <div
                   class:list={[
-                    "h-44 w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center transition-all md:h-auto md:w-48 md:aspect-square",
+                    "h-44 w-full shrink-0 border border-[var(--border-dim)] bg-cover bg-center transition-all md:aspect-square md:h-auto md:w-48",
                     event.isActive ? "" : "grayscale group-hover:grayscale-0",
                   ]}
                   style={`background-image: url('${event.image.src}');`}
@@ -32,7 +37,8 @@ const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").repla
                 <div class="flex-1">
                   <div class="mb-2 flex items-center justify-between">
                     <span
-                      class={`px-2 py-0.5 text-xs font-bold tracking-wider text-black uppercase ${event.isActive ? "bg-[var(--cyber-red)]" : "bg-[var(--text-muted)]"}`}>
+                      class={`px-2 py-0.5 text-xs font-bold tracking-wider text-black uppercase ${event.isActive ? "bg-[var(--cyber-red)]" : "bg-[var(--text-muted)]"}`}
+                    >
                       {event.isActive ? "Active" : "Completed"}
                     </span>
                     <span class="font-tech text-base text-[var(--cyber-yellow)]">
@@ -40,7 +46,9 @@ const getPreviewText = (html: string) => html.replace(/<br\s*\/?>/gi, " ").repla
                     </span>
                   </div>
                   <h3 class="mb-2 text-2xl font-bold text-white">{event.title}</h3>
-                  <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">{getPreviewText(event.description)}</p>
+                  <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">
+                    {getPreviewText(event.description)}
+                  </p>
                   <div class="font-tech flex items-center gap-2 text-sm text-[var(--text-muted)]">
                     <span
                       class={`h-2 w-2 rounded-full ${event.isActive ? "animate-pulse bg-[var(--cyber-blue)]" : "bg-[var(--text-muted)]"}`}
