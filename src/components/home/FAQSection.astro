@@ -1,6 +1,4 @@
 ---
-import HomeSectionHeader from "./HomeSectionHeader.astro";
-
 interface Props {
   faqs: Array<{ q: string; a: string }>;
 }
@@ -9,26 +7,37 @@ const { faqs } = Astro.props;
 ---
 
 <section class="section-block relative z-10 bg-[var(--bg-panel)]/30 py-24">
-  <div class="container-page mx-auto max-w-4xl px-4">
-    <HomeSectionHeader
-      label="FAQ"
-      title="Frequently Asked Questions"
-    />
+  <div class="container-page mx-auto px-4">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
+      <div class="space-y-5">
+        <div
+          class="inline-flex items-center gap-3 border border-[var(--border-dim)] bg-[var(--bg-panel)]/70 px-4 py-2 font-tech text-[11px] tracking-[0.24em] text-[var(--cyber-blue)] uppercase"
+          style="clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);"
+        >
+          <span class="h-1.5 w-1.5 bg-[var(--cyber-blue)]"></span>
+          FAQ
+        </div>
 
-    <div class="space-y-4">
-      {
-        faqs.map((faq) => (
-          <details class="group hud-card cursor-pointer open:border-[var(--brand)] open:bg-[var(--bg-panel)]">
-            <summary class="flex list-none items-center justify-between p-6 text-xl font-bold text-white">
-              <span class="transition-colors group-hover:text-[var(--brand)]">{faq.q}</span>
-              <span class="text-[var(--brand)] transition-transform group-open:rotate-180">▼</span>
-            </summary>
-            <div class="mt-[-1px] border-t border-[var(--border-dim)] px-6 pt-4 pb-6 text-base text-[var(--text-muted)]">
-              {faq.a}
-            </div>
-          </details>
-        ))
-      }
+        <h2 class="max-w-3xl text-3xl font-black tracking-[-0.05em] text-white md:text-5xl">
+          Questions? <span class="text-[var(--text-muted)]">We got answers.</span>
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {
+          faqs.map((faq) => (
+            <details class="group hud-card cursor-pointer open:border-[var(--brand)] open:bg-[var(--bg-panel)]">
+              <summary class="flex list-none items-center justify-between p-6 text-xl font-bold text-white">
+                <span class="transition-colors group-hover:text-[var(--brand)]">{faq.q}</span>
+                <span class="text-[var(--brand)] transition-transform group-open:rotate-180">▼</span>
+              </summary>
+              <div class="mt-[-1px] border-t border-[var(--border-dim)] px-6 pt-4 pb-6 text-base text-[var(--text-muted)]">
+                {faq.a}
+              </div>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
