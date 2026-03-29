@@ -194,21 +194,23 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       </span>
       {
         !isSoldOut && (
-          <button class="clip-angled group relative inline-flex items-center justify-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]">
-            <span class="relative z-10">Buy Now</span>
-            <svg
-              class="relative z-10 h-3 w-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
+          <button class="clip-angled group relative inline-flex bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:-translate-y-1 hover:shadow-[0_0_15px_var(--cyber-blue)]">
+            <span class="clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] transition-[background-color] group-hover:bg-white">
+              <span>Buy Now</span>
+              <svg
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </span>
           </button>
         )
       }

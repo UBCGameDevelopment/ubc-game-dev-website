@@ -4,8 +4,8 @@ import HomeSectionHeader from "./HomeSectionHeader.astro";
 import infoPhoto from "../../assets/info.jpg";
 
 const stats = [
-  { label: "Active Agents", value: "500+", color: "var(--cyber-blue)" },
-  { label: "Shipped Titles", value: "50+", color: "var(--cyber-yellow)" },
+  { label: "> Active_Agents", value: "500+", color: "var(--cyber-blue)" },
+  { label: "> Shipped_Titles", value: "50+", color: "var(--cyber-yellow)" },
 ];
 ---
 
@@ -18,16 +18,13 @@ const stats = [
           title="Make games with people who care about them."
           description="UBC Game Dev is a student-run club for programmers, artists, writers, designers, and musicians to meet collaborators, build skills, and ship projects together."
           titleClass="text-4xl md:text-6xl"
-          wrapperClass="mb-6"
-        >
+          wrapperClass="mb-6">
           <div
             slot="after-label"
             class="relative mx-auto w-full max-w-[22rem] overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)] lg:hidden"
-            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);"
-          >
+            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);">
             <div
-              class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm"
-            >
+              class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
               <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
                 Community // In Session
               </div>
@@ -78,11 +75,9 @@ const stats = [
       <div class="relative hidden lg:block lg:pl-2">
         <div
           class="relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
-          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);"
-        >
+          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);">
           <div
-            class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm"
-          >
+            class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
             <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
               Community // In Session
             </div>

@@ -243,22 +243,24 @@ export default function MerchPurchaseModal() {
                     </span>
                     <button
                       onClick={() => setView("purchase")}
-                      className="clip-angled group relative ml-auto inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
+                      className="clip-angled group relative ml-auto inline-flex w-full bg-[var(--cyber-blue)] p-px text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
                     >
-                      <span className="relative z-10">BUY NOW</span>
-                      <svg
-                        className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
+                      <span className="clip-angled relative z-10 flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] transition-[background-color] group-hover:bg-white">
+                        <span>BUY NOW</span>
+                        <svg
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -403,9 +405,11 @@ export default function MerchPurchaseModal() {
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={() => setIsOpen(false)}
-                      className="clip-angled group relative overflow-hidden bg-[var(--brand)] px-6 py-2 font-bold text-white uppercase transition-all hover:bg-[var(--accent)]"
+                      className="clip-angled group relative bg-[var(--brand)]/90 p-px text-white uppercase transition-all"
                     >
-                      <span className="relative z-10">Acknowledge</span>
+                      <span className="clip-angled relative z-10 block bg-[var(--brand)] px-6 py-2 font-bold transition-[background-color] group-hover:bg-[var(--accent)]">
+                        Acknowledge
+                      </span>
                     </button>
                   </div>
                 </div>

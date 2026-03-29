@@ -205,10 +205,12 @@ export default function CyberSettingsMenu() {
 
                   <a
                     href="/contact"
-                    className="clip-angled inline-flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-5 py-4 text-center font-bold text-black transition-transform hover:scale-105 hover:shadow-[0_0_20px_var(--cyber-blue)] sm:w-auto sm:px-8"
+                    className="clip-angled group inline-flex w-full bg-[var(--cyber-blue)] p-px text-black transition-transform hover:scale-105 hover:shadow-[0_0_20px_var(--cyber-blue)] sm:w-auto"
                   >
-                    <span className="tracking-[0.18em] sm:tracking-widest">
-                      CONTACT US
+                    <span className="clip-angled flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-5 py-4 text-center font-bold transition-[background-color] group-hover:bg-white sm:px-8">
+                      <span className="tracking-[0.18em] sm:tracking-widest">
+                        CONTACT US
+                      </span>
                     </span>
                   </a>
                 </div>
