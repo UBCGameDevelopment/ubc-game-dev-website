@@ -33,9 +33,10 @@ const {
 
       <slot name="after-label" />
 
-      <h2 class:list={["max-w-3xl font-black tracking-[-0.05em] text-white uppercase", titleClass]}>
-        {title}
-      </h2>
+      <h2 
+        class:list={["font-display max-w-3xl font-black tracking-[-0.05em] text-white uppercase", titleClass]}
+        set:html={title}
+      />
 
       {
         description && (
@@ -51,9 +52,10 @@ const {
         actionLabel && (
           <a
             href={actionHref}
-            class="font-tech shrink-0 text-xs tracking-[0.2em] text-[var(--text-muted)] uppercase transition-colors hover:text-white"
+            class="font-tech group self-start shrink-0 flex items-center gap-2 border border-[var(--border-dim)] bg-black/50 px-5 py-2 text-xs font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase transition-all hover:border-[var(--cyber-blue)] hover:bg-[var(--cyber-blue)]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
           >
             {actionLabel}
+            <span class="text-white/50 transition-colors group-hover:text-white">&gt;</span>
           </a>
         )
     }

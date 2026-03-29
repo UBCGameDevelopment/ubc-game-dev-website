@@ -395,9 +395,7 @@ export default function MerchPurchaseModal() {
                     <div className="mt-6 rounded border border-[var(--border-dim)] bg-[var(--bg-deep)]/50 p-4 text-xs">
                       <p className="mb-1 font-bold text-[var(--brand)] uppercase">System Note:</p>
                       <p>
-                        A Guild Officer will verify your transaction. You will receive your gear{" "}
-                        <span className="font-bold text-white">at the specified in-person pickup time</span> during the
-                        term.
+                        An executive member will verify your purchase. Further instructions will be provided then for the next steps in regards to getting your orders.
                       </p>
                     </div>
                   </div>

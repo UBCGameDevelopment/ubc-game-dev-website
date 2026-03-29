@@ -6,8 +6,6 @@ import idleImg from "../../assets/logo/Idle.webp";
 ---
 
 <section class="section-block relative flex h-screen min-h-[850px] w-full flex-col items-center overflow-hidden bg-[var(--bg-deep)]">
-
-  <!-- Interactive grid pattern overlay -->
   <div
     class="pointer-events-none absolute inset-0 z-[1] opacity-[0.08]"
     style="
@@ -17,23 +15,17 @@ import idleImg from "../../assets/logo/Idle.webp";
       background-size: 12rem 12rem;
     "
   ></div>
-
-  <!-- Central ambient light behind the main title / mascot -->
   <div class="pointer-events-none absolute top-[48%] left-1/2 z-[2] h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--text-muted)] opacity-5 blur-[120px] md:top-[52%] md:h-[500px] md:w-[500px] lg:top-[55%]"></div>
 
-  <!-- Decorative dashed circle behind main image (matches TRONIX-5 perfectly) -->
   <div class="pointer-events-none absolute top-[48%] left-1/2 z-[3] h-[40vh] min-h-[300px] w-[40vh] min-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/20 md:top-[52%] md:h-[55vh] md:w-[55vh] md:min-h-[400px] md:min-w-[400px] lg:top-[55%]"></div>
   <div class="pointer-events-none absolute top-[48%] left-1/2 z-[3] h-[60vh] min-h-[450px] w-[60vh] min-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dotted border-[var(--cyber-blue)]/10 md:top-[52%] md:h-[75vh] md:w-[75vh] md:min-h-[550px] md:min-w-[550px] lg:top-[55%]"></div>
 
-  <!-- Faint Vancouver user map behind the mascot -->
-  <div class="pointer-events-none absolute top-[48%] left-1/2 z-[4] aspect-square w-[150vw] max-w-[1000px] -translate-x-1/2 -translate-y-1/2 opacity-25 md:top-[52%] md:w-[120vw] md:max-w-[1200px] lg:top-[55%] lg:w-[100vw] lg:max-w-[1400px]">
+  <div class="pointer-events-none absolute top-1/2 left-1/2 z-[4] w-[160vw] max-w-[1500px] aspect-[4/3] -translate-x-1/2 -translate-y-1/2 opacity-40">
     <div 
-      class="absolute inset-0 bg-[url('/vancouver-map.webp')] bg-contain bg-center bg-no-repeat" 
-      style="-webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%); mask-image: radial-gradient(circle, black 30%, transparent 70%);"
+      class="absolute inset-0 bg-[url('/vancouver-map.webp')] bg-contain bg-center bg-no-repeat mix-blend-screen" 
+      style="-webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%); mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);"
     ></div>
   </div>
-
-  <!-- Title section (Top Center) -->
   <div class="absolute inset-x-0 top-[12vh] z-10 mx-auto w-full max-w-5xl px-6 text-center md:top-[15vh]">
     <div class="mb-4 flex justify-center">
       <CyberBadge label="System Online" variant="blue" />
@@ -47,8 +39,6 @@ import idleImg from "../../assets/logo/Idle.webp";
       onHover={false}
     />
   </div>
-
-  <!-- Central Mascot Image (Dominant, perfectly centered) -->
   <div class="pointer-events-none absolute top-[48%] left-1/2 z-20 flex w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:top-[52%] lg:top-[55%]">
     <img
       src={mascotImg.src}
@@ -56,17 +46,13 @@ import idleImg from "../../assets/logo/Idle.webp";
       class="h-[50vh] max-h-[400px] min-h-[250px] w-auto object-contain drop-shadow-[0_0_60px_rgba(138,43,226,0.5)] md:h-[65vh] md:max-h-none md:min-h-[400px] md:drop-shadow-[0_0_80px_rgba(138,43,226,0.6)]"
     />
   </div>
-
-  <!-- Right column: Small Card (idle.png) overlapping the right side -->
   <div class="absolute top-[45%] right-4 z-30 hidden w-[85%] max-w-[340px] -translate-y-1/2 sm:right-10 md:block md:right-[5%] lg:right-[15%]">
     <div 
       class="border border-[var(--border-dim)] bg-black/60 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all hover:border-[var(--cyber-blue)]/50 hover:bg-black/80"
       style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);"
     >
       <div class="flex items-center gap-4 p-4 sm:p-5">
-        <!-- Card image -->
         <div class="relative flex h-20 w-20 shrink-0 items-center justify-center border border-[var(--border-dim)] bg-gradient-to-br from-[var(--bg-deep)] to-black shadow-inner sm:h-24 sm:w-24">
-          <!-- Scanline effect for card image -->
           <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]"></div>
           <img
             src={idleImg.src}
@@ -74,7 +60,6 @@ import idleImg from "../../assets/logo/Idle.webp";
             class="relative z-10 h-[80%] w-[80%] object-contain drop-shadow-md"
           />
         </div>
-        <!-- Card content -->
         <div class="flex-1">
           <h3 class="font-tech mb-1 text-base font-bold tracking-widest text-white uppercase sm:text-lg">Devvy</h3>
           <p class="font-tech text-[10px] leading-relaxed text-[var(--text-muted)] sm:text-[11px]">
@@ -91,7 +76,6 @@ import idleImg from "../../assets/logo/Idle.webp";
     </div>
   </div>
 
-  <!-- Bottom Left: Description Text & CTA -->
   <div class="absolute bottom-10 left-6 z-30 max-w-[320px] md:bottom-16 md:left-12 lg:left-24 lg:max-w-[400px]">
     <p class="font-tech mb-6 text-base leading-relaxed font-medium text-[var(--text-muted)] sm:text-lg">
       A student-run game development club for programmers, artists, writers, designers, and musicians. Built for ambition at UBC.
@@ -104,7 +88,6 @@ import idleImg from "../../assets/logo/Idle.webp";
     </a>
   </div>
 
-  <!-- HUD data readout (Bottom Right) -->
   <div class="font-tech absolute right-6 bottom-10 z-20 hidden flex-col items-end text-right text-[10px] tracking-[0.2em] text-white/30 md:bottom-16 md:right-12 md:flex lg:right-24">
     <div class="mb-2 flex items-center gap-2">
       <span class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--cyber-blue)] opacity-50 shadow-[0_0_8px_var(--cyber-blue)]"></span>
