@@ -1,7 +1,7 @@
 import type { Event } from "../types";
 
-import placeholderImage from "../assets/hero/hero-graphics-1.png";
-import launchPartyImage from "../assets/timeline/launch_party.jpg";
+import placeholderImage from "../assets/logo/hero-graphics-1.png";
+import launchPartyImage from "../assets/timeline/launch_party.webp";
 import unityImage from "../assets/timeline/unity.png";
 import nwhacks from "../assets/timeline/nwhacks2026.webp";
 import triviaNight from "../assets/timeline/Trivia_Night.webp";

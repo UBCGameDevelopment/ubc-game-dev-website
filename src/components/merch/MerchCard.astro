@@ -194,8 +194,8 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       </span>
       {
         !isSoldOut && (
-          <button class="clip-angled group relative inline-flex bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:-translate-y-1 hover:shadow-[0_0_15px_var(--cyber-blue)]">
-            <span class="clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] transition-[background-color] group-hover:bg-white">
+          <button class="clip-angled group/cta relative w-full bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:bg-white hover:-translate-y-1 hover:shadow-[0_0_15px_var(--cyber-blue)]">
+            <span class="clip-angled relative z-10 flex w-full items-center justify-center gap-2 bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] transition-[background-color] group-hover/cta:bg-white">
               <span>Buy Now</span>
               <svg
                 class="h-3 w-3"

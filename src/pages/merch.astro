@@ -14,9 +14,7 @@ const validFeaturedImages = (featuredItem?.images ?? []).filter((src) => !isPlac
 const featuredImage = validFeaturedImages[0] ?? "";
 ---
 
-<Layout
-  title="UBC Game Dev | Merch"
-  immersive>
+<Layout title="UBC Game Dev | Merch">
   <MerchPurchaseModal client:load />
   <main>
     <MerchHeader />
@@ -204,11 +202,11 @@ const featuredImage = validFeaturedImages[0] ?? "";
                       data-item-name={featuredItem?.name ?? ""}
                       data-item-price={featuredItem?.price ?? 0}
                       data-item-json={JSON.stringify(featuredItem)}
-                      class="clip-angled group relative inline-flex bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_var(--cyber-blue)]">
-                      <span class="clip-angled flex items-center gap-3 bg-[var(--cyber-blue)] px-6 py-3 text-xs font-bold tracking-widest transition-[background-color] group-hover:bg-white">
+                      class="clip-angled group/cta relative inline-flex bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:bg-white hover:-translate-y-1 hover:shadow-[0_0_20px_var(--cyber-blue)]">
+                      <span class="clip-angled flex items-center gap-3 bg-[var(--cyber-blue)] px-6 py-3 text-xs font-bold tracking-widest transition-[background-color] group-hover/cta:bg-white">
                         <span>Buy Now</span>
                         <svg
-                          class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          class="h-4 w-4 transition-transform group-hover/cta:translate-x-1"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor">

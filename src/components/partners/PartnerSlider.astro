@@ -1,10 +1,5 @@
 ---
 /**
- * Infinite, hover-to-pause logo slider.
- * - Transparent background (no white band)
- * - Logos normalized to same visual size (fixed height box, max width)
- * - Works with mixed aspect ratios (object-contain)
- *
  * Props:
  *   logos: Array<{ src: ImageMetadata, alt: string, href?: string }>
  *   height?: number    // logo box height in px (default 80)
@@ -26,7 +21,6 @@ export interface Props {
 }
 
 const { logos, height = 80, maxWidth = 200, speed = "normal", gap = 72 } = Astro.props;
-
 const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
 ---
 
@@ -40,8 +34,7 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
   <div class="angular-card p-1">
     <div
       class="logo-slider bg-[var(--surface)]"
-      style={`--h:${height}px; --w:${maxWidth}px; --gap:${gap}px; --dur:${speedMs}ms`}
-    >
+      style={`--h:${height}px; --w:${maxWidth}px; --gap:${gap}px; --dur:${speedMs}ms`}>
       <div class="slider-outer">
         <div class="slider-track">
           {
@@ -51,8 +44,7 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
                   class="logo"
                   href={l.href}
                   target="_blank"
-                  rel="noreferrer noopener"
-                >
+                  rel="noreferrer noopener">
                   <img
                     src={l.src.src}
                     alt={l.alt}
@@ -83,8 +75,7 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-hidden="true"
-                  tabindex="-1"
-                >
+                  tabindex="-1">
                   <img
                     src={l.src.src}
                     alt=""
@@ -96,8 +87,7 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
               ) : (
                 <div
                   class="logo"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   <img
                     src={l.src.src}
                     alt=""
@@ -113,13 +103,11 @@ const speedMs = speed === "slow" ? 28000 : speed === "fast" ? 12000 : 18000;
 
         <div
           class="fade left"
-          aria-hidden="true"
-        >
+          aria-hidden="true">
         </div>
         <div
           class="fade right"
-          aria-hidden="true"
-        >
+          aria-hidden="true">
         </div>
       </div>
     </div>
