@@ -1,4 +1,6 @@
 ---
+import CyberBadge from "../common/CyberBadge.astro";
+
 interface Props {
   faqs: Array<{ q: string; a: string }>;
 }
@@ -10,12 +12,10 @@ const { faqs } = Astro.props;
   <div class="container-page mx-auto px-4">
     <div class="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-12">
       <div class="space-y-5">
-        <div
-          class="font-tech inline-flex items-center gap-3 border border-[var(--border-dim)] bg-[var(--bg-panel)]/70 px-4 py-2 text-[11px] tracking-[0.24em] text-[var(--cyber-blue)] uppercase"
-          style="clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);">
-          <span class="h-1.5 w-1.5 bg-[var(--cyber-blue)]"></span>
-          FAQ
-        </div>
+        <CyberBadge
+          label="FAQ"
+          variant="blue"
+        />
 
         <h2 class="max-w-3xl text-3xl font-black tracking-[-0.05em] text-white md:text-5xl">
           Questions? <span class="text-[var(--text-muted)]">We got answers.</span>

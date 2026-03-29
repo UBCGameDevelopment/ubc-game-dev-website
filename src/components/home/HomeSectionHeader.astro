@@ -1,4 +1,6 @@
 ---
+import CyberBadge from "../common/CyberBadge.astro";
+
 interface Props {
   label: string;
   title: string;
@@ -23,18 +25,10 @@ const {
 <div class:list={[wrapperClass, "border-b border-[var(--border-dim)] pb-6"]}>
   <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
     <div class="space-y-5">
-      <div
-        class="inline-flex bg-white/10 p-px"
-        style="clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);"
-      >
-        <div
-          class="inline-flex items-center gap-3 bg-[var(--bg-panel)]/70 px-4 py-2 font-tech text-[11px] tracking-[0.24em] text-[var(--cyber-blue)] uppercase"
-          style="clip-path: polygon(12px 0, 100% 0, 100% 100%, 0 100%, 0 12px);"
-        >
-          <span class="h-1.5 w-1.5 bg-[var(--cyber-blue)]"></span>
-          {label}
-        </div>
-      </div>
+      <CyberBadge
+        label={label}
+        variant="blue"
+      />
 
       <slot name="after-label" />
 
