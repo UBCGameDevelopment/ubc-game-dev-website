@@ -12,29 +12,31 @@ export default function MissionCodeIO() {
       onInit={(typewriter) => {
         typewriter
           .typeString(
-            '<span class="text-[var(--cyber-blue)]">class</span> <span class="text-white">GameDev</span> <span class="text-[var(--cyber-blue)]">extends</span> <span class="text-white">Society</span> {',
+            '<span class="text-[var(--cyber-blue)]">const</span> <span class="text-white">club</span> = {',
           )
-          .pauseFor(300)
-          .typeString('<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">constructor</span>(passion, skill) {')
           .pauseFor(300)
           .typeString(
-            '<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[var(--cyber-blue)]">this</span>.objective = <span class="text-[var(--cyber-red)]">"CREATE"</span>;',
-          )
-          .pauseFor(100)
-          .typeString(
-            '<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-[var(--cyber-blue)]">this</span>.status = <span class="text-[var(--cyber-red)]">"ONLINE"</span>;',
+            '<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">members</span>: [<span class="text-[var(--cyber-red)]">"programmers"</span>, <span class="text-[var(--cyber-red)]">"artists"</span>, <span class="text-[var(--cyber-red)]">"writers"</span>, <span class="text-[var(--cyber-red)]">"designers"</span>, <span class="text-[var(--cyber-red)]">"musicians"</span>],',
           )
           .pauseFor(300)
-          .typeString("<br/>&nbsp;&nbsp;}")
+          .typeString(
+            '<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">openTo</span>: [<span class="text-[var(--cyber-red)]">"UBC"</span>, <span class="text-[var(--cyber-red)]">"non-UBC"</span>],',
+          )
+          .pauseFor(300)
+          .typeString(
+            '<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">focus</span>: <span class="text-[var(--cyber-red)]">"build games together"</span>,',
+          )
+          .pauseFor(300)
+          .typeString(
+            '<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">goal</span>: <span class="text-[var(--cyber-red)]">"form teams and make projects"</span>',
+          )
           .pauseFor(500)
+          .typeString("<br/>};")
           .typeString("<br/>")
-          .typeString('<br/>&nbsp;&nbsp;<span class="text-[var(--cyber-yellow)]">deploy</span>() {')
+          .typeString('<br/><span class="text-white">club</span>.<span class="text-[var(--cyber-yellow)]">connectAcrossDisciplines</span>();')
           .pauseFor(300)
-          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;build();")
-          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;learn();")
-          .typeString("<br/>&nbsp;&nbsp;&nbsp;&nbsp;repeat();")
-          .typeString("<br/>&nbsp;&nbsp;}")
-          .typeString("<br/>}")
+          .typeString("<br/><span class=\"text-white\">club</span>.<span class=\"text-[var(--cyber-yellow)]\">formTeams</span>();")
+          .typeString("<br/><span class=\"text-white\">club</span>.<span class=\"text-[var(--cyber-yellow)]\">buildProjects</span>();")
           .start();
       }}
     />

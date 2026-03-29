@@ -6,6 +6,15 @@ interface EventModalProps {
     title: string;
     date: string;
     description: string;
+    detailPoints?: string[];
+    actionLink?: {
+      label: string;
+      href: string;
+    };
+    supplementalImage?: {
+      src: string;
+      alt: string;
+    };
     location: string;
     mapLink?: string;
     imageSrc: string;
@@ -17,7 +26,6 @@ interface EventModalProps {
 export default function EventModal({ events }: EventModalProps) {
   const [activeEvent, setActiveEvent] = useState<number | null>(null);
 
-  // Listen for custom events from LevelCard
   useEffect(() => {
     const handleOpen = (e: CustomEvent<{ index: number }>) => {
       setActiveEvent(e.detail.index);
@@ -27,7 +35,6 @@ export default function EventModal({ events }: EventModalProps) {
     return () => window.removeEventListener("openEventModal" as any, handleOpen);
   }, []);
 
-  // Close on escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") setActiveEvent(null);
@@ -36,7 +43,6 @@ export default function EventModal({ events }: EventModalProps) {
     return () => window.removeEventListener("keydown", handleEscape);
   }, []);
 
-  // Lock body scroll when modal is open
   useEffect(() => {
     if (activeEvent !== null) {
       document.body.style.overflow = "hidden";
@@ -57,7 +63,6 @@ export default function EventModal({ events }: EventModalProps) {
     <AnimatePresence>
       {event && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -67,7 +72,6 @@ export default function EventModal({ events }: EventModalProps) {
             onClick={() => setActiveEvent(null)}
           />
 
-          {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -75,7 +79,6 @@ export default function EventModal({ events }: EventModalProps) {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto rounded-xl border border-[var(--brand)] bg-[rgba(10,10,20,0.95)] shadow-[0_0_50px_-10px_var(--brand)] backdrop-blur-md md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
           >
-            {/* Close Button */}
             <button
               onClick={() => setActiveEvent(null)}
               className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
@@ -95,7 +98,6 @@ export default function EventModal({ events }: EventModalProps) {
               </svg>
             </button>
 
-            {/* Chapter Badge */}
             <div
               className="font-pixel absolute top-4 left-4 z-10 flex h-12 w-12 items-center justify-center text-lg font-bold text-white shadow-lg"
               style={{
@@ -106,7 +108,6 @@ export default function EventModal({ events }: EventModalProps) {
               {event.chapterNumber}
             </div>
 
-            {/* Image */}
             <div className="relative aspect-[16/9] overflow-hidden rounded-t-xl">
               <img
                 src={event.imageSrc}
@@ -116,9 +117,7 @@ export default function EventModal({ events }: EventModalProps) {
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,20,0.95)] via-transparent to-transparent" />
             </div>
 
-            {/* Content */}
             <div className="p-6 md:p-8">
-              {/* Status */}
               <div className="mb-4">
                 {event.isActive ? (
                   <span
@@ -141,7 +140,6 @@ export default function EventModal({ events }: EventModalProps) {
                 )}
               </div>
 
-              {/* Title */}
               <h2
                 className="text-2xl font-bold text-[var(--text)] md:text-3xl"
                 style={{ fontFamily: "var(--font-pixel)" }}
@@ -149,7 +147,6 @@ export default function EventModal({ events }: EventModalProps) {
                 {event.title}
               </h2>
 
-              {/* Date & Location */}
               <div
                 className="mt-4 flex flex-wrap items-center gap-4 text-sm"
                 style={{ color: "var(--text-muted)" }}
@@ -218,43 +215,94 @@ export default function EventModal({ events }: EventModalProps) {
                 )}
               </div>
 
-              {/* Full Description */}
-              <div
-                className="prose prose-sm mt-6 max-w-none leading-relaxed"
-                style={{ color: "var(--text-muted)" }}
-                dangerouslySetInnerHTML={{ __html: event.description }}
-              />
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-[var(--text-muted)] md:text-base">
+                <p>{event.description}</p>
 
-              {/* Action Buttons */}
-              {event.isActive && event.mapLink && (
-                <div className="mt-8 flex gap-3">
-                  <a
-                    href={event.mapLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-yellow)] px-6 py-3 font-bold text-black shadow-lg transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
-                    style={{
-                      clipPath:
-                        "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)",
-                    }}
-                  >
-                    <span className="font-pixel relative z-10 flex items-center gap-2 text-sm tracking-wider uppercase">
-                      View Location
-                      <svg
-                        className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                {event.detailPoints && event.detailPoints.length > 0 && (
+                  <ul className="space-y-2 border-l border-[var(--border-dim)] pl-4">
+                    {event.detailPoints.map((detailPoint) => (
+                      <li
+                        key={detailPoint}
+                        className="list-none"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </span>
-                  </a>
+                        {detailPoint}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {event.supplementalImage && (
+                  <div className="overflow-hidden rounded-lg border border-[var(--border-dim)] bg-[var(--surface-2)]/60 p-3">
+                    <img
+                      src={event.supplementalImage.src}
+                      alt={event.supplementalImage.alt}
+                      className="mx-auto h-auto max-h-56 w-auto object-contain"
+                    />
+                  </div>
+                )}
+              </div>
+
+              {(event.actionLink || (event.isActive && event.mapLink)) && (
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {event.actionLink && (
+                    <a
+                      href={event.actionLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-2 overflow-hidden border border-[var(--border-dim)] bg-[var(--surface-2)] px-6 py-3 font-bold text-white transition-all hover:border-[var(--brand)] hover:shadow-[0_0_20px_rgba(var(--brand-rgb),0.2)]"
+                      style={{
+                        clipPath:
+                          "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)",
+                      }}
+                    >
+                      <span className="font-pixel relative z-10 flex items-center gap-2 text-sm tracking-wider uppercase">
+                        {event.actionLink.label}
+                        <svg
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  )}
+
+                  {event.isActive && event.mapLink && (
+                    <a
+                      href={event.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center gap-2 overflow-hidden bg-[var(--cyber-yellow)] px-6 py-3 font-bold text-black shadow-lg transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
+                      style={{
+                        clipPath:
+                          "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)",
+                      }}
+                    >
+                      <span className="font-pixel relative z-10 flex items-center gap-2 text-sm tracking-wider uppercase">
+                        View Location
+                        <svg
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  )}
                 </div>
               )}
             </div>

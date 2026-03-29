@@ -5,7 +5,6 @@ export interface Props extends MerchItem {}
 
 const { name, description, price, category, isNew, isSoldOut, colors, sizes, images } = Astro.props;
 
-// Filter out placeholder images
 const isPlaceholder = (src: string) => src.includes("/placeholder-") || src.includes("placeholder.");
 const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 ---
@@ -67,7 +66,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 
             {imageList.length > 1 && (
               <>
-                {/* Navigation buttons */}
                 <button
                   data-carousel-prev
                   class="absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white backdrop-blur-sm transition-all hover:scale-110 hover:bg-black/80"
@@ -106,7 +104,6 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
                     />
                   </svg>
                 </button>
-                {/* Dots indicator */}
                 <div class="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/45 px-2 py-1 backdrop-blur-sm">
                   {imageList.map((_, index) => (
                     <span
@@ -197,21 +194,23 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       </span>
       {
         !isSoldOut && (
-          <button class="clip-angled group relative inline-flex items-center justify-center gap-2 overflow-hidden bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]">
-            <span class="relative z-10">Buy Now</span>
-            <svg
-              class="relative z-10 h-3 w-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 10V3L4 14h7v7l9-11h-7z"
-              />
-            </svg>
+          <button class="clip-angled group/cta relative w-full bg-[var(--cyber-blue)] p-px text-black uppercase transition-all hover:bg-white hover:-translate-y-1 hover:shadow-[0_0_15px_var(--cyber-blue)]">
+            <span class="clip-angled relative z-10 flex w-full items-center justify-center gap-2 bg-[var(--cyber-blue)] px-5 py-2.5 text-xs font-bold tracking-[0.3em] transition-[background-color] group-hover/cta:bg-white">
+              <span>Buy Now</span>
+              <svg
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </span>
           </button>
         )
       }
@@ -263,17 +262,16 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
         setActive(prevIndex);
       };
 
-      // Add click listeners to navigation buttons
       if (nextButton) {
         nextButton.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent triggering the card click
+          e.stopPropagation();
           goToNext();
         });
       }
 
       if (prevButton) {
         prevButton.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent triggering the card click
+          e.stopPropagation();
           goToPrev();
         });
       }

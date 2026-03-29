@@ -1,25 +1,19 @@
 ---
-// src/components/about/ExecGrid.astro
 import ExecCard from "./ExecCard.astro";
 import type { Exec } from "../../types";
-
+import { ExecService } from "../../services";
+import CyberBadge from "../common/CyberBadge.astro";
 export interface Props {
   execs: Exec[];
 }
 
-// const { execs } = Astro.props;
-
-import { ExecService } from "../../services";
 const { president, rest } = ExecService.getWithPresidentSeparated();
-
-import CyberBadge from "../common/CyberBadge.astro";
 ---
 
 <section class="container-page relative my-16 overflow-hidden md:my-20">
   <div class="pointer-events-none absolute inset-0 z-0 flex items-start justify-center pt-20">
     <div
-      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]"
-    >
+      class="h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,var(--brand)_0%,transparent_70%)] opacity-[0.08]">
     </div>
   </div>
 
@@ -41,7 +35,6 @@ import CyberBadge from "../common/CyberBadge.astro";
     president && (
       <div class="mt-12 flex justify-center">
         <div class="group relative">
-          {/* Glow effect for president */}
           <div class="from-brand-500 to-accent-500 absolute -inset-4 rounded-full bg-gradient-to-r opacity-20 blur-2xl transition-opacity group-hover:opacity-30" />
           <div class="relative w-[200px] md:w-[220px]">
             <ExecCard {...president} />

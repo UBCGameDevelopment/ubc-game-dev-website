@@ -1,23 +1,26 @@
-// src/data/events.ts
 import type { Event } from "../types";
 
-// Images
-import placeholderImage from "../assets/hero/hero-graphics-1.png";
-import launchPartyImage from "../assets/timeline/launch_party.jpg";
+import placeholderImage from "../assets/logo/hero-graphics-1.png";
+import launchPartyImage from "../assets/timeline/launch_party.webp";
 import unityImage from "../assets/timeline/unity.png";
 import nwhacks from "../assets/timeline/nwhacks2026.webp";
 import triviaNight from "../assets/timeline/Trivia_Night.webp";
+import gameJamQrCode from "../assets/events/qrcode.png";
 
-// Event data add from top (most recent) to bottom (oldest)
 export const events: Event[] = [
   {
     title: "Year-End Showcase",
-    date: "Sat, Apr. 4th, 2026: -7pm",
-    isoDate: "2026-04-04T13:00:00",
+    date: "Saturday, April 4, 2026: 2:00-6:00pm",
+    isoDate: "2026-04-04T14:00:00",
     description:
-      "Celebrate the end of an amazing year with our Year-End Showcase! Join us as we highlight the incredible projects and achievements of our members. Enjoy presentations, demos, and a chance to network with industry professionals. Let's toast to our successes and look forward to an even more exciting year ahead!",
-    location: "IBLC (IKB) 261",
-    mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261",
+      "The UBC Game Development Club Year-End Showcase is almost here. Celebrate the games built this year, connect with industry professionals, and get hands-on feedback from fellow developers and players.",
+    detailPoints: [
+      "When: Saturday, April 4th | 2:00 - 6:00 PM",
+      "Where: IBLC 261 (Irving K. Barber Learning Centre)",
+      "Who: Everyone is welcome. This is an open-floor event.",
+    ],
+    location: "IBLC 261 (Irving K. Barber Learning Centre)",
+    mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261/",
     image: placeholderImage,
     isActive: true,
   },
@@ -26,7 +29,19 @@ export const events: Event[] = [
     date: "Feb. 11-20, 2026: 2-6pm",
     isoDate: "2026-02-14T14:00:00",
     description:
-      "UBC and UVic unite for a week-long cross-campus Game Jam! Meet fellow game developers from both universities, form teams, and collaborate to create amazing games throughout the week. Play the finished games, vote for your favorites, connect and compete with new friends from both schools.<br/><br/>Scan this QR Code!<img src='/assets/events/qrcode.png' alt='Game Jam QR Code' style='max-width: 180px; margin-top: 1em;'/>",
+      "UBC and UVic unite for a week-long cross-campus Game Jam. Meet developers from both universities, form teams, and collaborate on original games throughout the week.",
+    detailPoints: [
+      "Play the finished games, vote for your favorites, and connect with new collaborators from both schools.",
+      "Use the QR code below to join the jam and access the event hub.",
+    ],
+    actionLink: {
+      label: "Open Discord",
+      href: "https://discord.gg/m4yJFNuw",
+    },
+    supplementalImage: {
+      src: gameJamQrCode.src,
+      alt: "QR code for the UBC x UVic Game Jam Discord",
+    },
     location: "Remote [Discord]",
     mapLink: "https://discord.gg/m4yJFNuw",
     image: placeholderImage,
@@ -37,7 +52,15 @@ export const events: Event[] = [
     date: "Friday, Jan. 23, 2026: 6pm",
     isoDate: "2026-01-23T18:00:00",
     description:
-      "🕹️ Test your gaming knowledge at Video Game Trivia Night! Join us for an exciting evening hosted by Aaron Gordon from BraceYourselfGames. Form teams of up to 6 players and compete for the title of Trivia Champion! <strong>Free to attend with donations encouraged (all proceeds benefit B.C. Children's Hospital to bring video games to kids ❤️)</strong><br/><br/><a href='https://www.eventbrite.ca/e/video-game-trivia-ubc-edition-tickets-1980223837805' target='_blank' rel='noopener noreferrer' style='font-weight: bold;' onmouseover='this.style.textDecoration=\"underline\"' onmouseout='this.style.textDecoration=\"none\"'>RSVP here</a>",
+      "Test your gaming knowledge at Video Game Trivia Night with Aaron Gordon from BraceYourselfGames. Form teams of up to six players and compete for the title of Trivia Champion.",
+    detailPoints: [
+      "Free to attend, with donations encouraged.",
+      "All proceeds support B.C. Children's Hospital in bringing video games to kids.",
+    ],
+    actionLink: {
+      label: "RSVP Here",
+      href: "https://www.eventbrite.ca/e/video-game-trivia-ubc-edition-tickets-1980223837805",
+    },
     location: "BUCH A104",
     mapLink: "https://maps.app.goo.gl/kXj9mxqmohCmDsbt7",
     image: triviaNight,
@@ -48,7 +71,11 @@ export const events: Event[] = [
     date: "Friday, Jan. 16, 2026: 6-7:30pm",
     isoDate: "2026-01-16T18:00:00",
     description:
-      "Join our hands-on Unity workshop and build your first 3D game, Roll-a-Ball! You'll learn the essentials like scene setup, player movement, physics, and collecting objects. Leave with a playable mini-game and a strong base to keep creating on your own. <strong>No experience needed, just bring your laptop with the latest version of Unity installed.</strong>",
+      "Join our hands-on Unity workshop and build your first 3D game, Roll-a-Ball. You'll learn scene setup, player movement, physics, and object collection, then leave with a playable mini-game and a strong base to keep creating.",
+    detailPoints: [
+      "No experience needed.",
+      "Bring your laptop with the latest version of Unity installed.",
+    ],
     location: "IRC 5",
     mapLink: "https://maps.app.goo.gl/yvfR3oCS7TRHdyUn8",
     image: nwhacks,

@@ -10,7 +10,7 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
 
 <div
   class:list={[
-    "group angular-card relative overflow-hidden transition-all duration-300",
+    "group angular-card relative w-full max-w-[24rem] overflow-hidden transition-all duration-300 md:max-w-none",
     isActive
       ? "bg-[var(--surface-2)] shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)]"
       : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
@@ -18,7 +18,7 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
 >
   <div
     class:list={[
-      "font-pixel absolute top-0 left-0 z-20 flex h-14 w-14 items-center justify-center text-xl font-bold shadow-lg",
+      "font-pixel absolute top-0 left-0 z-20 flex h-12 w-12 items-center justify-center text-lg font-bold shadow-lg md:h-14 md:w-14 md:text-xl",
       isActive ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
     ]}
     style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 15px));"
@@ -29,7 +29,7 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
   {
     !isActive && (
       <div
-        class="absolute top-0 right-0 z-20 bg-[var(--surface-3)] px-4 py-2 text-xs font-semibold tracking-wide text-[var(--text-muted)] uppercase"
+        class="absolute top-0 right-0 z-20 bg-[var(--surface-3)] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-[var(--text-muted)] uppercase md:px-4 md:py-2 md:text-xs"
         style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
       >
         LOCKED // EXPIRED
@@ -39,7 +39,7 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
   {
     isActive && (
       <div
-        class="absolute top-0 right-0 z-20 flex items-center gap-2 bg-[var(--cyber-magenta)] px-4 py-2 text-xs font-bold text-white shadow-lg"
+        class="absolute top-0 right-0 z-20 flex items-center gap-2 bg-[var(--cyber-magenta)] px-3 py-1.5 text-[10px] font-bold text-white shadow-lg md:px-4 md:py-2 md:text-xs"
         style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
       >
         <span
@@ -51,7 +51,7 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     )
   }
 
-  <div class="relative aspect-[16/9] overflow-hidden">
+  <div class="relative h-44 overflow-hidden sm:h-auto sm:aspect-[16/9]">
     <img
       src={image.src}
       alt={title}
@@ -63,18 +63,17 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
     />
     <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-transparent to-transparent"></div>
 
-    {/* Decorative corner accent */}
     {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
   </div>
 
-  <div class="relative p-6">
+  <div class="relative p-5 md:p-6">
     <h3
-      class="font-pixel text-xl text-[var(--text)] transition-colors group-hover:text-[var(--cyber-yellow)] md:text-2xl"
+      class="font-pixel text-lg text-[var(--text)] transition-colors group-hover:text-[var(--cyber-yellow)] sm:text-xl md:text-2xl"
     >
       {title}
     </h3>
 
-    <div class="font-tech mt-3 flex flex-col gap-2 text-sm text-[var(--text-muted)]">
+    <div class="font-tech mt-2.5 flex flex-col gap-2 text-sm text-[var(--text-muted)] md:mt-3">
       <div class="flex items-center gap-2 text-[var(--brand)]">
         <svg
           class="h-4 w-4"
@@ -157,20 +156,19 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
       }
     </div>
 
-    <p
-      class="mt-4 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)]"
-      set:html={description}
-    />
+    <p class="mt-3 line-clamp-2 border-l-2 border-[var(--border)] pl-3 text-sm leading-relaxed text-[var(--text-muted)] md:mt-4">
+      {description}
+    </p>
 
     {
       isActive && (
-        <div class="mt-6">
+        <div class="mt-5 md:mt-6">
           <button
             type="button"
             data-open-modal={chapterNumber - 1}
-            class="clip-angled group/btn relative w-full overflow-hidden bg-[var(--cyber-yellow)] px-6 py-3 font-bold tracking-widest text-black uppercase transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
+            class="clip-angled group/btn relative w-full bg-[var(--cyber-yellow)] p-px text-black uppercase transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
           >
-            <span class="font-pixel relative z-10 flex items-center justify-center gap-2 text-sm">
+            <span class="font-pixel clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-yellow)] px-5 py-3 text-sm font-bold tracking-widest transition-[background-color] group-hover/btn:bg-white md:px-6">
               ACCESS_DATA
               <svg
                 class="h-4 w-4 transition-transform group-hover/btn:translate-x-1"

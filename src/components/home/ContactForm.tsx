@@ -16,7 +16,6 @@ export default function ContactForm({
 
   const showMessage = (text: string, type: "success" | "error") => {
     setMessage({ text, type });
-    // Scroll message into view
     setTimeout(() => {
       document.getElementById("form-message")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 100);
@@ -39,14 +38,12 @@ export default function ContactForm({
       message: ((formData.get("message") as string) || "").trim(),
     };
 
-    // Validate and sanitize
     const validation = EmailService.validateFormData(contactData);
     if (!validation.isValid) {
       showMessage(validation.error!, "error");
       return;
     }
 
-    // Submit
     setIsSubmitting(true);
     const result = await EmailService.sendContactForm(validation.sanitizedData!);
     setIsSubmitting(false);
@@ -61,7 +58,6 @@ export default function ContactForm({
 
   return (
     <section className="relative py-12 md:py-16">
-      {/* Background Effects */}
       <div className="hex-grid pointer-events-none absolute inset-0 opacity-20"></div>
 
       <div className="container-page relative z-10">
@@ -76,7 +72,6 @@ export default function ContactForm({
             clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)",
           }}
         >
-          {/* Name */}
           <div>
             <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
               <span className="text-neon">{">"}</span> Name <span className="text-[var(--accent)]">*</span>
@@ -113,7 +108,6 @@ export default function ContactForm({
             </div>
           </div>
 
-          {/* Email */}
           <div>
             <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
               <span className="text-neon">{">"}</span> Email <span className="text-[var(--accent)]">*</span>
@@ -131,7 +125,6 @@ export default function ContactForm({
             />
           </div>
 
-          {/* Subject */}
           <div>
             <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
               <span className="text-neon">{">"}</span> Subject <span className="text-[var(--accent)]">*</span>
@@ -149,7 +142,6 @@ export default function ContactForm({
             />
           </div>
 
-          {/* Message */}
           <div>
             <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
               <span className="text-neon">{">"}</span> Message <span className="text-[var(--accent)]">*</span>
@@ -167,7 +159,6 @@ export default function ContactForm({
             />
           </div>
 
-          {/* Error/Success Messages */}
           <AnimatePresence mode="wait">
             {message && (
               <motion.div
@@ -190,7 +181,6 @@ export default function ContactForm({
             )}
           </AnimatePresence>
 
-          {/* Submit */}
           <div className="mt-4 text-center">
             <button
               type="submit"
@@ -204,7 +194,6 @@ export default function ContactForm({
             </button>
           </div>
 
-          {/* Decorative Corners */}
           <div className="absolute top-0 left-0 h-6 w-6 border-t border-l border-[var(--brand)]/50"></div>
           <div className="absolute right-0 bottom-0 h-6 w-6 border-r border-b border-[var(--brand)]/50"></div>
         </form>

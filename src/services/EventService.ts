@@ -73,7 +73,8 @@ export class EventService {
     const lowerQuery = query.toLowerCase();
     return staticEvents.filter(event =>
       event.title.toLowerCase().includes(lowerQuery) ||
-      event.description.toLowerCase().includes(lowerQuery)
+      event.description.toLowerCase().includes(lowerQuery) ||
+      event.detailPoints?.some(detail => detail.toLowerCase().includes(lowerQuery))
     );
   }
 
@@ -118,8 +119,11 @@ export class EventService {
     title: string;
     date: string;
     description: string;
+    detailPoints?: string[];
+    actionLink?: Event["actionLink"];
+    supplementalImage?: Event["supplementalImage"];
     location: string;
-    mapLink: string;
+    mapLink?: string;
     imageSrc: string;
     isActive: boolean;
     chapterNumber: number;
@@ -128,8 +132,11 @@ export class EventService {
       title: event.title,
       date: event.date,
       description: event.description,
+      detailPoints: event.detailPoints,
+      actionLink: event.actionLink,
+      supplementalImage: event.supplementalImage,
       location: event.location,
-      mapLink: event.mapLink || "",
+      mapLink: event.mapLink,
       imageSrc: event.image.src,
       isActive: event.isActive,
       chapterNumber: index + 1,

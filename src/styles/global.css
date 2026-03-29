@@ -100,103 +100,6 @@ h6 {
   letter-spacing: 0.05em;
 }
 
-.glitch-text {
-  position: relative;
-  display: inline-block;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--bg-deep);
-  opacity: 0.8;
-}
-
-.glitch-text::before {
-  color: var(--cyber-blue);
-  z-index: -1;
-  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-  transform: translate(-1px, -1px);
-  animation: glitch-anim-1 4s infinite linear alternate-reverse;
-}
-
-.glitch-text::after {
-  color: var(--cyber-red);
-  z-index: -2;
-  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-  transform: translate(1px, 1px);
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    clip-path: inset(20% 0 80% 0);
-    transform: translate(-2px, 1px);
-  }
-
-  20% {
-    clip-path: inset(60% 0 10% 0);
-    transform: translate(2px, -1px);
-  }
-
-  40% {
-    clip-path: inset(40% 0 50% 0);
-    transform: translate(-2px, -2px);
-  }
-
-  60% {
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(2px, 2px);
-  }
-
-  80% {
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-2px, 1px);
-  }
-
-  100% {
-    clip-path: inset(30% 0 20% 0);
-    transform: translate(2px, -1px);
-  }
-}
-
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(10% 0 60% 0);
-    transform: translate(2px, -1px);
-  }
-
-  20% {
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(-2px, 1px);
-  }
-
-  40% {
-    clip-path: inset(30% 0 20% 0);
-    transform: translate(2px, 2px);
-  }
-
-  60% {
-    clip-path: inset(15% 0 80% 0);
-    transform: translate(-2px, -2px);
-  }
-
-  80% {
-    clip-path: inset(55% 0 10% 0);
-    transform: translate(2px, 1px);
-  }
-
-  100% {
-    clip-path: inset(40% 0 30% 0);
-    transform: translate(-2px, -1px);
-  }
-}
-
 .glitch-intense {
   color: inherit;
 }
@@ -259,6 +162,14 @@ h6 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .glitch-intense::before,
+  .glitch-intense::after {
+    animation: none !important;
+    content: none;
+  }
+}
+
 .hud-card {
   background: var(--glass-str);
   backdrop-filter: blur(10px);
@@ -277,44 +188,6 @@ h6 {
   border-top: 2px solid var(--cyber-yellow);
   border-right: 2px solid var(--cyber-yellow);
   opacity: 0.5;
-}
-
-.holo-panel {
-  border: 1px solid rgba(120, 230, 255, 0.2);
-  background:
-    radial-gradient(circle at 50% 10%, rgba(120, 230, 255, 0.2), transparent 55%),
-    linear-gradient(180deg, rgba(8, 16, 20, 0.35), rgba(0, 0, 0, 0.8)),
-    linear-gradient(90deg, rgba(120, 230, 255, 0.04), rgba(255, 255, 255, 0) 60%);
-  box-shadow:
-    0 0 30px rgba(80, 200, 255, 0.15),
-    inset 0 0 40px rgba(120, 230, 255, 0.08);
-  overflow: hidden;
-}
-
-.holo-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(180deg,
-      rgba(255, 255, 255, 0.06),
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 2px,
-      transparent 4px),
-    radial-gradient(circle at 30% 30%, rgba(160, 240, 255, 0.15), transparent 45%);
-  opacity: 0.35;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-.holo-panel::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: linear-gradient(120deg, transparent 45%, rgba(120, 230, 255, 0.18) 50%, transparent 55%);
-  opacity: 0.4;
-  transform: translateX(-10%);
-  pointer-events: none;
 }
 
 .merch-hud-card {
@@ -339,23 +212,6 @@ h6 {
   opacity: 1;
 }
 
-.scanlines {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0) 50%,
-      rgba(0, 0, 0, 0.1) 50%,
-      rgba(0, 0, 0, 0.1));
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.15;
-}
-
 .scanline-rgb {
   background:
     linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
@@ -372,6 +228,15 @@ h6 {
 
 .clip-angled {
   clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 ::-webkit-scrollbar {
@@ -403,13 +268,6 @@ h6 {
     0 0 5px rgba(0, 240, 255, 0.7),
     0 0 10px rgba(0, 240, 255, 0.5),
     0 0 20px rgba(0, 240, 255, 0.3);
-}
-
-.text-neon-brand {
-  text-shadow:
-    0 0 5px rgba(220, 50, 220, 0.7),
-    0 0 10px rgba(220, 50, 220, 0.5),
-    0 0 20px rgba(220, 50, 220, 0.3);
 }
 
 .text-neon-yellow {

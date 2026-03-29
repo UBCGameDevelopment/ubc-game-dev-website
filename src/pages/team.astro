@@ -8,7 +8,6 @@ import "../styles/global.css";
 
 const execs = ExecService.getAll();
 
-// Serialize Astro image metadata to plain src strings for the React component
 const serializedExecs = execs.map((exec) => ({
   name: exec.name,
   role: exec.role,
@@ -21,17 +20,12 @@ const serializedExecs = execs.map((exec) => ({
 }));
 ---
 
-<Layout
-  title="UBC Game Dev // Crew Roster"
-  immersive
->
+<Layout title="UBC Game Dev | Team">
   <main>
     <PageHeader
       backgroundText="ROSTER"
       badge={{ label: "Crew Manifest // Classified", variant: "brand" }}
-      subtitle="Select Your Operator"
-      subtitleColor="text-[var(--text-muted)]"
-      title={{ normal: "Crew ", highlight: "Roster" }}
+      title={{ normal: "Crew ", highlight: "Members" }}
       gradientClass="from-[var(--cyber-yellow)] to-[var(--brand)]"
       description="Meet the operatives who keep UBC Game Dev running—events, workshops, and community."
       descriptionBorderColor="border-[var(--cyber-yellow)]"

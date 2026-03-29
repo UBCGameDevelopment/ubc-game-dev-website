@@ -30,7 +30,7 @@
 │   ├── assets/               # Build-processed assets (Astro image optimization)
 │   ├── components/           # UI components organized by feature
 │   │   ├── about/            # About page (ExecGrid, ExecRoster)
-│   │   ├── common/           # Shared (PageHeader, LoadingScreen, CyberBadge)
+│   │   ├── common/           # Shared (PageHeader, CyberBadge)
 │   │   ├── effects/          # Visual effects (GlitchText, Marquee)
 │   │   ├── events/           # Event components
 │   │   ├── games/            # Game showcase

@@ -18,7 +18,6 @@ interface Props {
   execs: ExecData[];
 }
 
-/* ─── Social link icon button ─── */
 const SocialLink = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (
   <a
     href={href}
@@ -32,7 +31,6 @@ const SocialLink = ({ href, label, children }: { href: string; label: string; ch
   </a>
 );
 
-/* ─── Small portrait thumbnail ─── */
 const PortraitThumbnail = ({
   exec,
   isSelected,
@@ -59,8 +57,6 @@ const PortraitThumbnail = ({
         : "brightness-75 saturate-75 group-hover:brightness-100 group-hover:saturate-100"
         }`}
     />
-
-    {/* Hover / selected overlay */}
     <div
       className={`pointer-events-none absolute inset-0 transition-opacity ${isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
         }`}
@@ -71,8 +67,6 @@ const PortraitThumbnail = ({
         </p>
       </div>
     </div>
-
-    {/* Selected corner accent */}
     {isSelected && (
       <>
         <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[var(--cyber-yellow)]" />
@@ -82,7 +76,6 @@ const PortraitThumbnail = ({
   </button>
 );
 
-/* ─── LinkedIn SVG ─── */
 const LinkedInIcon = () => (
   <svg
     className="h-4 w-4"
@@ -93,7 +86,6 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-/* ─── GitHub SVG ─── */
 const GitHubIcon = () => (
   <svg
     className="h-4 w-4"
@@ -104,7 +96,6 @@ const GitHubIcon = () => (
   </svg>
 );
 
-/* ─── Portfolio SVG ─── */
 const PortfolioIcon = () => (
   <svg
     className="h-4 w-4"
@@ -123,9 +114,9 @@ const PortfolioIcon = () => (
 
 export default function ExecRoster({ execs }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const selected = execs[selectedIndex];
 
-  // Group execs by class with a fixed display order
   const classOrder = ["President", "Leadership", "Operations", "Tech & Design"];
   const grouped: Record<string, { exec: ExecData; originalIndex: number }[]> = {};
   execs.forEach((exec, index) => {
@@ -137,7 +128,6 @@ export default function ExecRoster({ execs }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16">
-      {/* Section header */}
       <div className="mb-4 flex items-center gap-4">
         <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[var(--cyber-yellow)]/30 to-transparent" />
         <h2 className="font-tech text-xs font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
@@ -147,11 +137,9 @@ export default function ExecRoster({ execs }: Props) {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-        {/* ─── LEFT: Portrait Grid grouped by class ─── */}
         <div className="space-y-4">
           {classOrder.map((cls) => (
             <div key={cls}>
-              {/* Class divider */}
               <div className="mb-2 flex items-center gap-3">
                 <span className="font-tech text-[10px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
                   {cls}
@@ -160,21 +148,22 @@ export default function ExecRoster({ execs }: Props) {
                 <span className="font-tech text-[10px] text-[var(--text-muted)]">{grouped[cls].length}</span>
               </div>
 
-              {/* Portraits for this class */}
               <div className="grid grid-cols-4 gap-2">
                 {grouped[cls].map(({ exec, originalIndex }) => (
                   <PortraitThumbnail
                     key={exec.name}
                     exec={exec}
                     isSelected={originalIndex === selectedIndex}
-                    onClick={() => setSelectedIndex(originalIndex)}
+                    onClick={() => {
+                      setHasInteracted(true);
+                      setSelectedIndex(originalIndex);
+                    }}
                   />
                 ))}
               </div>
             </div>
           ))}
 
-          {/* Decorative status bar */}
           <div className="mt-2 flex items-center gap-3 border-t border-[var(--border-dim)] pt-3">
             <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--cyber-yellow)]" />
             <span className="font-tech text-[10px] tracking-widest text-[var(--text-muted)]">
@@ -183,12 +172,9 @@ export default function ExecRoster({ execs }: Props) {
           </div>
         </div>
 
-        {/* ─── RIGHT: Detail Panel ─── */}
         <div className="relative flex flex-col overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 backdrop-blur-md">
-          {/* Scanline overlay */}
           <div className="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10" />
 
-          {/* Panel header bar */}
           <div className="relative z-10 flex items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-deep)] px-6 py-3">
             <span className="font-tech text-[10px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
               Operator Dossier
@@ -198,7 +184,10 @@ export default function ExecRoster({ execs }: Props) {
             </span>
           </div>
 
-          <AnimatePresence mode="wait">
+          <AnimatePresence
+            mode="wait"
+            initial={false}
+          >
             <motion.div
               key={selectedIndex}
               initial={{ opacity: 0, y: 8 }}
@@ -207,9 +196,7 @@ export default function ExecRoster({ execs }: Props) {
               transition={{ duration: 0.2 }}
               className="relative z-10 flex flex-1 flex-col"
             >
-              {/* Top: Headshot + Name side by side */}
               <div className="flex gap-6 p-6 pb-0">
-                {/* Headshot */}
                 <div className="relative shrink-0">
                   <div
                     className="h-44 w-44 overflow-hidden border-2 border-[var(--cyber-yellow)] shadow-[0_0_25px_rgba(252,238,10,0.15)] md:h-52 md:w-52"
@@ -232,7 +219,6 @@ export default function ExecRoster({ execs }: Props) {
                   />
                 </div>
 
-                {/* Name + Role */}
                 <div className="flex flex-col justify-center">
                   <span className="mb-2 inline-block self-start border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--brand)] uppercase">
                     {selected.role}
@@ -247,11 +233,9 @@ export default function ExecRoster({ execs }: Props) {
                 </div>
               </div>
 
-              {/* Stats + Info */}
               <div className="flex flex-1 flex-col p-6">
                 <div className="mb-4 h-px w-full bg-gradient-to-r from-[var(--cyber-yellow)]/50 via-[var(--border-dim)] to-transparent" />
 
-                {/* Stats grid */}
                 <div className="font-tech mb-4 grid grid-cols-3 gap-2 text-xs">
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
                     <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
@@ -287,15 +271,12 @@ export default function ExecRoster({ execs }: Props) {
                   </div>
                 </div>
 
-                {/* Terminal log */}
                 <div
                   className="relative mb-4 flex-1 overflow-hidden border border-[var(--border-dim)] bg-[#0c0c0c] shadow-[0_0_20px_rgba(0,0,0,0.4)]"
                   style={{ clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%)" }}
                 >
-                  {/* Scanline overlay */}
                   <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] opacity-20" />
 
-                  {/* Terminal header */}
                   <div className="relative z-10 flex items-center justify-between border-b border-[var(--border-dim)] bg-[#1a1a1a] px-3 py-2">
                     <div className="flex items-center gap-2">
                       <div className="h-1.5 w-1.5 bg-[var(--cyber-red)]" />
@@ -311,42 +292,55 @@ export default function ExecRoster({ execs }: Props) {
                     </div>
                   </div>
 
-                  {/* Terminal content */}
                   <div
                     className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
                   >
-                    <Typewriter
-                      key={selectedIndex}
-                      onInit={(typewriter) => {
-                        typewriter
-                          .changeDelay(24)
-                          .typeString(
-                            "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
-                          )
-                          .pauseFor(100)
-                          .typeString(
-                            `<span style='color: var(--cyber-blue);'>[SYS]</span> Assigned role: <span style='color: white; font-weight: bold;'>${selected.role}</span><br/>`,
-                          )
-                          .pauseFor(100)
-                          .typeString(
-                            `<span style='color: var(--cyber-blue);'>[SYS]</span> Division: <span style='color: white; font-weight: bold;'>${selected.execClass}</span><br/>`,
-                          )
-                          .pauseFor(120)
-                          .typeString(
-                            "<span style='color: var(--cyber-yellow);'>[NET]</span> Social links verified. Ready for connection.",
-                          )
-                          .start();
-                      }}
-                      options={{
-                        cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
-                        delay: 12,
-                        stringSplitter: splitTypewriterText,
-                      }}
-                    />
+                    {hasInteracted ? (
+                      <Typewriter
+                        key={selectedIndex}
+                        onInit={(typewriter) => {
+                          typewriter
+                            .changeDelay(24)
+                            .typeString(
+                              "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
+                            )
+                            .pauseFor(100)
+                            .typeString(
+                              `<span style='color: var(--cyber-blue);'>[SYS]</span> Assigned role: <span style='color: white; font-weight: bold;'>${selected.role}</span><br/>`,
+                            )
+                            .pauseFor(100)
+                            .typeString(
+                              `<span style='color: var(--cyber-blue);'>[SYS]</span> Division: <span style='color: white; font-weight: bold;'>${selected.execClass}</span><br/>`,
+                            )
+                            .pauseFor(120)
+                            .typeString(
+                              "<span style='color: var(--cyber-yellow);'>[NET]</span> Social links verified. Ready for connection.",
+                            )
+                            .start();
+                        }}
+                        options={{
+                          cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
+                          delay: 12,
+                          stringSplitter: splitTypewriterText,
+                        }}
+                      />
+                    ) : (
+                      <>
+                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Operator profile loaded.
+                        <br />
+                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Assigned role:{" "}
+                        <span style={{ color: "white", fontWeight: 700 }}>{selected.role}</span>
+                        <br />
+                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Division:{" "}
+                        <span style={{ color: "white", fontWeight: 700 }}>{selected.execClass}</span>
+                        <br />
+                        <span style={{ color: "var(--cyber-yellow)" }}>[NET]</span> Social links verified. Ready for
+                        connection.
+                      </>
+                    )}
                   </div>
                 </div>
 
-                {/* Social Links */}
                 <div className="flex flex-wrap gap-2 border-t border-[var(--border-dim)] pt-3">
                   <SocialLink
                     href={selected.linkedin}
@@ -377,7 +371,6 @@ export default function ExecRoster({ execs }: Props) {
         </div>
       </div>
 
-      {/* Legacy Leaders Link */}
       <div className="mt-12 flex justify-center">
         <a
           href="/team/legacy"

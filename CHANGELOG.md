@@ -5,6 +5,57 @@ All notable changes to this project are documented in this file.
 This format is inspired by the Terraform changelog style:
 versioned sections with clear, categorized highlights.
 
+## Unreleased
+
+This upcoming update focuses on a stronger homepage first impression, cleaner shared UI framing, and safer structured event content.
+
+ENHANCEMENTS:
+
+* Rebuilt the Home hero around the club mascot with layered Vancouver map/grid backdrops, ambient HUD elements, and a simplified primary call to action.
+* Redesigned the FAQ section into a two-column layout and moved it ahead of the event and project previews to improve the homepage narrative flow.
+* Refined shared homepage section headers with the reusable `CyberBadge` treatment, richer title styling, and framed action links for a more consistent visual system.
+* Restyled clipped buttons and badge shells across navigation, About, Merch, and Events so outlines render more cleanly and consistently.
+
+EVENTS:
+
+* Reworked event data to use structured detail points, explicit RSVP or Discord action links, and supplemental media support, including the Game Jam QR code in the modal.
+* Updated event cards, previews, and modal rendering to use plain text and structured metadata while preserving richer event detail and search coverage.
+
+PERFORMANCE:
+
+* Replaced the large mascot PNG assets with WebP equivalents for the refreshed hero presentation.
+
+FIXES:
+
+* Removed `dangerouslySetInnerHTML`-based event rendering in modal and card flows, reducing reliance on inline HTML content.
+* Clarified merch purchase follow-up copy so members know an executive will verify orders and provide the next pickup steps.
+
+## v2.1.0 (March 27, 2026)
+
+This release focuses on homepage refinement, cleaner mobile presentation, version consistency, and accessibility-oriented UI polish.
+
+ENHANCEMENTS:
+
+* Redesigned the Home page About section to better balance headline, stats, and photography while preserving the cyberpunk visual language.
+* Standardized homepage section headers so About, Events, Projects, and FAQ share the same structure and spacing system.
+* Replaced the faux terminal-style About media block with real club photography to better communicate community and events.
+* Added a mobile swipe carousel treatment for Featured Projects while preserving the existing desktop grid.
+
+MOBILE UX:
+
+* Reduced the visual size of Featured Project cards on small screens and changed the project list to a swipeable, snap-based layout.
+* Shrunk homepage event preview cards on mobile and tightened the full Events page cards with shorter imagery and lighter padding.
+* Moved the About section image directly below the section label on mobile and kept the stats in a tighter two-column layout.
+* Removed decorative side lines from shared page-header badges on mobile for a cleaner, less cramped presentation.
+
+ACCESSIBILITY:
+
+* Softened the hero glitch treatment and made the glitch component respect reduced-motion preferences to avoid aggressive animation for sensitive users.
+
+FIXES:
+
+* Aligned visible version labels across the site and bumped package metadata to `v2.1.0`.
+
 ## v2.0.1 (March 18, 2026)
 
 This release focuses on polish, content refreshes, performance follow-up work, and presentation fixes across the site.

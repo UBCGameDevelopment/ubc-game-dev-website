@@ -4,14 +4,12 @@ import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
-import LoadingScreen from "../components/common/LoadingScreen";
 
 interface Props {
   title?: string;
-  immersive?: boolean;
 }
 
-const { title = "UBC Game Development", immersive = false } = Astro.props;
+const { title = "UBC Game Dev" } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,14 +20,6 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
       name="viewport"
       content="width=device-width"
     />
-    <script is:inline>
-      (function () {
-        const hasVisited = sessionStorage.getItem("cyber_boot_custom");
-        if (!hasVisited && window.location.pathname === "/") {
-          document.documentElement.setAttribute("data-loading", "true");
-        }
-      })();
-    </script>
     <meta
       name="color-scheme"
       content="only light"
@@ -50,36 +40,12 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
     <title>{title}</title>
     <SpeedInsights />
     <Analytics />
-    {
-      immersive && (
-        <meta
-          name="immersive-mode"
-          content="true"
-        />
-      )
-    }
   </head>
   <body
-    class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white"
-  >
-    {immersive && <LoadingScreen client:only="react" />}
-
-    {
-      immersive && (
-        <>
-          <div class="fixed inset-0 z-0 bg-[var(--bg-deep)]">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] opacity-40" />
-          </div>
-
-          <div class="fixed top-0 left-0 z-50 h-1 w-full bg-[var(--brand)] shadow-[0_0_10px_var(--brand)]" />
-        </>
-      )
-    }
-
+    class="overflow-x-hidden bg-[var(--bg-deep)] font-sans text-[var(--text-main)] transition-colors duration-300 selection:bg-[var(--accent)] selection:text-white">
     <div
       id="app-content"
-      class="relative z-10 flex min-h-screen flex-col transition-opacity duration-500"
-    >
+      class="relative z-10 flex min-h-screen flex-col transition-opacity duration-500">
       <Navbar />
 
       <main class="flex-grow">
@@ -90,19 +56,3 @@ const { title = "UBC Game Development", immersive = false } = Astro.props;
     </div>
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-  }
-
-  html[data-loading="true"] #app-content {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  html[data-loading="true"] {
-    overflow: hidden;
-  }
-</style>

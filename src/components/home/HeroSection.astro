@@ -1,69 +1,134 @@
 ---
-import CyberMarquee from "../effects/CyberMarquee.astro";
 import GlitchText from "../effects/GlitchText";
 import CyberBadge from "../common/CyberBadge.astro";
+import mascotImg from "../../assets/logo/mascot.webp";
+import idleImg from "../../assets/logo/Idle.webp";
 ---
 
-<section class="section-block relative flex h-screen min-h-[800px] flex-col items-center justify-center p-4">
-  <div class="pointer-events-none absolute inset-0 z-0 flex flex-col justify-between overflow-hidden py-32 select-none">
-    <CyberMarquee
-      text="UBC GAME DEV /// EST. 2017 /// VANCOUVER"
-      speed={40}
-      opacity="0.05"
-      color="var(--text-muted)"
-    />
-    <CyberMarquee
-      text="BUILD /// BREAK /// DEPLOY ///"
-      direction="right"
-      speed={44}
-      opacity="0.05"
-      color="var(--text-muted)"
-    />
+<section
+  class="section-block relative flex h-screen min-h-[850px] w-full flex-col items-center overflow-hidden bg-[var(--bg-deep)]"
+>
+  <div
+    class="pointer-events-none absolute inset-0 z-[1] opacity-[0.08]"
+    style="
+      background-image:
+        linear-gradient(var(--border-dim) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-dim) 1px, transparent 1px);
+      background-size: 12rem 12rem;
+    "
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute top-[48%] left-1/2 z-[2] h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--text-muted)] opacity-5 blur-[120px] md:top-[52%] md:h-[500px] md:w-[500px] lg:top-[55%]"
+  >
   </div>
 
-  <div class="container-page relative z-20 text-center">
-    <div class="mb-6 flex w-full justify-center">
+  <div
+    class="pointer-events-none absolute top-[48%] left-1/2 z-[3] h-[40vh] min-h-[300px] w-[40vh] min-w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-white/20 md:top-[52%] md:h-[55vh] md:min-h-[400px] md:w-[55vh] md:min-w-[400px] lg:top-[55%]"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute top-[48%] left-1/2 z-[3] h-[60vh] min-h-[450px] w-[60vh] min-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dotted border-[var(--cyber-blue)]/10 md:top-[52%] md:h-[75vh] md:min-h-[550px] md:w-[75vh] md:min-w-[550px] lg:top-[55%]"
+  >
+  </div>
+
+  <div
+    class="pointer-events-none absolute top-1/2 left-1/2 z-[4] aspect-[4/3] w-[160vw] max-w-[1500px] -translate-x-1/2 -translate-y-1/2 opacity-40"
+  >
+    <div
+      class="absolute inset-0 bg-[url('/vancouver-map.webp')] bg-contain bg-center bg-no-repeat mix-blend-screen"
+      style="-webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%); mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);"
+    >
+    </div>
+  </div>
+  <div class="absolute inset-x-0 top-[12vh] z-10 mx-auto w-full max-w-5xl px-6 text-center md:top-[15vh]">
+    <div class="mb-4 flex justify-center">
       <CyberBadge
         label="System Online"
         variant="blue"
       />
     </div>
-
     <GlitchText
       client:visible
       tag="h1"
       text="UBC GAME DEV"
-      className="mb-4 cursor-default text-6xl font-black tracking-tighter text-white uppercase md:text-8xl lg:text-9xl"
-      options={{ speed: 70 }}
+      className="font-tech cursor-default text-5xl leading-none font-black tracking-widest text-white uppercase sm:text-6xl md:text-7xl lg:text-[6.5rem]"
+      options={{ speed: 120, cycles: 1.5, mode: "decode" }}
+      onHover={false}
     />
-
-    <p class="mx-auto max-w-xl text-lg font-medium tracking-widest text-[var(--text-muted)] uppercase md:text-xl">
-      Build. <span class="text-[var(--cyber-yellow)]">Break.</span> Deploy.
-    </p>
-
-    <div class="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-      <a
-        href="/games"
-        class="clip-angled relative overflow-hidden bg-[var(--brand)] px-8 py-4 font-bold tracking-widest text-white uppercase transition-all hover:bg-[var(--accent)] hover:shadow-[0_0_30px_var(--accent)]">
-        <span class="relative z-10">Initialize / Projects</span>
-      </a>
-
-      <a
-        href="/about"
-        class="group relative flex items-center gap-2 text-sm font-bold tracking-widest text-[var(--text-muted)] uppercase transition-colors hover:text-white">
-        <span>System Info</span>
-        <span class="block h-1 w-1 bg-[var(--cyber-yellow)] transition-transform group-hover:scale-150"></span>
-      </a>
+  </div>
+  <div
+    class="pointer-events-none absolute top-[48%] left-1/2 z-20 flex w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:top-[52%] lg:top-[55%]"
+  >
+    <img
+      src={mascotImg.src}
+      alt="UBC Game Dev Mascot"
+      class="h-[50vh] max-h-[400px] min-h-[250px] w-auto object-contain drop-shadow-[0_0_60px_rgba(138,43,226,0.5)] md:h-[65vh] md:max-h-none md:min-h-[400px] md:drop-shadow-[0_0_80px_rgba(138,43,226,0.6)]"
+    />
+  </div>
+  <div
+    class="absolute top-[45%] right-4 z-30 hidden w-[85%] max-w-[340px] -translate-y-1/2 sm:right-10 md:right-[5%] md:block lg:right-[15%]"
+  >
+    <div
+      class="border border-[var(--border-dim)] bg-black/60 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-all hover:border-[var(--cyber-blue)]/50 hover:bg-black/80"
+      style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);"
+    >
+      <div class="flex items-center gap-4 p-4 sm:p-5">
+        <div
+          class="relative flex h-20 w-20 shrink-0 items-center justify-center border border-[var(--border-dim)] bg-gradient-to-br from-[var(--bg-deep)] to-black shadow-inner sm:h-24 sm:w-24"
+        >
+          <div
+            class="pointer-events-none absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]"
+          >
+          </div>
+          <img
+            src={idleImg.src}
+            alt="Club Mascot Idle"
+            class="relative z-10 h-[80%] w-[80%] object-contain drop-shadow-md"
+          />
+        </div>
+        <div class="flex-1">
+          <h3 class="font-tech mb-1 text-base font-bold tracking-widest text-white uppercase sm:text-lg">Devvy</h3>
+          <p class="font-tech text-[10px] leading-relaxed text-[var(--text-muted)] sm:text-[11px]">
+            The official UBC Game Dev mascot. Join us to build skills and ship games.
+          </p>
+          <a
+            href="/about"
+            class="font-tech mt-3 inline-block border border-[var(--border-dim)] bg-black px-4 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase transition-colors hover:border-[var(--cyber-blue)] hover:text-white"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="font-tech absolute bottom-8 left-8 hidden text-xs text-[var(--border-dim)] md:block">
-    <p>CORD: 49.2606° N, 123.2460° W</p>
-    <p>LOC: VANCOUVER_GRID_04</p>
+  <div class="absolute bottom-10 left-6 z-30 max-w-[320px] md:bottom-16 md:left-12 lg:left-24 lg:max-w-[400px]">
+    <p class="font-tech mb-6 text-base leading-relaxed font-medium text-[var(--text-muted)] sm:text-lg">
+      A student-run game development club for programmers, artists, writers, designers, and musicians. Built for
+      ambition at UBC.
+    </p>
+    <a
+      href="/games"
+      class="clip-angled group/cta relative inline-block bg-[var(--brand)]/90 p-px text-white uppercase transition-all hover:bg-[var(--accent)] hover:shadow-[0_0_30px_var(--accent)]"
+    >
+      <span class="font-tech clip-angled relative z-10 block bg-[var(--brand)] px-8 py-3.5 text-xs font-bold tracking-widest transition-[background-color] group-hover/cta:bg-[var(--accent)]">
+        View Projects
+      </span>
+    </a>
   </div>
 
-  <div class="font-tech absolute right-8 bottom-8 hidden text-xs text-[var(--border-dim)] md:block">
-    <p>STATUS: OPTIMAL</p>
-    <p>VER: 2.0.0</p>
+  <div
+    class="font-tech absolute right-6 bottom-10 z-20 hidden flex-col items-end text-right text-[10px] tracking-[0.2em] text-white/30 md:right-12 md:bottom-16 md:flex lg:right-24"
+  >
+    <div class="mb-2 flex items-center gap-2">
+      <span
+        class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--cyber-blue)] opacity-50 shadow-[0_0_8px_var(--cyber-blue)]"
+      >
+      </span>
+      <p>SYS.OP.NORMAL</p>
+    </div>
+    <p class="mb-1">CORD: 49.2606° N, 123.2460° W</p>
+    <p>LOC: VANCOUVER_GRID_04</p>
   </div>
 </section>

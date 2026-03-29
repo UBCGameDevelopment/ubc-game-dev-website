@@ -11,14 +11,12 @@ import PageHeader from "../components/common/PageHeader.astro";
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
-<Layout title="Club Timeline // Games" immersive>
+<Layout title="UBC Game Dev | Games">
   <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" speed={120} direction="left"  className="top-32 left-0 fixed opacity-[0.02]" />
 
   <PageHeader
     backgroundText="DATABASE"
     badge={{ label: "Archive Access // Granted", variant: "blue" }}
-    subtitle="Project Database"
-    subtitleColor="text-[var(--text-muted)]"
     title={{ normal: "Dev ", highlight: "Archives" }}
     gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
     description="Trace the history of our digital creations. From game jam prototypes to polished releases, explore the legacy of UBC Game Dev code."

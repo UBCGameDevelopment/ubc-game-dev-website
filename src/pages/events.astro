@@ -1,84 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CtaButton from "../components/common/CtaButton";
 import LevelCard from "../components/events/LevelCard.astro";
 import EventModal from "../components/events/EventModal";
 import { EventService } from "../services";
-import { LINKS } from "../config/links";
 import PageHeader from "../components/common/PageHeader.astro";
 
 const events = EventService.getAll();
 const eventsForModal = EventService.prepareForModal(events);
 ---
 
-<Layout>
+<Layout title="UBC Game Dev | Events">
   <main>
     <PageHeader
       backgroundText="CHAPTERS"
       badge={{ label: "Season 2025-2026 // Active", variant: "brand" }}
-      subtitle="Mission Log"
-      subtitleColor="text-[var(--cyber-magenta)]"
       title={{ normal: "Event ", highlight: "Chapters" }}
       gradientClass="from-[var(--cyber-yellow)] to-[var(--brand)]"
-      description="Journey through our club events like levels in a game. Complete challenges, unlock achievements, and level up your game dev skills!"
+      description="Explore workshops, showcases, socials, and other club events happening throughout the year at UBC Game Dev."
       descriptionBorderColor="border-[var(--cyber-yellow)]"
       glowColor="var(--brand)"
-    >
-      <div class="mx-auto mt-12 max-w-xl">
-        <div class="relative flex flex-col items-center">
-          <div class="font-tech mb-2 flex w-full justify-between text-xs tracking-wider uppercase">
-            <span class="flex items-center gap-2 font-bold text-[var(--cyber-yellow)]">
-              <span class="h-1.5 w-1.5 animate-pulse bg-[var(--cyber-yellow)]"></span>
-              Season Progress
-            </span>
-            <span class="text-[var(--text-muted)]">
-              {Math.round((EventService.getCompletedCount() / events.length) * 100)}% COMPLETE
-            </span>
-          </div>
-
-          <div class="flex w-full items-center gap-4">
-            <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
-              <div class="absolute top-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
-              <div class="absolute bottom-0 left-0 h-px w-3 bg-[var(--text-muted)]"></div>
-            </div>
-
-            <div class="relative h-4 flex-1 border-y border-[var(--border-dim)] bg-[var(--bg-deep)]">
-              <div
-                class="relative h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-                style={`width: ${(EventService.getCompletedCount() / events.length) * 100}%`}
-              >
-                <div class="absolute top-0 right-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent opacity-50">
-                </div>
-              </div>
-            </div>
-
-            <div class="relative h-10 w-px bg-[var(--text-muted)] opacity-60">
-              <div class="absolute top-0 right-0 h-px w-3 bg-[var(--text-muted)]"></div>
-              <div class="absolute right-0 bottom-0 h-px w-3 bg-[var(--text-muted)]"></div>
-            </div>
-          </div>
-
-          <div
-            class="font-tech mt-2 flex w-full justify-between px-1 text-[10px] text-[var(--text-muted)] uppercase opacity-60"
-          >
-            <span>Start_Point</span>
-            <span>Objective: {events.length} Events</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12">
-        <CtaButton
-          client:load
-          label="Join the Adventure"
-          href={LINKS.discord}
-          variant="yellow"
-        />
-      </div>
-    </PageHeader>
+    />
 
     <section class="container-page mx-auto px-4 pb-20">
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid justify-items-center gap-6 sm:grid-cols-2 sm:justify-items-stretch lg:grid-cols-3">
         {
           events.map((event, index) => (
             <LevelCard

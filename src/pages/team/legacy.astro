@@ -5,7 +5,6 @@ import { legacyExecs } from "../../data/legacyExecs";
 
 import "../../styles/global.css";
 
-// Group execs by season
 const seasons = [...new Set(legacyExecs.map((e) => e.season))];
 const execsBySeason = seasons.map((season) => ({
   season,
@@ -13,13 +12,11 @@ const execsBySeason = seasons.map((season) => ({
 }));
 ---
 
-<Layout title="UBC Game Dev // Legacy Leaders" immersive>
+<Layout title="UBC Game Dev | Legacy Team">
   <main>
     <PageHeader
       backgroundText="LEGACY"
       badge={{ label: "Historical Archive // Declassified", variant: "brand" }}
-      subtitle="Past Operatives"
-      subtitleColor="text-[var(--text-muted)]"
       title={{ normal: "Legacy ", highlight: "Leaders" }}
       gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
       description="Honoring the past operatives who built UBC Game Dev into the community it is today."

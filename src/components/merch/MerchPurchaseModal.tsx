@@ -7,7 +7,6 @@ interface MerchModalData extends MerchItem {}
 export default function MerchPurchaseModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState<MerchModalData | null>(null);
-  // When 'size-chart' is active, it's an overlay on top of 'details'
   const [showSizeChartOverlay, setShowSizeChartOverlay] = useState(false);
   const [view, setView] = useState<"details" | "purchase">("details");
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -31,7 +30,6 @@ export default function MerchPurchaseModal() {
     };
   }, []);
 
-  // Lock scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -70,7 +68,6 @@ export default function MerchPurchaseModal() {
     <AnimatePresence>
       {isOpen && data && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +76,6 @@ export default function MerchPurchaseModal() {
             className="absolute inset-0 bg-black/90 backdrop-blur-md"
           />
 
-          {/* Modal Content */}
           <motion.div
             key={view}
             initial={{ scale: 0.95, opacity: 0, y: 10 }}
@@ -93,11 +89,9 @@ export default function MerchPurchaseModal() {
             }`}
           >
             {view === "details" ? (
-              // === DETAILS VIEW (Card Style) ===
               <div className="merch-hud-card relative flex flex-col overflow-hidden bg-[#05080c] shadow-[0_0_40px_rgba(0,0,0,0.8)] md:h-[75vh] md:flex-row">
                 <div className="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10"></div>
 
-                {/* Close Button */}
                 <button
                   onClick={() => setIsOpen(false)}
                   className="absolute top-6 right-6 z-50 text-[var(--text-muted)] transition-colors hover:text-white"
@@ -117,7 +111,6 @@ export default function MerchPurchaseModal() {
                   </svg>
                 </button>
 
-                {/* Left: Image / Visual */}
                 <div className="relative h-[40vh] w-full bg-[radial-gradient(circle_at_40%_40%,rgba(0,240,255,0.1)_0%,rgba(0,0,0,0.8)_60%)] md:h-auto md:w-[65%]">
                   {activeImageSrc ? (
                     <>
@@ -198,7 +191,6 @@ export default function MerchPurchaseModal() {
                   )}
                 </div>
 
-                {/* Right: Info */}
                 <div className="relative z-10 flex flex-1 flex-col justify-between p-8 md:w-[35%] md:overflow-y-auto md:p-12">
                   <div>
                     <div className="flex items-center gap-3">
@@ -245,37 +237,36 @@ export default function MerchPurchaseModal() {
                     </div>
                   </div>
 
-                  {/* Footer / CTA */}
                   <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-[var(--border-dim)] pt-8 md:flex-nowrap md:gap-8">
                     <span className="font-pixel shrink-0 text-4xl leading-none text-[var(--cyber-yellow)]">
                       ${data.price} CAD
                     </span>
                     <button
                       onClick={() => setView("purchase")}
-                      className="clip-angled group relative ml-auto inline-flex w-full items-center justify-center gap-3 overflow-hidden bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
+                      className="clip-angled group relative ml-auto inline-flex w-full bg-[var(--cyber-blue)] p-px text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
                     >
-                      <span className="relative z-10">BUY NOW</span>
-                      <svg
-                        className="relative z-10 h-4 w-4 transition-transform group-hover:translate-x-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
+                      <span className="clip-angled relative z-10 flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] transition-[background-color] group-hover:bg-white">
+                        <span>BUY NOW</span>
+                        <svg
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </span>
                     </button>
                   </div>
                 </div>
               </div>
             ) : (
-              // === PURCHASE VIEW (Instructions) ===
               <div className="relative">
-                {/* Header */}
                 <div className="flex items-center justify-between border-b border-[var(--border-dim)] bg-[var(--brand)]/10 p-4">
                   <h3 className="font-tech text-xl tracking-widest text-white uppercase">
                     <span className="mr-2 text-[var(--brand)]">&gt;&gt;</span>
@@ -289,10 +280,8 @@ export default function MerchPurchaseModal() {
                   </button>
                 </div>
 
-                {/* Content */}
                 <div className="max-h-[80vh] overflow-y-auto p-4 md:p-8">
                   <div className="mb-6 flex flex-col items-start gap-6 md:flex-row">
-                    {/* Image Placeholder */}
                     <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded border border-[var(--border-dim)] bg-[radial-gradient(circle_at_center,_var(--bg-panel)_0%,_var(--bg-deep)_100%)] md:w-1/3">
                       {activeImageSrc ? (
                         <img
@@ -321,7 +310,6 @@ export default function MerchPurchaseModal() {
                       )}
                     </div>
 
-                    {/* Details */}
                     <div className="flex-1 space-y-3">
                       <div>
                         <p className="text-xs font-bold tracking-widest text-[var(--cyber-yellow)] uppercase">
@@ -409,9 +397,7 @@ export default function MerchPurchaseModal() {
                     <div className="mt-6 rounded border border-[var(--border-dim)] bg-[var(--bg-deep)]/50 p-4 text-xs">
                       <p className="mb-1 font-bold text-[var(--brand)] uppercase">System Note:</p>
                       <p>
-                        A Guild Officer will verify your transaction. You will receive your gear{" "}
-                        <span className="font-bold text-white">at the specified in-person pickup time</span> during the
-                        term.
+                        An executive member will verify your purchase. Further instructions will be provided then for the next steps in regards to getting your orders.
                       </p>
                     </div>
                   </div>
@@ -419,20 +405,20 @@ export default function MerchPurchaseModal() {
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={() => setIsOpen(false)}
-                      className="clip-angled group relative overflow-hidden bg-[var(--brand)] px-6 py-2 font-bold text-white uppercase transition-all hover:bg-[var(--accent)]"
+                      className="clip-angled group relative bg-[var(--brand)]/90 p-px text-white uppercase transition-all"
                     >
-                      <span className="relative z-10">Acknowledge</span>
+                      <span className="clip-angled relative z-10 block bg-[var(--brand)] px-6 py-2 font-bold transition-[background-color] group-hover:bg-[var(--accent)]">
+                        Acknowledge
+                      </span>
                     </button>
                   </div>
                 </div>
 
-                {/* Scanlines for Purchase View */}
                 <div className="scanline-rgb pointer-events-none absolute inset-0 z-0 opacity-10"></div>
               </div>
             )}
           </motion.div>
 
-          {/* Size Chart Overlay Popup - Moved outside modal content to fix stacking context */}
           <AnimatePresence>
             {showSizeChartOverlay && (
               <motion.div

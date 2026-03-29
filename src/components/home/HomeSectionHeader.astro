@@ -1,0 +1,62 @@
+---
+import CyberBadge from "../common/CyberBadge.astro";
+
+interface Props {
+  label: string;
+  title: string;
+  description?: string;
+  actionHref?: string;
+  actionLabel?: string;
+  titleClass?: string;
+  wrapperClass?: string;
+}
+
+const {
+  label,
+  title,
+  description,
+  actionHref,
+  actionLabel,
+  titleClass = "text-3xl md:text-5xl",
+  wrapperClass = "mb-16",
+} = Astro.props;
+---
+
+<div class:list={[wrapperClass, "border-b border-[var(--border-dim)] pb-6"]}>
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="space-y-5">
+      <CyberBadge
+        label={label}
+        variant="blue"
+      />
+
+      <slot name="after-label" />
+
+      <h2 
+        class:list={["font-display max-w-3xl font-black tracking-[-0.05em] text-white uppercase", titleClass]}
+        set:html={title}
+      />
+
+      {
+        description && (
+          <p class="max-w-2xl text-lg leading-relaxed text-[var(--text-muted)] md:text-xl">
+            {description}
+          </p>
+        )
+      }
+    </div>
+
+    {
+      actionHref &&
+        actionLabel && (
+          <a
+            href={actionHref}
+            class="font-tech group self-start shrink-0 flex items-center gap-2 border border-[var(--border-dim)] bg-black/50 px-5 py-2 text-xs font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase transition-all hover:border-[var(--cyber-blue)] hover:bg-[var(--cyber-blue)]/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+          >
+            {actionLabel}
+            <span class="text-white/50 transition-colors group-hover:text-white">&gt;</span>
+          </a>
+        )
+    }
+  </div>
+</div>
