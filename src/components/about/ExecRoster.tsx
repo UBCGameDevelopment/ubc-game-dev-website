@@ -223,7 +223,7 @@ export default function ExecRoster({ execs }: Props) {
                   <span className="mb-2 inline-block self-start border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--brand)] uppercase">
                     {selected.role}
                   </span>
-                  <h3 className="font-display max-w-full overflow-hidden text-ellipsis text-[clamp(1rem,6vw,2.25rem)] leading-tight font-black tracking-tight text-white uppercase whitespace-nowrap">
+                  <h3 className="font-display max-w-full text-[clamp(1rem,6vw,2.25rem)] leading-tight font-black tracking-tight text-white uppercase whitespace-normal break-words">
                     {selected.name.split(" ")[0]}{" "}
                     <span className="bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent">
                       {selected.name.split(" ").slice(1).join(" ")}
