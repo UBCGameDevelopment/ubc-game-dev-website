@@ -196,10 +196,10 @@ export default function ExecRoster({ execs }: Props) {
               transition={{ duration: 0.2 }}
               className="relative z-10 flex flex-1 flex-col"
             >
-              <div className="flex gap-6 p-6 pb-0">
+              <div className="flex flex-col gap-4 p-4 pb-0 sm:flex-row sm:gap-6 sm:p-6 sm:pb-0">
                 <div className="relative shrink-0">
                   <div
-                    className="h-44 w-44 overflow-hidden border-2 border-[var(--cyber-yellow)] shadow-[0_0_25px_rgba(252,238,10,0.15)] md:h-52 md:w-52"
+                    className="h-32 w-32 overflow-hidden border-2 border-[var(--cyber-yellow)] shadow-[0_0_25px_rgba(252,238,10,0.15)] sm:h-44 sm:w-44 md:h-52 md:w-52"
                     style={{
                       clipPath:
                         "polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px)",
@@ -219,21 +219,21 @@ export default function ExecRoster({ execs }: Props) {
                   />
                 </div>
 
-                <div className="flex flex-col justify-center">
+                <div className="min-w-0 flex flex-col justify-center">
                   <span className="mb-2 inline-block self-start border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--brand)] uppercase">
                     {selected.role}
                   </span>
-                  <h3 className="font-display text-3xl leading-tight font-black tracking-tight text-white uppercase md:text-4xl">
+                  <h3 className="font-display text-2xl leading-tight font-black tracking-tight text-white uppercase [overflow-wrap:anywhere] sm:text-3xl md:text-4xl">
                     {selected.name.split(" ")[0]}
                     <br />
-                    <span className="bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent">
+                    <span className="inline-block bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent">
                       {selected.name.split(" ").slice(1).join(" ")}
                     </span>
                   </h3>
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col p-6">
+              <div className="flex flex-1 flex-col p-4 sm:p-6">
                 <div className="mb-4 h-px w-full bg-gradient-to-r from-[var(--cyber-yellow)]/50 via-[var(--border-dim)] to-transparent" />
 
                 <div className="font-tech mb-4 grid grid-cols-3 gap-2 text-xs">
