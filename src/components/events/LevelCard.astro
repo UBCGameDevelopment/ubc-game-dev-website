@@ -10,58 +10,57 @@ const { title, date, description, location, mapLink, image, isActive, chapterNum
 
 <div
   class:list={[
-    "group angular-card relative w-full max-w-[24rem] overflow-hidden transition-all duration-300 md:max-w-none",
+    "group angular-card relative flex w-full max-w-[24rem] flex-col overflow-hidden transition-all duration-300 md:max-w-none",
     isActive
       ? "bg-[var(--surface-2)] shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)]"
       : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
   ]}
 >
-  <div
-    class:list={[
-      "font-pixel absolute top-0 left-0 z-20 flex h-12 w-12 items-center justify-center text-lg font-bold shadow-lg md:h-14 md:w-14 md:text-xl",
-      isActive ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
-    ]}
-    style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 15px));"
-  >
-    {chapterNumber}
-  </div>
-
-  {
-    !isActive && (
-      <div
-        class="absolute top-0 right-0 z-20 bg-[var(--surface-3)] px-3 py-1.5 text-[10px] font-semibold tracking-wide text-[var(--text-muted)] uppercase md:px-4 md:py-2 md:text-xs"
-        style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
-      >
-        LOCKED // EXPIRED
-      </div>
-    )
-  }
-  {
-    isActive && (
-      <div
-        class="absolute top-0 right-0 z-20 flex items-center gap-2 bg-[var(--cyber-magenta)] px-3 py-1.5 text-[10px] font-bold text-white shadow-lg md:px-4 md:py-2 md:text-xs"
-        style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
-      >
-        <span
-          class="h-2 w-2 animate-pulse bg-white"
-          style="clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);"
-        />
-        ACTIVE MISSION
-      </div>
-    )
-  }
-
-  <div class="relative h-44 overflow-hidden sm:h-auto sm:aspect-[16/9]">
+  <div class="relative h-44 shrink-0 overflow-hidden sm:h-auto sm:aspect-[16/9]">
     <img
       src={image.src}
       alt={title}
       width={image.width}
       height={image.height}
-      class:list={["h-full w-full object-cover transition-all duration-500", isActive ? "group-hover:scale-105" : ""]}
+      class:list={["block h-full w-full object-cover transition-all duration-500", isActive ? "group-hover:scale-105" : ""]}
       loading="lazy"
       decoding="async"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-transparent to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[var(--surface-2)] via-[var(--surface-2)]/30 via-30% to-transparent"></div>
+
+    <div
+      class:list={[
+        "font-pixel absolute top-0 left-0 z-20 flex h-12 w-12 items-center justify-center text-lg font-bold shadow-lg md:h-14 md:w-14 md:text-xl",
+        isActive ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
+      ]}
+      style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 15px));"
+    >
+      {chapterNumber}
+    </div>
+
+    {
+      !isActive && (
+        <div
+          class="font-tech absolute top-0 right-0 z-20 flex h-12 items-center justify-center bg-[var(--surface-3)] px-4 text-[10px] font-semibold tracking-wide text-[var(--text-muted)] uppercase md:h-14 md:px-6 md:text-xs"
+          style="clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%);"
+        >
+          LOCKED // EXPIRED
+        </div>
+      )
+    }
+    {
+      isActive && (
+        <div
+          class="font-tech absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-sm bg-black/50 px-3 py-1.5 text-[10px] font-bold tracking-[0.15em] text-[var(--cyber-yellow)] uppercase backdrop-blur-sm md:top-4 md:right-4 md:text-xs"
+          style="box-shadow: 0 0 12px rgba(252, 238, 10, 0.2);"
+        >
+          <span
+            class="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--cyber-yellow)] shadow-[0_0_6px_var(--cyber-yellow)]"
+          />
+          ACTIVE MISSION
+        </div>
+      )
+    }
 
     {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
   </div>

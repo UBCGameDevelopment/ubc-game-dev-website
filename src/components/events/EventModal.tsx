@@ -121,14 +121,14 @@ export default function EventModal({ events }: EventModalProps) {
               <div className="mb-4">
                 {event.isActive ? (
                   <span
-                    className="inline-flex items-center gap-2 bg-[var(--cyber-magenta)] px-4 py-1.5 text-xs font-bold tracking-wider text-white uppercase shadow-[0_0_15px_var(--cyber-magenta)]"
+                    className="font-tech inline-flex items-center gap-2 border border-white/20 bg-[var(--cyber-red)] px-4 py-1.5 text-xs font-black tracking-[0.15em] text-white uppercase shadow-[0_0_20px_rgba(255,0,60,0.85)]"
                     style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
                   >
                     <span
-                      className="h-2 w-2 animate-pulse bg-white"
+                      className="h-2 w-2 animate-pulse bg-white shadow-[0_0_8px_#ffffff]"
                       style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
                     />
-                    Active Event
+                    Active Mission
                   </span>
                 ) : (
                   <span
