@@ -4,8 +4,8 @@ import type { ImageMetadata } from "astro";
  * Represents different types of media that can be displayed for a game
  */
 export interface GameMedia {
-  type: 'video' | 'images' | 'image';
-  
+  type: "video" | "images" | "image";
+
   /** YouTube embed URL (use youtube-nocookie.com for privacy-enhanced mode) */
   videoUrl?: string;
   images?: ImageMetadata[];

@@ -16,7 +16,7 @@ const serializedExecs = execs.map((exec) => ({
   linkedin: exec.linkedin,
   github: exec.github,
   portfolio: exec.portfolio,
-  imageSrc: exec.image.src,
+  imageSrc: exec.image?.src ?? "",
 }));
 ---
 

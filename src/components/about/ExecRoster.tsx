@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import { splitTypewriterText } from "../../utils/typewriter";
+import { SOCIAL_LINKS } from "../../config/links";
 
 interface ExecData {
   name: string;
@@ -17,6 +18,71 @@ interface ExecData {
 interface Props {
   execs: ExecData[];
 }
+
+const ExecEmptyState = () => (
+  <div className="mx-auto max-w-3xl px-4 pb-20">
+    <div className="relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)]/90 p-8 shadow-[0_0_40px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-12">
+      {/* Subtle scanline */}
+      <div className="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10" />
+
+      {/* Cyber corner brackets */}
+      <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-[var(--cyber-yellow)]" />
+      <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-[var(--cyber-yellow)]" />
+      <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-[var(--cyber-yellow)]" />
+      <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[var(--cyber-yellow)]" />
+
+      {/* Header status */}
+      <div className="relative z-10 mb-8 flex items-center justify-between border-b border-[var(--border-dim)] pb-3 font-tech text-[10px] tracking-[0.2em] uppercase">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--cyber-yellow)]" />
+          <span className="text-[var(--cyber-yellow)]">STATUS // DELIBERATING</span>
+        </div>
+        <span className="text-[var(--text-muted)]">CREW MANIFEST PENDING</span>
+      </div>
+
+      {/* Center content */}
+      <div className="relative z-10 flex flex-col items-center text-center">
+        {/* Heading */}
+        <h3 className="font-display mb-3 text-2xl font-black tracking-tight text-white uppercase sm:text-3xl">
+          Next Squadron{" "}
+          <span className="bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent">
+            Incoming
+          </span>
+        </h3>
+
+        {/* Concise explanation */}
+        <p className="max-w-md text-sm text-[var(--text-muted)]">
+          Executive roles are currently being finalized. Check back soon for the new roster announcement.
+        </p>
+
+        {/* Action CTAs */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href={SOCIAL_LINKS.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-tech group inline-flex items-center gap-2 border border-[var(--cyber-yellow)] bg-[var(--cyber-yellow)]/10 px-5 py-2.5 text-xs font-bold tracking-[0.2em] text-[var(--cyber-yellow)] uppercase transition-all hover:bg-[var(--cyber-yellow)] hover:text-black hover:shadow-[0_0_15px_rgba(252,238,10,0.25)]"
+          >
+            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
+              <path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 01.077-.01c3.929 1.793 8.18 1.793 12.061 0a.075.075 0 01.079.01c.12.098.245.195.372.288a.077.077 0 01-.006.127c-.598.35-1.22.65-1.873.893a.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+            </svg>
+            <span>Join Discord</span>
+          </a>
+
+          <a
+            href="/team/legacy"
+            className="font-tech group inline-flex items-center gap-2 border border-[var(--border-dim)] bg-[var(--bg-deep)] px-5 py-2.5 text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase transition-all hover:border-[var(--cyber-blue)] hover:text-[var(--cyber-blue)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)]"
+          >
+            <svg className="h-4 w-4 transition-transform group-hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Legacy Roster</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const SocialLink = ({ href, label, children }: { href: string; label: string; children: React.ReactNode }) => (
   <a
@@ -115,10 +181,20 @@ const PortfolioIcon = () => (
 export default function ExecRoster({ execs }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const selected = execs[selectedIndex];
+
+  if (!execs || execs.length === 0) {
+    return <ExecEmptyState />;
+  }
+
+  const selected = execs[selectedIndex] ?? execs[0];
 
   const classOrder = ["President", "Leadership", "Operations", "Tech & Design"];
-  const grouped: Record<string, { exec: ExecData; originalIndex: number }[]> = {};
+  const grouped: Record<string, { exec: ExecData; originalIndex: number }[]> = {
+    President: [],
+    Leadership: [],
+    Operations: [],
+    "Tech & Design": [],
+  };
   execs.forEach((exec, index) => {
     if (!grouped[exec.execClass]) {
       grouped[exec.execClass] = [];
@@ -145,11 +221,13 @@ export default function ExecRoster({ execs }: Props) {
                   {cls}
                 </span>
                 <div className="h-px flex-1 bg-[var(--border-dim)]" />
-                <span className="font-tech text-[10px] text-[var(--text-muted)]">{grouped[cls].length}</span>
+                <span className="font-tech text-[10px] text-[var(--text-muted)]">
+                  {grouped[cls]?.length ?? 0}
+                </span>
               </div>
 
               <div className="grid grid-cols-4 gap-2">
-                {grouped[cls].map(({ exec, originalIndex }) => (
+                {(grouped[cls] ?? []).map(({ exec, originalIndex }) => (
                   <PortraitThumbnail
                     key={exec.name}
                     exec={exec}

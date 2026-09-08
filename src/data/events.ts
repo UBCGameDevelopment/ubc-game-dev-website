@@ -22,7 +22,7 @@ export const events: Event[] = [
     location: "IBLC 261 (Irving K. Barber Learning Centre)",
     mapLink: "https://learningspaces.ubc.ca/classrooms/iblc-261/",
     image: placeholderImage,
-    isActive: true,
+    isActive: false,
   },
   {
     title: "UBC x UVic Game Jam",
