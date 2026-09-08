@@ -13,7 +13,9 @@ export class EventService {
    * @returns           Array of all events
    */
   static getAll(): Event[] {
-    return staticEvents;
+    return [...staticEvents].sort((a, b) =>
+      new Date(a.isoDate).getTime() - new Date(b.isoDate).getTime()
+    );
   }
 
   /**

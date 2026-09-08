@@ -7,6 +7,7 @@
   --color-cyber-yellow: #fcee0a;
   --color-cyber-blue: #00f0ff;
   --color-cyber-red: #ff003c;
+  --color-cyber-magenta: #ff003c;
 
   --color-bg-deep: #030305;
   --color-bg-panel: #0a0a0c;
@@ -29,15 +30,24 @@
   --cyber-yellow: var(--color-cyber-yellow);
   --cyber-blue: var(--color-cyber-blue);
   --cyber-red: var(--color-cyber-red);
+  --cyber-magenta: var(--color-cyber-red);
 
   --bg-deep: var(--color-bg-deep);
   --bg-panel: var(--color-bg-panel);
 
+  --surface: #0a0a0c;
+  --surface-2: #111114;
+  --surface-3: #1a1a1e;
+
+  --text: var(--color-text-main);
   --text-main: var(--color-text-main);
   --text-muted: var(--color-text-muted);
 
+  --border: rgba(255, 255, 255, 0.08);
   --border-dim: var(--color-border-dim);
   --glass-str: rgba(10, 10, 12, 0.7);
+
+  --brand-rgb: 139, 92, 246;
 }
 
 html {
