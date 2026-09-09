@@ -15,7 +15,7 @@ export const events: Event[] = [
     ],
     location: "Engineering Cairn",
     image: placeholder,
-    isActive: true,
+    isActive: false,
   },
   {
     title: "UBC Game Direct",
