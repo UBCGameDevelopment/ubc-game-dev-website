@@ -10,7 +10,7 @@ export interface Exec {
   role: string;
   execClass: ExecClass;
   season: string;
-  linkedin: string;
+  linkedin?: string;
   github?: string;
   portfolio?: string;
   image: ImageMetadata;

@@ -9,7 +9,7 @@ interface ExecData {
   role: string;
   execClass: string;
   season: string;
-  linkedin: string;
+  linkedin?: string;
   github?: string;
   portfolio?: string;
   imageSrc: string;
@@ -76,7 +76,7 @@ const ExecEmptyState = () => (
             <svg className="h-4 w-4 transition-transform group-hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>Legacy Roster</span>
+            <span>Legacy Execs</span>
           </a>
         </div>
       </div>
@@ -419,12 +419,14 @@ export default function ExecRoster({ execs }: Props) {
                 </div>
 
                 <div className="flex flex-wrap gap-2 border-t border-[var(--border-dim)] pt-3">
-                  <SocialLink
-                    href={selected.linkedin}
-                    label="LinkedIn"
-                  >
-                    <LinkedInIcon />
-                  </SocialLink>
+                  {selected.linkedin && (
+                    <SocialLink
+                      href={selected.linkedin}
+                      label="LinkedIn"
+                    >
+                      <LinkedInIcon />
+                    </SocialLink>
+                  )}
                   {selected.github && (
                     <SocialLink
                       href={selected.github}
@@ -466,7 +468,7 @@ export default function ExecRoster({ execs }: Props) {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>View Legacy Leaders</span>
+          <span>View Legacy Execs</span>
           <svg
             className="h-3 w-3 transition-transform group-hover:translate-x-1"
             fill="none"
