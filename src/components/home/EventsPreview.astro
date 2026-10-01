@@ -50,12 +50,14 @@ const getPreviewText = (html: string) =>
                   <p class="mb-4 line-clamp-2 text-base text-[var(--text-muted)]">
                     {getPreviewText(event.description)}
                   </p>
-                  <div class="font-tech flex items-center gap-2 text-sm text-[var(--text-muted)]">
-                    <span
-                      class={`h-2 w-2 rounded-full ${event.isActive ? "animate-pulse bg-[var(--cyber-blue)]" : "bg-[var(--text-muted)]"}`}
-                    />
-                    {event.location}
-                  </div>
+                  {event.location && (
+                    <div class="font-tech flex items-center gap-2 text-sm text-[var(--text-muted)]">
+                      <span
+                        class={`h-2 w-2 rounded-full ${event.isActive ? "animate-pulse bg-[var(--cyber-blue)]" : "bg-[var(--text-muted)]"}`}
+                      />
+                      {event.location}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

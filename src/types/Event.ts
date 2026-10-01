@@ -20,7 +20,7 @@ export interface Event {
   detailPoints?: string[];
   actionLink?: EventActionLink;
   supplementalImage?: EventSupplementalImage;
-  location: string;
+  location?: string;
   mapLink?: string;
   image: ImageMetadata;
   isActive: boolean;

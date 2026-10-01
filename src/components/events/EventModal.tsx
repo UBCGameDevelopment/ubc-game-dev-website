@@ -15,7 +15,7 @@ interface EventModalProps {
       src: string;
       alt: string;
     };
-    location: string;
+    location?: string;
     mapLink?: string;
     imageSrc: string;
     isActive: boolean;

@@ -7,50 +7,47 @@ import { events as staticEvents } from '../data/events';
  * Can be easily extended to fetch from API endpoints instead of static data.
  */
 export class EventService {
+  /** Event dates are campus-local dates; expire them after the day ends. */
+  private static getToday(): string {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Vancouver',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(new Date());
+    const value = (type: string) => parts.find(part => part.type === type)!.value;
+    return `${value('year')}-${value('month')}-${value('day')}`;
+  }
+
+  private static getEvents(): Event[] {
+    const today = this.getToday();
+    return staticEvents.map(event => ({
+      ...event,
+      isActive: event.isActive && event.isoDate.slice(0, 10) >= today,
+    }));
+  }
+
   /**
    * Get all events
    * 
    * @returns           Array of all events
    */
   static getAll(): Event[] {
-    return [...staticEvents].sort((a, b) =>
+    return this.getEvents().sort((a, b) =>
       new Date(a.isoDate).getTime() - new Date(b.isoDate).getTime()
     );
   }
 
-  /**
-   * Get upcoming events (events in the future)
-   * Note: Requires events to have proper date format for comparison
-   * 
-   * @returns           Array of upcoming events
-   */
+  /** Get events happening today or on a later campus-local date. */
   static getUpcoming(): Event[] {
-    const now = new Date();
-    return staticEvents.filter(event => {
-      try {
-        const eventDate = new Date(event.date);
-        return eventDate >= now;
-      } catch {
-        return false;
-      }
-    });
+    const today = this.getToday();
+    return this.getEvents().filter(event => event.isoDate.slice(0, 10) >= today);
   }
 
-  /**
-   * Get past events
-   * 
-   * @returns               Array of past events
-   */
+  /** Get events whose campus-local date has passed. */
   static getPast(): Event[] {
-    const now = new Date();
-    return staticEvents.filter(event => {
-      try {
-        const eventDate = new Date(event.date);
-        return eventDate < now;
-      } catch {
-        return true; // Include events with invalid dates in past
-      }
-    });
+    const today = this.getToday();
+    return this.getEvents().filter(event => event.isoDate.slice(0, 10) < today);
   }
 
   /**
@@ -60,8 +57,8 @@ export class EventService {
    * @returns               Filtered array of events
    */
   static getByLocation(location: string): Event[] {
-    return staticEvents.filter(event =>
-      event.location.toLowerCase().includes(location.toLowerCase())
+    return this.getEvents().filter(event =>
+      event.location?.toLowerCase().includes(location.toLowerCase())
     );
   }
 
@@ -73,7 +70,7 @@ export class EventService {
    */
   static search(query: string): Event[] {
     const lowerQuery = query.toLowerCase();
-    return staticEvents.filter(event =>
+    return this.getEvents().filter(event =>
       event.title.toLowerCase().includes(lowerQuery) ||
       event.description.toLowerCase().includes(lowerQuery) ||
       event.detailPoints?.some(detail => detail.toLowerCase().includes(lowerQuery))
@@ -95,7 +92,7 @@ export class EventService {
    * @returns               Array of events sorted by isoDate descending
    */
   static getSortedByDate(): Event[] {
-    return [...staticEvents].sort((a, b) =>
+    return this.getEvents().sort((a, b) =>
       new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime()
     );
   }
@@ -124,12 +121,13 @@ export class EventService {
     detailPoints?: string[];
     actionLink?: Event["actionLink"];
     supplementalImage?: Event["supplementalImage"];
-    location: string;
+    location?: string;
     mapLink?: string;
     imageSrc: string;
     isActive: boolean;
     chapterNumber: number;
   }> {
+    const today = this.getToday();
     return events.map((event, index) => ({
       title: event.title,
       date: event.date,
@@ -140,7 +138,7 @@ export class EventService {
       location: event.location,
       mapLink: event.mapLink,
       imageSrc: event.image.src,
-      isActive: event.isActive,
+      isActive: event.isActive && event.isoDate.slice(0, 10) >= today,
       chapterNumber: index + 1,
     }));
   }
@@ -151,6 +149,6 @@ export class EventService {
    * @returns               Number of completed events
    */
   static getCompletedCount(): number {
-    return staticEvents.filter(e => !e.isActive).length;
+    return this.getEvents().filter(e => !e.isActive).length;
   }
 }
