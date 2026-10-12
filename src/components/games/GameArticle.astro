@@ -36,11 +36,9 @@ const imageSrc = GameService.getGameImageSrc(game);
         )
       }
 
-      {game.description && (
-        <p class="mb-8 whitespace-pre-line border-l-2 border-[var(--border-dim)] pl-6 text-lg leading-relaxed text-[var(--text-muted)]">
-          {game.description}
-        </p>
-      )}
+      <p class="mb-8 border-l-2 border-[var(--border-dim)] pl-6 text-lg leading-relaxed text-[var(--text-muted)]">
+        {game.description}
+      </p>
 
       {
         game.teamMembers && (

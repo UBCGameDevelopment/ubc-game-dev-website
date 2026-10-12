@@ -1,8 +1,8 @@
 // 2025-2026
-import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.jpg";
-import greyWake from "../assets/games_gallery/2025-2026/grey-wake.jpg";
-import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.jpg";
-import gamePlaceholder from "../assets/logo/hero-graphics-1.png";
+import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.png";
+import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
+import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
+import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.png";
 
 // Import of pictures - 2022-2023
 import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.png";
@@ -113,23 +113,12 @@ export const games: Game[] = [
     year: "2025/2026",
   },
   {
-    name: "Gunplay",
-    description:
-      "This build of Gunplay is a proof of concept for an immersive sim bot-war simulator game. The role of the player is not to be a hero, but rather to observe and participate in a large-scale battle happening around them.",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    gameLink: "https://drive.google.com/drive/folders/1lIys-YDGMl6H4bD35MomH0DP9QVYwDvK?usp=drive_link",
-    year: "2025/2026",
-  },
-  {
     name: "MonstroCity",
     description:
       "You are a powerful mage who has ventured into the wilderness to establish a colony for the outcast creatures of the Kingdom. You believe you can prove that these so-called “monsters” deserve a place of their own, but the King thinks otherwise. Every morning, he sends waves of his subjects, from pitchfork-wielding peasants to noble knights, to sack your settlement. Between these sieges, you must use the spoils to construct towers and improve infrastructure (and try not to commit any workers’ rights violations) before the next wave arrives at dawn!",
     media: {
       type: "image",
-      image: gamePlaceholder,
+      image: monstroCity,
     },
     gameLink: "https://drive.google.com/file/d/1eYAUQ7kthiJishTBHplL8nHLBrwcvn19/view?usp=drive_link",
     teamMembers: [
@@ -138,106 +127,6 @@ export const games: Game[] = [
       "Jagger Shergill (Programming)",
       "Janet Song (Art)",
       "Erik Li (Art)",
-    ],
-    year: "2025/2026",
-  },
-  {
-    name: "NuTREEnts",
-    description:
-      "NuTREEnts is a 2D tower defense roguelike about growing and expanding your forest. Plant saplings, fend off bugs, and explore a desolate planet while you grow a mighty colony of trees!",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    gameLink: "https://drive.google.com/drive/folders/1BWqCmgB4l0m8PWm7d5p6oSmGFrdrkt3t?usp=drive_link",
-    teamMembers: [
-      "Munn Chai - Lead Programmer",
-      "Tyler Yih - Programmer, Game Designer",
-      "Eva Lian - Programmer",
-      "Marcus Lim - Programmer, Sound Designer/Composer",
-      "Felix Liu - Programmer, UI Designer, Artist",
-      "Jaqlyn Ai - UI Designer, Game Designer",
-      "Jasper Ellis - Game Designer",
-      "John - Game Designer",
-    ],
-    year: "2025/2026",
-  },
-  {
-    name: "PhotoLoop",
-    description:
-      "In a time of innovation and technological breakthrough, you somehow find yourself stuck with the world's oldest PC, equipped with the world's worst editing software. And after recently joining the ranks of the unemployed, you are left with little choice but to make money online in the best way you can think of: taking strangers' photo editing commissions.",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    gameLink: "https://drive.google.com/drive/folders/1bPg6MAPiGq74_-h4VLa9-fW1MGhP5SDd?usp=drive_link",
-    teamMembers: [
-      "Eva Lian - Lead Programmer",
-      "Munn Chai - Programmer",
-      "Tyler Yih - Programmer",
-      "Felix Liu - Programmer",
-      "Angela Li - Artist",
-      "Kylie Ng - Artist",
-      "Kristin Li Chan - Artist",
-      "Aria - Artist",
-      "Jaqlyn Ai - UI Designer, Writer",
-      "Jasper Ellis - Writer",
-      "John - Writer",
-      "Marcus Lim - Sound Designer/Composer",
-    ],
-    year: "2025/2026",
-  },
-  {
-    name: "Project Starhaven",
-    description:
-      "In the year 2056, faced with an apparent threat to Earth’s very existence, the United Nations has devised Project Starhaven, a daring initiative to sow the seeds of mankind across the solar system and ensure humanity lives on. You’ve been named Chief Colony Planner, and your first stop is the Moon! But that’s the official story. Given that your new boss is the world’s first trillionaire, and your promised shipment of supplies has gone missing, some members of your team are having other ideas regarding the project’s true purpose…\n\nIn this near-future space colony city-builder, gather resources, manage your colonists, and construct thriving colonies across the solar system. Research upgrades and grow your economy to overcome the odds and become self-sufficient in the hostile reaches of space!",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    teamMembers: [
-      "Patrick Zhou - Team Lead, Programming, Design, Writing",
-      "Alex Xu - Programming, Design",
-      "Gavin Wei - Programming, Design",
-      "Ariel Liu - Art, Programming",
-      "Leon Liang - Programming, Design",
-      "Arshvir Bhandal - Programming",
-      "Quinn Lieu-Ashthorn - Programming",
-      "Caroline - Art, Writing",
-      "Rhiannon Liu - Art, Writing, Design",
-      "Ben Law - Music",
-      "Roman DiGirolamo - Writing",
-      "Tyler Kerswell - Programming",
-    ],
-    year: "2025/2026",
-  },
-  {
-    name: "Get Better Soon!",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    gameLink: "https://drive.google.com/file/d/1CekkFoyKejiByMGFuBMr3e_MR7SMx6pw/view?usp=drive_link",
-    year: "2025/2026",
-  },
-  {
-    name: "Phaser",
-    description:
-      "PHASER is a platforming game where you use the three states of matter, each with its own unique qualities, to overcome obstacles and complete levels. We currently have a complete tutorial world to teach you the game, an industrial world with a variety of interesting platforming challenges, and a Cave World that emphasizes exploration for a new yet familiar take on the system.",
-    media: {
-      type: "image",
-      image: gamePlaceholder,
-    },
-    gameLink: "https://drive.google.com/file/d/1CIg0INgEEHFMk0kUbljSnaKn-Jyq96ED/view?usp=drive_link",
-    teamMembers: [
-      "Ethan Anderson: Project Lead / Design",
-      "Pai Peng: Technical Team Lead",
-      "Yooben Hong: Programming / Artist",
-      "Andy Wu: Programmer",
-      "Adison: Programmer",
-      "Leyi: Artist",
-      "Jun: Artist",
-      "Varun Giritharan: Music / Sound Design",
     ],
     year: "2025/2026",
   },
