@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import EventImageCarousel from "./EventImageCarousel";
+import EventText from "./EventText";
 
 interface EventModalProps {
   events: Array<{
@@ -17,7 +19,7 @@ interface EventModalProps {
     };
     location?: string;
     mapLink?: string;
-    imageSrc: string;
+    images: Array<{ src: string; alt: string }>;
     isActive: boolean;
     chapterNumber: number;
   }>;
@@ -73,6 +75,9 @@ export default function EventModal({ events }: EventModalProps) {
           />
 
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="event-modal-title"
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -80,6 +85,8 @@ export default function EventModal({ events }: EventModalProps) {
             className="fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto rounded-xl border border-[var(--brand)] bg-[rgba(10,10,20,0.95)] shadow-[0_0_50px_-10px_var(--brand)] backdrop-blur-md md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
           >
             <button
+              type="button"
+              aria-label="Close event details"
               onClick={() => setActiveEvent(null)}
               className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--surface-2)] text-[var(--text-muted)] transition-colors hover:bg-[var(--surface)] hover:text-[var(--text)]"
             >
@@ -108,14 +115,22 @@ export default function EventModal({ events }: EventModalProps) {
               {event.chapterNumber}
             </div>
 
-            <div className="relative aspect-[16/9] overflow-hidden rounded-t-xl">
-              <img
-                src={event.imageSrc}
-                alt={event.title}
-                className="h-full w-full object-cover"
+            {event.images.length > 1 ? (
+              <EventImageCarousel
+                key={activeEvent}
+                images={event.images}
+                title={event.title}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,20,0.95)] via-transparent to-transparent" />
-            </div>
+            ) : (
+              <div className="relative aspect-[16/9] overflow-hidden rounded-t-xl">
+                <img
+                  src={event.images[0].src}
+                  alt={event.images[0].alt}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,20,0.95)] via-transparent to-transparent" />
+              </div>
+            )}
 
             <div className="p-6 md:p-8">
               <div className="mb-4">
@@ -141,6 +156,7 @@ export default function EventModal({ events }: EventModalProps) {
               </div>
 
               <h2
+                id="event-modal-title"
                 className="text-2xl font-bold text-[var(--text)] md:text-3xl"
                 style={{ fontFamily: "var(--font-pixel)" }}
               >
@@ -216,7 +232,9 @@ export default function EventModal({ events }: EventModalProps) {
               </div>
 
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-[var(--text-muted)] md:text-base">
-                <p>{event.description}</p>
+                <p>
+                  <EventText text={event.description} />
+                </p>
 
                 {event.detailPoints && event.detailPoints.length > 0 && (
                   <ul className="space-y-2 border-l border-[var(--border-dim)] pl-4">
@@ -225,7 +243,7 @@ export default function EventModal({ events }: EventModalProps) {
                         key={detailPoint}
                         className="list-none"
                       >
-                        {detailPoint}
+                        <EventText text={detailPoint} />
                       </li>
                     ))}
                   </ul>

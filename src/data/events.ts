@@ -1,6 +1,9 @@
 import type { Event } from "../types";
 import ubcGameDirect from "../assets/events/ubc_game_direct.png";
 import placeholder from "../assets/logo/hero-graphics-1.png";
+import battleOfConcepts from "../assets/events/battle-of-concepts-2026.png";
+import battleOfConceptsSchedule from "../assets/events/battle-of-concepts-2026-schedule.png";
+import industrySpeakers from "../assets/events/industry-speakers-2026.png";
 
 export const events: Event[] = [
   {
@@ -59,24 +62,38 @@ export const events: Event[] = [
   },
   {
     title: "Industry Speaker #1",
-    date: "Friday, October 23, 2026",
-    isoDate: "2026-10-23T00:00:00",
-    description: "Hear from game industry professionals about their work and bring your questions for the speakers.",
-    detailPoints: ["Stay tuned for the speaker announcements!"],
+    date: "Friday, October 23, 2026: 5:30 PM – 8:00 PM",
+    isoDate: "2026-10-23T17:30:00",
+    description: "Hear from **Jonathan Ng** (Yap Yap), plus **Gil Costa** (Destiny 2, Halo Infinite) and **Ghafur Remtulla** (Minecraft, Fallout 76) of SkyBox Labs, for talks on game design, marketing, and how AI could positively impact developers and players.",
+    detailPoints: [
+      "Part of Battle of the Concepts.",
+      "5:30 PM – 6:15 PM | Be a proactive designer so you can be a lazy marketer. **Jonathan Ng**, one of the masterminds behind Yap Yap (a breakout indie with 1M+ units sold in 2026), breaks down the design and marketing decisions behind going viral and building a huge community.",
+      "7:15 PM – 8:00 PM | Patching the Future: AI Workflows & Opportunity in Game Dev. **Gil Costa** and **Ghafur Remtulla** of SkyBox Labs discuss how AI could positively impact both developers and players.",
+    ],
     location: "Buchanan A202",
     mapLink: "https://maps.app.goo.gl/K4iwFDuS9thBq7b18",
-    image: placeholder,
+    image: industrySpeakers,
     isActive: true,
   },
   {
-    title: "Battle of Concepts",
-    date: "Friday, October 23, 2026",
-    isoDate: "2026-10-23T00:00:00",
-    description: "Pitch your team's game idea to the club and discover what other teams are planning to create.",
-    detailPoints: ["Held on the same day as Industry Speaker #1."],
+    title: "Battle of the Concepts",
+    date: "Friday, October 23, 2026: 5:30 PM – 8:00 PM",
+    isoDate: "2026-10-23T17:30:00",
+    description: "Battle of the Concepts 2026 is here! One night, three reasons to show up: guest speakers, team game pitches, and a look at how AI could shape the future of game development.",
+    detailPoints: [
+      "5:30 PM – 6:15 PM | Be a proactive designer so you can be a lazy marketer. **Jonathan Ng**, one of the masterminds behind Yap Yap—a breakout indie with 1M+ units sold in 2026—breaks down the design and marketing decisions behind going viral and building a huge community.",
+      "6:15 PM – 7:15 PM | Team Game Pitches. Discover the concepts our teams will be working on as each team presents their game idea, and vote for your favourite!",
+      "7:15 PM – 8:00 PM | Patching the Future: AI Workflows & Opportunity in Game Dev. Hear from **Gil Costa** (Destiny 2, Halo Infinite) and **Ghafur Remtulla** (Minecraft, Fallout 76) of SkyBox Labs on how AI could positively impact both developers and players.",
+    ],
     location: "Buchanan A202",
     mapLink: "https://maps.app.goo.gl/K4iwFDuS9thBq7b18",
-    image: placeholder,
+    image: battleOfConcepts,
+    additionalImages: [
+      {
+        image: battleOfConceptsSchedule,
+        alt: "Battle of the Concepts 2026 schedule: Jonathan Ng at 5:30 PM, team game pitches at 6:15 PM, and Gil Costa and Ghafur Remtulla at 7:15 PM.",
+      },
+    ],
     isActive: true,
   },
   {

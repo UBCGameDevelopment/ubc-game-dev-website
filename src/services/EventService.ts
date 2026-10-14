@@ -123,7 +123,7 @@ export class EventService {
     supplementalImage?: Event["supplementalImage"];
     location?: string;
     mapLink?: string;
-    imageSrc: string;
+    images: Array<{ src: string; alt: string }>;
     isActive: boolean;
     chapterNumber: number;
   }> {
@@ -137,7 +137,10 @@ export class EventService {
       supplementalImage: event.supplementalImage,
       location: event.location,
       mapLink: event.mapLink,
-      imageSrc: event.image.src,
+      images: [
+        { src: event.image.src, alt: event.title },
+        ...(event.additionalImages ?? []).map(({ image, alt }) => ({ src: image.src, alt })),
+      ],
       isActive: event.isActive && event.isoDate.slice(0, 10) >= today,
       chapterNumber: index + 1,
     }));

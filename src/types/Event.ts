@@ -23,6 +23,10 @@ export interface Event {
   location?: string;
   mapLink?: string;
   image: ImageMetadata;
+  additionalImages?: Array<{
+    image: ImageMetadata;
+    alt: string;
+  }>;
   isActive: boolean;
   isoDate: string; // ISO 8601 format for sorting/parsing
 }

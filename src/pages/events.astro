@@ -44,6 +44,7 @@ const eventsForModal = EventService.prepareForModal(events);
 <script>
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
+    if (target.closest("a")) return;
     const button = target.closest("[data-open-modal]");
     if (button) {
       const index = parseInt(button.getAttribute("data-open-modal") || "0", 10);
