@@ -3,6 +3,7 @@ import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.png";
 import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
 import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
 import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.png";
+import getBetterSoon from "../assets/games_gallery/2024-2025/get-better-soon.png";
 
 // Import of pictures - 2022-2023
 import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.png";
@@ -155,6 +156,17 @@ export const games: Game[] = [
       "Lavina (Art, Concept)",
       "Noah (Art)",
     ],
+    year: "2024/2025",
+  },
+
+  {
+    name: "Get Better Soon!",
+    media: {
+      type: "image",
+      image: getBetterSoon,
+    },
+    gameLink: "https://drive.google.com/file/d/1CekkFoyKejiByMGFuBMr3e_MR7SMx6pw/view?usp=drive_link",
+    teamMembers: ["Lucas", "Justin", "Austin", "Raifah", "Eric", "Eliora", "Abbie", "Shashank", "Marshall", "Sarah"],
     year: "2024/2025",
   },
 
