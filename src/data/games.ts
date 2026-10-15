@@ -1,4 +1,4 @@
-// 2024-2025
+// Recent game thumbnails
 import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.png";
 import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
 import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
@@ -51,7 +51,7 @@ import type { Game } from "../types";
 
 // Note that the youtube video must allows embeddings for it to work
 export const games: Game[] = [
-  // 2024-2025 Games
+  // Recent games
   {
     name: "Wastelanders",
     description:
@@ -85,7 +85,8 @@ export const games: Game[] = [
       "Oliver Cheung - Writer",
       "Brianna Shen - Artist",
     ],
-    year: "2024/2025",
+    award: "Game of the Year (2025/2026)",
+    year: "2023/2024",
   },
   {
     name: "Grey Wake",
@@ -111,7 +112,8 @@ export const games: Game[] = [
       "Anya Kaiya - Main character model + animation, 3d art advice",
       "Sarah Li - Singer",
     ],
-    year: "2024/2025",
+    award: "Best Graphics",
+    year: "2025/2026",
   },
   {
     name: "MonstroCity",
@@ -129,7 +131,8 @@ export const games: Game[] = [
       "Janet Song (Art)",
       "Erik Li (Art)",
     ],
-    year: "2024/2025",
+    award: "Audience Choice",
+    year: "2025/2026",
   },
   {
     name: "Death Kitchen",
@@ -167,7 +170,7 @@ export const games: Game[] = [
     },
     gameLink: "https://drive.google.com/file/d/1CekkFoyKejiByMGFuBMr3e_MR7SMx6pw/view?usp=drive_link",
     teamMembers: ["Lucas", "Justin", "Austin", "Raifah", "Eric", "Eliora", "Abbie", "Shashank", "Marshall", "Sarah"],
-    year: "2024/2025",
+    year: "2025/2026",
   },
 
   // 2022-2023 Games
