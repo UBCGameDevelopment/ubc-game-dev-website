@@ -31,3 +31,7 @@ pnpm-debug.log*
 
 # local game information dataset
 /Projects info for website - 2026 (2).csv
+/Projects info for website.xlsx
+
+# local asset documentation
+/src/assets/events/ATTRIBUTIONS.md

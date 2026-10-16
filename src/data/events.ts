@@ -4,6 +4,8 @@ import placeholder from "../assets/logo/hero-graphics-1.png";
 import battleOfConcepts from "../assets/events/battle-of-concepts-2026.png";
 import battleOfConceptsSchedule from "../assets/events/battle-of-concepts-2026-schedule.png";
 import industrySpeakers from "../assets/events/industry-speakers-2026.png";
+import godotLogo from "../assets/events/godot-workshop.png";
+import unityLogo from "../assets/timeline/unity.png";
 
 export const events: Event[] = [
   {
@@ -45,7 +47,7 @@ export const events: Event[] = [
     ],
     location: "MacLeod 2012",
     mapLink: "https://www.google.com/maps/search/?api=1&query=MacLeod+Building%2C+2356+Main+Mall%2C+Vancouver%2C+BC",
-    image: placeholder,
+    image: unityLogo,
     isActive: true,
   },
   {
@@ -106,7 +108,7 @@ export const events: Event[] = [
     ],
     location: "MacLeod 2012",
     mapLink: "https://www.google.com/maps/search/?api=1&query=MacLeod+Building%2C+2356+Main+Mall%2C+Vancouver%2C+BC",
-    image: placeholder,
+    image: godotLogo,
     isActive: true,
   },
   {
