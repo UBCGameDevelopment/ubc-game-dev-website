@@ -4,6 +4,11 @@ import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
 import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
 import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.png";
 import getBetterSoon from "../assets/games_gallery/2024-2025/get-better-soon.png";
+import slimeSuccumber from "../assets/games_gallery/2024-2025/slime-succumber.png";
+import mtStringmore from "../assets/games_gallery/2024-2025/mt-stringmore.png";
+import bornToBoard from "../assets/games_gallery/2024-2025/born-to-board.png";
+import pacemaker from "../assets/games_gallery/2024-2025/pacemaker.png";
+import battleForHarmony from "../assets/games_gallery/2023-2024/battle-for-harmony.png";
 
 // Import of pictures - 2022-2023
 import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.png";
@@ -171,6 +176,46 @@ export const games: Game[] = [
     gameLink: "https://drive.google.com/file/d/1CekkFoyKejiByMGFuBMr3e_MR7SMx6pw/view?usp=drive_link",
     teamMembers: ["Lucas", "Justin", "Austin", "Raifah", "Eric", "Eliora", "Abbie", "Shashank", "Marshall", "Sarah"],
     year: "2025/2026",
+  },
+  {
+    name: "SlimeSuccumber",
+    media: {
+      type: "image",
+      image: slimeSuccumber,
+    },
+    year: "2024/2025",
+  },
+  {
+    name: "Mt. Stringmore",
+    media: {
+      type: "image",
+      image: mtStringmore,
+    },
+    year: "2024/2025",
+  },
+  {
+    name: "Born to board",
+    media: {
+      type: "image",
+      image: bornToBoard,
+    },
+    year: "2024/2025",
+  },
+  {
+    name: "Pacemaker",
+    media: {
+      type: "image",
+      image: pacemaker,
+    },
+    year: "2024/2025",
+  },
+  {
+    name: "Battle for Harmony",
+    media: {
+      type: "image",
+      image: battleForHarmony,
+    },
+    year: "2023/2024",
   },
 
   // 2022-2023 Games

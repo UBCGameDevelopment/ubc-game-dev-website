@@ -28,3 +28,6 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+# local game information dataset
+/Projects info for website - 2026 (2).csv
