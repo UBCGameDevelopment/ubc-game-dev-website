@@ -3,12 +3,27 @@ import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.png";
 import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
 import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
 import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.png";
+import gunplay from "../assets/games_gallery/2025-2026/gunplay.jpg";
+import photoLoop from "../assets/games_gallery/2025-2026/photoloop.png";
+import projectStarhaven from "../assets/games_gallery/2025-2026/project-starhaven.jpg";
+import phaser from "../assets/games_gallery/2025-2026/phaser.jpg";
+import jokersRequiem from "../assets/games_gallery/2024-2025/jokers-requiem.png";
 import getBetterSoon from "../assets/games_gallery/2024-2025/get-better-soon.png";
+import omnia from "../assets/games_gallery/2024-2025/omnia.png";
+import nuTREEnts from "../assets/games_gallery/2024-2025/nutreents.png";
 import slimeSuccumber from "../assets/games_gallery/2024-2025/slime-succumber.png";
-import mtStringmore from "../assets/games_gallery/2024-2025/mt-stringmore.png";
+import mtStringmore from "../assets/games_gallery/2024-2025/mt-stringmore.jpg";
 import bornToBoard from "../assets/games_gallery/2024-2025/born-to-board.png";
 import pacemaker from "../assets/games_gallery/2024-2025/pacemaker.png";
 import battleForHarmony from "../assets/games_gallery/2023-2024/battle-for-harmony.png";
+import starCrossed from "../assets/games_gallery/2023-2024/star-crossed.jpg";
+import theGuardian from "../assets/games_gallery/2023-2024/the-guardian.jpg";
+import fatesForest from "../assets/games_gallery/2023-2024/fates-forest.jpg";
+import sushiJam from "../assets/games_gallery/2023-2024/sushi-jam.jpg";
+import millenniumLine from "../assets/games_gallery/2023-2024/millennium-line.png";
+import barkVsByte from "../assets/games_gallery/2023-2024/bark-vs-byte.jpg";
+import cyberClimb from "../assets/games_gallery/2023-2024/cyber-climb.jpg";
+import spiderCave from "../assets/games_gallery/2023-2024/spider-cave.jpg";
 
 // Import of pictures - 2022-2023
 import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.png";
@@ -178,6 +193,155 @@ export const games: Game[] = [
     year: "2025/2026",
   },
   {
+    name: "Gunplay",
+    description:
+      "This build of Gunplay is a proof of concept for an immersive sim bot-war simulator game. The role of the player is not to be a hero, but rather to observe and participate in a large-scale battle happening around them.",
+    media: { type: "image", image: gunplay },
+    gameLink: "https://drive.google.com/drive/folders/1lIys-YDGMl6H4bD35MomH0DP9QVYwDvK?usp=drive_link",
+    teamMembers: [
+      "Felix - Programming, Icon Design, 3D Art",
+      "Ruirui - Programming, 3D Art, Level Design",
+      "Krishna - 3D Art, Sound + Music",
+      "Nathan - Progamming",
+      "Caden - Progamming",
+      "Owen - Progamming",
+      "Jon - Progamming Lead",
+      "Dilsher - Sound Lead",
+    ],
+    year: "2025/2026",
+  },
+  {
+    name: "PhotoLoop",
+    description:
+      "In a time of innovation and technological breakthrough, you somehow find yourself stuck with the world's oldest PC, equipped with the world's worst editing software. And after recently joining the ranks of the unemployed, you are left with little choice but to make money online in the best way you can think of: taking strangers' photo editing commissions.",
+    media: { type: "image", image: photoLoop },
+    gameLink: "https://drive.google.com/drive/folders/1bPg6MAPiGq74_-h4VLa9-fW1MGhP5SDd?usp=drive_link",
+    teamMembers: [
+      "Eva Lian - Lead Programmer",
+      "Munn Chai - Programmer",
+      "Tyler Yih - Programmer",
+      "Felix Liu - Programmer",
+      "Angela Li - Artist",
+      "Kylie Ng - Artist",
+      "Kristin Li Chan - Artist",
+      "Aria - Artist",
+      "Jaqlyn Ai - UI Designer, Writer",
+      "Jasper Ellis - Writer",
+      "John - Writer",
+      "Marcus Lim - Sound Designer/Composer",
+    ],
+    award: "Best Concept",
+    year: "2025/2026",
+  },
+  {
+    name: "Project Starhaven",
+    description:
+      "In the year 2056, faced with an apparent threat to Earth’s very existence, the United Nations has devised Project Starhaven, a daring initiative to sow the seeds of mankind across the solar system and ensure humanity lives on. You’ve been named Chief Colony Planner, and your first stop is the Moon! But that’s the official story. Given that your new boss is the world’s first trillionaire, and your promised shipment of supplies has gone missing, some members of your team are having other ideas regarding the project’s true purpose…\n\nIn this near-future space colony city-builder, gather resources, manage your colonists, and construct thriving colonies across the solar system. Research upgrades and grow your economy to overcome the odds and become self-sufficient in the hostile reaches of space!",
+    media: { type: "image", image: projectStarhaven },
+    gameLink: "https://drive.google.com/drive/folders/1qn4jads5ES7prbtX8X2adK8JXqVlaC_H?usp=drive_link",
+    teamMembers: [
+      "Patrick Zhou - Team Lead, Programming, Design, Writing",
+      "Alex Xu - Programming, Design",
+      "Gavin Wei - Programming, Design",
+      "Ariel Liu - Art, Programming",
+      "Leon Liang - Programming, Design",
+      "Arshvir Bhandal - Programming",
+      "Quinn Lieu-Ashthorn - Programming",
+      "Caroline - Art, Writing",
+      "Rhiannon Liu - Art, Writing, Design",
+      "Ben Law - Music",
+      "Roman DiGirolamo - Writing",
+      "Tyler Kerswell - Programming",
+    ],
+    year: "2025/2026",
+  },
+  {
+    name: "Phaser",
+    description:
+      "PHASER is a platforming game where you use the three states of matter, each with its own unique qualities, to overcome obstacles and complete levels. We currently have a complete tutorial world to teach you the game, an industrial world with a variety of interesting platforming challenges, and a Cave World that emphasizes exploration for a new yet familiar take on the system.",
+    media: { type: "image", image: phaser },
+    gameLink: "https://drive.google.com/file/d/1CIg0INgEEHFMk0kUbljSnaKn-Jyq96ED/view?usp=drive_link",
+    teamMembers: [
+      "Ethan Anderson: Project Lead / Design",
+      "Pai Peng: Technical Team Lead",
+      "Yooben Hong: Programming / Artist",
+      "Andy Wu: Programmer",
+      "Adison: Programmer",
+      "Leyi: Artist",
+      "Jun: Artist",
+      "Varun Giritharan: Music / Sound Design",
+    ],
+    award: "Best Game Play",
+    year: "2025/2026",
+  },
+  {
+    name: "Jokers Requiem",
+    media: { type: "image", image: jokersRequiem },
+    gameLink: "https://drive.google.com/drive/folders/1Ih66SrRaRt2qGOtTkFSNYpaGem67dnhL?usp=drive_link",
+    teamMembers: [
+      "Lucas - Sparemeh (Lead)",
+      "Julia - jooleya",
+      "Tina  - tuna0725",
+      "Ben",
+      "Victoria",
+      "Allen",
+      "Zachary  - axzyl",
+      "Brendan - Bdan35",
+      "Danina - Alinishia#8634",
+      "Eno - Eno #7080",
+      "Benjamin - bencloud",
+      "And others....",
+    ],
+    year: "2024/2025",
+  },
+  {
+    name: "Omnia",
+    description:
+      "The clock is ticking as you climb through the world of Omnia on a mission to save your best friend from the Waste; an alien substance that mutates all organic matter. Navigate through tunnels of puzzles, perform satisfying combos on Waste-turned creatures, and uncover the secret of the Waste in Omnia: The Journey Upwards.",
+    media: { type: "image", image: omnia },
+    gameLink: "https://drew-gnaw.itch.io/omnia-the-journey-upwards",
+    teamMembers: [
+      "Kimiko Ngo - Team Lead and Narrative Lead",
+      "Andrew Wang - Programming Lead",
+      "Anrui Liu - Game Designer",
+      "Bonnie Lu - Artistic Lead",
+      "Daniel Schatz - Audio Lead",
+      "Arthur Guo - Programmer",
+      "Jack Yao - Programmer",
+      "Jonathan Wang - Programmer",
+      "Rahul Kamath - Programmer",
+      "Sammy Kuang - Programmer",
+      "Amanda Yau - Artist",
+      "Alex Turnbull - Artist",
+      "Grace Shen - Artist",
+      "Marian Cheung - Artist",
+      "Sarah Feng - Artist",
+      "Taylor Kim - Artist",
+      "Elizabeth Lin - Social Media Manager",
+      "Kate Louie - Writer",
+      "Tiana Khandelwal - Writer",
+    ],
+    year: "2024/2025",
+  },
+  {
+    name: "NuTREEnts",
+    description:
+      "NuTREEnts is a 2D tower defense roguelike about growing and expanding your forest. Plant saplings, fend off bugs, and explore a desolate planet while you grow a mighty colony of trees!",
+    media: { type: "image", image: nuTREEnts },
+    gameLink: "https://drive.google.com/drive/folders/1BWqCmgB4l0m8PWm7d5p6oSmGFrdrkt3t?usp=drive_link",
+    teamMembers: [
+      "Munn Chai - Lead Programmer",
+      "Tyler Yih - Programmer, Game Designer",
+      "Eva Lian - Programmer",
+      "Marcus Lim - Programmer, Sound Designer/Composer",
+      "Felix Liu - Programmer, UI Designer, Artist",
+      "Jaqlyn Ai - UI Designer, Game Designer",
+      "Jasper Ellis - Game Designer",
+      "John - Game Designer",
+    ],
+    year: "2024/2025",
+  },
+  {
     name: "SlimeSuccumber",
     media: {
       type: "image",
@@ -187,34 +351,256 @@ export const games: Game[] = [
   },
   {
     name: "Mt. Stringmore",
+    description:
+      "A marshmallow head who can't stop running climbs a mountain. A ball of yarn keeps them from going off the rails. A fresh new take at 2D autorun platformers and the dangers of always wanting more.",
     media: {
       type: "image",
       image: mtStringmore,
     },
+    gameLink: "https://permafrosted.itch.io/mt-stringmore",
+    teamMembers: [
+      "Aden Cross",
+      "Jen Taruno",
+      "Kai Nah",
+      "Jaq Ai",
+      "Jonathan Nah",
+      "Sparsh Inanda",
+      "Eddie Yoshie",
+      "Michael Sam",
+      "Simon Lin",
+      "Krishna Garcha",
+      "Diana Alhany",
+      "Dilsher Grewal",
+      "Frank Yu",
+      "Philip Macau",
+      "Silvan Ghahri",
+      "Aditya Adiraju",
+      "Siddhant Patil",
+    ],
     year: "2024/2025",
   },
   {
     name: "Born to board",
+    description:
+      "Welcome to Born 2 Board! Take control of Buddy, the shreddiest shredder on the mountain! Make it to the bottom of the hill as fast as you can! Or at least faster than your buddy…",
     media: {
       type: "image",
       image: bornToBoard,
     },
+    gameLink: "https://berc33.itch.io/born-2-board",
+    teamMembers: ["Adriel", "Bryn", "Glen", "Liana-Khim", "Ellie", "Danny", "Raishar", "Gabriel", "Boris", "Wesley"],
+    award: "Best Audio",
     year: "2024/2025",
   },
   {
     name: "Pacemaker",
+    description:
+      "Pacemaker is a rhythm-action game where the player must keep a steady beat while dodging enemy attacks to survive. Time your movements to the beat while your enemies throw fire, lightning, and shoes at you!",
     media: {
       type: "image",
       image: pacemaker,
     },
+    gameLink: "https://drive.google.com/drive/folders/17k0IgS68pp2EjqEBwPQvsJB2M2V1MYPU?usp=drive_link",
+    teamMembers: [
+      "Aly",
+      "Amanda",
+      "Amelie",
+      "Andrew",
+      "Charlie",
+      "Felicity",
+      "Joshua",
+      "Keelan",
+      "Maddy",
+      "Marcus",
+      "Matthew",
+      "Rad",
+      "Zoe",
+    ],
     year: "2024/2025",
   },
   {
     name: "Battle for Harmony",
+    description:
+      "Battle For Harmony is a high-fantasy HD-2D RPG focusing uniquely on a musical world. You play as a Violin who has just arrived at the Castle of Harmony in Melodonia—the Kingdom of Music—and must try to liberate the kingdom from the clutches of the Kingdom of War by retaking control of the Anchors: the lodes that generate the music kingdom’s powers.",
     media: {
       type: "image",
       image: battleForHarmony,
     },
+    teamMembers: [
+      "Han - Programmer",
+      "Cory - Level Designer, Writer",
+      "Ina - Programmer",
+      "Kush - Team Lead, Programmer, Game Design",
+      "Amanda - Programmer",
+      "Jorene - Programmer",
+      "Raifah - Programmer",
+      "Roman - Lead Audio Designer",
+      "Kii - Audio Designer",
+      "Tanya - 2D Artist",
+      "Elora - 2D and 3D Artist",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Star Crossed",
+    description:
+      "Star Crossed is a bullet-hell dungeon crawler where you play as Deuce: a suave scavenger looking for a quick buck. During what he thought would be a big break, he ends up crash landing deep into the core of the planet Arcaemi. There, he must fight- or flirt- his way up to the surface blast off.",
+    media: { type: "image", image: starCrossed },
+    gameLink: "https://drive.google.com/drive/folders/1B_koc3z43_7RxA8ojRVDoQ9F-rLJNzE1?usp=sharing",
+    teamMembers: [
+      "Patti/patticatti - Team Lead/Programmer",
+      "Sasha/chrolla - Team Lead/Artist",
+      "Arthur/artland - Lead Artist",
+      "Jojo/captainguyliner - Artist",
+      "Val/footcelery - Artist",
+      "Corina/idkkkk__ - Artist",
+      "Sawyer/Tieguy - Artist",
+      "Xue/kaworin - Artist",
+      "Arpit/krarpit - Lead Programmer/Artist",
+      "Xavier/savagier - Programmer",
+      "Jade/jade.wilk - Lead Writer",
+      "Oliver/healthcaredotgov - Writer/Musician",
+      "Alastair/Alasgor - Writer/Musician",
+      "Alisa/alisa4013 - Programmer",
+      "Emily/emilyh0625 - Programmer",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "The Guardian",
+    description:
+      "Explore a toxic forest that despises your very presence in search of answers. An adventurer and their stone guardian that need to work together to survive in this turn-based roguelike. Using various spells with endless combinations to best the forest and seek the truth behind the forest.",
+    media: { type: "image", image: theGuardian },
+    gameLink: "https://drive.google.com/file/d/1Wa75sX4bcJNsB2YOfloedjGuN01En2uk/view?usp=drive_link",
+    teamMembers: [
+      "Ailith - Team Lead/Designer",
+      "Anika - Music/Music Lead",
+      "Jen - Character Sprite/Art Lead",
+      "Angie - Concept Art (retired)",
+      "Kirpyu - Concept Art (retired)",
+      "Xavier - Programming/Programming Lead",
+      "Hejia - Programming",
+      "Andy - Programming",
+      "M'aique - Programming (retired)",
+      "Anna - Programming (retired)",
+      "Derek - Programming (retired)",
+      "Anthony - Programming (retired)",
+      "Rishav - Programming (retired)",
+      "JY - Programming (retired)",
+      "Shark - Programming (retired)",
+      "Nissan - Programming (retired)",
+      "Devin - Programming (retired)",
+      "Kyle - Management",
+      "Meaghan - Management (retired)",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Fate's Forest",
+    description:
+      "The year is unknown. The month is unknown. The day is unknown. The hour is unknown. The war against the forces of Death has been going on as long as you can remember, and you’ve been losing as long as you can remember. So here you stand in Fate’s Forest; back to the final statue of your patron, wielding a sword much too large for your weakened arms, with the forces of death closing in from all sides.\n\nThe world is ending, but how many of them can you take down with it?\n\nIn Fate’s Forest you play as the final guardian of a near-dead god. Waves of enemies will charge you unceasingly, and you must destroy them to prevent them from touching the statue. If too many make it through, you lose.\n\nUniquely, since your character is a young guardian, they do not possess the strength to wield a mighty guardian’s sword effectively, but they can definitely use its momentum to devastating effect!",
+    media: { type: "image", image: fatesForest },
+    gameLink: "https://drive.google.com/drive/folders/1oXPSrfBxvqNypBWXtoG2najcMS0AbfI-?usp=sharing",
+    teamMembers: [
+      "Ethan Anderson - Team Lead, Designer/Writer",
+      "Markus Li - Programmer, Artist",
+      "Bryce Santiago - Programmer, Musician",
+      "Bethany Guo - Artist",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Sushi Jam",
+    description:
+      "Sushi Jam is a rhythm game in which you play as a hungry customer collecting plates of various sushi dishes to a beat. As a hungry customer, you must time the moment you take sushi plates along with the beat of the song!",
+    media: { type: "image", image: sushiJam },
+    gameLink: "https://drive.google.com/drive/folders/11reES2XxL8HnJ1DkM0nSxy348vIXqwQA?usp=sharing",
+    teamMembers: [
+      "Brian Moniaga - Art, Programming, Level Designer",
+      "Lily Zhang - Art, Programming, Music, Level Designer",
+      "Andrew - Ported game to windows.",
+    ],
+    year: "2023/2024",
+  },
+
+  {
+    name: "Millennium Line",
+    description:
+      "Millennium Line is a 2d story driven side scroller that puts you in the shoes of Lionel, a detective who was on his way to meet his son. Everything appears to be normal as he gets off the bus at the metro station, however he starts noticing that things are not what they appear to be. Strange feelings of deja vu and a mysterious caller were tingling Lionel’s detective senses and he was going to get to the bottom of it like he always did. He WILL NOT fail again. Uncover the secrets buried within Lionel’s heart, unravel the mysteries that have befallen our protagonist and you’d better be quick for time is running short. The Millenium Line is arriving in !@@%#$ minutes. The Next Station is: Death.",
+    media: { type: "image", image: millenniumLine },
+    gameLink: "https://github.com/Sparemeh/Millennium-Line",
+    teamMembers: [
+      "Lucas Liu - Team Lead",
+      "Ben - Programming",
+      "Tina - Programming",
+      "Brendan - Programming",
+      "Zachary - Programming",
+      "Danina -  Art",
+      "Victoria - Art",
+      "Julia - Art",
+      "Konnor - Music",
+      "Allen - Story",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Bark vs Byte",
+    media: { type: "image", image: barkVsByte },
+    gameLink: "https://drive.google.com/file/d/1C6B5Sx-IDc8qRqn3sI34ACkSBu6KW8is/view?usp=drive_link",
+    teamMembers: [
+      "Haoxuan (Kevin) - somerandomnerd",
+      "Jonathan - reallyrickastley",
+      "Michael - mc ronald's part timer#7804",
+      "Aryan - ThunderCookie#0079",
+      "Chris - Chriz",
+      "Prithvi  - RevolZ #6123",
+      "Suwetha - ig#6574",
+      "Jason - 57#3034",
+      "Gordon - tinythistle",
+      "Kevin - yk#1417",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Cyber Climb",
+    description:
+      "After a catastrophe struck the surface of the earth, a small portion of the human population was forced to move underground into the depths of a hastily made “tower”. Several generations passed, and the once comfortable life has begun to weigh on the residents of the lower levels. Put yourself in the shoes of Wes, a simple man with hopes of climbing the tower and returning with technology that could save his friend’s life.",
+    media: { type: "image", image: cyberClimb },
+    teamMembers: [
+      "Max",
+      "Ural",
+      "Alwyn",
+      "Ariel",
+      "Brandon",
+      "Hanna",
+      "Kagan",
+      "Liam Matt",
+      "Nico",
+      "Paige",
+      "Ryan",
+      "Sarah",
+      "Senlin",
+      "Zheng",
+    ],
+    year: "2023/2024",
+  },
+  {
+    name: "Spider Cave",
+    description: "There’s a spider - don’t let it catch you ;). Find the rock and break the barrier to start.",
+    media: { type: "image", image: spiderCave },
+    teamMembers: [
+      "Ahren",
+      "Byung Min",
+      "Melanie",
+      "Douglas",
+      "Joseph",
+      "Edrick",
+      "Mike",
+      "Karan",
+      "Udhav",
+      "Kate",
+      "Kat",
+    ],
     year: "2023/2024",
   },
 
