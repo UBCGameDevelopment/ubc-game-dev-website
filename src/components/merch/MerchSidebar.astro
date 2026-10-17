@@ -8,6 +8,11 @@ interface Props {
 const { categories } = Astro.props;
 ---
 
-<aside class="h-fit pb-8 text-sm">
-  <MerchFilters categories={categories} />
+<aside class="h-fit w-full shrink-0 md:sticky md:top-32 md:w-64">
+  <div class="hud-card border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 p-6 backdrop-blur-md">
+    <h2 class="mb-6 border-b border-[var(--border-dim)] pb-4 text-2xl font-black tracking-widest text-white uppercase">
+      Categories
+    </h2>
+    <MerchFilters categories={categories} />
+  </div>
 </aside>

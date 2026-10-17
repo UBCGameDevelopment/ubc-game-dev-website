@@ -3,51 +3,30 @@ import mascotImg from "../../assets/logo/mascot.webp";
 ---
 
 <section
-  class="section-block relative flex h-screen min-h-[850px] w-full flex-col items-center overflow-hidden bg-[var(--bg-deep)]"
->
+  class="section-block relative flex h-screen min-h-[850px] w-full flex-col items-center overflow-hidden bg-[var(--bg-deep)]">
   <div
-    class="pointer-events-none absolute top-[48%] left-1/2 z-[2] h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--text-muted)] opacity-5 blur-[120px] md:top-[52%] md:h-[500px] md:w-[500px] lg:top-[55%]"
-  >
+    class="pointer-events-none absolute top-[48%] left-1/2 z-[2] h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--text-muted)] opacity-5 blur-[120px] md:top-[52%] md:h-[500px] md:w-[500px] lg:top-[55%]">
   </div>
 
   <div
-    class="pointer-events-none absolute top-1/2 left-1/2 z-[4] aspect-[4/3] w-[160vw] max-w-[1500px] -translate-x-1/2 -translate-y-1/2 opacity-40"
-  >
+    class="pointer-events-none absolute top-1/2 left-1/2 z-[4] aspect-[4/3] w-[160vw] max-w-[1500px] -translate-x-1/2 -translate-y-1/2 opacity-40">
     <div
       class="absolute inset-0 bg-[url('/vancouver-map.webp')] bg-contain bg-center bg-no-repeat mix-blend-screen"
-      style="-webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%); mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);"
-    >
+      style="-webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%); mask-image: radial-gradient(ellipse at center, black 35%, transparent 80%);">
     </div>
   </div>
   <div class="absolute inset-x-0 top-[12vh] z-10 mx-auto w-full max-w-5xl px-6 text-center md:top-[15vh]">
     <h1
-      class="font-tech cursor-default text-5xl leading-none font-black tracking-widest text-white uppercase sm:text-6xl md:text-7xl lg:text-[6.5rem]"
-    >
+      class="font-tech cursor-default text-5xl leading-none font-black tracking-widest text-white uppercase sm:text-6xl md:text-7xl lg:text-[6.5rem]">
       UBC GAME DEV
     </h1>
   </div>
   <div
-    class="pointer-events-none absolute top-[48%] left-1/2 z-20 flex w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:top-[52%] lg:top-[55%]"
-  >
+    class="pointer-events-none absolute top-[48%] left-1/2 z-20 flex w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:top-[52%] lg:top-[55%]">
     <img
       src={mascotImg.src}
       alt="UBC Game Dev Mascot"
       class="h-[50vh] max-h-[400px] min-h-[250px] w-auto object-contain drop-shadow-[0_0_60px_rgba(138,43,226,0.5)] md:h-[65vh] md:max-h-none md:min-h-[400px] md:drop-shadow-[0_0_80px_rgba(138,43,226,0.6)]"
     />
   </div>
-  <div class="absolute bottom-10 left-6 z-30 max-w-[320px] md:bottom-16 md:left-12 lg:left-24 lg:max-w-[400px]">
-    <p class="font-tech mb-6 text-base leading-relaxed font-medium text-[var(--text-muted)] sm:text-lg">
-      A student-run game development club for programmers, artists, writers, designers, and musicians. Built for
-      ambition at UBC.
-    </p>
-    <a
-      href="/games"
-      class="clip-angled group/cta relative inline-block bg-[var(--brand)]/90 p-px text-white uppercase transition-all hover:bg-[var(--accent)] hover:shadow-[0_0_30px_var(--accent)]"
-    >
-      <span class="font-tech clip-angled relative z-10 block bg-[var(--brand)] px-8 py-3.5 text-xs font-bold tracking-widest transition-[background-color] group-hover/cta:bg-[var(--accent)]">
-        View Projects
-      </span>
-    </a>
-  </div>
-
 </section>

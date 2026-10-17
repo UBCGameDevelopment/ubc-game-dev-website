@@ -36,16 +36,12 @@ export default function Navbar({ logo, links }: NavbarProps) {
               className="group relative flex items-center gap-2 transition-colors hover:text-[var(--brand)]"
             >
               <div className="relative">
-                <div className="absolute -inset-1 rounded-sm bg-[var(--brand)]/20 opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-100" />
                 <img
                   src={logo}
                   alt="UBC Game Dev"
                   className="relative h-6 w-6 transition-transform duration-300 group-hover:scale-110 md:h-8 md:w-8"
                 />
               </div>
-              <span className="text-neon group-hover:text-neon hidden text-sm font-bold tracking-widest text-[var(--brand)] sm:block">
-                UBC GAME DEV
-              </span>
             </a>
 
             <nav
