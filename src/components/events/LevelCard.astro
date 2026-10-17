@@ -1,21 +1,25 @@
 ---
 import type { Event } from "../../types";
+import { EventService } from "../../services/EventService";
 import EventText from "./EventText";
 
 export interface Props extends Event {
   chapterNumber: number;
 }
 
-const { title, date, description, location, mapLink, image, additionalImages, isActive, chapterNumber } = Astro.props;
+const { title, date, description, location, mapLink, image, additionalImages, isoDate, chapterNumber } = Astro.props;
 const hasGallery = Boolean(additionalImages?.length);
+const status = EventService.getStatus(isoDate);
+const isAvailable = status !== "complete";
+const statusLabel = status === "upcoming" ? "Upcoming" : status === "active" ? "Active" : "Complete";
 ---
 
 <div
-  data-open-modal={isActive ? chapterNumber - 1 : undefined}
+  data-open-modal={isAvailable ? chapterNumber - 1 : undefined}
   class:list={[
-    "group angular-card relative flex w-full max-w-[24rem] flex-col overflow-hidden transition-all duration-300 md:max-w-none",
-    isActive
-      ? "cursor-pointer bg-[var(--surface-2)] shadow-[0_0_20px_rgba(var(--brand-rgb),0.1)]"
+    "angular-card relative flex w-full max-w-[24rem] flex-col overflow-hidden md:max-w-none",
+    isAvailable
+      ? "cursor-pointer bg-[var(--surface-2)]"
       : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
   ]}
 >
@@ -26,9 +30,8 @@ const hasGallery = Boolean(additionalImages?.length);
       width={image.width}
       height={image.height}
       class:list={[
-        "block h-full w-full transition-all duration-500",
+        "block h-full w-full",
         hasGallery ? "object-contain" : "object-cover",
-        isActive && !hasGallery ? "group-hover:scale-105" : "",
       ]}
       loading="lazy"
       decoding="async"
@@ -42,7 +45,7 @@ const hasGallery = Boolean(additionalImages?.length);
     <div
       class:list={[
         "font-pixel absolute top-0 left-0 z-20 flex h-12 w-12 items-center justify-center text-lg font-bold shadow-lg md:h-14 md:w-14 md:text-xl",
-        isActive ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
+        isAvailable ? "bg-[var(--cyber-yellow)] text-[var(--surface)]" : "bg-[var(--surface-3)] text-[var(--text-muted)]",
       ]}
       style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 15px));"
     >
@@ -51,26 +54,19 @@ const hasGallery = Boolean(additionalImages?.length);
 
     <div
       class:list={[
-        "font-tech absolute top-3 right-3 z-20 flex h-8 min-w-[9.5rem] items-center justify-center gap-2 border-l-2 bg-black/80 px-3 text-[10px] font-bold tracking-[0.12em] whitespace-nowrap uppercase backdrop-blur-sm md:top-4 md:right-4 md:h-9 md:min-w-[10.75rem] md:text-[11px]",
-        isActive ? "border-[var(--cyber-yellow)] text-[var(--cyber-yellow)]" : "border-slate-400 text-slate-200",
+        "font-tech absolute top-3 right-3 z-20 inline-flex items-center justify-center border-l-2 bg-black/80 px-2.5 py-1.5 text-[10px] font-bold tracking-[0.12em] whitespace-nowrap uppercase backdrop-blur-sm md:top-4 md:right-4 md:text-[11px]",
+        isAvailable ? "border-[var(--cyber-yellow)] text-[var(--cyber-yellow)]" : "border-slate-400 text-slate-200",
       ]}
       style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);"
     >
-      <span
-        aria-hidden="true"
-        class="h-1.5 w-1.5 shrink-0 rounded-full bg-current"
-      >
-      </span>
-      {isActive ? "Active Mission" : "Mission Complete"}
+      {statusLabel}
     </div>
 
-    {isActive && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
+    {isAvailable && <div class="absolute right-0 bottom-0 h-1 w-16 bg-[var(--cyber-yellow)]" />}
   </div>
 
   <div class="relative flex flex-1 flex-col p-5 md:p-6">
-    <h3
-      class="font-pixel text-lg text-[var(--text)] transition-colors group-hover:text-[var(--cyber-yellow)] sm:text-xl md:text-2xl"
-    >
+    <h3 class="font-pixel text-lg text-[var(--text)] sm:text-xl md:text-2xl">
       {title}
     </h3>
 
@@ -141,11 +137,11 @@ const hasGallery = Boolean(additionalImages?.length);
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            {mapLink && isActive ? (
+            {mapLink && isAvailable ? (
               <a
                 href={mapLink}
                 target="_blank"
-                class="font-medium text-[var(--text)] underline decoration-dotted transition-colors hover:text-[var(--cyber-magenta)] hover:decoration-solid"
+                class="font-medium text-[var(--text)] underline decoration-dotted"
               >
                 {location}
               </a>
@@ -164,17 +160,17 @@ const hasGallery = Boolean(additionalImages?.length);
     </p>
 
     {
-      isActive && (
+      isAvailable && (
         <div class="mt-auto pt-5 md:pt-6">
           <button
             type="button"
             data-open-modal={chapterNumber - 1}
-            class="clip-angled group/btn relative w-full bg-[var(--cyber-yellow)] p-px text-black uppercase transition-all hover:bg-white hover:shadow-[0_0_20px_var(--cyber-yellow)]"
+            class="clip-angled relative w-full bg-[var(--cyber-yellow)] p-px text-black uppercase"
           >
-            <span class="font-pixel clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-yellow)] px-5 py-3 text-sm font-bold tracking-widest transition-[background-color] group-hover/btn:bg-white md:px-6">
-              ACCESS_DATA
+            <span class="font-pixel clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-yellow)] px-5 py-3 text-sm font-bold tracking-widest md:px-6">
+              DETAILS
               <svg
-                class="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
+                class="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

@@ -1,6 +1,8 @@
 import type { Event } from '../types';
 import { events as staticEvents } from '../data/events';
 
+export type EventStatus = 'upcoming' | 'active' | 'complete';
+
 /**
  * Service layer for event data operations.
  * Provides a centralized interface for accessing and filtering event data.
@@ -19,11 +21,19 @@ export class EventService {
     return `${value('year')}-${value('month')}-${value('day')}`;
   }
 
-  private static getEvents(): Event[] {
+  static getStatus(isoDate: string): EventStatus {
+    const eventDate = isoDate.slice(0, 10);
     const today = this.getToday();
+
+    if (eventDate < today) return 'complete';
+    if (eventDate === today) return 'active';
+    return 'upcoming';
+  }
+
+  private static getEvents(): Event[] {
     return staticEvents.map(event => ({
       ...event,
-      isActive: event.isActive && event.isoDate.slice(0, 10) >= today,
+      isActive: this.getStatus(event.isoDate) !== 'complete',
     }));
   }
 
@@ -124,10 +134,9 @@ export class EventService {
     location?: string;
     mapLink?: string;
     images: Array<{ src: string; alt: string }>;
-    isActive: boolean;
+    status: EventStatus;
     chapterNumber: number;
   }> {
-    const today = this.getToday();
     return events.map((event, index) => ({
       title: event.title,
       date: event.date,
@@ -141,7 +150,7 @@ export class EventService {
         { src: event.image.src, alt: event.title },
         ...(event.additionalImages ?? []).map(({ image, alt }) => ({ src: image.src, alt })),
       ],
-      isActive: event.isActive && event.isoDate.slice(0, 10) >= today,
+      status: this.getStatus(event.isoDate),
       chapterNumber: index + 1,
     }));
   }

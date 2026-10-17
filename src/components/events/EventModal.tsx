@@ -20,7 +20,7 @@ interface EventModalProps {
     location?: string;
     mapLink?: string;
     images: Array<{ src: string; alt: string }>;
-    isActive: boolean;
+    status: "upcoming" | "active" | "complete";
     chapterNumber: number;
   }>;
 }
@@ -60,6 +60,7 @@ export default function EventModal({ events }: EventModalProps) {
   }, [activeEvent]);
 
   const event = activeEvent !== null ? events[activeEvent] : null;
+  const statusLabel = event?.status === "upcoming" ? "Upcoming" : event?.status === "active" ? "Active" : "Complete";
 
   return (
     <AnimatePresence>
@@ -82,7 +83,7 @@ export default function EventModal({ events }: EventModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto rounded-xl border border-[var(--brand)] bg-[rgba(10,10,20,0.95)] shadow-[0_0_50px_-10px_var(--brand)] backdrop-blur-md md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+            className="scrollbar-none fixed inset-4 z-[201] m-auto max-h-[90vh] max-w-2xl overflow-y-auto border border-[var(--brand)] bg-[rgba(10,10,20,0.95)] backdrop-blur-md md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
           >
             <button
               type="button"
@@ -122,7 +123,7 @@ export default function EventModal({ events }: EventModalProps) {
                 title={event.title}
               />
             ) : (
-              <div className="relative aspect-[16/9] overflow-hidden rounded-t-xl">
+              <div className="relative aspect-[16/9] overflow-hidden">
                 <img
                   src={event.images[0].src}
                   alt={event.images[0].alt}
@@ -134,25 +135,18 @@ export default function EventModal({ events }: EventModalProps) {
 
             <div className="p-6 md:p-8">
               <div className="mb-4">
-                {event.isActive ? (
-                  <span
-                    className="font-tech inline-flex items-center gap-2 border border-white/20 bg-[var(--cyber-red)] px-4 py-1.5 text-xs font-black tracking-[0.15em] text-white uppercase shadow-[0_0_20px_rgba(255,0,60,0.85)]"
-                    style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
-                  >
-                    <span
-                      className="h-2 w-2 bg-white shadow-[0_0_8px_#ffffff]"
-                      style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
-                    />
-                    Active Mission
-                  </span>
-                ) : (
-                  <span
-                    className="inline-flex items-center gap-2 bg-[var(--surface-3)] px-4 py-1.5 text-xs font-bold tracking-wider text-[var(--text-muted)] uppercase"
-                    style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
-                  >
-                    Completed
-                  </span>
-                )}
+                <span
+                  className={`font-tech inline-flex items-center px-2.5 py-1 text-xs font-bold tracking-wider uppercase ${
+                    event.status === "active"
+                      ? "bg-[var(--cyber-red)] text-white"
+                      : event.status === "upcoming"
+                        ? "bg-[var(--cyber-yellow)] text-black"
+                        : "bg-[var(--surface-3)] text-[var(--text-muted)]"
+                  }`}
+                  style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
+                >
+                  {statusLabel}
+                </span>
               </div>
 
               <h2
@@ -260,7 +254,7 @@ export default function EventModal({ events }: EventModalProps) {
                 )}
               </div>
 
-              {(event.actionLink || (event.isActive && event.mapLink)) && (
+              {(event.actionLink || (event.status !== "complete" && event.mapLink)) && (
                 <div className="mt-8 flex flex-wrap gap-3">
                   {event.actionLink && (
                     <a
@@ -292,7 +286,7 @@ export default function EventModal({ events }: EventModalProps) {
                     </a>
                   )}
 
-                  {event.isActive && event.mapLink && (
+                  {event.status !== "complete" && event.mapLink && (
                     <a
                       href={event.mapLink}
                       target="_blank"
