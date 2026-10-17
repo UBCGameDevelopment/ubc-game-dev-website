@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { type MerchItem, SIZE_CHART } from "../../data/merch";
 
-interface MerchModalData extends MerchItem {}
+interface MerchModalData extends MerchItem { }
 
 export default function MerchPurchaseModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,14 +45,6 @@ export default function MerchPurchaseModal() {
     setActiveImageIndex(0);
   }, [activeImageIndex, itemImages.length]);
 
-  useEffect(() => {
-    if (!isOpen || itemImages.length < 2) return;
-    const timer = window.setInterval(() => {
-      setActiveImageIndex((current) => (current + 1) % itemImages.length);
-    }, 3200);
-    return () => window.clearInterval(timer);
-  }, [isOpen, itemImages.length, data?.id]);
-
   const showPreviousImage = () => {
     if (itemImages.length < 2) return;
     setActiveImageIndex((current) => (current - 1 + itemImages.length) % itemImages.length);
@@ -65,36 +56,28 @@ export default function MerchPurchaseModal() {
   };
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && data && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             onClick={() => setIsOpen(false)}
             className="absolute inset-0 bg-black/90 backdrop-blur-md"
           />
 
-          <motion.div
+          <div
             key={view}
-            initial={{ scale: 0.95, opacity: 0, y: 10 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.95, opacity: 0, y: 10 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className={`relative w-full overflow-hidden ${
-              view === "details"
+            className={`relative w-full overflow-hidden ${view === "details"
                 ? "max-w-[95vw] border-none bg-transparent shadow-none md:max-w-6xl"
-                : "max-w-lg border border-[var(--brand)] bg-[var(--bg-panel)] shadow-[0_0_50px_rgba(var(--brand-rgb),0.3)]"
-            }`}
+                : "max-w-lg border border-[var(--brand)] bg-[var(--bg-panel)]"
+              }`}
           >
             {view === "details" ? (
-              <div className="merch-hud-card relative flex flex-col overflow-hidden bg-[#05080c] shadow-[0_0_40px_rgba(0,0,0,0.8)] md:h-[75vh] md:flex-row">
+              <div className="merch-hud-card relative flex flex-col overflow-hidden bg-[#05080c] md:h-[75vh] md:flex-row">
                 <div className="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10"></div>
 
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="absolute top-6 right-6 z-50 text-[var(--text-muted)] transition-colors hover:text-white"
+                  className="absolute top-6 right-6 z-50 text-[var(--text-muted)]"
                 >
                   <svg
                     className="h-8 w-8"
@@ -137,7 +120,7 @@ export default function MerchPurchaseModal() {
                       <button
                         type="button"
                         onClick={showPreviousImage}
-                        className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white transition-colors hover:border-white hover:bg-black/60"
+                        className="absolute top-1/2 left-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white"
                         aria-label="Previous image"
                       >
                         <svg
@@ -157,7 +140,7 @@ export default function MerchPurchaseModal() {
                       <button
                         type="button"
                         onClick={showNextImage}
-                        className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white transition-colors hover:border-white hover:bg-black/60"
+                        className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full border border-white/30 bg-black/40 p-2 text-white"
                         aria-label="Next image"
                       >
                         <svg
@@ -181,9 +164,8 @@ export default function MerchPurchaseModal() {
                             type="button"
                             onClick={() => setActiveImageIndex(index)}
                             aria-label={`Show image ${index + 1}`}
-                            className={`h-2 rounded-full transition-all ${
-                              index === activeImageIndex ? "w-5 bg-white" : "w-2 bg-white/45 hover:bg-white/70"
-                            }`}
+                            className={`h-2 rounded-full ${index === activeImageIndex ? "w-5 bg-white" : "w-2 bg-white/45"
+                              }`}
                           />
                         ))}
                       </div>
@@ -228,7 +210,7 @@ export default function MerchPurchaseModal() {
                         <div className="mt-6">
                           <button
                             onClick={() => setShowSizeChartOverlay(true)}
-                            className="group font-tech border-b border-dashed border-[var(--cyber-yellow)] pb-0.5 text-xs font-bold tracking-[0.2em] text-[var(--cyber-yellow)] transition-colors hover:border-white hover:text-white"
+                            className="font-tech border-b border-dashed border-[var(--cyber-yellow)] pb-0.5 text-xs font-bold tracking-[0.2em] text-[var(--cyber-yellow)]"
                           >
                             SIZE GUIDE
                           </button>
@@ -243,12 +225,12 @@ export default function MerchPurchaseModal() {
                     </span>
                     <button
                       onClick={() => setView("purchase")}
-                      className="clip-angled group relative ml-auto inline-flex w-full bg-[var(--cyber-blue)] p-px text-black uppercase transition-transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] sm:w-auto"
+                      className="clip-angled relative ml-auto inline-flex w-full bg-[var(--cyber-blue)] p-px text-black uppercase sm:w-auto"
                     >
-                      <span className="clip-angled relative z-10 flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em] transition-[background-color] group-hover:bg-white">
+                      <span className="clip-angled relative z-10 flex w-full items-center justify-center gap-3 bg-[var(--cyber-blue)] px-6 py-2.5 text-xs font-bold tracking-[0.2em]">
                         <span>BUY NOW</span>
                         <svg
-                          className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                          className="h-4 w-4"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -269,12 +251,11 @@ export default function MerchPurchaseModal() {
               <div className="relative">
                 <div className="flex items-center justify-between border-b border-[var(--border-dim)] bg-[var(--brand)]/10 p-4">
                   <h3 className="font-tech text-xl tracking-widest text-white uppercase">
-                    <span className="mr-2 text-[var(--brand)]">&gt;&gt;</span>
-                    TRANSACTION SEQUENCE
+                    INFORMATION
                   </h3>
                   <button
                     onClick={() => setView("details")}
-                    className="text-[var(--text-muted)] hover:text-white"
+                    className="text-[var(--text-muted)]"
                   >
                     BACK
                   </button>
@@ -301,9 +282,8 @@ export default function MerchPurchaseModal() {
                               type="button"
                               onClick={() => setActiveImageIndex(index)}
                               aria-label={`Show image ${index + 1}`}
-                              className={`h-1.5 rounded-full transition-all ${
-                                index === activeImageIndex ? "w-4 bg-white" : "w-1.5 bg-white/45 hover:bg-white/70"
-                              }`}
+                              className={`h-1.5 rounded-full ${index === activeImageIndex ? "w-4 bg-white" : "w-1.5 bg-white/45"
+                                }`}
                             />
                           ))}
                         </div>
@@ -335,7 +315,7 @@ export default function MerchPurchaseModal() {
                       {data.sizeChart && (
                         <button
                           onClick={() => setShowSizeChartOverlay(true)}
-                          className="mt-2 flex items-center gap-2 text-xs font-bold text-[var(--cyber-yellow)] underline underline-offset-4 hover:text-white"
+                          className="mt-2 flex items-center gap-2 text-xs font-bold text-[var(--cyber-yellow)] underline underline-offset-4"
                         >
                           <svg
                             className="h-4 w-4"
@@ -394,20 +374,14 @@ export default function MerchPurchaseModal() {
                       </p>
                     </div>
 
-                    <div className="mt-6 rounded border border-[var(--border-dim)] bg-[var(--bg-deep)]/50 p-4 text-xs">
-                      <p className="mb-1 font-bold text-[var(--brand)] uppercase">System Note:</p>
-                      <p>
-                        An executive member will verify your purchase. Further instructions will be provided then for the next steps in regards to getting your orders.
-                      </p>
-                    </div>
                   </div>
 
                   <div className="mt-8 flex justify-end">
                     <button
                       onClick={() => setIsOpen(false)}
-                      className="clip-angled group relative bg-[var(--brand)]/90 p-px text-white uppercase transition-all"
+                      className="clip-angled relative bg-[var(--brand)]/90 p-px text-white uppercase"
                     >
-                      <span className="clip-angled relative z-10 block bg-[var(--brand)] px-6 py-2 font-bold transition-[background-color] group-hover:bg-[var(--accent)]">
+                      <span className="clip-angled relative z-10 block bg-[var(--brand)] px-6 py-2 font-bold">
                         Acknowledge
                       </span>
                     </button>
@@ -417,14 +391,11 @@ export default function MerchPurchaseModal() {
                 <div className="scanline-rgb pointer-events-none absolute inset-0 z-0 opacity-10"></div>
               </div>
             )}
-          </motion.div>
+          </div>
 
-          <AnimatePresence>
+          <>
             {showSizeChartOverlay && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
+              <div
                 className="fixed inset-0 z-[110] flex justify-center overflow-y-auto bg-black/95 p-4 py-12 backdrop-blur-sm md:items-center"
               >
                 <div className="relative w-full max-w-3xl">
@@ -484,7 +455,7 @@ export default function MerchPurchaseModal() {
                             return (
                               <tr
                                 key={i}
-                                className="border-b border-[var(--border-dim)]/20 transition-colors last:border-0 hover:bg-white/5"
+                                className="border-b border-[var(--border-dim)]/20 last:border-0"
                               >
                                 <td className="py-6 pl-4 font-medium text-white">{row.label}</td>
                                 <td className="px-4 py-6 text-center">{formatValue(row.s)}</td>
@@ -502,11 +473,11 @@ export default function MerchPurchaseModal() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
+          </>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

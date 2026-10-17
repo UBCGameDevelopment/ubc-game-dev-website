@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { GameService } from "../services";
-import CyberMarquee from "../components/effects/CyberMarquee.astro";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import TimelineSidebar from "../components/games/TimelineSidebar.astro";
 import GameArticle from "../components/games/GameArticle.astro";
@@ -11,8 +10,6 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
 <Layout title="UBC Game Dev | Games">
-  <CyberMarquee text="TIMELINE ARCHIVE /// CLASSIFIED" speed={120} direction="left"  className="top-32 left-0 fixed opacity-[0.02]" />
-
   <PageHeader
     backgroundText="DATABASE"
     badge={{ label: "Archive Access // Granted", variant: "blue" }}
@@ -23,28 +20,35 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
     glowColor="var(--brand)"
   />
 
-  <div class="container-page mx-auto px-4 pb-24 min-h-screen flex flex-col md:flex-row gap-8 lg:gap-16 relative z-10">
+  <div class="container-page relative z-10 mx-auto flex min-h-screen flex-col gap-8 px-4 pb-24 md:flex-row lg:gap-16">
     <TimelineSidebar years={years} />
 
     <div class="flex-1 space-y-32">
-      {years.map(year => (
-        <div id={`year-${year}`} class="scroll-mt-32 relative">
-          <div class="flex items-center gap-4 mb-12">
-            <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-40" />
-            <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
-              <span>{year}</span>
-              <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>
-            </h3>
-            <div class="h-px bg-[var(--border-dim)] flex-1 ml-4"></div>
-          </div>
+      {
+        years.map((year) => (
+          <div
+            id={`year-${year}`}
+            class="relative scroll-mt-32">
+            <div class="mb-12 flex items-center gap-4">
+              <BackgroundText
+                text={year}
+                className="text-6xl -top-10 -left-4 md:-left-12 opacity-40"
+              />
+              <h3 class="relative z-10 flex items-center gap-2 text-3xl font-bold text-[var(--cyber-yellow)]">
+                <span>{year}</span>
+                <span class="text-lg font-normal text-[var(--text-muted)]"> // Season Archives</span>
+              </h3>
+              <div class="ml-4 h-px flex-1 bg-[var(--border-dim)]" />
+            </div>
 
-          <div class="space-y-16">
-            {gamesByYear[year].map((game) => (
-              <GameArticle game={game} />
-            ))}
+            <div class="space-y-16">
+              {gamesByYear[year].map((game) => (
+                <GameArticle game={game} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </Layout>
