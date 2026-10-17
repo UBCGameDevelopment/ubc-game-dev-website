@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { GameService } from "../services";
 import CyberMarquee from "../components/effects/CyberMarquee.astro";
-import GlitchText from "../components/effects/GlitchText";
 import BackgroundText from "../components/effects/BackgroundText.astro";
 import TimelineSidebar from "../components/games/TimelineSidebar.astro";
 import GameArticle from "../components/games/GameArticle.astro";
@@ -33,7 +32,7 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
           <div class="flex items-center gap-4 mb-12">
             <BackgroundText text={year} className="text-6xl -top-10 -left-4 md:-left-12 opacity-40" />
             <h3 class="text-3xl font-bold text-[var(--cyber-yellow)] relative z-10 flex items-center gap-2">
-              <GlitchText client:visible text={year} tag="span" /> 
+              <span>{year}</span>
               <span class="text-[var(--text-muted)] text-lg font-normal"> // Season Archives</span>
             </h3>
             <div class="h-px bg-[var(--border-dim)] flex-1 ml-4"></div>

@@ -140,7 +140,7 @@ export default function EventModal({ events }: EventModalProps) {
                     style={{ clipPath: "polygon(8px 0, 100% 0, 100% 100%, 0 100%)" }}
                   >
                     <span
-                      className="h-2 w-2 animate-pulse bg-white shadow-[0_0_8px_#ffffff]"
+                      className="h-2 w-2 bg-white shadow-[0_0_8px_#ffffff]"
                       style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
                     />
                     Active Mission

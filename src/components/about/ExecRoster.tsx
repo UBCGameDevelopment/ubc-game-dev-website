@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Typewriter from "typewriter-effect";
-import { splitTypewriterText } from "../../utils/typewriter";
 import { SOCIAL_LINKS } from "../../config/links";
 
 interface ExecData {
@@ -180,7 +178,6 @@ const PortfolioIcon = () => (
 
 export default function ExecRoster({ execs }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [hasInteracted, setHasInteracted] = useState(false);
 
   if (!execs || execs.length === 0) {
     return <ExecEmptyState />;
@@ -232,10 +229,7 @@ export default function ExecRoster({ execs }: Props) {
                     key={exec.name}
                     exec={exec}
                     isSelected={originalIndex === selectedIndex}
-                    onClick={() => {
-                      setHasInteracted(true);
-                      setSelectedIndex(originalIndex);
-                    }}
+                    onClick={() => setSelectedIndex(originalIndex)}
                   />
                 ))}
               </div>
@@ -243,7 +237,7 @@ export default function ExecRoster({ execs }: Props) {
           ))}
 
           <div className="mt-2 flex items-center gap-3 border-t border-[var(--border-dim)] pt-3">
-            <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--cyber-yellow)]" />
+            <div className="h-1.5 w-1.5 rounded-full bg-[var(--cyber-yellow)]" />
             <span className="font-tech text-[10px] tracking-widest text-[var(--text-muted)]">
               PROCESSING SELECTIONS...
             </span>
@@ -372,49 +366,16 @@ export default function ExecRoster({ execs }: Props) {
                   <div
                     className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
                   >
-                    {hasInteracted ? (
-                      <Typewriter
-                        key={selectedIndex}
-                        onInit={(typewriter) => {
-                          typewriter
-                            .changeDelay(24)
-                            .typeString(
-                              "<span style='color: var(--cyber-blue);'>[SYS]</span> Operator profile loaded.<br/>",
-                            )
-                            .pauseFor(100)
-                            .typeString(
-                              `<span style='color: var(--cyber-blue);'>[SYS]</span> Assigned role: <span style='color: white; font-weight: bold;'>${selected.role}</span><br/>`,
-                            )
-                            .pauseFor(100)
-                            .typeString(
-                              `<span style='color: var(--cyber-blue);'>[SYS]</span> Division: <span style='color: white; font-weight: bold;'>${selected.execClass}</span><br/>`,
-                            )
-                            .pauseFor(120)
-                            .typeString(
-                              "<span style='color: var(--cyber-yellow);'>[NET]</span> Social links verified. Ready for connection.",
-                            )
-                            .start();
-                        }}
-                        options={{
-                          cursor: "<span style='color: var(--cyber-yellow);'>█</span>",
-                          delay: 12,
-                          stringSplitter: splitTypewriterText,
-                        }}
-                      />
-                    ) : (
-                      <>
-                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Operator profile loaded.
-                        <br />
-                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Assigned role:{" "}
-                        <span style={{ color: "white", fontWeight: 700 }}>{selected.role}</span>
-                        <br />
-                        <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Division:{" "}
-                        <span style={{ color: "white", fontWeight: 700 }}>{selected.execClass}</span>
-                        <br />
-                        <span style={{ color: "var(--cyber-yellow)" }}>[NET]</span> Social links verified. Ready for
-                        connection.
-                      </>
-                    )}
+                    <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Operator profile loaded.
+                    <br />
+                    <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Assigned role:{" "}
+                    <span style={{ color: "white", fontWeight: 700 }}>{selected.role}</span>
+                    <br />
+                    <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Division:{" "}
+                    <span style={{ color: "white", fontWeight: 700 }}>{selected.execClass}</span>
+                    <br />
+                    <span style={{ color: "var(--cyber-yellow)" }}>[NET]</span> Social links verified. Ready for
+                    connection.
                   </div>
                 </div>
 

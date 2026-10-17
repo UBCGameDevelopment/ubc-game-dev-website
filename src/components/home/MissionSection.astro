@@ -1,11 +1,10 @@
 ---
-import AnimatedStatValue from "./AnimatedStatValue";
 import HomeSectionHeader from "./HomeSectionHeader.astro";
 import infoPhoto from "../../assets/info.webp";
 
 const stats = [
-  { label: "> Active_Agents", value: "100+", color: "var(--cyber-blue)" },
-  { label: "> Shipped_Titles", value: "50+", color: "var(--cyber-yellow)" },
+  { label: "> Active_Agents", value: "100+" },
+  { label: "> Shipped_Titles", value: "50+" },
 ];
 ---
 
@@ -21,16 +20,7 @@ const stats = [
           wrapperClass="mb-6">
           <div
             slot="after-label"
-            class="relative mx-auto w-full max-w-[22rem] overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)] lg:hidden"
-            style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);">
-            <div
-              class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
-              <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
-                Community // In Session
-              </div>
-              <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">UBC Game Dev</div>
-            </div>
-
+            class="relative mx-auto w-full max-w-[22rem] overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.35)] lg:hidden">
             <div class="relative aspect-[5/4]">
               <img
                 src={infoPhoto.src}
@@ -39,14 +29,6 @@ const stats = [
                 loading="lazy"
                 decoding="async"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/22 via-transparent to-transparent"></div>
-              <div class="absolute top-0 left-0 h-20 w-20 border-t-2 border-l-2 border-[var(--cyber-blue)]/25"></div>
-            </div>
-
-            <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-4 py-3.5">
-              <p class="font-tech text-[10px] tracking-[0.24em] text-[var(--cyber-yellow)] uppercase">
-                Workshops / Teams / Showcases
-              </p>
             </div>
           </div>
         </HomeSectionHeader>
@@ -59,12 +41,9 @@ const stats = [
                   <p class="font-tech text-[10px] tracking-[0.22em] text-[var(--text-muted)] uppercase">{stat.label}</p>
                 </div>
                 <div class="px-4 py-4">
-                  <AnimatedStatValue
-                    client:visible
-                    value={stat.value}
-                    accentColor={stat.color}
-                    className="text-4xl font-black tracking-[-0.05em] text-white md:text-5xl"
-                  />
+                  <span class="text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
+                    {stat.value}
+                  </span>
                 </div>
               </div>
             ))
@@ -73,17 +52,7 @@ const stats = [
       </div>
 
       <div class="relative hidden lg:block lg:pl-2">
-        <div
-          class="relative overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)] shadow-[0_16px_40px_rgba(0,0,0,0.35)]"
-          style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%);">
-          <div
-            class="absolute inset-x-0 top-0 z-10 flex items-center justify-between border-b border-white/8 bg-black/35 px-4 py-2.5 backdrop-blur-sm">
-            <div class="font-tech text-[11px] tracking-[0.22em] text-[var(--cyber-blue)] uppercase">
-              Community // In Session
-            </div>
-            <div class="font-tech text-[10px] tracking-[0.18em] text-[var(--text-muted)] uppercase">UBC Game Dev</div>
-          </div>
-
+        <div class="relative overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
           <div class="relative aspect-[5/4] sm:aspect-[16/11]">
             <img
               src={infoPhoto.src}
@@ -92,14 +61,6 @@ const stats = [
               loading="lazy"
               decoding="async"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/22 via-transparent to-transparent"></div>
-            <div class="absolute top-0 left-0 h-20 w-20 border-t-2 border-l-2 border-[var(--cyber-blue)]/25"></div>
-          </div>
-
-          <div class="border-t border-white/8 bg-[var(--bg-deep)]/92 px-4 py-3.5 md:px-5">
-            <p class="font-tech text-[10px] tracking-[0.24em] text-[var(--cyber-yellow)] uppercase">
-              Workshops / Teams / Showcases
-            </p>
           </div>
         </div>
       </div>

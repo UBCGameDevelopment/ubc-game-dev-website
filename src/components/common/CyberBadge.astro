@@ -12,27 +12,22 @@ const variants = {
   brand: {
     shell: "bg-[var(--brand)]/30",
     text: "text-[var(--brand)]",
-    pulse: "bg-[var(--brand)]",
   },
   accent: {
     shell: "bg-[var(--accent)]/30",
     text: "text-[var(--accent)]",
-    pulse: "bg-[var(--accent)]",
   },
   yellow: {
     shell: "bg-[var(--cyber-yellow)]/30",
     text: "text-[var(--cyber-yellow)]",
-    pulse: "bg-[var(--cyber-yellow)]",
   },
   magenta: {
     shell: "bg-[var(--accent)]/30",
     text: "text-[var(--cyber-magenta)]",
-    pulse: "bg-[var(--cyber-magenta)]",
   },
   blue: {
     shell: "bg-[var(--cyber-blue)]/30",
     text: "text-[var(--cyber-blue)]",
-    pulse: "bg-[var(--cyber-blue)]",
   },
 };
 
@@ -47,8 +42,6 @@ const style = variants[variant] || variants.brand;
   ]}
 >
   <div class="clip-angled flex items-center gap-3 bg-[var(--bg-panel)]/88 px-4 py-1.5 backdrop-blur-sm">
-    <div class:list={["h-1.5 w-1.5 animate-pulse", style.pulse]}></div>
-
     <slot name="icon" />
 
     <span class:list={["font-tech text-xs font-bold tracking-[0.2em] uppercase", style.text]}>

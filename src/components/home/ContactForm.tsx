@@ -185,7 +185,7 @@ export default function ContactForm({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="box-neon glow-pulse font-pixel bg-[var(--brand)] px-8 py-3 tracking-widest text-white uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--brand-hover)] disabled:cursor-not-allowed disabled:opacity-50"
+              className="box-neon font-pixel bg-[var(--brand)] px-8 py-3 tracking-widest text-white uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--brand-hover)] disabled:cursor-not-allowed disabled:opacity-50"
               style={{
                 clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
               }}
