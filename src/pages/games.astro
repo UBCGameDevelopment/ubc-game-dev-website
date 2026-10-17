@@ -9,11 +9,11 @@ import PageHeader from "../components/common/PageHeader.astro";
 const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 ---
 
-<Layout title="UBC Game Dev | Games">
+<Layout title="UBC Game Dev | Projects">
   <PageHeader
     backgroundText="DATABASE"
-    badge={{ label: "Archive Access // Granted", variant: "blue" }}
-    title={{ normal: "Dev ", highlight: "Archives" }}
+    badge={{ label: "Past Works", variant: "blue" }}
+    title={{ normal: "", highlight: "Projects" }}
     gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
     description="Trace the history of our digital creations. From game jam prototypes to polished releases, explore the legacy of UBC Game Dev code."
     descriptionBorderColor="border-[var(--cyber-blue)]"
@@ -27,8 +27,8 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
       {
         years.map((year) => (
           <div
-            id={`year-${year}`}
-            class="relative scroll-mt-32">
+            data-year-section={year}
+            class:list={["relative", year === years[0] ? "" : "hidden"]}>
             <div class="mb-12 flex items-center gap-4">
               <BackgroundText
                 text={year}
@@ -36,7 +36,6 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
               />
               <h3 class="relative z-10 flex items-center gap-2 text-3xl font-bold text-[var(--cyber-yellow)]">
                 <span>{year}</span>
-                <span class="text-lg font-normal text-[var(--text-muted)]"> // Season Archives</span>
               </h3>
               <div class="ml-4 h-px flex-1 bg-[var(--border-dim)]" />
             </div>
@@ -52,3 +51,29 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
     </div>
   </div>
 </Layout>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>("[data-year-tab]");
+  const sections = document.querySelectorAll<HTMLElement>("[data-year-section]");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const selectedYear = tab.dataset.yearTab;
+      if (!selectedYear) return;
+
+      tabs.forEach((item) => {
+        const isSelected = item === tab;
+        item.setAttribute("aria-selected", String(isSelected));
+        item.classList.toggle("border-[var(--cyber-yellow)]", isSelected);
+        item.classList.toggle("bg-[var(--bg-deep)]", isSelected);
+        item.classList.toggle("text-white", isSelected);
+        item.classList.toggle("border-transparent", !isSelected);
+        item.classList.toggle("text-[var(--text-muted)]", !isSelected);
+      });
+
+      sections.forEach((section) => {
+        section.classList.toggle("hidden", section.dataset.yearSection !== selectedYear);
+      });
+    });
+  });
+</script>

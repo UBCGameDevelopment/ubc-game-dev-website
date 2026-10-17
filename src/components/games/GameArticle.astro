@@ -10,28 +10,21 @@ const { game } = Astro.props;
 const imageSrc = GameService.getGameImageSrc(game);
 ---
 
-<article class="group relative grid gap-8 p-6 lg:grid-cols-[1.2fr_1fr] lg:p-0">
+<article class="relative grid gap-8 p-6 lg:grid-cols-[1.2fr_1fr] lg:p-0">
   <div class="order-2 flex flex-col justify-center lg:order-1">
     <div class="mb-4">
       <span
-        class="mb-2 inline-block bg-[var(--cyber-yellow)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase"
-      >
+        class="mb-2 inline-block bg-[var(--cyber-yellow)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase">
         Project
       </span>
-      <h4
-        class="glitch-hover hover:text-neon-blue mb-4 text-4xl font-black tracking-tighter text-white uppercase md:text-5xl"
-        data-text={game.name}
-      >
+      <h4 class="mb-4 text-4xl font-black tracking-tighter text-white uppercase md:text-5xl">
         {game.name}
       </h4>
 
       {
         game.award && (
           <div class="mb-6 inline-flex items-center gap-2 border border-[var(--cyber-yellow)] bg-[var(--cyber-yellow)]/10 px-3 py-2">
-            <span class="text-[var(--cyber-yellow)]">★</span>
-            <span class="text-neon-yellow text-sm font-bold tracking-wide text-[var(--cyber-yellow)] uppercase">
-              {game.award}
-            </span>
+            <span class="text-sm font-bold tracking-wide text-[var(--cyber-yellow)] uppercase">{game.award}</span>
           </div>
         )
       }
@@ -43,9 +36,7 @@ const imageSrc = GameService.getGameImageSrc(game);
       {
         game.teamMembers && (
           <div class="space-y-2">
-            <h5 class="flex items-center gap-2 text-xs font-bold tracking-widest text-[var(--brand)] uppercase">
-              <span class="h-1 w-1 rounded-full bg-[var(--brand)]" /> Team Members
-            </h5>
+            <h5 class="text-xs font-bold tracking-widest text-[var(--brand)] uppercase">Team Members</h5>
             <div class="flex flex-wrap gap-2">
               {game.teamMembers.map((member) => (
                 <span class="font-tech rounded-full border border-[var(--border-dim)] bg-[var(--bg-panel)] px-3 py-1 text-xs text-[var(--text-muted)]">
@@ -64,15 +55,13 @@ const imageSrc = GameService.getGameImageSrc(game);
               href={game.gameLink}
               target="_blank"
               rel="noopener noreferrer"
-              class="clip-angled inline-flex items-center gap-2 bg-[var(--cyber-blue)] px-6 py-3 text-sm font-bold tracking-widest text-black uppercase transition-all hover:-translate-y-1 hover:bg-white hover:shadow-[0_0_15px_var(--cyber-blue)]"
-            >
+              class="clip-angled inline-flex items-center gap-2 bg-[var(--cyber-blue)] px-6 py-3 text-sm font-bold tracking-widest text-black uppercase">
               <span>Play Game</span>
               <svg
                 class="h-4 w-4"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 <>
                   <path
                     stroke-linecap="round"
@@ -97,8 +86,7 @@ const imageSrc = GameService.getGameImageSrc(game);
 
   <div class="order-1 lg:order-2">
     <div
-      class="hud-card relative aspect-video overflow-hidden rounded-lg border-2 border-transparent transition-colors group-hover:border-[var(--cyber-blue)] lg:-mr-6"
-    >
+      class="relative aspect-video overflow-hidden rounded-lg border border-[var(--border-dim)] bg-[var(--bg-panel)] lg:-mr-6">
       {
         game.media && game.media.type === "video" ? (
           <iframe
@@ -111,22 +99,13 @@ const imageSrc = GameService.getGameImageSrc(game);
         ) : (
           <>
             <div
-              class="absolute inset-0 transform bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={`background-image: url('${imageSrc}');`}
-            >
-              <div class="absolute inset-0 bg-[var(--bg-deep)]/20 transition-colors group-hover:bg-transparent" />
+              class="absolute inset-0 bg-cover bg-center"
+              style={`background-image: url('${imageSrc}');`}>
+              <div class="absolute inset-0 bg-[var(--bg-deep)]/20" />
             </div>
-
-            <div class="scanline-rgb pointer-events-none absolute inset-0 z-10" />
           </>
         )
       }
     </div>
   </div>
 </article>
-
-<style>
-  .glitch-hover:hover {
-    color: var(--cyber-blue);
-  }
-</style>

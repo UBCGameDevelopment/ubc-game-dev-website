@@ -8,28 +8,37 @@ const { years } = Astro.props;
 
 <aside class="h-fit w-full shrink-0 md:sticky md:top-32 md:w-64">
   <div class="hud-card border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 p-6 backdrop-blur-md">
-    <h2 class="mb-6 border-b border-[var(--border-dim)] pb-4 text-xl font-black tracking-widest text-white uppercase">
+    <h2 class="mb-6 border-b border-[var(--border-dim)] pb-4 text-2xl font-black tracking-widest text-white uppercase">
       Club Timeline
     </h2>
 
     <nav class="space-y-2">
       {
         years.map((year) => (
-          <a
-            href={`#year-${year}`}
-            class="font-tech block w-full rounded px-4 py-3 text-left tracking-wider text-[var(--text-muted)] transition-all hover:border-l-2 hover:border-[var(--cyber-yellow)] hover:bg-[var(--bg-deep)] hover:text-white"
-          >
+          <button
+            type="button"
+            data-year-tab={year}
+            aria-selected={year === years[0] ? "true" : "false"}
+            class:list={[
+              "year-tab font-tech block w-full rounded border-l-2 px-4 py-3 text-left text-lg tracking-wider",
+              year === years[0]
+                ? "border-[var(--cyber-yellow)] bg-[var(--bg-deep)] text-white"
+                : "border-transparent text-[var(--text-muted)]",
+            ]}>
             <span class="mr-2 text-[var(--cyber-yellow)]">//</span> {year}
-          </a>
+          </button>
         ))
       }
     </nav>
   </div>
-
-  <div class="mt-8 hidden md:block">
-    <div class="font-tech text-xs text-[var(--border-dim)]">
-      <p>SYS.STATUS: ONLINE</p>
-      <p>ARCHIVE_ACCESS: GRANTED</p>
-    </div>
-  </div>
 </aside>
+
+<style>
+  .year-tab {
+    cursor: pointer;
+  }
+
+  .year-tab[aria-selected="true"] {
+    font-weight: 700;
+  }
+</style>
