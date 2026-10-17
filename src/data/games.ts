@@ -1041,7 +1041,7 @@ export const games: Game[] = [
     gameLink: "https://drive.google.com/drive/folders/1xfuL2QHYvmM3c6x0N50FOCcnUQd9V90v",
     teamMembers: [
       "Eric",
-      "John",
+      "Jon",
       "Isaac",
       "Sophia",
       "Aviral",
