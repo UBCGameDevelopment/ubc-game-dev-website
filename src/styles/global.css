@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -16,8 +16,9 @@
   --color-text-muted: #8a8a90;
 
   --font-main: "Rajdhani", sans-serif;
-  --font-mono: "Share Tech Mono", monospace;
-  --font-tech: "Share Tech Mono", monospace;
+  --font-mono: "Rajdhani", sans-serif;
+  --font-tech: "Rajdhani", sans-serif;
+  --font-pixel: "Rajdhani", sans-serif;
 
   --color-border-dim: rgba(255, 255, 255, 0.1);
 }
@@ -57,6 +58,14 @@ html {
   font-family: var(--font-main);
   forced-color-adjust: none;
   scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-main);
 }
 
 body {
