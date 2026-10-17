@@ -6,7 +6,7 @@ interface Props {
   backgroundText: string;
   badge: {
     label: string;
-    variant: "brand" | "accent" | "yellow" | "magenta" | "blue";
+    variant: "brand" | "accent" | "yellow" | "magenta" | "blue" | "neutral";
   };
   title: {
     normal: string;
@@ -18,11 +18,7 @@ interface Props {
   glowColor?: string;
 }
 
-const {
-  backgroundText,
-  badge,
-  title,
-} = Astro.props;
+const { backgroundText, badge, title } = Astro.props;
 
 const accentStyles = {
   brand: {
@@ -44,6 +40,10 @@ const accentStyles = {
   blue: {
     line: "bg-[var(--cyber-blue)]",
     text: "text-[var(--cyber-blue)]",
+  },
+  neutral: {
+    line: "bg-[var(--border-dim)]",
+    text: "text-white",
   },
 } as const;
 

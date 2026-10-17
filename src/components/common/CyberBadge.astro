@@ -1,7 +1,7 @@
 ---
 interface Props {
   label: string;
-  variant?: "brand" | "accent" | "yellow" | "magenta" | "blue";
+  variant?: "brand" | "accent" | "yellow" | "magenta" | "blue" | "neutral";
   class?: string;
   icon?: string; // Optional icon slot or name
 }
@@ -29,18 +29,16 @@ const variants = {
     shell: "bg-[var(--cyber-blue)]/30",
     text: "text-[var(--cyber-blue)]",
   },
+  neutral: {
+    shell: "bg-[var(--border-dim)]",
+    text: "text-[var(--text-muted)]",
+  },
 };
 
 const style = variants[variant] || variants.brand;
 ---
 
-<div
-  class:list={[
-    "clip-angled relative inline-flex shrink-0 p-px whitespace-nowrap",
-    style.shell,
-    className,
-  ]}
->
+<div class:list={["clip-angled relative inline-flex shrink-0 p-px whitespace-nowrap", style.shell, className]}>
   <div class="clip-angled flex items-center gap-3 bg-[var(--bg-panel)]/88 px-4 py-1.5 backdrop-blur-sm">
     <slot name="icon" />
 
