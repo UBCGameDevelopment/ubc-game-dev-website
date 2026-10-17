@@ -2,16 +2,9 @@ import { useState, type FormEvent } from "react";
 import { EmailService } from "../../services/EmailService";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface ContactFormProps {
-  title?: string;
-  subtitle?: string;
-}
-
-export default function ContactForm({
-  title = "GET IN TOUCH",
-  subtitle = "Have a question or want to collaborate? Send us a message and we'll get back to you!",
-}: ContactFormProps) {
+export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
 
   const showMessage = (text: string, type: "success" | "error") => {
@@ -49,8 +42,7 @@ export default function ContactForm({
     setIsSubmitting(false);
 
     if (result.success) {
-      showMessage("✓ Message sent successfully! We'll get back to you soon", "success");
-      e.currentTarget.reset();
+      setIsSent(true);
     } else {
       showMessage(result.error!, "error");
     }
@@ -61,146 +53,124 @@ export default function ContactForm({
       <div className="hex-grid pointer-events-none absolute inset-0 opacity-20"></div>
 
       <div className="container-page relative z-10">
-        <h2 className="font-pixel text-neon text-center text-3xl tracking-widest uppercase md:text-4xl">{title}</h2>
-        <p className="font-tech mt-3 text-center text-sm text-[var(--text-muted)] md:text-base">{subtitle}</p>
-
-        <form
-          onSubmit={handleSubmit}
-          noValidate
-          className="mx-auto mt-8 grid max-w-3xl gap-6 border border-[var(--brand)]/30 bg-[var(--surface)]/80 p-8 shadow-[0_0_30px_-10px_var(--brand)] backdrop-blur-lg"
-          style={{
-            clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)",
-          }}
-        >
-          <div>
-            <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
-              <span className="text-neon">{">"}</span> Name <span className="text-[var(--accent)]">*</span>
-            </label>
-            <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div>
-                <span className="mb-1 block text-xs text-[var(--text-muted)]">First Name</span>
-                <input
-                  required
-                  name="first_name"
-                  type="text"
-                  className="w-full border border-[var(--brand)]/30 bg-[var(--surface)]/50 px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] transition-all duration-200 hover:border-[var(--brand)]/60 focus:border-[var(--brand)] focus:shadow-[0_0_10px_var(--brand)] focus:outline-none"
-                  style={{
-                    clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                  }}
-                  placeholder="Jane"
-                  onChange={() => message?.type === "error" && hideMessage()}
-                />
-              </div>
-              <div>
-                <span className="mb-1 block text-xs text-[var(--text-muted)]">Last Name</span>
-                <input
-                  required
-                  name="last_name"
-                  type="text"
-                  className="w-full border border-[var(--brand)]/30 bg-[var(--surface)]/50 px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] transition-all duration-200 hover:border-[var(--brand)]/60 focus:border-[var(--brand)] focus:shadow-[0_0_10px_var(--brand)] focus:outline-none"
-                  style={{
-                    clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-                  }}
-                  placeholder="Doe"
-                  onChange={() => message?.type === "error" && hideMessage()}
-                />
+        {isSent ? (
+          <p className="mx-auto max-w-3xl border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 p-8 text-center text-lg text-[var(--text-muted)]">
+            Sent!
+          </p>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="mx-auto grid max-w-3xl gap-6 border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 p-8"
+          >
+            <div>
+              <label className="mb-2 block text-sm font-medium tracking-widest text-[var(--text-muted)] uppercase">
+                Name <span className="text-[var(--accent)]">*</span>
+              </label>
+              <div className="mt-2 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <div>
+                  <span className="mb-1 block text-xs text-[var(--text-muted)]">First Name</span>
+                  <input
+                    required
+                    name="first_name"
+                    type="text"
+                    className="w-full border border-[var(--border-dim)] bg-[var(--bg-deep)] px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none"
+                    placeholder="Jane"
+                    onChange={() => message?.type === "error" && hideMessage()}
+                  />
+                </div>
+                <div>
+                  <span className="mb-1 block text-xs text-[var(--text-muted)]">Last Name</span>
+                  <input
+                    required
+                    name="last_name"
+                    type="text"
+                    className="w-full border border-[var(--border-dim)] bg-[var(--bg-deep)] px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none"
+                    placeholder="Doe"
+                    onChange={() => message?.type === "error" && hideMessage()}
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
-              <span className="text-neon">{">"}</span> Email <span className="text-[var(--accent)]">*</span>
-            </label>
-            <input
-              required
-              name="email"
-              type="email"
-              className="mt-2 w-full border border-[var(--brand)]/30 bg-[var(--surface)]/50 px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] transition-all duration-200 hover:border-[var(--brand)]/60 focus:border-[var(--brand)] focus:shadow-[0_0_10px_var(--brand)] focus:outline-none"
-              style={{
-                clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-              }}
-              placeholder="you@ubc.ca"
-              onChange={() => message?.type === "error" && hideMessage()}
-            />
-          </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium tracking-widest text-[var(--text-muted)] uppercase">
+                Email <span className="text-[var(--accent)]">*</span>
+              </label>
+              <input
+                required
+                name="email"
+                type="email"
+                className="mt-2 w-full border border-[var(--border-dim)] bg-[var(--bg-deep)] px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none"
+                placeholder="you@ubc.ca"
+                onChange={() => message?.type === "error" && hideMessage()}
+              />
+            </div>
 
-          <div>
-            <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
-              <span className="text-neon">{">"}</span> Subject <span className="text-[var(--accent)]">*</span>
-            </label>
-            <input
-              required
-              name="subject"
-              type="text"
-              className="mt-2 w-full border border-[var(--brand)]/30 bg-[var(--surface)]/50 px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] transition-all duration-200 hover:border-[var(--brand)]/60 focus:border-[var(--brand)] focus:shadow-[0_0_10px_var(--brand)] focus:outline-none"
-              style={{
-                clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-              }}
-              placeholder="How can we help you?"
-              onChange={() => message?.type === "error" && hideMessage()}
-            />
-          </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium tracking-widest text-[var(--text-muted)] uppercase">
+                Subject <span className="text-[var(--accent)]">*</span>
+              </label>
+              <input
+                required
+                name="subject"
+                type="text"
+                className="mt-2 w-full border border-[var(--border-dim)] bg-[var(--bg-deep)] px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none"
+                placeholder="How can we help you?"
+                onChange={() => message?.type === "error" && hideMessage()}
+              />
+            </div>
 
-          <div>
-            <label className="mb-2 block text-xs font-medium tracking-widest text-[var(--brand)] uppercase">
-              <span className="text-neon">{">"}</span> Message <span className="text-[var(--accent)]">*</span>
-            </label>
-            <textarea
-              required
-              name="message"
-              rows={5}
-              className="mt-2 w-full resize-y border border-[var(--brand)]/30 bg-[var(--surface)]/50 px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] transition-all duration-200 hover:border-[var(--brand)]/60 focus:border-[var(--brand)] focus:shadow-[0_0_10px_var(--brand)] focus:outline-none"
-              style={{
-                clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-              }}
-              placeholder="Tell us what's on your mind..."
-              onChange={() => message?.type === "error" && hideMessage()}
-            />
-          </div>
+            <div>
+              <label className="mb-2 block text-sm font-medium tracking-widest text-[var(--text-muted)] uppercase">
+                Message <span className="text-[var(--accent)]">*</span>
+              </label>
+              <textarea
+                required
+                name="message"
+                rows={5}
+                className="mt-2 w-full resize-y border border-[var(--border-dim)] bg-[var(--bg-deep)] px-4 py-2.5 font-mono text-sm text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none"
+                placeholder="Tell us what's on your mind..."
+                onChange={() => message?.type === "error" && hideMessage()}
+              />
+            </div>
 
-          <AnimatePresence mode="wait">
-            {message && (
-              <motion.div
-                id="form-message"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className={`border px-4 py-3 font-mono text-sm ${
-                  message.type === "success"
-                    ? "border-green-500/50 bg-green-500/10 text-green-600 shadow-[0_0_15px_rgba(34,197,94,0.3)] dark:text-green-400"
-                    : "border-red-500/50 bg-red-500/10 text-red-600 shadow-[0_0_15px_rgba(239,68,68,0.3)] dark:text-red-400"
-                }`}
+            <AnimatePresence mode="wait">
+              {message && (
+                <motion.div
+                  id="form-message"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className={`border px-4 py-3 font-mono text-sm ${message.type === "success"
+                      ? "border-green-500/50 bg-green-500/10 text-green-600 shadow-[0_0_15px_rgba(34,197,94,0.3)] dark:text-green-400"
+                      : "border-red-500/50 bg-red-500/10 text-red-600 shadow-[0_0_15px_rgba(239,68,68,0.3)] dark:text-red-400"
+                    }`}
+                  style={{
+                    clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
+                  }}
+                >
+                  <p>{message.text}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="mt-4 text-center">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="font-pixel bg-[var(--brand)] px-8 py-3 tracking-widest text-white uppercase disabled:cursor-not-allowed disabled:opacity-50"
                 style={{
                   clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
                 }}
               >
-                <p>{message.text}</p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {isSubmitting ? "Transmitting..." : "Send Message"}
+              </button>
+            </div>
 
-          <div className="mt-4 text-center">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="box-neon font-pixel bg-[var(--brand)] px-8 py-3 tracking-widest text-white uppercase transition-all duration-300 hover:scale-105 hover:bg-[var(--brand-hover)] disabled:cursor-not-allowed disabled:opacity-50"
-              style={{
-                clipPath: "polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px)",
-              }}
-            >
-              {isSubmitting ? "> Transmitting..." : "> Send Message"}
-            </button>
-          </div>
-
-          <div className="absolute top-0 left-0 h-6 w-6 border-t border-l border-[var(--brand)]/50"></div>
-          <div className="absolute right-0 bottom-0 h-6 w-6 border-r border-b border-[var(--brand)]/50"></div>
-        </form>
-
-        <p className="font-tech mt-6 text-center text-xs text-[var(--text-muted)] opacity-60">
-          // Response time: 24-48 hours
-        </p>
+          </form>
+        )}
       </div>
     </section>
   );
