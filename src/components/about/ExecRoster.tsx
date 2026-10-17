@@ -71,9 +71,6 @@ const ExecEmptyState = () => (
             href="/team/legacy"
             className="font-tech group inline-flex items-center gap-2 border border-[var(--border-dim)] bg-[var(--bg-deep)] px-5 py-2.5 text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase transition-all hover:border-[var(--cyber-blue)] hover:text-[var(--cyber-blue)] hover:shadow-[0_0_12px_rgba(0,240,255,0.15)]"
           >
-            <svg className="h-4 w-4 transition-transform group-hover:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
             <span>Legacy Execs</span>
           </a>
         </div>
@@ -201,14 +198,6 @@ export default function ExecRoster({ execs }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-16">
-      <div className="mb-4 flex items-center gap-4">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[var(--cyber-yellow)]/30 to-transparent" />
-        <h2 className="font-tech text-xs font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
-          &gt;&gt; Select Your Operator
-        </h2>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[var(--cyber-yellow)]/30 to-transparent" />
-      </div>
-
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {classOrder.map((cls) => (
@@ -218,9 +207,6 @@ export default function ExecRoster({ execs }: Props) {
                   {cls}
                 </span>
                 <div className="h-px flex-1 bg-[var(--border-dim)]" />
-                <span className="font-tech text-[10px] text-[var(--text-muted)]">
-                  {grouped[cls]?.length ?? 0}
-                </span>
               </div>
 
               <div className="grid grid-cols-4 gap-2">
@@ -236,25 +222,10 @@ export default function ExecRoster({ execs }: Props) {
             </div>
           ))}
 
-          <div className="mt-2 flex items-center gap-3 border-t border-[var(--border-dim)] pt-3">
-            <div className="h-1.5 w-1.5 rounded-full bg-[var(--cyber-yellow)]" />
-            <span className="font-tech text-[10px] tracking-widest text-[var(--text-muted)]">
-              PROCESSING SELECTIONS...
-            </span>
-          </div>
         </div>
 
         <div className="relative flex flex-col overflow-hidden border border-[var(--border-dim)] bg-[var(--bg-panel)]/80 backdrop-blur-md">
           <div className="scanline-soft pointer-events-none absolute inset-0 z-0 opacity-10" />
-
-          <div className="relative z-10 flex items-center justify-between border-b border-[var(--border-dim)] bg-[var(--bg-deep)] px-6 py-3">
-            <span className="font-tech text-[10px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
-              Operator Dossier
-            </span>
-            <span className="font-tech text-[10px] text-[var(--text-muted)]">
-              STATUS: <span className="text-[var(--cyber-yellow)]">ACTIVE</span>
-            </span>
-          </div>
 
           <AnimatePresence
             mode="wait"
@@ -268,7 +239,7 @@ export default function ExecRoster({ execs }: Props) {
               transition={{ duration: 0.2 }}
               className="relative z-10 flex flex-1 flex-col"
             >
-              <div className="flex gap-4 p-4 pb-0 sm:gap-6 sm:p-6 sm:pb-0">
+              <div className="flex gap-4 p-4 sm:gap-6 sm:p-6">
                 <div className="relative shrink-0">
                   <div
                     className="h-28 w-28 overflow-hidden border-2 border-[var(--cyber-yellow)] shadow-[0_0_25px_rgba(252,238,10,0.15)] sm:h-44 sm:w-44 md:h-52 md:w-52"
@@ -296,17 +267,12 @@ export default function ExecRoster({ execs }: Props) {
                     {selected.role}
                   </span>
                   <h3 className="font-display max-w-full text-[clamp(1rem,6vw,2.25rem)] leading-tight font-black tracking-tight text-white uppercase whitespace-normal break-words">
-                    {selected.name.split(" ")[0]}{" "}
-                    <span className="bg-gradient-to-r from-[var(--cyber-yellow)] to-[var(--brand)] bg-clip-text text-transparent">
-                      {selected.name.split(" ").slice(1).join(" ")}
-                    </span>
+                    {selected.name}
                   </h3>
                 </div>
               </div>
 
               <div className="flex flex-1 flex-col p-4 sm:p-6">
-                <div className="mb-4 h-px w-full bg-gradient-to-r from-[var(--cyber-yellow)]/50 via-[var(--border-dim)] to-transparent" />
-
                 <div className="font-tech mb-4 grid grid-cols-3 gap-2 text-xs">
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
                     <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
@@ -354,9 +320,6 @@ export default function ExecRoster({ execs }: Props) {
                       <div className="h-1.5 w-1.5 bg-[var(--cyber-blue)]/50" />
                       <div className="h-1.5 w-1.5 bg-[var(--cyber-blue)]/20" />
                     </div>
-                    <span className="font-tech text-[9px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase opacity-80">
-                      NET//UPLINK :: OPERATOR_LOG
-                    </span>
                     <div className="flex gap-0.5">
                       <div className="h-1 w-3 bg-[var(--text-muted)]/20" />
                       <div className="h-1 w-1 bg-[var(--text-muted)]/20" />
@@ -416,19 +379,6 @@ export default function ExecRoster({ execs }: Props) {
           href="/team/legacy"
           className="group font-tech relative inline-flex items-center gap-3 border border-[var(--border-dim)] bg-[var(--bg-deep)] px-8 py-4 text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase transition-all hover:border-[var(--cyber-blue)] hover:text-[var(--cyber-blue)] hover:shadow-[0_0_20px_rgba(0,240,255,0.15)]"
         >
-          <svg
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
           <span>View Legacy Execs</span>
           <svg
             className="h-3 w-3 transition-transform group-hover:translate-x-1"
