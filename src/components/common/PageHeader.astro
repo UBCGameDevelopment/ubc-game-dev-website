@@ -1,53 +1,27 @@
 ---
-import BackgroundText from "../effects/BackgroundText.astro";
 import CyberBadge from "./CyberBadge.astro";
 
 interface Props {
-  backgroundText: string;
-  badge: {
+  badge?: {
     label: string;
     variant: "brand" | "accent" | "yellow" | "magenta" | "blue" | "neutral";
   };
-  title: {
-    normal: string;
-    highlight: string;
-  };
-  gradientClass: string; // e.g. "from-[var(--brand)] to-[var(--cyber-yellow)]"
+  title: string;
   description: string;
-  descriptionBorderColor?: string; // e.g. "border-[var(--brand)]"
-  glowColor?: string;
 }
 
-const { backgroundText, badge, title } = Astro.props;
+const { badge, title, description } = Astro.props;
 
-const accentStyles = {
-  brand: {
-    line: "bg-[var(--brand)]",
-    text: "text-[var(--brand)]",
-  },
-  accent: {
-    line: "bg-[var(--accent)]",
-    text: "text-[var(--accent)]",
-  },
-  yellow: {
-    line: "bg-[var(--cyber-yellow)]",
-    text: "text-[var(--cyber-yellow)]",
-  },
-  magenta: {
-    line: "bg-[var(--accent)]",
-    text: "text-[var(--accent)]",
-  },
-  blue: {
-    line: "bg-[var(--cyber-blue)]",
-    text: "text-[var(--cyber-blue)]",
-  },
-  neutral: {
-    line: "bg-[var(--border-dim)]",
-    text: "text-white",
-  },
+const accentLines = {
+  brand: "bg-[var(--brand)]",
+  accent: "bg-[var(--accent)]",
+  yellow: "bg-[var(--cyber-yellow)]",
+  magenta: "bg-[var(--accent)]",
+  blue: "bg-[var(--cyber-blue)]",
+  neutral: "bg-[var(--border-dim)]",
 } as const;
 
-const accent = accentStyles[badge.variant] ?? accentStyles.brand;
+const line = badge ? accentLines[badge.variant] : "";
 ---
 
 <section class="relative overflow-hidden pt-36 pb-16 md:pb-24">
@@ -56,29 +30,22 @@ const accent = accentStyles[badge.variant] ?? accentStyles.brand;
   </div>
 
   <div class="container-page relative z-10 mx-auto px-4">
-    <div class="relative py-4 md:py-8">
-      <BackgroundText
-        text={backgroundText}
-        className="top-1/2 left-1/2 hidden -translate-x-1/2 -translate-y-1/2 text-[6.5rem] font-black tracking-[0.18em] opacity-[0.02] md:block lg:text-[8.5rem]"
-      />
-
-      <div class="relative z-10 mx-auto max-w-5xl text-center">
+    <div class="mx-auto max-w-5xl py-4 text-center md:py-8">
+      {badge && (
         <div class="mb-6 flex items-center justify-center gap-4">
-          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", accent.line]}></span>
-          <CyberBadge
-            label={badge.label}
-            variant={badge.variant}
-          />
-          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", accent.line]}></span>
+          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", line]}></span>
+          <CyberBadge label={badge.label} variant={badge.variant} />
+          <span class:list={["hidden h-px w-10 shrink-0 opacity-80 md:block", line]}></span>
         </div>
+      )}
 
-        <h1 class="text-4xl font-black tracking-[-0.05em] text-white uppercase md:text-6xl lg:text-[5rem]">
-          {title.normal}
-          <span class:list={[accent.text]}>{title.highlight}</span>
-        </h1>
-      </div>
+      <h1 class="text-4xl font-black tracking-[-0.05em] text-white uppercase md:text-6xl lg:text-[5rem]">
+        {title}
+      </h1>
 
-      <slot />
+      <p class="mx-auto mt-6 max-w-2xl text-base text-[var(--text-muted)] md:text-lg">
+        {description}
+      </p>
     </div>
   </div>
 </section>

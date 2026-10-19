@@ -11,13 +11,9 @@ const { years, gamesByYear } = GameService.getGroupedByYearSorted();
 
 <Layout title="UBC Game Dev | Projects">
   <PageHeader
-    backgroundText="DATABASE"
     badge={{ label: "Past Works", variant: "blue" }}
-    title={{ normal: "", highlight: "Projects" }}
-    gradientClass="from-[var(--cyber-blue)] to-[var(--brand)]"
+    title="Projects"
     description="Trace the history of our digital creations. From game jam prototypes to polished releases, explore the legacy of UBC Game Dev code."
-    descriptionBorderColor="border-[var(--cyber-blue)]"
-    glowColor="var(--brand)"
   />
 
   <div class="container-page relative z-10 mx-auto flex min-h-screen flex-col gap-8 px-4 pb-24 md:flex-row lg:gap-16">
