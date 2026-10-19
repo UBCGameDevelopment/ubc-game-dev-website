@@ -21,7 +21,7 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
     {
       isSoldOut && (
         <span
-          class="bg-[var(--bg-panel)] px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase"
+          class="bg-[var(--bg-panel)] px-3 py-1 text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase"
           style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8px));">
           SOLD OUT
         </span>
@@ -43,7 +43,7 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
             />
           </div>
           <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <span class="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-[8px] tracking-wider text-white/40 backdrop-blur-sm">
+          <span class="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-xs tracking-wider text-white/40 backdrop-blur-sm">
             AI Generated Image
           </span>
         </>
@@ -72,7 +72,7 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
 
   <div class="relative z-10 flex flex-1 flex-col p-5">
     <div class="flex items-start justify-between">
-      <span class="text-[10px] font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
+      <span class="text-xs font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
         {category}
       </span>
       <div class="h-1 w-8 bg-[var(--border-dim)]"></div>
@@ -82,20 +82,20 @@ const imageList = (images ?? []).filter((src) => !isPlaceholder(src));
       {name}
     </h3>
 
-    <p class="font-tech mt-2 line-clamp-2 text-sm text-[var(--text-muted)]">
+    <p class="font-tech mt-2 line-clamp-2 text-base text-[var(--text-muted)]">
       {description}
     </p>
 
     {
       colors && colors.length > 0 && (
-        <div class="font-tech mt-3 flex items-center gap-2 text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+        <div class="font-tech mt-3 flex items-center gap-2 text-xs tracking-widest text-[var(--text-muted)] uppercase">
           <span class="text-white">{colors.join(" / ")}</span>
         </div>
       )
     }
     {
       sizes && sizes.length > 0 && (
-        <div class="font-tech mt-1 flex items-center gap-2 text-[10px] tracking-widest text-[var(--text-muted)] uppercase">
+        <div class="font-tech mt-1 flex items-center gap-2 text-xs tracking-widest text-[var(--text-muted)] uppercase">
           <span class="text-white">{sizes.join(" / ")}</span>
         </div>
       )

@@ -103,7 +103,7 @@ export default function MerchPurchaseModal() {
                         className="h-full w-full object-cover"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-                      <span className="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-[8px] tracking-wider text-white/40 backdrop-blur-sm">
+                      <span className="font-tech absolute bottom-2 left-2 z-10 rounded bg-black/50 px-1.5 py-0.5 text-xs tracking-wider text-white/40 backdrop-blur-sm">
                         AI Generated Image
                       </span>
                     </>
@@ -176,7 +176,7 @@ export default function MerchPurchaseModal() {
                 <div className="relative z-10 flex flex-1 flex-col justify-between p-8 md:w-[35%] md:overflow-y-auto md:p-12">
                   <div>
                     <div className="flex items-center gap-3">
-                      <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
+                      <span className="text-xs font-bold tracking-[0.3em] text-[var(--cyber-yellow)] uppercase">
                         {data.category}
                       </span>
                     </div>
@@ -184,7 +184,7 @@ export default function MerchPurchaseModal() {
                     <h3 className="font-pixel mt-4 text-4xl tracking-wide text-white uppercase">{data.name}</h3>
 
                     <div className="mt-6 space-y-4">
-                      <p className="font-tech max-w-sm text-sm leading-relaxed text-[var(--text-muted)]">
+                      <p className="font-tech max-w-sm text-base leading-relaxed text-[var(--text-muted)]">
                         {data.description}
                       </p>
 
@@ -336,7 +336,7 @@ export default function MerchPurchaseModal() {
                     </div>
                   </div>
 
-                  <p className="mb-6 text-sm text-[var(--text-muted)]">{data.description}</p>
+                  <p className="mb-6 text-base text-[var(--text-muted)]">{data.description}</p>
 
                   <div className="space-y-4 border-t border-[var(--border-dim)] pt-6 text-sm text-[var(--text-muted)]">
                     <p>To acquire this item, complete the credit transfer protocol:</p>
@@ -447,7 +447,7 @@ export default function MerchPurchaseModal() {
                               return (
                                 <div className="flex flex-col items-center justify-center gap-1">
                                   <span className="font-bold text-white">{val}"</span>
-                                  <span className="text-[10px] text-[var(--text-muted)]">({cm}cm)</span>
+                                  <span className="text-xs text-[var(--text-muted)]">({cm}cm)</span>
                                 </div>
                               );
                             };

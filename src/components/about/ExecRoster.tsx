@@ -30,7 +30,7 @@ const ExecEmptyState = () => (
       <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-[var(--cyber-yellow)]" />
 
       {/* Header status */}
-      <div className="relative z-10 mb-8 flex items-center justify-between border-b border-[var(--border-dim)] pb-3 font-tech text-[10px] tracking-[0.2em] uppercase">
+      <div className="relative z-10 mb-8 flex items-center justify-between border-b border-[var(--border-dim)] pb-3 font-tech text-xs tracking-[0.2em] uppercase">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--cyber-yellow)]" />
           <span className="text-[var(--cyber-yellow)]">STATUS // DELIBERATING</span>
@@ -49,7 +49,7 @@ const ExecEmptyState = () => (
         </h3>
 
         {/* Concise explanation */}
-        <p className="max-w-md text-sm text-[var(--text-muted)]">
+        <p className="max-w-md text-base text-[var(--text-muted)]">
           Executive roles are currently being finalized. Check back soon for the new roster announcement.
         </p>
 
@@ -123,7 +123,7 @@ const PortraitThumbnail = ({
         }`}
     >
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-1 pt-6">
-        <p className="font-tech truncate text-[9px] font-bold tracking-wider text-white uppercase">
+        <p className="font-tech truncate text-xs font-bold tracking-wider text-white uppercase">
           {exec.name.split(" ")[0]}
         </p>
       </div>
@@ -203,7 +203,7 @@ export default function ExecRoster({ execs }: Props) {
           {classOrder.map((cls) => (
             <div key={cls}>
               <div className="mb-2 flex items-center gap-3">
-                <span className="font-tech text-[10px] font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
+                <span className="font-tech text-xs font-bold tracking-[0.2em] text-[var(--cyber-blue)] uppercase">
                   {cls}
                 </span>
                 <div className="h-px flex-1 bg-[var(--border-dim)]" />
@@ -263,7 +263,7 @@ export default function ExecRoster({ execs }: Props) {
                 </div>
 
                 <div className="min-w-0 flex flex-col justify-center">
-                  <span className="mb-2 inline-block self-start border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--brand)] uppercase">
+                  <span className="mb-2 inline-block self-start border border-[var(--brand)]/40 bg-[var(--brand)]/10 px-3 py-1 text-xs font-bold tracking-[0.2em] text-[var(--brand)] uppercase">
                     {selected.role}
                   </span>
                   <h3 className="font-display max-w-full text-[clamp(1rem,6vw,2.25rem)] leading-tight font-black tracking-tight text-white uppercase whitespace-normal break-words">
@@ -275,19 +275,19 @@ export default function ExecRoster({ execs }: Props) {
               <div className="flex flex-1 flex-col p-4 sm:p-6">
                 <div className="font-tech mb-4 grid grid-cols-3 gap-2 text-xs">
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
-                    <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
+                    <span className="mb-0.5 block text-xs tracking-[0.15em] text-[var(--text-muted)] uppercase">
                       Class
                     </span>
                     <span className="font-bold text-[var(--cyber-blue)]">{selected.execClass}</span>
                   </div>
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
-                    <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
+                    <span className="mb-0.5 block text-xs tracking-[0.15em] text-[var(--text-muted)] uppercase">
                       Season
                     </span>
                     <span className="font-bold text-white">{selected.season}</span>
                   </div>
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
-                    <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
+                    <span className="mb-0.5 block text-xs tracking-[0.15em] text-[var(--text-muted)] uppercase">
                       Status
                     </span>
                     <span className="font-bold text-[var(--cyber-yellow)]">ACTIVE</span>
@@ -295,13 +295,13 @@ export default function ExecRoster({ execs }: Props) {
                 </div>
                 <div className="font-tech mb-4 grid grid-cols-2 gap-2 text-xs">
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
-                    <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
+                    <span className="mb-0.5 block text-xs tracking-[0.15em] text-[var(--text-muted)] uppercase">
                       Clearance
                     </span>
                     <span className="font-bold text-[var(--brand)]">LVL MAX</span>
                   </div>
                   <div className="border border-[var(--border-dim)] bg-[var(--bg-deep)] p-2.5">
-                    <span className="mb-0.5 block text-[9px] tracking-[0.15em] text-[var(--text-muted)] uppercase">
+                    <span className="mb-0.5 block text-xs tracking-[0.15em] text-[var(--text-muted)] uppercase">
                       Division
                     </span>
                     <span className="font-bold text-[var(--cyber-blue)]">{selected.execClass}</span>
@@ -327,7 +327,7 @@ export default function ExecRoster({ execs }: Props) {
                   </div>
 
                   <div
-                    className="font-tech relative z-10 p-4 text-[11px] leading-relaxed text-[var(--text-muted)]"
+                    className="font-tech relative z-10 p-4 text-xs leading-relaxed text-[var(--text-muted)]"
                   >
                     <span style={{ color: "var(--cyber-blue)" }}>[SYS]</span> Operator profile loaded.
                     <br />

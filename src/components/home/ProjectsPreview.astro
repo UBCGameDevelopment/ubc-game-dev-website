@@ -45,7 +45,7 @@ const featuredGames = GameService.getFeatured(3);
 
                 {game.award && (
                   <div class="absolute right-3 bottom-3 z-20">
-                    <span class="bg-[var(--cyber-yellow)] px-2 py-1 text-[10px] font-bold tracking-wider text-black uppercase">
+                    <span class="bg-[var(--cyber-yellow)] px-2 py-1 text-xs font-bold tracking-wider text-black uppercase">
                       {game.award}
                     </span>
                   </div>
@@ -55,7 +55,7 @@ const featuredGames = GameService.getFeatured(3);
               <div class="relative p-6">
                 <h3 class="font-display text-2xl font-black text-white uppercase">{game.name}</h3>
 
-                <p class="mt-3 line-clamp-2 font-mono text-sm leading-relaxed text-[var(--text-muted)]">
+                <p class="mt-3 line-clamp-2 font-mono text-base leading-relaxed text-[var(--text-muted)]">
                   {game.description}
                 </p>
               </div>

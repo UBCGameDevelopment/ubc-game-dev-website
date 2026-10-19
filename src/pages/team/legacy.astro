@@ -80,13 +80,13 @@ const execsBySeason = seasons.map((season) => ({
                                             class="h-full w-full object-cover opacity-70 transition-opacity group-hover:opacity-100"
                                         />
                                         <div class="absolute inset-0 bg-gradient-to-t from-[var(--bg-panel)] via-transparent to-transparent" />
-                                        <span class="font-tech absolute top-2 right-2 border border-[var(--cyber-blue)]/30 bg-[var(--bg-deep)]/80 px-2 py-0.5 text-[8px] font-bold tracking-wider text-[var(--cyber-blue)] uppercase backdrop-blur-sm">
+                                        <span class="font-tech absolute top-2 right-2 border border-[var(--cyber-blue)]/30 bg-[var(--bg-deep)]/80 px-2 py-0.5 text-xs font-bold tracking-wider text-[var(--cyber-blue)] uppercase backdrop-blur-sm">
                                             {exec.execClass}
                                         </span>
                                     </div>
                                     <div class="p-2">
                                         <h3 class="font-display text-xs font-bold text-white">{exec.name}</h3>
-                                        <p class="font-tech mt-0.5 text-[9px] tracking-wider text-[var(--text-muted)]">
+                                        <p class="font-tech mt-0.5 text-xs tracking-wider text-[var(--text-muted)]">
                                             {exec.role}
                                         </p>
                                         <div class="mt-2 flex items-center gap-2">
@@ -144,7 +144,7 @@ const execsBySeason = seasons.map((season) => ({
                                         </div>
                                     </div>
                                     <div class="absolute top-2 left-2">
-                                        <span class="font-tech text-[8px] font-bold tracking-widest text-[var(--text-muted)]/50 uppercase">
+                                        <span class="font-tech text-xs font-bold tracking-widest text-[var(--text-muted)]/50 uppercase">
                                             Archived
                                         </span>
                                     </div>
@@ -156,7 +156,7 @@ const execsBySeason = seasons.map((season) => ({
             }
 
             <div class="mt-8 border-t border-[var(--border-dim)] pt-6 text-center">
-                <p class="font-tech text-[10px] tracking-[0.2em] text-[var(--text-muted)]">
+                <p class="font-tech text-xs tracking-[0.2em] text-[var(--text-muted)]">
                     [SYS] Archive complete - {legacyExecs.length} legacy operators on record.
                 </p>
             </div>
