@@ -1,67 +1,67 @@
 // Recent game thumbnails
-import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.png";
-import greyWake from "../assets/games_gallery/2025-2026/grey-wake.png";
-import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.png";
-import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.png";
-import gunplay from "../assets/games_gallery/2025-2026/gunplay.jpg";
-import photoLoop from "../assets/games_gallery/2025-2026/photoloop.png";
-import projectStarhaven from "../assets/games_gallery/2025-2026/project-starhaven.jpg";
-import phaser from "../assets/games_gallery/2025-2026/phaser.jpg";
-import jokersRequiem from "../assets/games_gallery/2024-2025/jokers-requiem.png";
-import getBetterSoon from "../assets/games_gallery/2024-2025/get-better-soon.png";
-import omnia from "../assets/games_gallery/2024-2025/omnia.png";
-import nuTREEnts from "../assets/games_gallery/2024-2025/nutreents.png";
-import slimeSuccumber from "../assets/games_gallery/2024-2025/slime-succumber.png";
-import mtStringmore from "../assets/games_gallery/2024-2025/mt-stringmore.jpg";
-import bornToBoard from "../assets/games_gallery/2024-2025/born-to-board.png";
-import pacemaker from "../assets/games_gallery/2024-2025/pacemaker.png";
-import battleForHarmony from "../assets/games_gallery/2023-2024/battle-for-harmony.png";
-import starCrossed from "../assets/games_gallery/2023-2024/star-crossed.jpg";
-import theGuardian from "../assets/games_gallery/2023-2024/the-guardian.jpg";
-import fatesForest from "../assets/games_gallery/2023-2024/fates-forest.jpg";
-import sushiJam from "../assets/games_gallery/2023-2024/sushi-jam.jpg";
-import millenniumLine from "../assets/games_gallery/2023-2024/millennium-line.png";
-import barkVsByte from "../assets/games_gallery/2023-2024/bark-vs-byte.jpg";
-import cyberClimb from "../assets/games_gallery/2023-2024/cyber-climb.jpg";
-import spiderCave from "../assets/games_gallery/2023-2024/spider-cave.jpg";
+import wastelanders from "../assets/games_gallery/2025-2026/wastelanders.webp";
+import greyWake from "../assets/games_gallery/2025-2026/grey-wake.webp";
+import monstroCity from "../assets/games_gallery/2025-2026/monstrocity.webp";
+import deathKitchen from "../assets/games_gallery/2025-2026/death-kitchen.webp";
+import gunplay from "../assets/games_gallery/2025-2026/gunplay.webp";
+import photoLoop from "../assets/games_gallery/2025-2026/photoloop.webp";
+import projectStarhaven from "../assets/games_gallery/2025-2026/project-starhaven.webp";
+import phaser from "../assets/games_gallery/2025-2026/phaser.webp";
+import jokersRequiem from "../assets/games_gallery/2024-2025/jokers-requiem.webp";
+import getBetterSoon from "../assets/games_gallery/2024-2025/get-better-soon.webp";
+import omnia from "../assets/games_gallery/2024-2025/omnia.webp";
+import nuTREEnts from "../assets/games_gallery/2024-2025/nutreents.webp";
+import slimeSuccumber from "../assets/games_gallery/2024-2025/slime-succumber.webp";
+import mtStringmore from "../assets/games_gallery/2024-2025/mt-stringmore.webp";
+import bornToBoard from "../assets/games_gallery/2024-2025/born-to-board.webp";
+import pacemaker from "../assets/games_gallery/2024-2025/pacemaker.webp";
+import umbra from "../assets/games_gallery/2024-2025/umbra.webp";
+import battleForHarmony from "../assets/games_gallery/2023-2024/battle-for-harmony.webp";
+import starCrossed from "../assets/games_gallery/2023-2024/star-crossed.webp";
+import theGuardian from "../assets/games_gallery/2023-2024/the-guardian.webp";
+import fatesForest from "../assets/games_gallery/2023-2024/fates-forest.webp";
+import sushiJam from "../assets/games_gallery/2023-2024/sushi-jam.webp";
+import millenniumLine from "../assets/games_gallery/2023-2024/millennium-line.webp";
+import barkVsByte from "../assets/games_gallery/2023-2024/bark-vs-byte.webp";
+import cyberClimb from "../assets/games_gallery/2023-2024/cyber-climb.webp";
+import spiderCave from "../assets/games_gallery/2023-2024/spider-cave.webp";
 
 // Import of pictures - 2022-2023
-import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.png";
-import antidote30xx from "../assets/games_gallery/2022-2023/antidote-30xx.png";
-import apoc101 from "../assets/games_gallery/2022-2023/apoc-101.png";
-import varansSeals from "../assets/games_gallery/2022-2023/varans-seals.png";
-import shadowOfSpace from "../assets/games_gallery/2022-2023/shadow-of-space.png";
-import umbra from "../assets/games_gallery/2022-2023/umbra.png";
-import bouncyGuy from "../assets/games_gallery/2022-2023/bouncy-guy.png";
-import cybercision from "../assets/games_gallery/2022-2023/cyberscision.png";
-import sunshineShores from "../assets/games_gallery/2022-2023/sunshine-shores.png";
+import sleepyChef from "../assets/games_gallery/2022-2023/sleepy-chef.webp";
+import antidote30xx from "../assets/games_gallery/2022-2023/antidote-30xx.webp";
+import apoc101 from "../assets/games_gallery/2022-2023/apoc-101.webp";
+import varansSeals from "../assets/games_gallery/2022-2023/varans-seals.webp";
+import shadowOfSpace from "../assets/games_gallery/2022-2023/shadow-of-space.webp";
+import bouncyGuy from "../assets/games_gallery/2022-2023/bouncy-guy.webp";
+import cybercision from "../assets/games_gallery/2022-2023/cyberscision.webp";
+import sunshineShores from "../assets/games_gallery/2022-2023/sunshine-shores.webp";
 
 // 2020-2021
-import dathora from "../assets/games_gallery/2020-2021/dathora.png";
-import mythos from "../assets/games_gallery/2020-2021/mythos.png";
-import sidetracked from "../assets/games_gallery/2020-2021/sidetracked.png";
-import mediquest from "../assets/games_gallery/2020-2021/mediquest.png";
-import constellationTango from "../assets/games_gallery/2020-2021/constellation-tango.png";
-import spellrise from "../assets/games_gallery/2020-2021/spellrise.png";
-import transduction from "../assets/games_gallery/2020-2021/transduction.png";
-import panicTitanic from "../assets/games_gallery/2020-2021/panic-titanic.png";
+import dathora from "../assets/games_gallery/2020-2021/dathora.webp";
+import mythos from "../assets/games_gallery/2020-2021/mythos.webp";
+import sidetracked from "../assets/games_gallery/2020-2021/sidetracked.webp";
+import mediquest from "../assets/games_gallery/2020-2021/mediquest.webp";
+import constellationTango from "../assets/games_gallery/2020-2021/constellation-tango.webp";
+import spellrise from "../assets/games_gallery/2020-2021/spellrise.webp";
+import transduction from "../assets/games_gallery/2020-2021/transduction.webp";
+import panicTitanic from "../assets/games_gallery/2020-2021/panic-titanic.webp";
 
 // 2019-2020
-import slimySewers from "../assets/games_gallery/2019-2020/slimy-sewers.jpg";
-import starFarm from "../assets/games_gallery/2019-2020/star-farm.png";
-import innoculated from "../assets/games_gallery/2019-2020/innoculated.png";
-import contaminated from "../assets/games_gallery/2019-2020/contaminated.png";
-import forgottenYellow from "../assets/games_gallery/2019-2020/forgotten-yellow.png";
-import ninjastack from "../assets/games_gallery/2019-2020/ninjastack.png";
+import slimySewers from "../assets/games_gallery/2019-2020/slimy-sewers.webp";
+import starFarm from "../assets/games_gallery/2019-2020/star-farm.webp";
+import innoculated from "../assets/games_gallery/2019-2020/innoculated.webp";
+import contaminated from "../assets/games_gallery/2019-2020/contaminated.webp";
+import forgottenYellow from "../assets/games_gallery/2019-2020/forgotten-yellow.webp";
+import ninjastack from "../assets/games_gallery/2019-2020/ninjastack.webp";
 
 // 2018-2019
-import nightParade from "../assets/games_gallery/2018-2019/night-parade.png";
-import rooutes from "../assets/games_gallery/2018-2019/rooutes.png";
-import michelinRun from "../assets/games_gallery/2018-2019/michelin-run.png";
-import klaymation from "../assets/games_gallery/2018-2019/klaymation.png";
-import joesLittleHelpers from "../assets/games_gallery/2018-2019/joes-little-helpers.png";
-import electricCrescendo from "../assets/games_gallery/2018-2019/electric-crescendo.png";
-import edensGarden from "../assets/games_gallery/2018-2019/edens-garden.png";
+import nightParade from "../assets/games_gallery/2018-2019/night-parade.webp";
+import rooutes from "../assets/games_gallery/2018-2019/rooutes.webp";
+import michelinRun from "../assets/games_gallery/2018-2019/michelin-run.webp";
+import klaymation from "../assets/games_gallery/2018-2019/klaymation.webp";
+import joesLittleHelpers from "../assets/games_gallery/2018-2019/joes-little-helpers.webp";
+import electricCrescendo from "../assets/games_gallery/2018-2019/electric-crescendo.webp";
+import edensGarden from "../assets/games_gallery/2018-2019/edens-garden.webp";
 
 // Legacy
 import swordship from "../assets/games_gallery/legacy/swordship.webp";
@@ -322,6 +322,7 @@ export const games: Game[] = [
       "Kate Louie - Writer",
       "Tiana Khandelwal - Writer",
     ],
+    award: "Best Gameplay + Audience Choice",
     year: "2024/2025",
   },
   {
@@ -340,6 +341,7 @@ export const games: Game[] = [
       "Jasper Ellis - Game Designer",
       "John - Game Designer",
     ],
+    award: "Game of the Year",
     year: "2024/2025",
   },
   {
@@ -378,6 +380,7 @@ export const games: Game[] = [
       "Aditya Adiraju",
       "Siddhant Patil",
     ],
+    award: "Best Concept",
     year: "2024/2025",
   },
   {
@@ -427,6 +430,30 @@ export const games: Game[] = [
       "Rad",
       "Zoe",
     ],
+    year: "2024/2025",
+  },
+  {
+    name: "Umbra (by Avalon Games)",
+    description:
+      "You play as a kid who's trying to c ope with the passing of his parents. You will traverse through your old home in your dreamscape, familiar but now swarmed with monsters, and defeat your inner demons one room at a time. This demo includes the first level only, which takes place in the kid's bedroom. The monsters are shadows; you need to use your shadow to fight them! You start with the nightlight in your hand. While the nightlight is in your hand, you cannot move. You need to place the light by right - clicking at a location of your choosing. The placement of the light is crucial to your success in this game, as the position of your shadow depends on the position of the light. You can always retrieve the light by right - clicking and then place it at a new location in the same way.",
+    instructions:
+      "Use WASD to move and left - click to swing your sword! Remember that it is the shadow of your sword that can kill the enemies. You can also press Space for a small dash to get you out of tough situations.",
+    media: {
+      type: "image",
+      image: umbra,
+    },
+    gameLink: "https://drive.google.com/drive/folders/1z7lErBxrF1ICisJlNnMt60Wd0tMZZX8s",
+    teamMembers: [
+      "Bailey Brantigham",
+      "Allen Chiang",
+      "Emma Greville",
+      "Xue Huang",
+      "Kaitlyn Russell",
+      "Alexandria Vido",
+      "Dean Yang",
+      "William Zhou",
+    ],
+    award: "Best Graphics + Game of the Year (2022/2023)",
     year: "2024/2025",
   },
   {
@@ -729,30 +756,6 @@ export const games: Game[] = [
       "troopsushi",
     ],
     award: "Best Gameplay",
-    year: "2022/2023",
-  },
-  {
-    name: "Umbra (by Avalon Games)",
-    description:
-      "You play as a kid who's trying to c ope with the passing of his parents. You will traverse through your old home in your dreamscape, familiar but now swarmed with monsters, and defeat your inner demons one room at a time. This demo includes the first level only, which takes place in the kid's bedroom. The monsters are shadows; you need to use your shadow to fight them! You start with the nightlight in your hand. While the nightlight is in your hand, you cannot move. You need to place the light by right - clicking at a location of your choosing. The placement of the light is crucial to your success in this game, as the position of your shadow depends on the position of the light. You can always retrieve the light by right - clicking and then place it at a new location in the same way.",
-    instructions:
-      "Use WASD to move and left - click to swing your sword! Remember that it is the shadow of your sword that can kill the enemies. You can also press Space for a small dash to get you out of tough situations.",
-    media: {
-      type: "image",
-      image: umbra,
-    },
-    gameLink: "https://drive.google.com/drive/folders/1z7lErBxrF1ICisJlNnMt60Wd0tMZZX8s",
-    teamMembers: [
-      "Bailey Brantigham",
-      "Allen Chiang",
-      "Emma Greville",
-      "Xue Huang",
-      "Kaitlyn Russell",
-      "Alexandria Vido",
-      "Dean Yang",
-      "William Zhou",
-    ],
-    award: "Game of the Year",
     year: "2022/2023",
   },
   {
