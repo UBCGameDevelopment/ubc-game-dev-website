@@ -15,12 +15,12 @@ const statusLabel = status === "upcoming" ? "Upcoming" : status === "active" ? "
 ---
 
 <div
-  data-open-modal={isAvailable ? chapterNumber - 1 : undefined}
+  data-open-modal={chapterNumber - 1}
   class:list={[
-    "angular-card relative flex w-full max-w-[24rem] flex-col overflow-hidden md:max-w-none",
+    "angular-card relative flex w-full max-w-[24rem] cursor-pointer flex-col overflow-hidden md:max-w-none",
     isAvailable
-      ? "cursor-pointer bg-[var(--surface-2)]"
-      : "pointer-events-none bg-[var(--surface-2)]/30 opacity-60 grayscale select-none",
+      ? "bg-[var(--surface-2)]"
+      : "bg-[var(--surface-2)]/30 opacity-60 grayscale",
   ]}
 >
   <div class="relative aspect-video shrink-0 overflow-hidden">
@@ -159,33 +159,29 @@ const statusLabel = status === "upcoming" ? "Upcoming" : status === "active" ? "
       <EventText text={description} />
     </p>
 
-    {
-      isAvailable && (
-        <div class="mt-auto pt-5 md:pt-6">
-          <button
-            type="button"
-            data-open-modal={chapterNumber - 1}
-            class="clip-angled relative w-full bg-[var(--cyber-yellow)] p-px text-black uppercase"
+    <div class="mt-auto pt-5 md:pt-6">
+      <button
+        type="button"
+        data-open-modal={chapterNumber - 1}
+        class="clip-angled relative w-full bg-[var(--cyber-yellow)] p-px text-black uppercase"
+      >
+        <span class="font-pixel clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-yellow)] px-5 py-3 text-sm font-bold tracking-widest md:px-6">
+          DETAILS
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <span class="font-pixel clip-angled relative z-10 flex items-center justify-center gap-2 bg-[var(--cyber-yellow)] px-5 py-3 text-sm font-bold tracking-widest md:px-6">
-              DETAILS
-              <svg
-                class="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </span>
-          </button>
-        </div>
-      )
-    }
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 </div>
