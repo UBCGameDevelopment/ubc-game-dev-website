@@ -4,6 +4,7 @@ import alan from "../assets/exec_photos/alan.webp";
 import amanda from "../assets/exec_photos/amanda.webp";
 import henil from "../assets/exec_photos/henil.webp";
 import ken from "../assets/exec_photos/ken.webp";
+import placeholder from "../assets/exec_photos/logo.png";
 import mathew from "../assets/exec_photos/mathew.webp";
 import noah from "../assets/exec_photos/noah.webp";
 import pedro from "../assets/exec_photos/pedro.webp";
@@ -27,12 +28,28 @@ export const execs: Exec[] = [
         image: pedro,
     },
     {
+        name: "Gabriel Henrique Monteiro Martins",
+        role: "VP Internal",
+        execClass: "Leadership",
+        season: "2026-2027",
+        linkedin: "https://www.linkedin.com/in/gbrielhmm",
+        image: placeholder,
+    },
+    {
         name: "Henil Agrawal",
         role: "Associate Project Teams",
         execClass: "Leadership",
         season: "2026-2027",
         linkedin: "https://www.linkedin.com/in/henil-agrawal-777725216/",
         image: henil,
+    },
+    {
+        name: "Nash Ntawiha",
+        role: "First Year Rep",
+        execClass: "Leadership",
+        season: "2026-2027",
+        linkedin: "https://www.linkedin.com/in/nash-ntawiha-b17184359/",
+        image: placeholder,
     },
     {
         name: "Mathew Drexel",
