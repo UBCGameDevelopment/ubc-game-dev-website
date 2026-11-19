@@ -3,9 +3,10 @@ import type { Exec } from "../types";
 import alan from "../assets/exec_photos/alan.webp";
 import amanda from "../assets/exec_photos/amanda.webp";
 import henil from "../assets/exec_photos/henil.webp";
+import gabriel from "../assets/exec_photos/gabriel.webp";
 import ken from "../assets/exec_photos/ken.webp";
-import placeholder from "../assets/exec_photos/logo.png";
 import mathew from "../assets/exec_photos/mathew.webp";
+import nash from "../assets/exec_photos/nash.webp";
 import noah from "../assets/exec_photos/noah.webp";
 import pedro from "../assets/exec_photos/pedro.webp";
 import victor from "../assets/exec_photos/victor.webp";
@@ -33,7 +34,7 @@ export const execs: Exec[] = [
         execClass: "Leadership",
         season: "2026-2027",
         linkedin: "https://www.linkedin.com/in/gbrielhmm",
-        image: placeholder,
+        image: gabriel,
     },
     {
         name: "Henil Agrawal",
@@ -49,7 +50,7 @@ export const execs: Exec[] = [
         execClass: "Leadership",
         season: "2026-2027",
         linkedin: "https://www.linkedin.com/in/nash-ntawiha-b17184359/",
-        image: placeholder,
+        image: nash,
     },
     {
         name: "Mathew Drexel",
