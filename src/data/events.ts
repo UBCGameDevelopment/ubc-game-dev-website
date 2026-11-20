@@ -126,10 +126,13 @@ export const events: Event[] = [
   },
   {
     title: "Industry Speaker #2",
-    date: "Friday, November 20, 2026",
-    isoDate: "2026-11-20T00:00:00",
-    description: "Join game industry professionals for another session of insights into their work and a chance to ask questions.",
-    detailPoints: ["Stay tuned for the speaker announcements!"],
+    date: "Friday, November 20, 2026: 5:30 PM – 7:15 PM",
+    isoDate: "2026-11-20T17:30:00",
+    description: "Join **Joshua Long** and **Alexei Pepers** for talks on designing effective support systems and understanding procedural content generation in game development.",
+    detailPoints: [
+      "5:30 PM – 6:15 PM | Design Add-Ons: Choosing Your Support Systems. **Joshua Long**, Creative Director at Fragless Designs, breaks down how to choose systems that support gameplay, from health and cooldown bars to tech trees and skill points.",
+      "6:30 PM – 7:15 PM | An Overview of Procedural Content Generation. **Alexei Pepers**, Technical Systems Designer, shares an overview of procedural worlds, common approaches, and how to decide when procedural content is the right fit.",
+    ],
     location: "Buchanan A202",
     mapLink: "https://maps.app.goo.gl/K4iwFDuS9thBq7b18",
     image: placeholder,
